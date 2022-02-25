@@ -1370,7 +1370,7 @@ public class ComponenteDetalleController {
  
 </br>
 
-
+* Para la inserción de Registros recordar que se debio haber modificados la anotation de la entity correspondiente haciendo relacion a la secuencia creada de java con la de la base de datos, para que no se presente el error de id duplicado
 * Testeamos el método POST de inserción de registros mediante la siguiente uri `http://localhost:8092/listado/` y agregando en el Body en formato Json el Registro de Inserción..
  ```json
 {
@@ -1390,30 +1390,468 @@ public class ComponenteDetalleController {
  
   </br>
   
+ * Visualizamos el Listado de Componentes para Verificar lo Insertado`http://localhost:8092/componentes/listado?page=0&size=0`
+ * Obtenemos un Status 200 OK junto con el listado total de componentes..
+ * Response..
+  ```json
+  [
+    {
+        "id": 1,
+        "codigo": "HDGHFK-KSH13006",
+        "imagen": "https://images.alldatasheet.es/semiconductor/electronic_parts/datasheet/335783/HUASHAN/KSH13005.GIF",
+        "nroPieza": "KSH13006",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT NPN",
+        "fabricante": "SHANTOU HUASHAN",
+        "stock": 300,
+        "precio": 2.0
+    },
+    {
+        "id": 2,
+        "codigo": "DFHSDK-3CD010G",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_906581-MLA32747237952_112019-O.webp",
+        "nroPieza": "3CD010G",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "INCHANGE SEMICONDUCTOR",
+        "stock": 400,
+        "precio": 5.0
+    },
+    {
+        "id": 3,
+        "codigo": "JDHFYT-AP4519GED",
+        "imagen": "https://alltransistors.com/adv/pdfdatasheet_ape/image/ap4511gh-hf_0001.jpg",
+        "nroPieza": "AP4519GED",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet NP",
+        "fabricante": "Advanced Power",
+        "stock": 200,
+        "precio": 4.0
+    },
+    {
+        "id": 4,
+        "codigo": "HJDGHF-SL60N06",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_893006-MLA41523372205_042020-F.webp",
+        "nroPieza": "SL60N06",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet N",
+        "fabricante": "Slkor",
+        "stock": 50,
+        "precio": 7.0
+    },
+    {
+        "id": 5,
+        "codigo": "009-KLDIUAOASS",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_757161-MLA41722189255_052020-O.webp",
+        "nroPieza": "KLDIUAOASS",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Radial",
+        "fabricante": "VISHAY",
+        "stock": 20,
+        "precio": 1.0
+    },
+    {
+        "id": 6,
+        "codigo": "3097-JKSJHSBS6DVBDG",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_938147-MLA47364644565_092021-F.webp",
+        "nroPieza": "BS6DVBDG",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Axial",
+        "fabricante": "VISHAY",
+        "stock": 18,
+        "precio": 1.6
+    },
+    {
+        "id": 7,
+        "codigo": "594-MIF2500BFKMGNHT5",
+        "imagen": "https://ar.mouser.com/images/vishay/images/mif1000afkmgnht5_SPL.jpg",
+        "nroPieza": "FKMGNHT5",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 25ohms 1% 100ppm",
+        "fabricante": "VISHAY",
+        "stock": 800,
+        "precio": 5.0
+    },
+    {
+        "id": 8,
+        "codigo": "581-CS12010T0100GTR",
+        "imagen": "https://ar.mouser.com/images/americantechnicalceramics/images/ATCFT.jpg",
+        "nroPieza": "T0100GTR",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 100ohms 2% 10W",
+        "fabricante": "KYSHOCERA",
+        "stock": 1200,
+        "precio": 3.0
+    },
+    {
+        "id": 9,
+        "codigo": "HSFGDTTEE-KY0-PIC18F4520-I/PT",
+        "imagen": "https://www.kynix.com/uploadfiles/small/PIC18F4520-I2fPT_10386.jpg",
+        "nroPieza": "KY0-PIC18F4520-I/PT",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC18F4520-I/PT",
+        "fabricante": "Microchip",
+        "stock": 40,
+        "precio": 20.0
+    },
+    {
+        "id": 10,
+        "codigo": "HJDYETU-KY32-PIC-00130-001",
+        "imagen": "https://www.kynix.com/images/ic-package/SOP.jpg",
+        "nroPieza": "KY32-PIC-00130-001",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC-00130-001",
+        "fabricante": "T-Wins",
+        "stock": 34,
+        "precio": 30.0
+    },
+    {
+        "id": 11,
+        "codigo": "ATMEGA32-16AURTR-ND",
+        "imagen": "https://media.digikey.com/Renders/Atmel%20Renders/313;44A;A;44.jpg",
+        "nroPieza": "16AURTR-ND",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA32-16AUR",
+        "fabricante": "Microchip Technology",
+        "stock": 10,
+        "precio": 30.0
+    },
+    {
+        "id": 12,
+        "codigo": "ATMEGA328P-MUR-JKSHJ67",
+        "imagen": "https://es.farnell.com/productimages/standard/en_GB/GE32QFN-40.jpg",
+        "nroPieza": "MUR-JKSHJ67",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA328P-MUR",
+        "fabricante": "Microchip Technology",
+        "stock": 15,
+        "precio": 25.0
+    },
+    {
+        "id": 13,
+        "codigo": "KSHJETA-ARDUINO-UNO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_603035-MLA41509685506_042020-F.webp",
+        "nroPieza": "ETA-ARDUINO-UNO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Uno R3",
+        "fabricante": "Arduino",
+        "stock": 30,
+        "precio": 10.0
+    },
+    {
+        "id": 14,
+        "codigo": "JSHYUTT-ARDUINO-NANO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_728208-MLA40243275480_122019-F.webp",
+        "nroPieza": "UTT-ARDUINO-NANO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Nano V3.0",
+        "fabricante": "Arduino",
+        "stock": 40,
+        "precio": 8.0
+    },
+    {
+        "id": 15,
+        "codigo": "2471S0A-ESP8266",
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/ESP-01.jpg/375px-ESP-01.jpg",
+        "nroPieza": "0A-ESP8266",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Esp8266 EX",
+        "fabricante": "Espressif Systems",
+        "stock": 10,
+        "precio": 10.0
+    },
+    {
+        "id": 16,
+        "codigo": "JD76FG6-DOIT-WEMOS-Mini",
+        "imagen": "https://www.esploradores.com/wp-content/uploads/2017/01/DOIT-WEMOS-Mini-NodeMCU-768x641.jpg",
+        "nroPieza": "DOIT-WEMOS-Mini",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Wemos D1 Mini",
+        "fabricante": "Wemos",
+        "stock": 12,
+        "precio": 8.0
+    },
+    {
+        "id": 17,
+        "codigo": "HJSHKWROOM-ESP32",
+        "imagen": "https://ar.mouser.com/images/espressifsystems/lrg/ESP32-DevKitC-32UE_SPL.jpg",
+        "nroPieza": "WROOM-ESP32",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa Esp32 WROOM 32ue",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 20.0
+    },
+    {
+        "id": 18,
+        "codigo": "H789DHJUi-ESP32",
+        "imagen": "https://tienda.ityt.com.ar/23642-large_default/modulo-wifi-bluetooth-esp32-esp-wroom-32-espressif-itytarg.jpg",
+        "nroPieza": "DHJUi-ESP32i",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa ESP32 WROOM",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 15.0
+    },
+    {
+        "id": 19,
+        "codigo": "UKGLUIO555-FG99",
+        "imagen": "https://www.industriasgsl.com/pub/media/wysiwyg/mosfet_panamahitek.jpg",
+        "nroPieza": "55-FG99",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "Genérico",
+        "stock": 100,
+        "precio": 1.0
+    }
+]
+  ```
+  
   
   </br>
   
-  * Ahora Testeamos el método PUT, vamos a modificar el Inmueble con el id 13 a través de la siguiente uri `http://localhost:8092/inmuebles/`, pasandole en el body el registro completo junto a su modificación (estadoInmuebleEnum) ..
+  * Ahora Testeamos el método PUT, vamos a modificar el Último Componente Insertado (cambiamos el Código y Nro de Pieza)  a través de la siguiente uri `http://localhost:8092/componentes/`, pasandole en el body el registro completo junto a su id ..
   ```json
  {
-    "id" : 13,
-    "idPropietarioInmueble" : 1,
-    "descripcion" : "Departamento de 1 Ambiente",
-    "tipo" : "Depto",
-    "estadoInmuebleEnum" : "NO_DISPONIBLE",
-    "precioInmuebleUsd" : 90000,
-    "direccion" : "San Amadeo del Valle 908",
-    "ubicacion" : "Villa Crespo",
-    "sitioWeb" : "-" 
-
-}
+        "id": 19,
+        "codigo": "JGKURISSDK-47363933",
+        "imagen": "https://www.industriasgsl.com/pub/media/wysiwyg/mosfet_panamahitek.jpg",
+        "nroPieza": "DK-47363933",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "Genérico",
+        "stock": 100,
+        "precio": 1.0
+    }
   
   ```
   * Obtenemos un Status 200 OK y un true, si visualizamos la lista con el GET podremos ver allí la modificación realizada
   
   </br>
   
-  * Testeamos el Método DELETE, eliminaremos el ultimo registro modificado(id 13), a través de la siguiente uri `http://localhost:8092/inmuebles/13`
+    
+ * Visualizamos el Listado de Componentes para Verificar lo Insertado`http://localhost:8092/componentes/listado?page=0&size=0`
+ * Obtenemos un Status 200 OK junto con el listado total de componentes..
+ * Response..
+  ```json
+ [
+    {
+        "id": 1,
+        "codigo": "HDGHFK-KSH13006",
+        "imagen": "https://images.alldatasheet.es/semiconductor/electronic_parts/datasheet/335783/HUASHAN/KSH13005.GIF",
+        "nroPieza": "KSH13006",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT NPN",
+        "fabricante": "SHANTOU HUASHAN",
+        "stock": 300,
+        "precio": 2.0
+    },
+    {
+        "id": 2,
+        "codigo": "DFHSDK-3CD010G",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_906581-MLA32747237952_112019-O.webp",
+        "nroPieza": "3CD010G",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "INCHANGE SEMICONDUCTOR",
+        "stock": 400,
+        "precio": 5.0
+    },
+    {
+        "id": 3,
+        "codigo": "JDHFYT-AP4519GED",
+        "imagen": "https://alltransistors.com/adv/pdfdatasheet_ape/image/ap4511gh-hf_0001.jpg",
+        "nroPieza": "AP4519GED",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet NP",
+        "fabricante": "Advanced Power",
+        "stock": 200,
+        "precio": 4.0
+    },
+    {
+        "id": 4,
+        "codigo": "HJDGHF-SL60N06",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_893006-MLA41523372205_042020-F.webp",
+        "nroPieza": "SL60N06",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet N",
+        "fabricante": "Slkor",
+        "stock": 50,
+        "precio": 7.0
+    },
+    {
+        "id": 5,
+        "codigo": "009-KLDIUAOASS",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_757161-MLA41722189255_052020-O.webp",
+        "nroPieza": "KLDIUAOASS",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Radial",
+        "fabricante": "VISHAY",
+        "stock": 20,
+        "precio": 1.0
+    },
+    {
+        "id": 6,
+        "codigo": "3097-JKSJHSBS6DVBDG",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_938147-MLA47364644565_092021-F.webp",
+        "nroPieza": "BS6DVBDG",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Axial",
+        "fabricante": "VISHAY",
+        "stock": 18,
+        "precio": 1.6
+    },
+    {
+        "id": 7,
+        "codigo": "594-MIF2500BFKMGNHT5",
+        "imagen": "https://ar.mouser.com/images/vishay/images/mif1000afkmgnht5_SPL.jpg",
+        "nroPieza": "FKMGNHT5",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 25ohms 1% 100ppm",
+        "fabricante": "VISHAY",
+        "stock": 800,
+        "precio": 5.0
+    },
+    {
+        "id": 8,
+        "codigo": "581-CS12010T0100GTR",
+        "imagen": "https://ar.mouser.com/images/americantechnicalceramics/images/ATCFT.jpg",
+        "nroPieza": "T0100GTR",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 100ohms 2% 10W",
+        "fabricante": "KYSHOCERA",
+        "stock": 1200,
+        "precio": 3.0
+    },
+    {
+        "id": 9,
+        "codigo": "HSFGDTTEE-KY0-PIC18F4520-I/PT",
+        "imagen": "https://www.kynix.com/uploadfiles/small/PIC18F4520-I2fPT_10386.jpg",
+        "nroPieza": "KY0-PIC18F4520-I/PT",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC18F4520-I/PT",
+        "fabricante": "Microchip",
+        "stock": 40,
+        "precio": 20.0
+    },
+    {
+        "id": 10,
+        "codigo": "HJDYETU-KY32-PIC-00130-001",
+        "imagen": "https://www.kynix.com/images/ic-package/SOP.jpg",
+        "nroPieza": "KY32-PIC-00130-001",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC-00130-001",
+        "fabricante": "T-Wins",
+        "stock": 34,
+        "precio": 30.0
+    },
+    {
+        "id": 11,
+        "codigo": "ATMEGA32-16AURTR-ND",
+        "imagen": "https://media.digikey.com/Renders/Atmel%20Renders/313;44A;A;44.jpg",
+        "nroPieza": "16AURTR-ND",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA32-16AUR",
+        "fabricante": "Microchip Technology",
+        "stock": 10,
+        "precio": 30.0
+    },
+    {
+        "id": 12,
+        "codigo": "ATMEGA328P-MUR-JKSHJ67",
+        "imagen": "https://es.farnell.com/productimages/standard/en_GB/GE32QFN-40.jpg",
+        "nroPieza": "MUR-JKSHJ67",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA328P-MUR",
+        "fabricante": "Microchip Technology",
+        "stock": 15,
+        "precio": 25.0
+    },
+    {
+        "id": 13,
+        "codigo": "KSHJETA-ARDUINO-UNO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_603035-MLA41509685506_042020-F.webp",
+        "nroPieza": "ETA-ARDUINO-UNO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Uno R3",
+        "fabricante": "Arduino",
+        "stock": 30,
+        "precio": 10.0
+    },
+    {
+        "id": 14,
+        "codigo": "JSHYUTT-ARDUINO-NANO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_728208-MLA40243275480_122019-F.webp",
+        "nroPieza": "UTT-ARDUINO-NANO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Nano V3.0",
+        "fabricante": "Arduino",
+        "stock": 40,
+        "precio": 8.0
+    },
+    {
+        "id": 15,
+        "codigo": "2471S0A-ESP8266",
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/ESP-01.jpg/375px-ESP-01.jpg",
+        "nroPieza": "0A-ESP8266",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Esp8266 EX",
+        "fabricante": "Espressif Systems",
+        "stock": 10,
+        "precio": 10.0
+    },
+    {
+        "id": 16,
+        "codigo": "JD76FG6-DOIT-WEMOS-Mini",
+        "imagen": "https://www.esploradores.com/wp-content/uploads/2017/01/DOIT-WEMOS-Mini-NodeMCU-768x641.jpg",
+        "nroPieza": "DOIT-WEMOS-Mini",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Wemos D1 Mini",
+        "fabricante": "Wemos",
+        "stock": 12,
+        "precio": 8.0
+    },
+    {
+        "id": 17,
+        "codigo": "HJSHKWROOM-ESP32",
+        "imagen": "https://ar.mouser.com/images/espressifsystems/lrg/ESP32-DevKitC-32UE_SPL.jpg",
+        "nroPieza": "WROOM-ESP32",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa Esp32 WROOM 32ue",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 20.0
+    },
+    {
+        "id": 18,
+        "codigo": "H789DHJUi-ESP32",
+        "imagen": "https://tienda.ityt.com.ar/23642-large_default/modulo-wifi-bluetooth-esp32-esp-wroom-32-espressif-itytarg.jpg",
+        "nroPieza": "DHJUi-ESP32i",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa ESP32 WROOM",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 15.0
+    },
+    {
+        "id": 19,
+        "codigo": "JGKURISSDK-47363933",
+        "imagen": "https://www.industriasgsl.com/pub/media/wysiwyg/mosfet_panamahitek.jpg",
+        "nroPieza": "DK-47363933",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "Genérico",
+        "stock": 100,
+        "precio": 1.0
+    }
+]
+  ```
+  
+  
+  </br>
+  
+  
+  * Testeamos el Método DELETE, eliminaremos el ultimo registro modificado e insertado, a través de la siguiente uri `http://localhost:8092/inmuebles/19`
   * Obtenemos un Status 200 OK junto con el true .
   
   </br>
@@ -1424,41 +1862,206 @@ public class ComponenteDetalleController {
 [
     {
         "id": 1,
-        "idPropietarioInmueble": 1,
-        "descripcion": "PH de 4 Ambientes, 3 dormis, 2 baños, Amplio Espacio,jardin y balcon, Sin Expensas, Lujoso",
-        "tipo": "PH/Casa",
-        "estadoInmuebleEnum": "DISPONIBLE",
-        "precioInmuebleUsd": 177.0,
-        "direccion": "San Cristobla 456",
-        "ubicacion": "Palermo",
-        "sitioWeb": "www.avisosAlInstante.com.ar"
+        "codigo": "HDGHFK-KSH13006",
+        "imagen": "https://images.alldatasheet.es/semiconductor/electronic_parts/datasheet/335783/HUASHAN/KSH13005.GIF",
+        "nroPieza": "KSH13006",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT NPN",
+        "fabricante": "SHANTOU HUASHAN",
+        "stock": 300,
+        "precio": 2.0
     },
     {
         "id": 2,
-        "idPropietarioInmueble": 2,
-        "descripcion": "Casa 3 Ambientes, 4 Dormitorios, 1 baño y Cochera",
-        "tipo": "Casa",
-        "estadoInmuebleEnum": "VENDIDO",
-        "precioInmuebleUsd": 168.0,
-        "direccion": "Aristobulo del Valle 608 ",
-        "ubicacion": "Belgrano",
-        "sitioWeb": "www.avisosAlInstante.com.ar"
+        "codigo": "DFHSDK-3CD010G",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_906581-MLA32747237952_112019-O.webp",
+        "nroPieza": "3CD010G",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "INCHANGE SEMICONDUCTOR",
+        "stock": 400,
+        "precio": 5.0
     },
     {
         "id": 3,
-        "idPropietarioInmueble": 3,
-        "descripcion": "Departamento de 2 Ambientes",
-        "tipo": "Departamento",
-        "estadoInmuebleEnum": "VENDIDO",
-        "precioInmuebleUsd": 110.0,
-        "direccion": "Av. Corrientes 112",
-        "ubicacion": "Caballito",
-        "sitioWeb": "www.avisosAlInstante.com.ar"
+        "codigo": "JDHFYT-AP4519GED",
+        "imagen": "https://alltransistors.com/adv/pdfdatasheet_ape/image/ap4511gh-hf_0001.jpg",
+        "nroPieza": "AP4519GED",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet NP",
+        "fabricante": "Advanced Power",
+        "stock": 200,
+        "precio": 4.0
+    },
+    {
+        "id": 4,
+        "codigo": "HJDGHF-SL60N06",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_893006-MLA41523372205_042020-F.webp",
+        "nroPieza": "SL60N06",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet N",
+        "fabricante": "Slkor",
+        "stock": 50,
+        "precio": 7.0
+    },
+    {
+        "id": 5,
+        "codigo": "009-KLDIUAOASS",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_757161-MLA41722189255_052020-O.webp",
+        "nroPieza": "KLDIUAOASS",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Radial",
+        "fabricante": "VISHAY",
+        "stock": 20,
+        "precio": 1.0
+    },
+    {
+        "id": 6,
+        "codigo": "3097-JKSJHSBS6DVBDG",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_938147-MLA47364644565_092021-F.webp",
+        "nroPieza": "BS6DVBDG",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Axial",
+        "fabricante": "VISHAY",
+        "stock": 18,
+        "precio": 1.6
+    },
+    {
+        "id": 7,
+        "codigo": "594-MIF2500BFKMGNHT5",
+        "imagen": "https://ar.mouser.com/images/vishay/images/mif1000afkmgnht5_SPL.jpg",
+        "nroPieza": "FKMGNHT5",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 25ohms 1% 100ppm",
+        "fabricante": "VISHAY",
+        "stock": 800,
+        "precio": 5.0
+    },
+    {
+        "id": 8,
+        "codigo": "581-CS12010T0100GTR",
+        "imagen": "https://ar.mouser.com/images/americantechnicalceramics/images/ATCFT.jpg",
+        "nroPieza": "T0100GTR",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 100ohms 2% 10W",
+        "fabricante": "KYSHOCERA",
+        "stock": 1200,
+        "precio": 3.0
+    },
+    {
+        "id": 9,
+        "codigo": "HSFGDTTEE-KY0-PIC18F4520-I/PT",
+        "imagen": "https://www.kynix.com/uploadfiles/small/PIC18F4520-I2fPT_10386.jpg",
+        "nroPieza": "KY0-PIC18F4520-I/PT",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC18F4520-I/PT",
+        "fabricante": "Microchip",
+        "stock": 40,
+        "precio": 20.0
+    },
+    {
+        "id": 10,
+        "codigo": "HJDYETU-KY32-PIC-00130-001",
+        "imagen": "https://www.kynix.com/images/ic-package/SOP.jpg",
+        "nroPieza": "KY32-PIC-00130-001",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC-00130-001",
+        "fabricante": "T-Wins",
+        "stock": 34,
+        "precio": 30.0
+    },
+    {
+        "id": 11,
+        "codigo": "ATMEGA32-16AURTR-ND",
+        "imagen": "https://media.digikey.com/Renders/Atmel%20Renders/313;44A;A;44.jpg",
+        "nroPieza": "16AURTR-ND",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA32-16AUR",
+        "fabricante": "Microchip Technology",
+        "stock": 10,
+        "precio": 30.0
+    },
+    {
+        "id": 12,
+        "codigo": "ATMEGA328P-MUR-JKSHJ67",
+        "imagen": "https://es.farnell.com/productimages/standard/en_GB/GE32QFN-40.jpg",
+        "nroPieza": "MUR-JKSHJ67",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA328P-MUR",
+        "fabricante": "Microchip Technology",
+        "stock": 15,
+        "precio": 25.0
+    },
+    {
+        "id": 13,
+        "codigo": "KSHJETA-ARDUINO-UNO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_603035-MLA41509685506_042020-F.webp",
+        "nroPieza": "ETA-ARDUINO-UNO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Uno R3",
+        "fabricante": "Arduino",
+        "stock": 30,
+        "precio": 10.0
+    },
+    {
+        "id": 14,
+        "codigo": "JSHYUTT-ARDUINO-NANO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_728208-MLA40243275480_122019-F.webp",
+        "nroPieza": "UTT-ARDUINO-NANO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Nano V3.0",
+        "fabricante": "Arduino",
+        "stock": 40,
+        "precio": 8.0
+    },
+    {
+        "id": 15,
+        "codigo": "2471S0A-ESP8266",
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/ESP-01.jpg/375px-ESP-01.jpg",
+        "nroPieza": "0A-ESP8266",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Esp8266 EX",
+        "fabricante": "Espressif Systems",
+        "stock": 10,
+        "precio": 10.0
+    },
+    {
+        "id": 16,
+        "codigo": "JD76FG6-DOIT-WEMOS-Mini",
+        "imagen": "https://www.esploradores.com/wp-content/uploads/2017/01/DOIT-WEMOS-Mini-NodeMCU-768x641.jpg",
+        "nroPieza": "DOIT-WEMOS-Mini",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Wemos D1 Mini",
+        "fabricante": "Wemos",
+        "stock": 12,
+        "precio": 8.0
+    },
+    {
+        "id": 17,
+        "codigo": "HJSHKWROOM-ESP32",
+        "imagen": "https://ar.mouser.com/images/espressifsystems/lrg/ESP32-DevKitC-32UE_SPL.jpg",
+        "nroPieza": "WROOM-ESP32",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa Esp32 WROOM 32ue",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 20.0
+    },
+    {
+        "id": 18,
+        "codigo": "H789DHJUi-ESP32",
+        "imagen": "https://tienda.ityt.com.ar/23642-large_default/modulo-wifi-bluetooth-esp32-esp-wroom-32-espressif-itytarg.jpg",
+        "nroPieza": "DHJUi-ESP32i",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa ESP32 WROOM",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 15.0
     }
 ]
   ```
 
-* Nuestra API REST cumple con lo desarrollado
+* Nuestra API REST cumple y es completamente funcional con lo desarrollado
 
 
 
