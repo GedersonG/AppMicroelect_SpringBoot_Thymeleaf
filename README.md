@@ -114,50 +114,35 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 
-#### Sección 5) Creación y Configuración de los Services y Controladores
+#### Sección 5) Creación y Configuración de los Services 
 
-   - [Paso 10) Creación y Configuración de la Clase Service](#paso-10-creación-y-configuración-de-la-clase-service)
+   - [Paso f) Creación y Configuración del Service ComponenteService](#paso-f-creación-y-configuración-del-service-componenteservice)
    
-   - [Paso 11) Creación y Configuración de la Clase Controler](#paso-11-creación-y-configuración-de-la-clase-controler) 
+   - [Paso k) Creación y Configuración del Service ComponenteDetalleService](#paso-k-creación-y-configuración-del-service-componentedetalleservice) 
 
 
 
 
-#### Sección 6) Creación y Configuración de SpringSecurity y Json Web Tokens
-
-   - [Paso 12) Creación y Configuración de la Clase Usuario](#paso-12-creación-y-configuración-de-la-clase-usuario)
-
-   - [Paso 13) Creación y Configuración de la Interfaz I_UsuarioRepository](#paso-13-creación-y-configuración-de-la-interfaz-i_usuarioRepository)
-
-   - [Paso 14) Creación y Configuración del Servicio UsuarioService](#paso-14-creación-y-configuración-del-servicio-usuarioservice)
-
-   - [Paso 15) Creación y Configuración de la Clase de Configuración UsuarioConfiguration](#paso-15-creación-y-configuración-de-la-clase-de-configuracion-usuarioconfiguration)
-
-   - [Paso 16) Creación y Configuración de la Clase de Configuración JwtUtilConfiguration](#paso-16-creación-y-configuración-de-la-clase-de-configuracion-jwtutilconfiguration)
-
+#### Sección 6) Creación y Configuración de los Controllers
+	
+   - [Paso w) Creación y Configuración del Controller ComponenteController](#paso-w-creación-y-configuración-del-controller-componentecontroller)
    
-   - [Paso 17) Creación y Configuración de la Clase de Configuración JwtFilterConfiguration](#paso-17-creación-y-configuración-de-la-clase-de-configuracion-jwtfilterconfiguration)
+   - [Paso z) Creación y Configuración del Controller ComponenteDetalleController](#paso-z-creación-y-configuración-del-service-componentedetallecontroller) 
 
 
-   
-   - [Paso 18) Creación y Configuración de la Clase de Configuración LoginFilterConfiguration](#paso-17-creación-y-configuración-de-la-clase-de-configuracion-loginfilterconfiguration)
+#### Sección 7) Prueba del Servicio Rest Desarrollado
+
+   - [Paso zz) Prueba del Servicio de la Tabla componentes](#paso-zz-prueba-del-servicio-de-la-tabla-componentes) 
+   - [Paso zx) Prueba del Servicio de la Tabla componentes_detalles](#paso-zz-prueba-del-servicio-de-la-tabla-componentes-detalles) 
+
+
+#### Sección 8) Creación de la Vista con Thymeleaf
+
+   - [Paso zy) Creación de la Vista](#paso-zy-creacion-de-la-vista) 
 
 
 
 
-
-   - [Paso 19) Creación y Configuración de la Clase de Configuración WebSecurity](#paso-18-creación-y-configuración-de-la-clase-de-configuracion-websecurity)
-
-
-
-
-
-
-#### Sección 8) Apéndice
-
-- [ Anotaciones Usadas para JPA](#anotaciones-usadas-para-jpa)
- 
-- [ Anotaciones Usadas para Spring](#anotaciones-usadas-para-spring)
 
 
 
@@ -402,10 +387,10 @@ spring.data.rest.max-page-size = 10
 
 #### 6.1) Creación de la Clase `ComponenteEntity`
 
-* Creamos un paquete llamado mypackages.entities dentro de com.gestion.microelectronica (src/main/java/com.gestion.microelectronica). Es importante que este dentro del mismo ya que sino Spring no desplegará la app de forma correcta.
+* Creamos un paquete llamado `entities` dentro de com.gestion.microelectronica (src/main/java/com.gestion.microelectronica). Es importante que este dentro del mismo ya que sino Spring no desplegará la app de forma correcta.
 	* --> Click Der sobre la ruta mencionada  
 	* --> New --> Package
-	* --> En Name seguido de com.gestion.microelectronica colocamos mypackages.entities (com.api.productos.mypackages.entities)
+	* --> En Name seguido de `com.gestion.microelectronica` colocamos `entities` (com.api.productos.entities)
 	* --> Finish
 
 * Creamos la Entity
@@ -417,7 +402,7 @@ spring.data.rest.max-page-size = 10
 
 ```java
 
-package com.gestion.microelectronica.mypackages.entities;
+package com.gestion.microelectronica.entities;
 
 public class ComponenteEntity {
 
@@ -431,11 +416,19 @@ public class ComponenteEntity {
 #### 6.2) Configuración de la Clase `ComponenteEntity`
 * Creamos los atributos o campos de la Clase, usaremos las anotations correspondientes de JPA que a su vez estas serán nombres de campos de la db 
 * No crearemos getters ni setters, ni el resto  ya que utilizaremos Lombok ( Asegurarse de haber instalado todo correctamente )
+* Es importante tener en consideración que si se tiene registros en la db al momento de insertar uno nuevo desde el servicio rest que desarrollaremos por defecto oracle posee un sistema de seguridad para los id en relación a otros sgdb. Entonces debemos crear una secuencia id en java que relacione a la secuencia id ya creada en la base de datos. La secuencia que crearemos se llamará `seq_comp` que se relacionará con la de la db `id_seq_comp`..
+```java
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_comp")
+	@SequenceGenerator(name = "seq_comp", sequenceName = "id_seq_comp" , allocationSize=1)
+	@Id
+	@Column(name="id") 
+	private int id;
+```
 * Las anotaciones para lombok son `@Data` , `@AllArgsConstructor` y `@NoArgsConstructor` , la primera para la generacion de los getters y setters y el resto de metodos, la segunda para los constructores sobrecargados de la Entidad y la tercera para constructor vacio 
 * Código..
 ```java
 
-package com.gestion.microelectronica.mypackages.entities;
+package com.gestion.microelectronica.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -455,7 +448,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ComponenteEntity {
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_comp")
+	@SequenceGenerator(name = "seq_comp", sequenceName = "id_seq_comp" , allocationSize=1)
 	@Id
 	@Column(name="id") 
 	private int id;
@@ -498,7 +492,7 @@ public class ComponenteEntity {
 * Código..
 ```java
 
-package com.gestion.microelectronica.mypackages.entities;
+package com.gestion.microelectronica.entities;
 
 
 
@@ -520,9 +514,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ComponenteDetalleEntity {
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_comp_det")
+	@SequenceGenerator(name = "seq_comp_det", sequenceName = "id_seq_comp_det" , allocationSize=1)
 	@Id
 	@Column(name="id") 
+	private int id;
 	private int id;
 	
 	@Column(name="id_componente")
@@ -571,22 +567,25 @@ public class ComponenteDetalleEntity {
 * Dentro del mismo la Interfaz `I_ComponenteRepository`
 * Agregamos la annotation `@Repository` de la clase para JPA y usamos la interfaz  `JpaRepository<ComponenteEntity, Serializable>` junto con la Interfaz de Paginación `PagingAndSortingRepository<ComponenteEntity, Long>` para toda la funcionalidad para la creación de los métodos Jpa.
 * Creamos y Definimos todos los métodos abstractos haciendo referencia a los campos de la entidad tentativos de uso. 
-* No creamos los métodos CRUD (add, save, update) en la interfaz, ya que declaramos todos los métodos abstractos sin devolución de valores. El método `findAll` será para Paginados
+* No creamos los métodos CRUD (add, save, update) en la interfaz, ya que declaramos todos los métodos abstractos sin devolución de valores. El método `findAllPageable` será para Paginados.
+* Crearemos dos métodos de tipo findAll para diferentes usos posteriores
 * Código..
 
 ```java
-package com.gestion.microelectronica.mypackages.repositories;
+package com.gestion.microelectronica.repositories;
 
-import java.awt.print.Pageable;
+
 import java.io.Serializable;
 import java.util.List;
 
+
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.gestion.microelectronica.mypackages.entities.ComponenteEntity;
+import com.gestion.microelectronica.entities.ComponenteEntity;
 
 
 @Repository
@@ -613,7 +612,10 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 		public abstract List<ComponenteEntity> findByPrecio(double precio);
 
 	
+		public abstract List<ComponenteEntity> findAll();
+		
 		public abstract Page<ComponenteEntity> findAll(Pageable pageable);
+		
 		
 	
 }
@@ -622,11 +624,1745 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 ```
 
 
+</br>
+
+#### Paso y) Creación y Configuración de la Interfaz Repository `I_ComponenteDetalleRepository` 
+#### (Se realiza el mismo procedimiento descrito detalladamente en el Paso Anterior)
+* Código..
+```java
+package com.gestion.microelectronica.repositories;
+
+import java.io.Serializable;
+import java.util.List;
+
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
+@Repository
+public interface I_ComponenteDetalleRepository extends JpaRepository<ComponenteDetalleEntity, Serializable>, PagingAndSortingRepository<ComponenteDetalleEntity, Serializable>{
+
+
+	//============================ MÉTODOS DE BÚSQUEDA ============================== 
+	
+		public abstract ComponenteDetalleEntity findById(int id);
+		
+		public abstract ComponenteDetalleEntity findByIdComponente(int id);
+		
+		public abstract List<ComponenteDetalleEntity> findByHojaDeDatos(String hojaDeDatos);
+	
+		public abstract List<ComponenteDetalleEntity> findByLongitud(String longitud);
+		
+		public abstract List<ComponenteDetalleEntity> findByAncho(String ancho);
+		
+		public abstract List<ComponenteDetalleEntity> findByPeso(String peso);
+		
+		public abstract List<ComponenteDetalleEntity> findByMaterial(String material);
+		
+		public abstract List<ComponenteDetalleEntity> findByVoltajeRecomendado(String voltajeRecomendado);
+		
+		public abstract List<ComponenteDetalleEntity> findByVoltajeMinEntrada(String voltajeMinEntrada);
+	
+		public abstract List<ComponenteDetalleEntity> findByVoltajeMaxEntrada(String voltajeMaxEntrada);
+	
+		public abstract List<ComponenteDetalleEntity> findAll();
+		
+		public abstract Page<ComponenteDetalleEntity> findAll(Pageable pageable);
+		
+		
+	
+}
+
+
+```
+
+
+</br>
+
+## Sección 5) Creación y Configuración de los Services 
+
+</br>
+
+#### Paso f) Creación y Configuración del Service `ComponenteService` 
+* Dentro de la jerarquia de paquetes `com.gestion.microelectronica` creamos el paquete `services`
+* Dentro del mismo la Clase `ComponenteService`
+* Agregamos la annotation `@Service` de la clase haciendo referencia para Spring y `@Autowired` para implementar Inyección de Dependencias de la interfaz creada.
+* Usamos log4j para los logs de error en los métodos CRUD para la persistencia. 
+* Desarrollamos el cuerpo de cada método de busqueda de la interfaz creada
+* Cada uno de los Métodos CRUD tiene su comprobación de Persistencia y devolverán un booleano según el resultado de la operación, los mismos pueden ser modificados para adicionar mayor seguridad.
+* Aplicaremos el metodo de listado de tipo getAll para paginados y el otro método getAll para el listado completo de componentes
+* Código..
+```java
+package com.gestion.microelectronica.services;
+
+
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gestion.microelectronica.mypackages.entities.ComponenteEntity;
+import com.gestion.microelectronica.mypackages.repositories.I_ComponenteRepository;
+
+
+@Service
+public class ComponenteService {
+
+	@Autowired
+	private I_ComponenteRepository iComponenteRepository;
+
+	// =============== LOGS ====================
+	private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ComponenteService.class);
+
+	// =============== MÉTODOS CRUD ====================
+
+	// ------ INSERT --------
+	public boolean addComponente(ComponenteEntity componente) {
+		try {
+			if (componente == null) {
+				logger.error("ERROR addComponente : EL COMPONENTE " + componente + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteRepository.save(componente);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR addComponente : EL COMPONENTE " + componente + " NO SE HA INSERTADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ UPDATE --------
+	public boolean updateComponente(ComponenteEntity componente) {
+		try {
+			if (componente == null) {
+				logger.error("ERROR updateComponente : EL COMPONENTE " + componente + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteRepository.save(componente);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR updateComponente : EL COMPONENTE " + componente + " NO SE HA ACTUALIZADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ DELETE --------
+	public boolean deleteComponente(int id) {
+		try {
+			if (id <= 0) {
+				logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO EXISTE!!");
+				return false;
+			} else {
+				iComponenteRepository.delete(iComponenteRepository.findById(id));
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO SE HA ELIMINADO DE LA DB!!");
+			return false;
+		}
+	}
+	// ------ SELECT --------
+	//------- LISTADO COMPLETO ---------
+	public List<ComponenteEntity> getAllComponente() {
+
+		return iComponenteRepository.findAll();
+	}
+
+	// ------ SELECT --------
+	//------- LISTADO PAGINADO ---------
+	public List<ComponenteEntity> getAllComponente(Pageable pageable) {
+
+		return iComponenteRepository.findAll(pageable).getContent();
+	}
+	// =============== MÉTODOS DE BUSQUEDA ====================
+
+	// ------ ID --------
+	public ComponenteEntity findById(int id) {
+		return iComponenteRepository.findById(id);
+	}
+
+	// ------ CODIGO --------
+	public List<ComponenteEntity> findByCodigo(String codigo) {
+		return iComponenteRepository.findByCodigo(codigo);
+	}
+
+	// ------ IMAGEN --------
+	public List<ComponenteEntity> findByImagen(String imagen) {
+		return iComponenteRepository.findByImagen(imagen);
+	}
+
+	// ------ NRO_PIEZA --------
+	public List<ComponenteEntity> findByNroPieza(String nroPieza) {
+		return iComponenteRepository.findByNroPieza(nroPieza);
+	}
+	// ------ CATEGORIA --------
+	public List<ComponenteEntity> findByCategoria(String categoria) {
+		return iComponenteRepository.findByCategoria(categoria);
+	}
+	// ------ DESCRIPCION --------
+	public List<ComponenteEntity> findByDescripcion(String descripcion) {
+		return iComponenteRepository.findByDescripcion(descripcion);
+	}
+	// ------ FABRICANTE --------
+	public List<ComponenteEntity> findByFabricante(String fabricante) {
+		return iComponenteRepository.findByFabricante(fabricante);
+	}
+	// ------ STOCK --------
+	public List<ComponenteEntity> findByStock(int cantidad) {
+		return iComponenteRepository.findByStock(cantidad);
+	}
+	// ------ PRECIO --------
+	public List<ComponenteEntity> findByPrecio(double precio) {
+		return iComponenteRepository.findByPrecio(precio);
+	}
+
+	
+}
+
+```
 
 
 
 
+</br>
 
+#### Paso k) Creación y Configuración del Service `ComponenteDetalleService` 
+#### (Se realiza el mismo procedimiento descrito detalladamente en el Paso Anterior)
+* Código..
+```java
+package com.gestion.microelectronica.services;
+
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
+import com.gestion.microelectronica.repositories.I_ComponenteDetalleRepository;
+
+@Service
+public class ComponenteDetalleService {
+
+	@Autowired
+	private I_ComponenteDetalleRepository iComponenteDetalleRepository;
+
+	// =============== LOGS ====================
+	private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ComponenteService.class);
+
+	// =============== MÉTODOS CRUD ====================
+
+	// ------ INSERT --------
+	public boolean addComponente(ComponenteDetalleEntity componenteDetalle) {
+		try {
+			if (componenteDetalle == null) {
+				logger.error("ERROR addComponente : EL COMPONENTE " + componenteDetalle + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteDetalleRepository.save(componenteDetalle);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR addComponente : EL COMPONENTE " + componenteDetalle + " NO SE HA INSERTADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ UPDATE --------
+	public boolean updateComponente(ComponenteDetalleEntity componenteDetalle) {
+		try {
+			if (componenteDetalle == null) {
+				logger.error("ERROR updateComponente : EL COMPONENTE " + componenteDetalle + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteDetalleRepository.save(componenteDetalle);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error(
+					"ERROR updateComponente : EL COMPONENTE " + componenteDetalle + " NO SE HA ACTUALIZADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ DELETE --------
+	public boolean deleteComponente(int id) {
+		try {
+			if (id <= 0) {
+				logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO EXISTE!!");
+				return false;
+			} else {
+				iComponenteDetalleRepository.delete(iComponenteDetalleRepository.findById(id));
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO SE HA ELIMINADO DE LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ SELECT --------
+	//------- LISTADO COMPLETO ---------
+	public List<ComponenteDetalleEntity> getAllComponente() {
+
+		return iComponenteDetalleRepository.findAll();
+	}
+
+	// ------ SELECT --------
+	//------- LISTADO PAGINADO ---------
+	public List<ComponenteDetalleEntity> getAllComponente(Pageable pageable) {
+
+		return iComponenteDetalleRepository.findAll(pageable).getContent();
+	}
+
+	// =============== MÉTODOS DE BUSQUEDA ====================
+
+	// ------ ID --------
+	public ComponenteDetalleEntity findById(int id) {
+		return iComponenteDetalleRepository.findById(id);
+	}
+
+	// ------ ID DE COMPONENTE --------
+	public ComponenteDetalleEntity findByIdComponente(int id) {
+		return iComponenteDetalleRepository.findByIdComponente(id);
+	}
+
+	// ------ HOJA DE DATOS --------
+	public List<ComponenteDetalleEntity> findByHojaDeDatos(String hojaDeDatos) {
+		return iComponenteDetalleRepository.findByHojaDeDatos(hojaDeDatos);
+	}
+
+	// ------ LONGITUD --------
+	public List<ComponenteDetalleEntity> findByLongitud(String longitud) {
+		return iComponenteDetalleRepository.findByLongitud(longitud);
+	}
+
+	// ------ ANCHO --------
+	public List<ComponenteDetalleEntity> findByAncho(String ancho) {
+		return iComponenteDetalleRepository.findByAncho(ancho);
+	}
+
+	// ------ PESO --------
+	public List<ComponenteDetalleEntity> findByPeso(String peso) {
+		return iComponenteDetalleRepository.findByPeso(peso);
+	}
+
+	// ------ MATERIAL --------
+	public List<ComponenteDetalleEntity> findByMaterial(String material) {
+		return iComponenteDetalleRepository.findByMaterial(material);
+	}
+
+	// ------ VOLTAJE RECOMENDADO --------
+	public List<ComponenteDetalleEntity> findByVoltajeRecomendado(String voltajeRecomendado) {
+		return iComponenteDetalleRepository.findByVoltajeRecomendado(voltajeRecomendado);
+	}
+
+	// ------ VOLTAJE MINIMO DE ENTRADA --------
+	public List<ComponenteDetalleEntity> findByVoltajeMinEntrada(String voltajeMinEntrada) {
+		return iComponenteDetalleRepository.findByVoltajeMinEntrada(voltajeMinEntrada);
+	}
+
+	// ------ VOLTAJE MAXIMO DE ENTRADA --------
+	public List<ComponenteDetalleEntity> findByVoltajeMaxEntrada(String voltajeMaxEntrada) {
+		return iComponenteDetalleRepository.findByVoltajeMinEntrada(voltajeMaxEntrada);
+	}
+
+}
+
+```
+
+
+</br>
+
+##  Sección 6) Creación y Configuración de los Controllers
+
+</br>
+
+#### Paso w) Creación y Configuración del Controller  `ComponenteController` 
+* Dentro de la jerarquia de paquetes `com.inmueble.service` creamos el paquete `controller`
+* Dentro del mismo la Clase Controller `ComponenteController`
+* Agregamos la annotation `@RestController` de la clase haciendo referencia al controlador y la annotation `@RequestMapping` haciendo referencia a la ruta principal de acceso para Spring.
+* Implementamos `@Autowired` para Inyección de Dependencias del service creado.
+* Utilizamos `@PostMapping` y `@GetMapping` para el uso de los métodos del protocolo HTTP 
+* También hacemos uso de las annotations `@RequestBody` para recuperar el cuerpo de la solicitud HTTP y el `@PathVariable` para el manejo de las variables declaradas
+* Usamos log4j para los logs de error en los métodos CRUD para la persistencia. 
+* Desarrollamos el cuerpo de cada método de la interfaz
+* Cada Método CRUD de Tipo HTTP (POST, DELETE, PUT, GET) tiene su comprobación de Persistencia y los métodos devolverán un booleano según el resultado de la operación, menos el get que trae el Componente. Los mismos pueden ser modificados para adicionar mayor seguridad.
+* Además crearemos un método que nos devolverá la lista de componentes en la Vista, dicho método se llamará viewHomePage y nos devolverá el index
+ ```java
+ 	//---GET---
+	//---LISTA DE COMPONENTES PARA EL MODEL---
+	@GetMapping("/")
+	public String viewHomePage(Model model) {
+		model.addAttribute("listaComponentes", componenteService.getAllComponente());
+		return "index";
+	}
+ 
+ ```
+ </br>
+ 
+ ```java
+package com.gestion.microelectronica.controllers;
+
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gestion.microelectronica.entities.ComponenteEntity;
+import com.gestion.microelectronica.services.ComponenteService;
+
+@RestController
+@RequestMapping("/componentes")
+public class ComponenteController {
+
+	@Autowired
+	private ComponenteService componenteService;
+
+	// ============= MÉTODOS HTTP CRUD ==============
+
+	// ----POST----
+	@PostMapping("/")
+	public boolean addComponente(@RequestBody ComponenteEntity componente) {
+
+		return componenteService.addComponente(componente);
+	}
+
+	// ----PUT-----
+	@PutMapping("/")
+	public boolean updateComponente(@RequestBody ComponenteEntity componente) {
+
+		return componenteService.updateComponente(componente);
+	}
+
+	// ---DELETE---
+	@DeleteMapping("/{id}")
+	public boolean deleteComponente(@PathVariable("id") int id) {
+
+		return componenteService.deleteComponente(id);
+	}
+
+	// ---GET---
+	@GetMapping("/listado")
+	public List<ComponenteEntity> getAll(Pageable pageable) {
+
+		return componenteService.getAllComponentePageable(pageable);
+	}
+	
+	//---GET---
+	//---LISTA DE COMPONENTES PARA EL MODEL---
+	@GetMapping("/")
+	public String viewHomePage(Model model) {
+		model.addAttribute("listaComponentes", componenteService.getAllComponente());
+		return "index";
+	}
+	
+	// ============= MÉTODOS HTTP BÚSQUEDA ==============
+
+	// ---GET---
+	@GetMapping("/{id}")
+	public ComponenteEntity getById(@PathVariable("id") int id) {
+
+		return componenteService.findById(id);
+	}
+	
+	// ---GET---
+	@GetMapping("/{codigo}")
+	public List<ComponenteEntity> getByCodigo(@PathVariable("codigo") String codigo) {
+
+		return componenteService.findByCodigo(codigo);
+	}
+	
+	
+	
+	
+
+}
+
+
+ ```
+
+
+#### Paso w) Creación y Configuración del Controller  `ComponenteDetalleController` 
+ ```java
+package com.gestion.microelectronica.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
+import com.gestion.microelectronica.services.ComponenteDetalleService;
+
+@RestController
+@RequestMapping("/componentes_detalles")
+public class ComponenteDetalleController {
+	
+
+	@Autowired
+	private ComponenteDetalleService componenteDetalleService;
+
+	// ============= MÉTODOS HTTP CRUD ==============
+
+	// ----POST----
+	@PostMapping("/")
+	public boolean addComponenteDetalle(@RequestBody ComponenteDetalleEntity componenteDetalle) {
+
+		return componenteDetalleService.addComponente(componenteDetalle);
+	}
+
+	// ----PUT-----
+	@PutMapping("/")
+	public boolean updateComponenteDetalle(@RequestBody ComponenteDetalleEntity componenteDetalle) {
+
+		return componenteDetalleService.updateComponente(componenteDetalle);
+	}
+
+	// ---DELETE---
+	@DeleteMapping("/{id}")
+	public boolean deleteComponenteDetalle(@PathVariable("id") int id) {
+
+		return componenteDetalleService.deleteComponente(id);
+	}
+
+	// ---GET---
+	@GetMapping("/listado")
+	public List<ComponenteDetalleEntity> getAll(Pageable pageable) {
+
+		return componenteDetalleService.getAllComponente(pageable);
+	}
+	
+	// ============= MÉTODOS HTTP BÚSQUEDA ==============
+
+	// ---GET---
+	@GetMapping("/{id}")
+	public ComponenteDetalleEntity getById(@PathVariable("id") int id) {
+
+		return componenteDetalleService.findById(id);
+	}
+	
+	// ---GET---
+	@GetMapping("/{id_componente}")
+	public ComponenteDetalleEntity getByIdComponente(@PathVariable("id_componente") int id_componente) {
+
+		return componenteDetalleService.findByIdComponente(id_componente);
+	}
+	
+	
+
+	
+	
+	
+
+
+}
+
+
+ ```
+
+</br>
+
+##  Sección 7) Prueba del Servicio Rest Desarrollado
+
+</br>
+
+
+
+### Paso zz) Prueba del Servicio de la Tabla `componentes`
+#### (Vamos a testear los métodos desarrollados con Postman, es importante que se hayan ejecutado los pasos anteriores de forma correcta y se hayan agregado a la db sus registros y tablas correctamente según el repositorio de la db)
+
+ </br>
+ 
+ 
+  * Testeamos el Método GET junto con la paginación creada para visualizar los componentes de la db con la siguiente uri `http://localhost:8092/componentes/listado?page=0&size=0`
+ * Obtenemos un Status 200 OK junto con el listado total de componentes..
+ * Response..
+  ```json
+[
+    {
+        "id": 1,
+        "codigo": "HDGHFK-KSH13006",
+        "imagen": "https://images.alldatasheet.es/semiconductor/electronic_parts/datasheet/335783/HUASHAN/KSH13005.GIF",
+        "nroPieza": "KSH13006",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT NPN",
+        "fabricante": "SHANTOU HUASHAN",
+        "stock": 300,
+        "precio": 2.0
+    },
+    {
+        "id": 2,
+        "codigo": "DFHSDK-3CD010G",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_906581-MLA32747237952_112019-O.webp",
+        "nroPieza": "3CD010G",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "INCHANGE SEMICONDUCTOR",
+        "stock": 400,
+        "precio": 5.0
+    },
+    {
+        "id": 3,
+        "codigo": "JDHFYT-AP4519GED",
+        "imagen": "https://alltransistors.com/adv/pdfdatasheet_ape/image/ap4511gh-hf_0001.jpg",
+        "nroPieza": "AP4519GED",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet NP",
+        "fabricante": "Advanced Power",
+        "stock": 200,
+        "precio": 4.0
+    },
+    {
+        "id": 4,
+        "codigo": "HJDGHF-SL60N06",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_893006-MLA41523372205_042020-F.webp",
+        "nroPieza": "SL60N06",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet N",
+        "fabricante": "Slkor",
+        "stock": 50,
+        "precio": 7.0
+    },
+    {
+        "id": 5,
+        "codigo": "009-KLDIUAOASS",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_757161-MLA41722189255_052020-O.webp",
+        "nroPieza": "KLDIUAOASS",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Radial",
+        "fabricante": "VISHAY",
+        "stock": 20,
+        "precio": 1.0
+    },
+    {
+        "id": 6,
+        "codigo": "3097-JKSJHSBS6DVBDG",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_938147-MLA47364644565_092021-F.webp",
+        "nroPieza": "BS6DVBDG",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Axial",
+        "fabricante": "VISHAY",
+        "stock": 18,
+        "precio": 1.6
+    },
+    {
+        "id": 7,
+        "codigo": "594-MIF2500BFKMGNHT5",
+        "imagen": "https://ar.mouser.com/images/vishay/images/mif1000afkmgnht5_SPL.jpg",
+        "nroPieza": "FKMGNHT5",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 25ohms 1% 100ppm",
+        "fabricante": "VISHAY",
+        "stock": 800,
+        "precio": 5.0
+    },
+    {
+        "id": 8,
+        "codigo": "581-CS12010T0100GTR",
+        "imagen": "https://ar.mouser.com/images/americantechnicalceramics/images/ATCFT.jpg",
+        "nroPieza": "T0100GTR",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 100ohms 2% 10W",
+        "fabricante": "KYSHOCERA",
+        "stock": 1200,
+        "precio": 3.0
+    },
+    {
+        "id": 9,
+        "codigo": "HSFGDTTEE-KY0-PIC18F4520-I/PT",
+        "imagen": "https://www.kynix.com/uploadfiles/small/PIC18F4520-I2fPT_10386.jpg",
+        "nroPieza": "KY0-PIC18F4520-I/PT",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC18F4520-I/PT",
+        "fabricante": "Microchip",
+        "stock": 40,
+        "precio": 20.0
+    },
+    {
+        "id": 10,
+        "codigo": "HJDYETU-KY32-PIC-00130-001",
+        "imagen": "https://www.kynix.com/images/ic-package/SOP.jpg",
+        "nroPieza": "KY32-PIC-00130-001",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC-00130-001",
+        "fabricante": "T-Wins",
+        "stock": 34,
+        "precio": 30.0
+    },
+    {
+        "id": 11,
+        "codigo": "ATMEGA32-16AURTR-ND",
+        "imagen": "https://media.digikey.com/Renders/Atmel%20Renders/313;44A;A;44.jpg",
+        "nroPieza": "16AURTR-ND",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA32-16AUR",
+        "fabricante": "Microchip Technology",
+        "stock": 10,
+        "precio": 30.0
+    },
+    {
+        "id": 12,
+        "codigo": "ATMEGA328P-MUR-JKSHJ67",
+        "imagen": "https://es.farnell.com/productimages/standard/en_GB/GE32QFN-40.jpg",
+        "nroPieza": "MUR-JKSHJ67",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA328P-MUR",
+        "fabricante": "Microchip Technology",
+        "stock": 15,
+        "precio": 25.0
+    },
+    {
+        "id": 13,
+        "codigo": "KSHJETA-ARDUINO-UNO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_603035-MLA41509685506_042020-F.webp",
+        "nroPieza": "ETA-ARDUINO-UNO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Uno R3",
+        "fabricante": "Arduino",
+        "stock": 30,
+        "precio": 10.0
+    },
+    {
+        "id": 14,
+        "codigo": "JSHYUTT-ARDUINO-NANO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_728208-MLA40243275480_122019-F.webp",
+        "nroPieza": "UTT-ARDUINO-NANO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Nano V3.0",
+        "fabricante": "Arduino",
+        "stock": 40,
+        "precio": 8.0
+    },
+    {
+        "id": 15,
+        "codigo": "2471S0A-ESP8266",
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/ESP-01.jpg/375px-ESP-01.jpg",
+        "nroPieza": "0A-ESP8266",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Esp8266 EX",
+        "fabricante": "Espressif Systems",
+        "stock": 10,
+        "precio": 10.0
+    },
+    {
+        "id": 16,
+        "codigo": "JD76FG6-DOIT-WEMOS-Mini",
+        "imagen": "https://www.esploradores.com/wp-content/uploads/2017/01/DOIT-WEMOS-Mini-NodeMCU-768x641.jpg",
+        "nroPieza": "DOIT-WEMOS-Mini",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Wemos D1 Mini",
+        "fabricante": "Wemos",
+        "stock": 12,
+        "precio": 8.0
+    },
+    {
+        "id": 17,
+        "codigo": "HJSHKWROOM-ESP32",
+        "imagen": "https://ar.mouser.com/images/espressifsystems/lrg/ESP32-DevKitC-32UE_SPL.jpg",
+        "nroPieza": "WROOM-ESP32",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa Esp32 WROOM 32ue",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 20.0
+    },
+    {
+        "id": 18,
+        "codigo": "H789DHJUi-ESP32",
+        "imagen": "https://tienda.ityt.com.ar/23642-large_default/modulo-wifi-bluetooth-esp32-esp-wroom-32-espressif-itytarg.jpg",
+        "nroPieza": "DHJUi-ESP32i",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa ESP32 WROOM",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 15.0
+    }
+]
+ ```
+  * Se puede obtener mayor información acerca del manejo y uso de una API Rest con los paginados en otro repositorio https://github.com/andresWeitzel/Api_Rest_Spring_Productos
+ 
+</br>
+
+* Para la inserción de Registros recordar que se debio haber modificados la anotation de la entity correspondiente haciendo relacion a la secuencia creada de java con la de la base de datos, para que no se presente el error de id duplicado
+* Testeamos el método POST de inserción de registros mediante la siguiente uri `http://localhost:8092/listado/` y agregando en el Body en formato Json el Registro de Inserción..
+ ```json
+{
+        "codigo": "UKGLUIO555-FG99",
+        "imagen": "https://www.industriasgsl.com/pub/media/wysiwyg/mosfet_panamahitek.jpg",
+        "nroPieza": "55-FG99",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "Genérico",
+        "stock": 100,
+        "precio": 1.0
+
+}
+ ```
+ * Obtenemos un Status 200 OK  además del true devuelto por el método desarrollado.
+ * La función se ejecuta correctamente.
+ 
+  </br>
+  
+ * Visualizamos el Listado de Componentes para Verificar lo Insertado`http://localhost:8092/componentes/listado?page=0&size=0`
+ * Obtenemos un Status 200 OK junto con el listado total de componentes..
+ * Response..
+  ```json
+  [
+    {
+        "id": 1,
+        "codigo": "HDGHFK-KSH13006",
+        "imagen": "https://images.alldatasheet.es/semiconductor/electronic_parts/datasheet/335783/HUASHAN/KSH13005.GIF",
+        "nroPieza": "KSH13006",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT NPN",
+        "fabricante": "SHANTOU HUASHAN",
+        "stock": 300,
+        "precio": 2.0
+    },
+    {
+        "id": 2,
+        "codigo": "DFHSDK-3CD010G",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_906581-MLA32747237952_112019-O.webp",
+        "nroPieza": "3CD010G",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "INCHANGE SEMICONDUCTOR",
+        "stock": 400,
+        "precio": 5.0
+    },
+    {
+        "id": 3,
+        "codigo": "JDHFYT-AP4519GED",
+        "imagen": "https://alltransistors.com/adv/pdfdatasheet_ape/image/ap4511gh-hf_0001.jpg",
+        "nroPieza": "AP4519GED",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet NP",
+        "fabricante": "Advanced Power",
+        "stock": 200,
+        "precio": 4.0
+    },
+    {
+        "id": 4,
+        "codigo": "HJDGHF-SL60N06",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_893006-MLA41523372205_042020-F.webp",
+        "nroPieza": "SL60N06",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet N",
+        "fabricante": "Slkor",
+        "stock": 50,
+        "precio": 7.0
+    },
+    {
+        "id": 5,
+        "codigo": "009-KLDIUAOASS",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_757161-MLA41722189255_052020-O.webp",
+        "nroPieza": "KLDIUAOASS",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Radial",
+        "fabricante": "VISHAY",
+        "stock": 20,
+        "precio": 1.0
+    },
+    {
+        "id": 6,
+        "codigo": "3097-JKSJHSBS6DVBDG",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_938147-MLA47364644565_092021-F.webp",
+        "nroPieza": "BS6DVBDG",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Axial",
+        "fabricante": "VISHAY",
+        "stock": 18,
+        "precio": 1.6
+    },
+    {
+        "id": 7,
+        "codigo": "594-MIF2500BFKMGNHT5",
+        "imagen": "https://ar.mouser.com/images/vishay/images/mif1000afkmgnht5_SPL.jpg",
+        "nroPieza": "FKMGNHT5",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 25ohms 1% 100ppm",
+        "fabricante": "VISHAY",
+        "stock": 800,
+        "precio": 5.0
+    },
+    {
+        "id": 8,
+        "codigo": "581-CS12010T0100GTR",
+        "imagen": "https://ar.mouser.com/images/americantechnicalceramics/images/ATCFT.jpg",
+        "nroPieza": "T0100GTR",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 100ohms 2% 10W",
+        "fabricante": "KYSHOCERA",
+        "stock": 1200,
+        "precio": 3.0
+    },
+    {
+        "id": 9,
+        "codigo": "HSFGDTTEE-KY0-PIC18F4520-I/PT",
+        "imagen": "https://www.kynix.com/uploadfiles/small/PIC18F4520-I2fPT_10386.jpg",
+        "nroPieza": "KY0-PIC18F4520-I/PT",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC18F4520-I/PT",
+        "fabricante": "Microchip",
+        "stock": 40,
+        "precio": 20.0
+    },
+    {
+        "id": 10,
+        "codigo": "HJDYETU-KY32-PIC-00130-001",
+        "imagen": "https://www.kynix.com/images/ic-package/SOP.jpg",
+        "nroPieza": "KY32-PIC-00130-001",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC-00130-001",
+        "fabricante": "T-Wins",
+        "stock": 34,
+        "precio": 30.0
+    },
+    {
+        "id": 11,
+        "codigo": "ATMEGA32-16AURTR-ND",
+        "imagen": "https://media.digikey.com/Renders/Atmel%20Renders/313;44A;A;44.jpg",
+        "nroPieza": "16AURTR-ND",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA32-16AUR",
+        "fabricante": "Microchip Technology",
+        "stock": 10,
+        "precio": 30.0
+    },
+    {
+        "id": 12,
+        "codigo": "ATMEGA328P-MUR-JKSHJ67",
+        "imagen": "https://es.farnell.com/productimages/standard/en_GB/GE32QFN-40.jpg",
+        "nroPieza": "MUR-JKSHJ67",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA328P-MUR",
+        "fabricante": "Microchip Technology",
+        "stock": 15,
+        "precio": 25.0
+    },
+    {
+        "id": 13,
+        "codigo": "KSHJETA-ARDUINO-UNO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_603035-MLA41509685506_042020-F.webp",
+        "nroPieza": "ETA-ARDUINO-UNO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Uno R3",
+        "fabricante": "Arduino",
+        "stock": 30,
+        "precio": 10.0
+    },
+    {
+        "id": 14,
+        "codigo": "JSHYUTT-ARDUINO-NANO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_728208-MLA40243275480_122019-F.webp",
+        "nroPieza": "UTT-ARDUINO-NANO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Nano V3.0",
+        "fabricante": "Arduino",
+        "stock": 40,
+        "precio": 8.0
+    },
+    {
+        "id": 15,
+        "codigo": "2471S0A-ESP8266",
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/ESP-01.jpg/375px-ESP-01.jpg",
+        "nroPieza": "0A-ESP8266",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Esp8266 EX",
+        "fabricante": "Espressif Systems",
+        "stock": 10,
+        "precio": 10.0
+    },
+    {
+        "id": 16,
+        "codigo": "JD76FG6-DOIT-WEMOS-Mini",
+        "imagen": "https://www.esploradores.com/wp-content/uploads/2017/01/DOIT-WEMOS-Mini-NodeMCU-768x641.jpg",
+        "nroPieza": "DOIT-WEMOS-Mini",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Wemos D1 Mini",
+        "fabricante": "Wemos",
+        "stock": 12,
+        "precio": 8.0
+    },
+    {
+        "id": 17,
+        "codigo": "HJSHKWROOM-ESP32",
+        "imagen": "https://ar.mouser.com/images/espressifsystems/lrg/ESP32-DevKitC-32UE_SPL.jpg",
+        "nroPieza": "WROOM-ESP32",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa Esp32 WROOM 32ue",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 20.0
+    },
+    {
+        "id": 18,
+        "codigo": "H789DHJUi-ESP32",
+        "imagen": "https://tienda.ityt.com.ar/23642-large_default/modulo-wifi-bluetooth-esp32-esp-wroom-32-espressif-itytarg.jpg",
+        "nroPieza": "DHJUi-ESP32i",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa ESP32 WROOM",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 15.0
+    },
+    {
+        "id": 19,
+        "codigo": "UKGLUIO555-FG99",
+        "imagen": "https://www.industriasgsl.com/pub/media/wysiwyg/mosfet_panamahitek.jpg",
+        "nroPieza": "55-FG99",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "Genérico",
+        "stock": 100,
+        "precio": 1.0
+    }
+]
+  ```
+  
+  
+  </br>
+  
+  * Ahora Testeamos el método PUT, vamos a modificar el Último Componente Insertado (cambiamos el Código y Nro de Pieza)  a través de la siguiente uri `http://localhost:8092/componentes/`, pasandole en el body el registro completo junto a su id ..
+  ```json
+ {
+        "id": 19,
+        "codigo": "JGKURISSDK-47363933",
+        "imagen": "https://www.industriasgsl.com/pub/media/wysiwyg/mosfet_panamahitek.jpg",
+        "nroPieza": "DK-47363933",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "Genérico",
+        "stock": 100,
+        "precio": 1.0
+    }
+  
+  ```
+  * Obtenemos un Status 200 OK y un true, si visualizamos la lista con el GET podremos ver allí la modificación realizada
+  
+  </br>
+  
+    
+ * Visualizamos el Listado de Componentes para Verificar lo Insertado`http://localhost:8092/componentes/listado?page=0&size=0`
+ * Obtenemos un Status 200 OK junto con el listado total de componentes..
+ * Response..
+  ```json
+ [
+    {
+        "id": 1,
+        "codigo": "HDGHFK-KSH13006",
+        "imagen": "https://images.alldatasheet.es/semiconductor/electronic_parts/datasheet/335783/HUASHAN/KSH13005.GIF",
+        "nroPieza": "KSH13006",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT NPN",
+        "fabricante": "SHANTOU HUASHAN",
+        "stock": 300,
+        "precio": 2.0
+    },
+    {
+        "id": 2,
+        "codigo": "DFHSDK-3CD010G",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_906581-MLA32747237952_112019-O.webp",
+        "nroPieza": "3CD010G",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "INCHANGE SEMICONDUCTOR",
+        "stock": 400,
+        "precio": 5.0
+    },
+    {
+        "id": 3,
+        "codigo": "JDHFYT-AP4519GED",
+        "imagen": "https://alltransistors.com/adv/pdfdatasheet_ape/image/ap4511gh-hf_0001.jpg",
+        "nroPieza": "AP4519GED",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet NP",
+        "fabricante": "Advanced Power",
+        "stock": 200,
+        "precio": 4.0
+    },
+    {
+        "id": 4,
+        "codigo": "HJDGHF-SL60N06",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_893006-MLA41523372205_042020-F.webp",
+        "nroPieza": "SL60N06",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet N",
+        "fabricante": "Slkor",
+        "stock": 50,
+        "precio": 7.0
+    },
+    {
+        "id": 5,
+        "codigo": "009-KLDIUAOASS",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_757161-MLA41722189255_052020-O.webp",
+        "nroPieza": "KLDIUAOASS",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Radial",
+        "fabricante": "VISHAY",
+        "stock": 20,
+        "precio": 1.0
+    },
+    {
+        "id": 6,
+        "codigo": "3097-JKSJHSBS6DVBDG",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_938147-MLA47364644565_092021-F.webp",
+        "nroPieza": "BS6DVBDG",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Axial",
+        "fabricante": "VISHAY",
+        "stock": 18,
+        "precio": 1.6
+    },
+    {
+        "id": 7,
+        "codigo": "594-MIF2500BFKMGNHT5",
+        "imagen": "https://ar.mouser.com/images/vishay/images/mif1000afkmgnht5_SPL.jpg",
+        "nroPieza": "FKMGNHT5",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 25ohms 1% 100ppm",
+        "fabricante": "VISHAY",
+        "stock": 800,
+        "precio": 5.0
+    },
+    {
+        "id": 8,
+        "codigo": "581-CS12010T0100GTR",
+        "imagen": "https://ar.mouser.com/images/americantechnicalceramics/images/ATCFT.jpg",
+        "nroPieza": "T0100GTR",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 100ohms 2% 10W",
+        "fabricante": "KYSHOCERA",
+        "stock": 1200,
+        "precio": 3.0
+    },
+    {
+        "id": 9,
+        "codigo": "HSFGDTTEE-KY0-PIC18F4520-I/PT",
+        "imagen": "https://www.kynix.com/uploadfiles/small/PIC18F4520-I2fPT_10386.jpg",
+        "nroPieza": "KY0-PIC18F4520-I/PT",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC18F4520-I/PT",
+        "fabricante": "Microchip",
+        "stock": 40,
+        "precio": 20.0
+    },
+    {
+        "id": 10,
+        "codigo": "HJDYETU-KY32-PIC-00130-001",
+        "imagen": "https://www.kynix.com/images/ic-package/SOP.jpg",
+        "nroPieza": "KY32-PIC-00130-001",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC-00130-001",
+        "fabricante": "T-Wins",
+        "stock": 34,
+        "precio": 30.0
+    },
+    {
+        "id": 11,
+        "codigo": "ATMEGA32-16AURTR-ND",
+        "imagen": "https://media.digikey.com/Renders/Atmel%20Renders/313;44A;A;44.jpg",
+        "nroPieza": "16AURTR-ND",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA32-16AUR",
+        "fabricante": "Microchip Technology",
+        "stock": 10,
+        "precio": 30.0
+    },
+    {
+        "id": 12,
+        "codigo": "ATMEGA328P-MUR-JKSHJ67",
+        "imagen": "https://es.farnell.com/productimages/standard/en_GB/GE32QFN-40.jpg",
+        "nroPieza": "MUR-JKSHJ67",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA328P-MUR",
+        "fabricante": "Microchip Technology",
+        "stock": 15,
+        "precio": 25.0
+    },
+    {
+        "id": 13,
+        "codigo": "KSHJETA-ARDUINO-UNO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_603035-MLA41509685506_042020-F.webp",
+        "nroPieza": "ETA-ARDUINO-UNO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Uno R3",
+        "fabricante": "Arduino",
+        "stock": 30,
+        "precio": 10.0
+    },
+    {
+        "id": 14,
+        "codigo": "JSHYUTT-ARDUINO-NANO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_728208-MLA40243275480_122019-F.webp",
+        "nroPieza": "UTT-ARDUINO-NANO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Nano V3.0",
+        "fabricante": "Arduino",
+        "stock": 40,
+        "precio": 8.0
+    },
+    {
+        "id": 15,
+        "codigo": "2471S0A-ESP8266",
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/ESP-01.jpg/375px-ESP-01.jpg",
+        "nroPieza": "0A-ESP8266",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Esp8266 EX",
+        "fabricante": "Espressif Systems",
+        "stock": 10,
+        "precio": 10.0
+    },
+    {
+        "id": 16,
+        "codigo": "JD76FG6-DOIT-WEMOS-Mini",
+        "imagen": "https://www.esploradores.com/wp-content/uploads/2017/01/DOIT-WEMOS-Mini-NodeMCU-768x641.jpg",
+        "nroPieza": "DOIT-WEMOS-Mini",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Wemos D1 Mini",
+        "fabricante": "Wemos",
+        "stock": 12,
+        "precio": 8.0
+    },
+    {
+        "id": 17,
+        "codigo": "HJSHKWROOM-ESP32",
+        "imagen": "https://ar.mouser.com/images/espressifsystems/lrg/ESP32-DevKitC-32UE_SPL.jpg",
+        "nroPieza": "WROOM-ESP32",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa Esp32 WROOM 32ue",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 20.0
+    },
+    {
+        "id": 18,
+        "codigo": "H789DHJUi-ESP32",
+        "imagen": "https://tienda.ityt.com.ar/23642-large_default/modulo-wifi-bluetooth-esp32-esp-wroom-32-espressif-itytarg.jpg",
+        "nroPieza": "DHJUi-ESP32i",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa ESP32 WROOM",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 15.0
+    },
+    {
+        "id": 19,
+        "codigo": "JGKURISSDK-47363933",
+        "imagen": "https://www.industriasgsl.com/pub/media/wysiwyg/mosfet_panamahitek.jpg",
+        "nroPieza": "DK-47363933",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "Genérico",
+        "stock": 100,
+        "precio": 1.0
+    }
+]
+  ```
+  
+  
+  </br>
+  
+  
+  * Testeamos el Método DELETE, eliminaremos el ultimo registro modificado e insertado, a través de la siguiente uri `http://localhost:8092/inmuebles/19`
+  * Obtenemos un Status 200 OK junto con el true .
+  
+  </br>
+  
+  * Traemos la Lista de Inmuebles con el GET para comprobar tacitamente lo realizado `http://localhost:8092/inmuebles/listado?page=0&size=0`..
+  
+  ```json
+[
+    {
+        "id": 1,
+        "codigo": "HDGHFK-KSH13006",
+        "imagen": "https://images.alldatasheet.es/semiconductor/electronic_parts/datasheet/335783/HUASHAN/KSH13005.GIF",
+        "nroPieza": "KSH13006",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT NPN",
+        "fabricante": "SHANTOU HUASHAN",
+        "stock": 300,
+        "precio": 2.0
+    },
+    {
+        "id": 2,
+        "codigo": "DFHSDK-3CD010G",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_906581-MLA32747237952_112019-O.webp",
+        "nroPieza": "3CD010G",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "INCHANGE SEMICONDUCTOR",
+        "stock": 400,
+        "precio": 5.0
+    },
+    {
+        "id": 3,
+        "codigo": "JDHFYT-AP4519GED",
+        "imagen": "https://alltransistors.com/adv/pdfdatasheet_ape/image/ap4511gh-hf_0001.jpg",
+        "nroPieza": "AP4519GED",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet NP",
+        "fabricante": "Advanced Power",
+        "stock": 200,
+        "precio": 4.0
+    },
+    {
+        "id": 4,
+        "codigo": "HJDGHF-SL60N06",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_893006-MLA41523372205_042020-F.webp",
+        "nroPieza": "SL60N06",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet N",
+        "fabricante": "Slkor",
+        "stock": 50,
+        "precio": 7.0
+    },
+    {
+        "id": 5,
+        "codigo": "009-KLDIUAOASS",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_757161-MLA41722189255_052020-O.webp",
+        "nroPieza": "KLDIUAOASS",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Radial",
+        "fabricante": "VISHAY",
+        "stock": 20,
+        "precio": 1.0
+    },
+    {
+        "id": 6,
+        "codigo": "3097-JKSJHSBS6DVBDG",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_938147-MLA47364644565_092021-F.webp",
+        "nroPieza": "BS6DVBDG",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Axial",
+        "fabricante": "VISHAY",
+        "stock": 18,
+        "precio": 1.6
+    },
+    {
+        "id": 7,
+        "codigo": "594-MIF2500BFKMGNHT5",
+        "imagen": "https://ar.mouser.com/images/vishay/images/mif1000afkmgnht5_SPL.jpg",
+        "nroPieza": "FKMGNHT5",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 25ohms 1% 100ppm",
+        "fabricante": "VISHAY",
+        "stock": 800,
+        "precio": 5.0
+    },
+    {
+        "id": 8,
+        "codigo": "581-CS12010T0100GTR",
+        "imagen": "https://ar.mouser.com/images/americantechnicalceramics/images/ATCFT.jpg",
+        "nroPieza": "T0100GTR",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 100ohms 2% 10W",
+        "fabricante": "KYSHOCERA",
+        "stock": 1200,
+        "precio": 3.0
+    },
+    {
+        "id": 9,
+        "codigo": "HSFGDTTEE-KY0-PIC18F4520-I/PT",
+        "imagen": "https://www.kynix.com/uploadfiles/small/PIC18F4520-I2fPT_10386.jpg",
+        "nroPieza": "KY0-PIC18F4520-I/PT",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC18F4520-I/PT",
+        "fabricante": "Microchip",
+        "stock": 40,
+        "precio": 20.0
+    },
+    {
+        "id": 10,
+        "codigo": "HJDYETU-KY32-PIC-00130-001",
+        "imagen": "https://www.kynix.com/images/ic-package/SOP.jpg",
+        "nroPieza": "KY32-PIC-00130-001",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC-00130-001",
+        "fabricante": "T-Wins",
+        "stock": 34,
+        "precio": 30.0
+    },
+    {
+        "id": 11,
+        "codigo": "ATMEGA32-16AURTR-ND",
+        "imagen": "https://media.digikey.com/Renders/Atmel%20Renders/313;44A;A;44.jpg",
+        "nroPieza": "16AURTR-ND",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA32-16AUR",
+        "fabricante": "Microchip Technology",
+        "stock": 10,
+        "precio": 30.0
+    },
+    {
+        "id": 12,
+        "codigo": "ATMEGA328P-MUR-JKSHJ67",
+        "imagen": "https://es.farnell.com/productimages/standard/en_GB/GE32QFN-40.jpg",
+        "nroPieza": "MUR-JKSHJ67",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA328P-MUR",
+        "fabricante": "Microchip Technology",
+        "stock": 15,
+        "precio": 25.0
+    },
+    {
+        "id": 13,
+        "codigo": "KSHJETA-ARDUINO-UNO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_603035-MLA41509685506_042020-F.webp",
+        "nroPieza": "ETA-ARDUINO-UNO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Uno R3",
+        "fabricante": "Arduino",
+        "stock": 30,
+        "precio": 10.0
+    },
+    {
+        "id": 14,
+        "codigo": "JSHYUTT-ARDUINO-NANO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_728208-MLA40243275480_122019-F.webp",
+        "nroPieza": "UTT-ARDUINO-NANO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Nano V3.0",
+        "fabricante": "Arduino",
+        "stock": 40,
+        "precio": 8.0
+    },
+    {
+        "id": 15,
+        "codigo": "2471S0A-ESP8266",
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/ESP-01.jpg/375px-ESP-01.jpg",
+        "nroPieza": "0A-ESP8266",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Esp8266 EX",
+        "fabricante": "Espressif Systems",
+        "stock": 10,
+        "precio": 10.0
+    },
+    {
+        "id": 16,
+        "codigo": "JD76FG6-DOIT-WEMOS-Mini",
+        "imagen": "https://www.esploradores.com/wp-content/uploads/2017/01/DOIT-WEMOS-Mini-NodeMCU-768x641.jpg",
+        "nroPieza": "DOIT-WEMOS-Mini",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Wemos D1 Mini",
+        "fabricante": "Wemos",
+        "stock": 12,
+        "precio": 8.0
+    },
+    {
+        "id": 17,
+        "codigo": "HJSHKWROOM-ESP32",
+        "imagen": "https://ar.mouser.com/images/espressifsystems/lrg/ESP32-DevKitC-32UE_SPL.jpg",
+        "nroPieza": "WROOM-ESP32",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa Esp32 WROOM 32ue",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 20.0
+    },
+    {
+        "id": 18,
+        "codigo": "H789DHJUi-ESP32",
+        "imagen": "https://tienda.ityt.com.ar/23642-large_default/modulo-wifi-bluetooth-esp32-esp-wroom-32-espressif-itytarg.jpg",
+        "nroPieza": "DHJUi-ESP32i",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa ESP32 WROOM",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 15.0
+    }
+]
+  ```
+  
+</br>
+
+### Paso zz) Prueba del Servicio de la Tabla `componentes-detalles`
+#### (Vamos a testear los métodos desarrollados con Postman, es importante que se hayan ejecutado los pasos anteriores de forma correcta y se hayan agregado a la db sus registros y tablas correctamente según el repositorio de la db)
+
+
+ </br>
+ 
+ 
+  * Testeamos el Método GET junto con la paginación creada para visualizar los componentes de la db con la siguiente uri `http://localhost:8092/componentes_detalles/listado?page=0&size=0`
+ * Obtenemos un Status 200 OK junto con el listado total de componentes_detalles..
+ * Response..
+  ```json
+[
+    {
+        "id": 1,
+        "idComponente": 1,
+        "hojaDeDatos": "https://www.alldatasheet.com/datasheet-pdf/pdf/335783/HUASHAN/KSH13005.html?gclid=CjwKCAiAlrSPBhBaEiwAuLSDUFeS6YrIZoRclGdfPAGVxkvXDpENZQ76uvZ1PCot50KcnlLYfYgNwBoCdwoQAvD_BwE",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "20-25 VDC",
+        "voltajeMinEntrada": "20 VDC",
+        "voltajeMaxEntrada": "25 VDC"
+    },
+    {
+        "id": 2,
+        "idComponente": 2,
+        "hojaDeDatos": "https://alltransistors.com/adv/pdfdatasheet_inchange_semiconductor/3cd010g.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "3.5-5 VDC",
+        "voltajeMinEntrada": "3.5 VDC",
+        "voltajeMaxEntrada": "12 VDC"
+    },
+    {
+        "id": 3,
+        "idComponente": 3,
+        "hojaDeDatos": "https://alltransistors.com/es/mosfet/transistor.php?transistor=18313",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "35 VDC",
+        "voltajeMinEntrada": "20 VDC",
+        "voltajeMaxEntrada": "100 VDC"
+    },
+    {
+        "id": 4,
+        "idComponente": 4,
+        "hojaDeDatos": "https://alltransistors.com/adv/pdfdatasheet_slkor/sl60n06.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "40 VDC",
+        "voltajeMinEntrada": "5 VDC",
+        "voltajeMaxEntrada": "60 VDC"
+    },
+    {
+        "id": 5,
+        "idComponente": 5,
+        "hojaDeDatos": "https://ar.mouser.com/datasheet/2/427/136rvi-2888792.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "10 - 100 VDC",
+        "voltajeMinEntrada": "10 VDC",
+        "voltajeMaxEntrada": "100 VDC"
+    },
+    {
+        "id": 6,
+        "idComponente": 6,
+        "hojaDeDatos": "https://ar.mouser.com/datasheet/2/212/1/KEM_A4095_PEG228-1919468.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "25 - 64 VDC",
+        "voltajeMinEntrada": "10 VDC",
+        "voltajeMaxEntrada": "100 VDC"
+    },
+    {
+        "id": 7,
+        "idComponente": 7,
+        "hojaDeDatos": "https://www.vishay.com/docs/61038/mif.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "0 - 300 VDC",
+        "voltajeMinEntrada": "0 VDC",
+        "voltajeMaxEntrada": "400 VDC"
+    },
+    {
+        "id": 8,
+        "idComponente": 8,
+        "hojaDeDatos": "https://ar.mouser.com/datasheet/2/40/resistive_prod_cs-1920496.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "0 - 300 VDC",
+        "voltajeMinEntrada": "0 VDC",
+        "voltajeMaxEntrada": "400 VDC"
+    },
+    {
+        "id": 9,
+        "idComponente": 9,
+        "hojaDeDatos": "https://www.kynix.com/uploadfiles/pdf8798/PIC18F4520-I2fPT_10386.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "2 - 5.5 VDC",
+        "voltajeMinEntrada": "2.0 VDC",
+        "voltajeMaxEntrada": "5.5 VDC"
+    },
+    {
+        "id": 10,
+        "idComponente": 10,
+        "hojaDeDatos": "https://www.alldatasheet.com/view.jsp?Searchword=PIC-00130-001",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "4.5 - 17 VDC",
+        "voltajeMinEntrada": "4.5 VDC",
+        "voltajeMaxEntrada": "17 VDC"
+    },
+    {
+        "id": 11,
+        "idComponente": 11,
+        "hojaDeDatos": "https://ww1.microchip.com/downloads/en/DeviceDoc/2503S.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "2.7 - 5.5 VDC",
+        "voltajeMinEntrada": "2.7 VDC",
+        "voltajeMaxEntrada": "5.5 VDC"
+    },
+    {
+        "id": 12,
+        "idComponente": 12,
+        "hojaDeDatos": "https://www.farnell.com/datasheets/2047852.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "1.8 - 5.5 VDC",
+        "voltajeMinEntrada": "1.8 VDC",
+        "voltajeMaxEntrada": "5.5 VDC"
+    },
+    {
+        "id": 13,
+        "idComponente": 13,
+        "hojaDeDatos": "https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "3.3 - 5.0 VDC",
+        "voltajeMinEntrada": "3.3 VDC",
+        "voltajeMaxEntrada": "5.0 VDC"
+    },
+    {
+        "id": 14,
+        "idComponente": 14,
+        "hojaDeDatos": "http://www.agspecinfo.com/pdfs/M/MB0016.PDF",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "3.0 - 3.3 VDC",
+        "voltajeMinEntrada": "3.0 VDC",
+        "voltajeMaxEntrada": "3.3 VDC"
+    },
+    {
+        "id": 15,
+        "idComponente": 15,
+        "hojaDeDatos": "https://cdn-shop.adafruit.com/product-files/2471/0A-ESP8266__Datasheet__EN_v4.3.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "3.0 - 3.6 VDC",
+        "voltajeMinEntrada": "3.0 VDC",
+        "voltajeMaxEntrada": "3.6 VDC"
+    },
+    {
+        "id": 16,
+        "idComponente": 16,
+        "hojaDeDatos": "https://www.esploradores.com/doitwemos-d1-mini-nodemcu/",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "3.3 - 5.0 VDC",
+        "voltajeMinEntrada": "3.3 VDC",
+        "voltajeMaxEntrada": "5.0 VDC"
+    },
+    {
+        "id": 17,
+        "idComponente": 17,
+        "hojaDeDatos": "https://pdf1.alldatasheet.com/datasheet-pdf/view/1148034/ESPRESSIF/ESP-WROOM-02U.html",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "2.7 - 3.6 VDC",
+        "voltajeMinEntrada": "2.7 VDC",
+        "voltajeMaxEntrada": "3.6 VDC"
+    },
+    {
+        "id": 18,
+        "idComponente": 18,
+        "hojaDeDatos": "https://www.mouser.com/datasheet/2/891/esp-wroom-32_datasheet_en-1223836.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "2.7 - 3.6 VDC",
+        "voltajeMinEntrada": "2.7 VDC",
+        "voltajeMaxEntrada": "3.6 VDC"
+    }
+]
+ ```
+* Se puede obtener mayor información acerca del manejo y uso de una API Rest con los paginados en otro repositorio https://github.com/andresWeitzel/Api_Rest_Spring_Productos 
+* La Prueba del Resto de los Métodos HTTP siguen el mismo proceso que el testeo realizado anteriormente, no se anexa paso a paso el resultado de la tabla componentes-detalles por temas de simplificación.
+* Hay que tener en consideración que para insertar un registro en esta tabla se debe tener registrado el Componente que hace referencia al campo id_componente de esta Tabla. Insertar un Registro en `componentes` y luego en `componentes-detalles`
+* Nuestra API REST cumple y es completamente funcional con lo desarrollado
+
+
+
+</br>
+
+##  Sección 8) Creación de la Vista con Thymeleaf
+
+</br>
+
+
+
+### Paso zy) Creación de la Vista con Thymeleaf
+#### (Vamos a desarrollar la Vista que será la que se manejará del lado del Cliente)
+
+ </br>
+ 
+ * Para el uso y manejo de Thymeleaf debemos tener instalado el plugin a travsés del Eclipse Marketplace
+ * Click en Help, luego Eclipse Marketplace, buscamos Thymeleaf e instalamos el plugin según la versión de cada IDE
+ * Seguidamente creamos un archivo de tipo HTML dentro del directorio templates , click derecho sobre templates (src/main/resources/templates)
+ * Buscamos en Other html, selecionamos html file, asignamos el nombre `index.html`
 
 
 
