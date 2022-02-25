@@ -1,15 +1,16 @@
-package com.gestion.microelectronica.mypackages.repositories;
+package com.gestion.microelectronica.repositories;
 
-import java.awt.print.Pageable;
+
 import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.gestion.microelectronica.mypackages.entities.ComponenteEntity;
+import com.gestion.microelectronica.entities.ComponenteEntity;
 
 
 @Repository
@@ -35,7 +36,8 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 
 		public abstract List<ComponenteEntity> findByPrecio(double precio);
 
-	
+		public abstract List<ComponenteEntity> findAll();
+		
 		public abstract Page<ComponenteEntity> findAll(Pageable pageable);
 		
 	

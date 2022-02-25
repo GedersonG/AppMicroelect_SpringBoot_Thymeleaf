@@ -1,4 +1,4 @@
-package com.gestion.microelectronica.mypackages.entities;
+package com.gestion.microelectronica.entities;
 
 
 
@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -20,7 +21,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ComponenteDetalleEntity {
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_comp_det")
+	@SequenceGenerator(name = "seq_comp_det", sequenceName = "id_seq_comp_det" , allocationSize=1)
 	@Id
 	@Column(name="id") 
 	private int id;
