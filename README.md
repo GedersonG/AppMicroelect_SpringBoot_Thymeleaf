@@ -130,6 +130,9 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
    - [Paso z) Creación y Configuración del Controller ComponenteDetalleController](#paso-z-creación-y-configuración-del-service-componentedetallecontroller) 
 
 
+#### Sección 7) Prueba del Servicio Rest Desarrollado
+
+   - [Paso zz) Prueba del Servicio Rest con Postman](#paso-zz-prueba-del-servicio-rest-con-postman) 
 
 
 #### Sección 8) Apéndice
@@ -410,6 +413,14 @@ public class ComponenteEntity {
 #### 6.2) Configuración de la Clase `ComponenteEntity`
 * Creamos los atributos o campos de la Clase, usaremos las anotations correspondientes de JPA que a su vez estas serán nombres de campos de la db 
 * No crearemos getters ni setters, ni el resto  ya que utilizaremos Lombok ( Asegurarse de haber instalado todo correctamente )
+* Es importante tener en consideración que si se tiene registros en la db al momento de insertar uno nuevo desde el servicio rest que desarrollaremos por defecto oracle posee un sistema de seguridad para los id en relación a otros sgdb. Entonces debemos crear una secuencia id en java que relacione a la secuencia id ya creada en la base de datos. La secuencia que crearemos se llamará `seq_comp` que se relacionará con la de la db `id_seq_comp`..
+```java
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_comp")
+	@SequenceGenerator(name = "seq_comp", sequenceName = "id_seq_comp" , allocationSize=1)
+	@Id
+	@Column(name="id") 
+	private int id;
+```
 * Las anotaciones para lombok son `@Data` , `@AllArgsConstructor` y `@NoArgsConstructor` , la primera para la generacion de los getters y setters y el resto de metodos, la segunda para los constructores sobrecargados de la Entidad y la tercera para constructor vacio 
 * Código..
 ```java
@@ -434,7 +445,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ComponenteEntity {
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_comp")
+	@SequenceGenerator(name = "seq_comp", sequenceName = "id_seq_comp" , allocationSize=1)
 	@Id
 	@Column(name="id") 
 	private int id;
@@ -499,9 +511,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ComponenteDetalleEntity {
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_comp_det")
+	@SequenceGenerator(name = "seq_comp_det", sequenceName = "id_seq_comp_det" , allocationSize=1)
 	@Id
 	@Column(name="id") 
+	private int id;
 	private int id;
 	
 	@Column(name="id_componente")
@@ -1049,9 +1063,406 @@ public class ComponenteController {
 
 #### Paso w) Creación y Configuración del Controller  `ComponenteDetalleController` 
  ```java
- 
+ package com.gestion.microelectronica.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
+import com.gestion.microelectronica.services.ComponenteDetalleService;
+
+@RestController
+@RequestMapping("/componentes_detalles")
+public class ComponenteDetalleController {
+	
+
+	@Autowired
+	private ComponenteDetalleService componenteDetalleService;
+
+	// ============= MÉTODOS HTTP CRUD ==============
+
+	// ----POST----
+	@PostMapping("/")
+	public boolean addComponenteDetalle(@RequestBody ComponenteDetalleEntity componenteDetalle) {
+
+		return componenteDetalleService.addComponente(componenteDetalle);
+	}
+
+	// ----PUT-----
+	@PutMapping("/")
+	public boolean updateComponenteDetalle(@RequestBody ComponenteDetalleEntity componenteDetalle) {
+
+		return componenteDetalleService.updateComponente(componenteDetalle);
+	}
+
+	// ---DELETE---
+	@DeleteMapping("/{id}")
+	public boolean deleteComponenteDetalle(@PathVariable("id") int id) {
+
+		return componenteDetalleService.deleteComponente(id);
+	}
+
+	// ---GET---
+	@GetMapping("/listado")
+	public List<ComponenteDetalleEntity> getAll(Pageable pageable) {
+
+		return componenteDetalleService.getAllComponente(pageable);
+	}
+	
+	// ============= MÉTODOS HTTP BÚSQUEDA ==============
+
+	// ---GET---
+	@GetMapping("/{id}")
+	public ComponenteDetalleEntity getById(@PathVariable("id") int id) {
+
+		return componenteDetalleService.findById(id);
+	}
+	
+	// ---GET---
+	@GetMapping("/{id_componente}")
+	public ComponenteDetalleEntity getByIdComponente(@PathVariable("id_componente") int id_componente) {
+
+		return componenteDetalleService.findByIdComponente(id_componente);
+	}
+	
+	
+
+	
+	
+	
+
+
+}
+
 
  ```
+
+</br>
+
+##  Sección 7) Prueba del Servicio Rest Desarrollado
+
+</br>
+
+
+
+### Paso zz) Prueba del Servicio Rest con `Postman` 
+#### (Vamos a testear los métodos desarrollados con Postman, es importante que se hayan ejecutado los pasos anteriores de forma correcta y se hayan agregado a la db sus registros y tablas correctamente según el repositorio de la db)
+
+ </br>
+ 
+ 
+  * Testeamos el Método GET junto con la paginación creada para visualizar los componentes de la db con la siguiente uri `http://localhost:8092/componentes/listado?page=0&size=0`
+ * Obtenemos un Status 200 OK junto con el listado total de componentes..
+ * Response..
+  ```json
+[
+    {
+        "id": 1,
+        "codigo": "HDGHFK-KSH13006",
+        "imagen": "https://images.alldatasheet.es/semiconductor/electronic_parts/datasheet/335783/HUASHAN/KSH13005.GIF",
+        "nroPieza": "KSH13006",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT NPN",
+        "fabricante": "SHANTOU HUASHAN",
+        "stock": 300,
+        "precio": 2.0
+    },
+    {
+        "id": 2,
+        "codigo": "DFHSDK-3CD010G",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_906581-MLA32747237952_112019-O.webp",
+        "nroPieza": "3CD010G",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "INCHANGE SEMICONDUCTOR",
+        "stock": 400,
+        "precio": 5.0
+    },
+    {
+        "id": 3,
+        "codigo": "JDHFYT-AP4519GED",
+        "imagen": "https://alltransistors.com/adv/pdfdatasheet_ape/image/ap4511gh-hf_0001.jpg",
+        "nroPieza": "AP4519GED",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet NP",
+        "fabricante": "Advanced Power",
+        "stock": 200,
+        "precio": 4.0
+    },
+    {
+        "id": 4,
+        "codigo": "HJDGHF-SL60N06",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_893006-MLA41523372205_042020-F.webp",
+        "nroPieza": "SL60N06",
+        "categoria": "Transistores MOSFET",
+        "descripcion": "Transistor Mosfet N",
+        "fabricante": "Slkor",
+        "stock": 50,
+        "precio": 7.0
+    },
+    {
+        "id": 5,
+        "codigo": "009-KLDIUAOASS",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_757161-MLA41722189255_052020-O.webp",
+        "nroPieza": "KLDIUAOASS",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Radial",
+        "fabricante": "VISHAY",
+        "stock": 20,
+        "precio": 1.0
+    },
+    {
+        "id": 6,
+        "codigo": "3097-JKSJHSBS6DVBDG",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_938147-MLA47364644565_092021-F.webp",
+        "nroPieza": "BS6DVBDG",
+        "categoria": "Capacitores Electroliticos",
+        "descripcion": "Capacitor Electrolitico de Aluminio Axial",
+        "fabricante": "VISHAY",
+        "stock": 18,
+        "precio": 1.6
+    },
+    {
+        "id": 7,
+        "codigo": "594-MIF2500BFKMGNHT5",
+        "imagen": "https://ar.mouser.com/images/vishay/images/mif1000afkmgnht5_SPL.jpg",
+        "nroPieza": "FKMGNHT5",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 25ohms 1% 100ppm",
+        "fabricante": "VISHAY",
+        "stock": 800,
+        "precio": 5.0
+    },
+    {
+        "id": 8,
+        "codigo": "581-CS12010T0100GTR",
+        "imagen": "https://ar.mouser.com/images/americantechnicalceramics/images/ATCFT.jpg",
+        "nroPieza": "T0100GTR",
+        "categoria": "Resistores de Alta Frecuencia",
+        "descripcion": "Resistores de alta frecuencia RF 100ohms 2% 10W",
+        "fabricante": "KYSHOCERA",
+        "stock": 1200,
+        "precio": 3.0
+    },
+    {
+        "id": 9,
+        "codigo": "HSFGDTTEE-KY0-PIC18F4520-I/PT",
+        "imagen": "https://www.kynix.com/uploadfiles/small/PIC18F4520-I2fPT_10386.jpg",
+        "nroPieza": "KY0-PIC18F4520-I/PT",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC18F4520-I/PT",
+        "fabricante": "Microchip",
+        "stock": 40,
+        "precio": 20.0
+    },
+    {
+        "id": 10,
+        "codigo": "HJDYETU-KY32-PIC-00130-001",
+        "imagen": "https://www.kynix.com/images/ic-package/SOP.jpg",
+        "nroPieza": "KY32-PIC-00130-001",
+        "categoria": "Microcontroladores PICS",
+        "descripcion": "Microcontrolador PIC-00130-001",
+        "fabricante": "T-Wins",
+        "stock": 34,
+        "precio": 30.0
+    },
+    {
+        "id": 11,
+        "codigo": "ATMEGA32-16AURTR-ND",
+        "imagen": "https://media.digikey.com/Renders/Atmel%20Renders/313;44A;A;44.jpg",
+        "nroPieza": "16AURTR-ND",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA32-16AUR",
+        "fabricante": "Microchip Technology",
+        "stock": 10,
+        "precio": 30.0
+    },
+    {
+        "id": 12,
+        "codigo": "ATMEGA328P-MUR-JKSHJ67",
+        "imagen": "https://es.farnell.com/productimages/standard/en_GB/GE32QFN-40.jpg",
+        "nroPieza": "MUR-JKSHJ67",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA328P-MUR",
+        "fabricante": "Microchip Technology",
+        "stock": 15,
+        "precio": 25.0
+    },
+    {
+        "id": 13,
+        "codigo": "KSHJETA-ARDUINO-UNO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_603035-MLA41509685506_042020-F.webp",
+        "nroPieza": "ETA-ARDUINO-UNO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Uno R3",
+        "fabricante": "Arduino",
+        "stock": 30,
+        "precio": 10.0
+    },
+    {
+        "id": 14,
+        "codigo": "JSHYUTT-ARDUINO-NANO",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_728208-MLA40243275480_122019-F.webp",
+        "nroPieza": "UTT-ARDUINO-NANO",
+        "categoria": "Placas Arduino",
+        "descripcion": "Placa Arduino Nano V3.0",
+        "fabricante": "Arduino",
+        "stock": 40,
+        "precio": 8.0
+    },
+    {
+        "id": 15,
+        "codigo": "2471S0A-ESP8266",
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/ESP-01.jpg/375px-ESP-01.jpg",
+        "nroPieza": "0A-ESP8266",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Esp8266 EX",
+        "fabricante": "Espressif Systems",
+        "stock": 10,
+        "precio": 10.0
+    },
+    {
+        "id": 16,
+        "codigo": "JD76FG6-DOIT-WEMOS-Mini",
+        "imagen": "https://www.esploradores.com/wp-content/uploads/2017/01/DOIT-WEMOS-Mini-NodeMCU-768x641.jpg",
+        "nroPieza": "DOIT-WEMOS-Mini",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Wemos D1 Mini",
+        "fabricante": "Wemos",
+        "stock": 12,
+        "precio": 8.0
+    },
+    {
+        "id": 17,
+        "codigo": "HJSHKWROOM-ESP32",
+        "imagen": "https://ar.mouser.com/images/espressifsystems/lrg/ESP32-DevKitC-32UE_SPL.jpg",
+        "nroPieza": "WROOM-ESP32",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa Esp32 WROOM 32ue",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 20.0
+    },
+    {
+        "id": 18,
+        "codigo": "H789DHJUi-ESP32",
+        "imagen": "https://tienda.ityt.com.ar/23642-large_default/modulo-wifi-bluetooth-esp32-esp-wroom-32-espressif-itytarg.jpg",
+        "nroPieza": "DHJUi-ESP32i",
+        "categoria": "Placas Esp32",
+        "descripcion": "Placa ESP32 WROOM",
+        "fabricante": "Espressif Systems",
+        "stock": 5,
+        "precio": 15.0
+    }
+]
+ ```
+  * Se puede obtener mayor información acerca del manejo y uso de una API Rest con los paginados en otro repositorio https://github.com/andresWeitzel/Api_Rest_Spring_Productos
+ 
+</br>
+
+
+* Testeamos el método POST de inserción de registros mediante la siguiente uri `http://localhost:8092/listado/` y agregando en el Body en formato Json el Registro de Inserción..
+ ```json
+{
+        "codigo": "UKGLUIO555-FG99",
+        "imagen": "https://www.industriasgsl.com/pub/media/wysiwyg/mosfet_panamahitek.jpg",
+        "nroPieza": "55-FG99",
+        "categoria": "Transistores BJT",
+        "descripcion": "Transistor BJT PNP",
+        "fabricante": "Genérico",
+        "stock": 100,
+        "precio": 1.0
+
+}
+ ```
+ * Obtenemos un Status 200 OK  además del true devuelto por el método desarrollado.
+ * La función se ejecuta correctamente.
+ 
+  </br>
+  
+  
+  </br>
+  
+  * Ahora Testeamos el método PUT, vamos a modificar el Inmueble con el id 13 a través de la siguiente uri `http://localhost:8092/inmuebles/`, pasandole en el body el registro completo junto a su modificación (estadoInmuebleEnum) ..
+  ```json
+ {
+    "id" : 13,
+    "idPropietarioInmueble" : 1,
+    "descripcion" : "Departamento de 1 Ambiente",
+    "tipo" : "Depto",
+    "estadoInmuebleEnum" : "NO_DISPONIBLE",
+    "precioInmuebleUsd" : 90000,
+    "direccion" : "San Amadeo del Valle 908",
+    "ubicacion" : "Villa Crespo",
+    "sitioWeb" : "-" 
+
+}
+  
+  ```
+  * Obtenemos un Status 200 OK y un true, si visualizamos la lista con el GET podremos ver allí la modificación realizada
+  
+  </br>
+  
+  * Testeamos el Método DELETE, eliminaremos el ultimo registro modificado(id 13), a través de la siguiente uri `http://localhost:8092/inmuebles/13`
+  * Obtenemos un Status 200 OK junto con el true .
+  
+  </br>
+  
+  * Traemos la Lista de Inmuebles con el GET para comprobar tacitamente lo realizado `http://localhost:8092/inmuebles/listado?page=0&size=0`..
+  
+  ```json
+[
+    {
+        "id": 1,
+        "idPropietarioInmueble": 1,
+        "descripcion": "PH de 4 Ambientes, 3 dormis, 2 baños, Amplio Espacio,jardin y balcon, Sin Expensas, Lujoso",
+        "tipo": "PH/Casa",
+        "estadoInmuebleEnum": "DISPONIBLE",
+        "precioInmuebleUsd": 177.0,
+        "direccion": "San Cristobla 456",
+        "ubicacion": "Palermo",
+        "sitioWeb": "www.avisosAlInstante.com.ar"
+    },
+    {
+        "id": 2,
+        "idPropietarioInmueble": 2,
+        "descripcion": "Casa 3 Ambientes, 4 Dormitorios, 1 baño y Cochera",
+        "tipo": "Casa",
+        "estadoInmuebleEnum": "VENDIDO",
+        "precioInmuebleUsd": 168.0,
+        "direccion": "Aristobulo del Valle 608 ",
+        "ubicacion": "Belgrano",
+        "sitioWeb": "www.avisosAlInstante.com.ar"
+    },
+    {
+        "id": 3,
+        "idPropietarioInmueble": 3,
+        "descripcion": "Departamento de 2 Ambientes",
+        "tipo": "Departamento",
+        "estadoInmuebleEnum": "VENDIDO",
+        "precioInmuebleUsd": 110.0,
+        "direccion": "Av. Corrientes 112",
+        "ubicacion": "Caballito",
+        "sitioWeb": "www.avisosAlInstante.com.ar"
+    }
+]
+  ```
+
+* Nuestra API REST cumple con lo desarrollado
+
+
+
+
 
 
 
