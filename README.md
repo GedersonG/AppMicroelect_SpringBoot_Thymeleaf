@@ -132,7 +132,8 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 #### Sección 7) Prueba del Servicio Rest Desarrollado
 
-   - [Paso zz) Prueba del Servicio Rest con Postman](#paso-zz-prueba-del-servicio-rest-con-postman) 
+   - [Paso zz) Prueba del Servicio de la Tabla componentes](#paso-zz-prueba-del-servicio-de-la-tabla-componentes) 
+   - [Paso zx) Prueba del Servicio de la Tabla componentes_detalles](#paso-zz-prueba-del-servicio-de-la-tabla-componentes-detalles) 
 
 
 #### Sección 8) Apéndice
@@ -1153,9 +1154,11 @@ public class ComponenteDetalleController {
 
 </br>
 
+   - [Paso zz) Prueba del Servicio de la Tabla componentes](#paso-zz-prueba-del-servicio-de-la-tabla-componentes) 
+   - [Paso zx) Prueba del Servicio de la Tabla componentes_detalles](#paso-zz-prueba-del-servicio-de-la-tabla-componentes-detalles) 
 
 
-### Paso zz) Prueba del Servicio Rest con `Postman` 
+### Paso zz) Prueba del Servicio de la Tabla `componentes`
 #### (Vamos a testear los métodos desarrollados con Postman, es importante que se hayan ejecutado los pasos anteriores de forma correcta y se hayan agregado a la db sus registros y tablas correctamente según el repositorio de la db)
 
  </br>
@@ -2060,9 +2063,246 @@ public class ComponenteDetalleController {
     }
 ]
   ```
+  
+</br>
 
+### Paso zz) Prueba del Servicio de la Tabla `componentes-detalles`
+#### (Vamos a testear los métodos desarrollados con Postman, es importante que se hayan ejecutado los pasos anteriores de forma correcta y se hayan agregado a la db sus registros y tablas correctamente según el repositorio de la db)
+
+
+ </br>
+ 
+ 
+  * Testeamos el Método GET junto con la paginación creada para visualizar los componentes de la db con la siguiente uri `http://localhost:8092/componentes_detalles/listado?page=0&size=0`
+ * Obtenemos un Status 200 OK junto con el listado total de componentes_detalles..
+ * Response..
+  ```json
+[
+    {
+        "id": 1,
+        "idComponente": 1,
+        "hojaDeDatos": "https://www.alldatasheet.com/datasheet-pdf/pdf/335783/HUASHAN/KSH13005.html?gclid=CjwKCAiAlrSPBhBaEiwAuLSDUFeS6YrIZoRclGdfPAGVxkvXDpENZQ76uvZ1PCot50KcnlLYfYgNwBoCdwoQAvD_BwE",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "20-25 VDC",
+        "voltajeMinEntrada": "20 VDC",
+        "voltajeMaxEntrada": "25 VDC"
+    },
+    {
+        "id": 2,
+        "idComponente": 2,
+        "hojaDeDatos": "https://alltransistors.com/adv/pdfdatasheet_inchange_semiconductor/3cd010g.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "3.5-5 VDC",
+        "voltajeMinEntrada": "3.5 VDC",
+        "voltajeMaxEntrada": "12 VDC"
+    },
+    {
+        "id": 3,
+        "idComponente": 3,
+        "hojaDeDatos": "https://alltransistors.com/es/mosfet/transistor.php?transistor=18313",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "35 VDC",
+        "voltajeMinEntrada": "20 VDC",
+        "voltajeMaxEntrada": "100 VDC"
+    },
+    {
+        "id": 4,
+        "idComponente": 4,
+        "hojaDeDatos": "https://alltransistors.com/adv/pdfdatasheet_slkor/sl60n06.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "40 VDC",
+        "voltajeMinEntrada": "5 VDC",
+        "voltajeMaxEntrada": "60 VDC"
+    },
+    {
+        "id": 5,
+        "idComponente": 5,
+        "hojaDeDatos": "https://ar.mouser.com/datasheet/2/427/136rvi-2888792.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "10 - 100 VDC",
+        "voltajeMinEntrada": "10 VDC",
+        "voltajeMaxEntrada": "100 VDC"
+    },
+    {
+        "id": 6,
+        "idComponente": 6,
+        "hojaDeDatos": "https://ar.mouser.com/datasheet/2/212/1/KEM_A4095_PEG228-1919468.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "25 - 64 VDC",
+        "voltajeMinEntrada": "10 VDC",
+        "voltajeMaxEntrada": "100 VDC"
+    },
+    {
+        "id": 7,
+        "idComponente": 7,
+        "hojaDeDatos": "https://www.vishay.com/docs/61038/mif.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "0 - 300 VDC",
+        "voltajeMinEntrada": "0 VDC",
+        "voltajeMaxEntrada": "400 VDC"
+    },
+    {
+        "id": 8,
+        "idComponente": 8,
+        "hojaDeDatos": "https://ar.mouser.com/datasheet/2/40/resistive_prod_cs-1920496.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "0 - 300 VDC",
+        "voltajeMinEntrada": "0 VDC",
+        "voltajeMaxEntrada": "400 VDC"
+    },
+    {
+        "id": 9,
+        "idComponente": 9,
+        "hojaDeDatos": "https://www.kynix.com/uploadfiles/pdf8798/PIC18F4520-I2fPT_10386.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "2 - 5.5 VDC",
+        "voltajeMinEntrada": "2.0 VDC",
+        "voltajeMaxEntrada": "5.5 VDC"
+    },
+    {
+        "id": 10,
+        "idComponente": 10,
+        "hojaDeDatos": "https://www.alldatasheet.com/view.jsp?Searchword=PIC-00130-001",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "4.5 - 17 VDC",
+        "voltajeMinEntrada": "4.5 VDC",
+        "voltajeMaxEntrada": "17 VDC"
+    },
+    {
+        "id": 11,
+        "idComponente": 11,
+        "hojaDeDatos": "https://ww1.microchip.com/downloads/en/DeviceDoc/2503S.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "2.7 - 5.5 VDC",
+        "voltajeMinEntrada": "2.7 VDC",
+        "voltajeMaxEntrada": "5.5 VDC"
+    },
+    {
+        "id": 12,
+        "idComponente": 12,
+        "hojaDeDatos": "https://www.farnell.com/datasheets/2047852.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "1.8 - 5.5 VDC",
+        "voltajeMinEntrada": "1.8 VDC",
+        "voltajeMaxEntrada": "5.5 VDC"
+    },
+    {
+        "id": 13,
+        "idComponente": 13,
+        "hojaDeDatos": "https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "3.3 - 5.0 VDC",
+        "voltajeMinEntrada": "3.3 VDC",
+        "voltajeMaxEntrada": "5.0 VDC"
+    },
+    {
+        "id": 14,
+        "idComponente": 14,
+        "hojaDeDatos": "http://www.agspecinfo.com/pdfs/M/MB0016.PDF",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "3.0 - 3.3 VDC",
+        "voltajeMinEntrada": "3.0 VDC",
+        "voltajeMaxEntrada": "3.3 VDC"
+    },
+    {
+        "id": 15,
+        "idComponente": 15,
+        "hojaDeDatos": "https://cdn-shop.adafruit.com/product-files/2471/0A-ESP8266__Datasheet__EN_v4.3.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "3.0 - 3.6 VDC",
+        "voltajeMinEntrada": "3.0 VDC",
+        "voltajeMaxEntrada": "3.6 VDC"
+    },
+    {
+        "id": 16,
+        "idComponente": 16,
+        "hojaDeDatos": "https://www.esploradores.com/doitwemos-d1-mini-nodemcu/",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "3.3 - 5.0 VDC",
+        "voltajeMinEntrada": "3.3 VDC",
+        "voltajeMaxEntrada": "5.0 VDC"
+    },
+    {
+        "id": 17,
+        "idComponente": 17,
+        "hojaDeDatos": "https://pdf1.alldatasheet.com/datasheet-pdf/view/1148034/ESPRESSIF/ESP-WROOM-02U.html",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "2.7 - 3.6 VDC",
+        "voltajeMinEntrada": "2.7 VDC",
+        "voltajeMaxEntrada": "3.6 VDC"
+    },
+    {
+        "id": 18,
+        "idComponente": 18,
+        "hojaDeDatos": "https://www.mouser.com/datasheet/2/891/esp-wroom-32_datasheet_en-1223836.pdf",
+        "longitud": null,
+        "ancho": null,
+        "peso": null,
+        "material": null,
+        "voltajeRecomendado": "2.7 - 3.6 VDC",
+        "voltajeMinEntrada": "2.7 VDC",
+        "voltajeMaxEntrada": "3.6 VDC"
+    }
+]
+ ```
+* Se puede obtener mayor información acerca del manejo y uso de una API Rest con los paginados en otro repositorio https://github.com/andresWeitzel/Api_Rest_Spring_Productos 
+* La Prueba del Resto de los Métodos HTTP siguen el mismo proceso que el testeo realizado anteriormente, no se anexa paso a paso el resultado de la tabla componentes-detalles por temas de simplificación.
+* Hay que tener en consideración que para insertar un registro en esta tabla se debe tener registrado el Componente que hace referencia al campo id_componente de esta Tabla. Insertar un Registro en `componentes` y luego en `componentes-detalles`
 * Nuestra API REST cumple y es completamente funcional con lo desarrollado
 
+
+</br>
 
 
 
