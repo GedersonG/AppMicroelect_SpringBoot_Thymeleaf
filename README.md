@@ -783,7 +783,7 @@ public class ComponenteService {
 	//------- LISTADO PAGINADO ---------
 	public List<ComponenteEntity> getAllComponentePageable(Pageable pageable) {
 
-		return iComponenteRepository.findAll(pageable).getContent();
+		return iComponenteRepository.findAllPageable(pageable).getContent();
 	}
 	// =============== MÉTODOS DE BUSQUEDA ====================
 
@@ -927,7 +927,7 @@ public class ComponenteDetalleService {
 	//------- LISTADO PAGINADO ---------
 	public List<ComponenteDetalleEntity> getAllComponente(Pageable pageable) {
 
-		return iComponenteDetalleRepository.findAll(pageable).getContent();
+		return iComponenteDetalleRepository.findAllPageable(pageable).getContent();
 	}
 
 	// =============== MÉTODOS DE BUSQUEDA ====================
