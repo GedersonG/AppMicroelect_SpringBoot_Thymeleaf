@@ -114,41 +114,20 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 
-#### Sección 5) Creación y Configuración de los Services y Controladores
+#### Sección 5) Creación y Configuración de los Services 
 
-   - [Paso 10) Creación y Configuración de la Clase Service](#paso-10-creación-y-configuración-de-la-clase-service)
+   - [Paso f) Creación y Configuración del Service ComponenteService](#paso-f-creación-y-configuración-del-service-componenteservice)
    
-   - [Paso 11) Creación y Configuración de la Clase Controler](#paso-11-creación-y-configuración-de-la-clase-controler) 
+   - [Paso k) Creación y Configuración del Service ComponenteDetalleService](#paso-k-creación-y-configuración-del-service-componentedetalleservice) 
 
 
 
 
-#### Sección 6) Creación y Configuración de SpringSecurity y Json Web Tokens
-
-   - [Paso 12) Creación y Configuración de la Clase Usuario](#paso-12-creación-y-configuración-de-la-clase-usuario)
-
-   - [Paso 13) Creación y Configuración de la Interfaz I_UsuarioRepository](#paso-13-creación-y-configuración-de-la-interfaz-i_usuarioRepository)
-
-   - [Paso 14) Creación y Configuración del Servicio UsuarioService](#paso-14-creación-y-configuración-del-servicio-usuarioservice)
-
-   - [Paso 15) Creación y Configuración de la Clase de Configuración UsuarioConfiguration](#paso-15-creación-y-configuración-de-la-clase-de-configuracion-usuarioconfiguration)
-
-   - [Paso 16) Creación y Configuración de la Clase de Configuración JwtUtilConfiguration](#paso-16-creación-y-configuración-de-la-clase-de-configuracion-jwtutilconfiguration)
-
+#### Sección 6) Creación y Configuración de los Controllers
+	
+   - [Paso w) Creación y Configuración del Controller ComponenteController](#paso-w-creación-y-configuración-del-controller-componentecontroller)
    
-   - [Paso 17) Creación y Configuración de la Clase de Configuración JwtFilterConfiguration](#paso-17-creación-y-configuración-de-la-clase-de-configuracion-jwtfilterconfiguration)
-
-
-   
-   - [Paso 18) Creación y Configuración de la Clase de Configuración LoginFilterConfiguration](#paso-17-creación-y-configuración-de-la-clase-de-configuracion-loginfilterconfiguration)
-
-
-
-
-
-   - [Paso 19) Creación y Configuración de la Clase de Configuración WebSecurity](#paso-18-creación-y-configuración-de-la-clase-de-configuracion-websecurity)
-
-
+   - [Paso z) Creación y Configuración del Controller ComponenteDetalleController](#paso-z-creación-y-configuración-del-service-componentedetallecontroller) 
 
 
 
@@ -402,10 +381,10 @@ spring.data.rest.max-page-size = 10
 
 #### 6.1) Creación de la Clase `ComponenteEntity`
 
-* Creamos un paquete llamado mypackages.entities dentro de com.gestion.microelectronica (src/main/java/com.gestion.microelectronica). Es importante que este dentro del mismo ya que sino Spring no desplegará la app de forma correcta.
+* Creamos un paquete llamado `entities` dentro de com.gestion.microelectronica (src/main/java/com.gestion.microelectronica). Es importante que este dentro del mismo ya que sino Spring no desplegará la app de forma correcta.
 	* --> Click Der sobre la ruta mencionada  
 	* --> New --> Package
-	* --> En Name seguido de com.gestion.microelectronica colocamos mypackages.entities (com.api.productos.mypackages.entities)
+	* --> En Name seguido de `com.gestion.microelectronica` colocamos `entities` (com.api.productos.entities)
 	* --> Finish
 
 * Creamos la Entity
@@ -417,7 +396,7 @@ spring.data.rest.max-page-size = 10
 
 ```java
 
-package com.gestion.microelectronica.mypackages.entities;
+package com.gestion.microelectronica.entities;
 
 public class ComponenteEntity {
 
@@ -435,7 +414,7 @@ public class ComponenteEntity {
 * Código..
 ```java
 
-package com.gestion.microelectronica.mypackages.entities;
+package com.gestion.microelectronica.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -498,7 +477,7 @@ public class ComponenteEntity {
 * Código..
 ```java
 
-package com.gestion.microelectronica.mypackages.entities;
+package com.gestion.microelectronica.entities;
 
 
 
@@ -575,18 +554,20 @@ public class ComponenteDetalleEntity {
 * Código..
 
 ```java
-package com.gestion.microelectronica.mypackages.repositories;
+package com.gestion.microelectronica.repositories;
 
-import java.awt.print.Pageable;
+
 import java.io.Serializable;
 import java.util.List;
 
+
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.gestion.microelectronica.mypackages.entities.ComponenteEntity;
+import com.gestion.microelectronica.entities.ComponenteEntity;
 
 
 @Repository
@@ -622,17 +603,455 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 ```
 
 
+</br>
+
+#### Paso y) Creación y Configuración de la Interfaz Repository `I_ComponenteDetalleRepository` 
+#### (Se realiza el mismo procedimiento descrito detalladamente en el Paso Anterior)
+* Código..
+```java
+package com.gestion.microelectronica.repositories;
+
+import java.io.Serializable;
+import java.util.List;
+
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
+@Repository
+public interface I_ComponenteDetalleRepository extends JpaRepository<ComponenteDetalleEntity, Serializable>, PagingAndSortingRepository<ComponenteDetalleEntity, Serializable>{
+
+
+	//============================ MÉTODOS DE BÚSQUEDA ============================== 
+	
+		public abstract ComponenteDetalleEntity findById(int id);
+		
+		public abstract ComponenteDetalleEntity findByIdComponente(int id);
+		
+		public abstract List<ComponenteDetalleEntity> findByHojaDeDatos(String hojaDeDatos);
+	
+		public abstract List<ComponenteDetalleEntity> findByLongitud(String longitud);
+		
+		public abstract List<ComponenteDetalleEntity> findByAncho(String ancho);
+		
+		public abstract List<ComponenteDetalleEntity> findByPeso(String peso);
+		
+		public abstract List<ComponenteDetalleEntity> findByMaterial(String material);
+		
+		public abstract List<ComponenteDetalleEntity> findByVoltajeRecomendado(String voltajeRecomendado);
+		
+		public abstract List<ComponenteDetalleEntity> findByVoltajeMinEntrada(String voltajeMinEntrada);
+	
+		public abstract List<ComponenteDetalleEntity> findByVoltajeMaxEntrada(String voltajeMaxEntrada);
+	
+		public abstract Page<ComponenteDetalleEntity> findAll(Pageable pageable);
+		
+	
+}
+
+
+```
+
+
+</br>
+
+## Sección 5) Creación y Configuración de los Services 
+
+</br>
+
+#### Paso f) Creación y Configuración del Service `ComponenteService` 
+* Dentro de la jerarquia de paquetes `com.gestion.microelectronica` creamos el paquete `services`
+* Dentro del mismo la Clase `ComponenteService`
+* Agregamos la annotation `@Service` de la clase haciendo referencia para Spring y `@Autowired` para implementar Inyección de Dependencias de la interfaz creada.
+* Usamos log4j para los logs de error en los métodos CRUD para la persistencia. 
+* Desarrollamos el cuerpo de cada método de busqueda de la interfaz creada
+* Cada uno de los Métodos CRUD tiene su comprobación de Persistencia y devolverán un booleano según el resultado de la operación, los mismos pueden ser modificados para adicionar mayor seguridad.
+* Código..
+```java
+package com.gestion.microelectronica.services;
+
+
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gestion.microelectronica.mypackages.entities.ComponenteEntity;
+import com.gestion.microelectronica.mypackages.repositories.I_ComponenteRepository;
+
+
+@Service
+public class ComponenteService {
+
+	@Autowired
+	private I_ComponenteRepository iComponenteRepository;
+
+	// =============== LOGS ====================
+	private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ComponenteService.class);
+
+	// =============== MÉTODOS CRUD ====================
+
+	// ------ INSERT --------
+	public boolean addComponente(ComponenteEntity componente) {
+		try {
+			if (componente == null) {
+				logger.error("ERROR addComponente : EL COMPONENTE " + componente + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteRepository.save(componente);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR addComponente : EL COMPONENTE " + componente + " NO SE HA INSERTADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ UPDATE --------
+	public boolean updateComponente(ComponenteEntity componente) {
+		try {
+			if (componente == null) {
+				logger.error("ERROR updateComponente : EL COMPONENTE " + componente + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteRepository.save(componente);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR updateComponente : EL COMPONENTE " + componente + " NO SE HA ACTUALIZADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ DELETE --------
+	public boolean deleteComponente(int id) {
+		try {
+			if (id <= 0) {
+				logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO EXISTE!!");
+				return false;
+			} else {
+				iComponenteRepository.delete(iComponenteRepository.findById(id));
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO SE HA ELIMINADO DE LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ SELECT --------
+	public List<ComponenteEntity> getAllComponente(Pageable pageable) {
+
+		return iComponenteRepository.findAll(pageable).getContent();
+	}
+
+	// =============== MÉTODOS DE BUSQUEDA ====================
+
+	// ------ ID --------
+	public ComponenteEntity findById(int id) {
+		return iComponenteRepository.findById(id);
+	}
+
+	// ------ CODIGO --------
+	public List<ComponenteEntity> findByCodigo(String codigo) {
+		return iComponenteRepository.findByCodigo(codigo);
+	}
+
+	// ------ IMAGEN --------
+	public List<ComponenteEntity> findByImagen(String imagen) {
+		return iComponenteRepository.findByImagen(imagen);
+	}
+
+	// ------ NRO_PIEZA --------
+	public List<ComponenteEntity> findByNroPieza(String nroPieza) {
+		return iComponenteRepository.findByNroPieza(nroPieza);
+	}
+	// ------ CATEGORIA --------
+	public List<ComponenteEntity> findByCategoria(String categoria) {
+		return iComponenteRepository.findByCategoria(categoria);
+	}
+	// ------ DESCRIPCION --------
+	public List<ComponenteEntity> findByDescripcion(String descripcion) {
+		return iComponenteRepository.findByDescripcion(descripcion);
+	}
+	// ------ FABRICANTE --------
+	public List<ComponenteEntity> findByFabricante(String fabricante) {
+		return iComponenteRepository.findByFabricante(fabricante);
+	}
+	// ------ STOCK --------
+	public List<ComponenteEntity> findByStock(int cantidad) {
+		return iComponenteRepository.findByStock(cantidad);
+	}
+	// ------ PRECIO --------
+	public List<ComponenteEntity> findByPrecio(double precio) {
+		return iComponenteRepository.findByPrecio(precio);
+	}
+
+	
+}
+
+```
 
 
 
 
+</br>
+
+#### Paso k) Creación y Configuración del Service `ComponenteDetalleService` 
+#### (Se realiza el mismo procedimiento descrito detalladamente en el Paso Anterior)
+* Código..
+```java
+package com.gestion.microelectronica.services;
+
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
+import com.gestion.microelectronica.repositories.I_ComponenteDetalleRepository;
+
+@Service
+public class ComponenteDetalleService {
+
+	@Autowired
+	private I_ComponenteDetalleRepository iComponenteDetalleRepository;
+
+	// =============== LOGS ====================
+	private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ComponenteService.class);
+
+	// =============== MÉTODOS CRUD ====================
+
+	// ------ INSERT --------
+	public boolean addComponente(ComponenteDetalleEntity componenteDetalle) {
+		try {
+			if (componenteDetalle == null) {
+				logger.error("ERROR addComponente : EL COMPONENTE " + componenteDetalle + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteDetalleRepository.save(componenteDetalle);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR addComponente : EL COMPONENTE " + componenteDetalle + " NO SE HA INSERTADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ UPDATE --------
+	public boolean updateComponente(ComponenteDetalleEntity componenteDetalle) {
+		try {
+			if (componenteDetalle == null) {
+				logger.error("ERROR updateComponente : EL COMPONENTE " + componenteDetalle + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteDetalleRepository.save(componenteDetalle);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error(
+					"ERROR updateComponente : EL COMPONENTE " + componenteDetalle + " NO SE HA ACTUALIZADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ DELETE --------
+	public boolean deleteComponente(int id) {
+		try {
+			if (id <= 0) {
+				logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO EXISTE!!");
+				return false;
+			} else {
+				iComponenteDetalleRepository.delete(iComponenteDetalleRepository.findById(id));
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO SE HA ELIMINADO DE LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ SELECT --------
+	public List<ComponenteDetalleEntity> getAllComponente(Pageable pageable) {
+
+		return iComponenteDetalleRepository.findAll(pageable).getContent();
+	}
+
+	// =============== MÉTODOS DE BUSQUEDA ====================
+
+	// ------ ID --------
+	public ComponenteDetalleEntity findById(int id) {
+		return iComponenteDetalleRepository.findById(id);
+	}
+
+	// ------ ID DE COMPONENTE --------
+	public ComponenteDetalleEntity findByIdComponente(int id) {
+		return iComponenteDetalleRepository.findByIdComponente(id);
+	}
+
+	// ------ HOJA DE DATOS --------
+	public List<ComponenteDetalleEntity> findByHojaDeDatos(String hojaDeDatos) {
+		return iComponenteDetalleRepository.findByHojaDeDatos(hojaDeDatos);
+	}
+
+	// ------ LONGITUD --------
+	public List<ComponenteDetalleEntity> findByLongitud(String longitud) {
+		return iComponenteDetalleRepository.findByLongitud(longitud);
+	}
+
+	// ------ ANCHO --------
+	public List<ComponenteDetalleEntity> findByAncho(String ancho) {
+		return iComponenteDetalleRepository.findByAncho(ancho);
+	}
+
+	// ------ PESO --------
+	public List<ComponenteDetalleEntity> findByPeso(String peso) {
+		return iComponenteDetalleRepository.findByPeso(peso);
+	}
+
+	// ------ MATERIAL --------
+	public List<ComponenteDetalleEntity> findByMaterial(String material) {
+		return iComponenteDetalleRepository.findByMaterial(material);
+	}
+
+	// ------ VOLTAJE RECOMENDADO --------
+	public List<ComponenteDetalleEntity> findByVoltajeRecomendado(String voltajeRecomendado) {
+		return iComponenteDetalleRepository.findByVoltajeRecomendado(voltajeRecomendado);
+	}
+
+	// ------ VOLTAJE MINIMO DE ENTRADA --------
+	public List<ComponenteDetalleEntity> findByVoltajeMinEntrada(String voltajeMinEntrada) {
+		return iComponenteDetalleRepository.findByVoltajeMinEntrada(voltajeMinEntrada);
+	}
+
+	// ------ VOLTAJE MAXIMO DE ENTRADA --------
+	public List<ComponenteDetalleEntity> findByVoltajeMaxEntrada(String voltajeMaxEntrada) {
+		return iComponenteDetalleRepository.findByVoltajeMinEntrada(voltajeMaxEntrada);
+	}
+
+}
+
+```
 
 
+</br>
+
+##  Sección 6) Creación y Configuración de los Controllers
+
+</br>
+
+#### Paso w) Creación y Configuración del Controller  `ComponenteController` 
+* Dentro de la jerarquia de paquetes `com.inmueble.service` creamos el paquete `controller`
+* Dentro del mismo la Clase Controller `ComponenteController`
+* Agregamos la annotation `@RestController` de la clase haciendo referencia al controlador y la annotation `@RequestMapping` haciendo referencia a la ruta principal de acceso para Spring.
+* Implementamos `@Autowired` para Inyección de Dependencias del service creado.
+* Utilizamos `@PostMapping` y `@GetMapping` para el uso de los métodos del protocolo HTTP 
+* También hacemos uso de las annotations `@RequestBody` para recuperar el cuerpo de la solicitud HTTP y el `@PathVariable` para el manejo de las variables declaradas
+* Usamos log4j para los logs de error en los métodos CRUD para la persistencia. 
+* Desarrollamos el cuerpo de cada método de la interfaz
+* Cada Método CRUD de Tipo HTTP (POST, DELETE, PUT, GET) tiene su comprobación de Persistencia y los métodos devolverán un booleano según el resultado de la operación, menos el get que trae el Componente. Los mismos pueden ser modificados para adicionar mayor seguridad.
+ 
+ ```java
+ package com.gestion.microelectronica.controllers;
 
 
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gestion.microelectronica.entities.ComponenteEntity;
+import com.gestion.microelectronica.services.ComponenteService;
+
+@RestController
+@RequestMapping("/componentes")
+public class ComponenteController {
+
+	@Autowired
+	private ComponenteService componenteService;
+
+	// ============= MÉTODOS HTTP CRUD ==============
+
+	// ----POST----
+	@PostMapping("/")
+	public boolean addComponente(@RequestBody ComponenteEntity componente) {
+
+		return componenteService.addComponente(componente);
+	}
+
+	// ----PUT-----
+	@PutMapping("/")
+	public boolean updateComponente(@RequestBody ComponenteEntity componente) {
+
+		return componenteService.updateComponente(componente);
+	}
+
+	// ---DELETE---
+	@DeleteMapping("/{id}")
+	public boolean deleteComponente(@PathVariable("id") int id) {
+
+		return componenteService.deleteComponente(id);
+	}
+
+	// ---GET---
+	@GetMapping("/listado")
+	public List<ComponenteEntity> getAll(Pageable pageable) {
+
+		return componenteService.getAllComponente(pageable);
+	}
+	
+	// ============= MÉTODOS HTTP BÚSQUEDA ==============
+
+	// ---GET---
+	@GetMapping("/{id}")
+	public ComponenteEntity getById(@PathVariable("id") int id) {
+
+		return componenteService.findById(id);
+	}
+	
+	// ---GET---
+	@GetMapping("/{codigo}")
+	public List<ComponenteEntity> getByCodigo(@PathVariable("codigo") String codigo) {
+
+		return componenteService.findByCodigo(codigo);
+	}
+	
+	
+	
+	
+
+}
+
+ ```
 
 
+#### Paso w) Creación y Configuración del Controller  `ComponenteDetalleController` 
+ ```java
+ 
 
+ ```
 
 
 
