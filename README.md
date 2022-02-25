@@ -136,11 +136,13 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
    - [Paso zx) Prueba del Servicio de la Tabla componentes_detalles](#paso-zz-prueba-del-servicio-de-la-tabla-componentes-detalles) 
 
 
-#### Sección 8) Apéndice
+#### Sección 8) Creación de la Vista con Thymeleaf
 
-- [ Anotaciones Usadas para JPA](#anotaciones-usadas-para-jpa)
- 
-- [ Anotaciones Usadas para Spring](#anotaciones-usadas-para-spring)
+   - [Paso zy) Creación de la Vista](#paso-zy-creacion-de-la-vista) 
+
+
+
+
 
 
 
@@ -565,7 +567,8 @@ public class ComponenteDetalleEntity {
 * Dentro del mismo la Interfaz `I_ComponenteRepository`
 * Agregamos la annotation `@Repository` de la clase para JPA y usamos la interfaz  `JpaRepository<ComponenteEntity, Serializable>` junto con la Interfaz de Paginación `PagingAndSortingRepository<ComponenteEntity, Long>` para toda la funcionalidad para la creación de los métodos Jpa.
 * Creamos y Definimos todos los métodos abstractos haciendo referencia a los campos de la entidad tentativos de uso. 
-* No creamos los métodos CRUD (add, save, update) en la interfaz, ya que declaramos todos los métodos abstractos sin devolución de valores. El método `findAll` será para Paginados
+* No creamos los métodos CRUD (add, save, update) en la interfaz, ya que declaramos todos los métodos abstractos sin devolución de valores. El método `findAllPageable` será para Paginados.
+* Crearemos dos métodos de tipo findAll para diferentes usos posteriores
 * Código..
 
 ```java
@@ -609,7 +612,10 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 		public abstract List<ComponenteEntity> findByPrecio(double precio);
 
 	
-		public abstract Page<ComponenteEntity> findAll(Pageable pageable);
+		public abstract List<ComponenteEntity> findAll();
+		
+		public abstract Page<ComponenteEntity> findAllPageable(Pageable pageable);
+		
 		
 	
 }
@@ -663,7 +669,10 @@ public interface I_ComponenteDetalleRepository extends JpaRepository<ComponenteD
 	
 		public abstract List<ComponenteDetalleEntity> findByVoltajeMaxEntrada(String voltajeMaxEntrada);
 	
-		public abstract Page<ComponenteDetalleEntity> findAll(Pageable pageable);
+		public abstract List<ComponenteDetalleEntity> findAll();
+		
+		public abstract Page<ComponenteDetalleEntity> findAllPageable(Pageable pageable);
+		
 		
 	
 }
@@ -685,6 +694,7 @@ public interface I_ComponenteDetalleRepository extends JpaRepository<ComponenteD
 * Usamos log4j para los logs de error en los métodos CRUD para la persistencia. 
 * Desarrollamos el cuerpo de cada método de busqueda de la interfaz creada
 * Cada uno de los Métodos CRUD tiene su comprobación de Persistencia y devolverán un booleano según el resultado de la operación, los mismos pueden ser modificados para adicionar mayor seguridad.
+* Aplicaremos el metodo de listado de tipo getAll para paginados y para el listado completo de componentes
 * Código..
 ```java
 package com.gestion.microelectronica.services;
@@ -762,13 +772,19 @@ public class ComponenteService {
 			return false;
 		}
 	}
+	// ------ SELECT --------
+	//------- LISTADO COMPLETO ---------
+	public List<ComponenteEntity> getAllComponente() {
+
+		return iComponenteRepository.findAll();
+	}
 
 	// ------ SELECT --------
-	public List<ComponenteEntity> getAllComponente(Pageable pageable) {
+	//------- LISTADO PAGINADO ---------
+	public List<ComponenteEntity> getAllComponentePageable(Pageable pageable) {
 
 		return iComponenteRepository.findAll(pageable).getContent();
 	}
-
 	// =============== MÉTODOS DE BUSQUEDA ====================
 
 	// ------ ID --------
@@ -901,6 +917,14 @@ public class ComponenteDetalleService {
 	}
 
 	// ------ SELECT --------
+	//------- LISTADO COMPLETO ---------
+	public List<ComponenteDetalleEntity> getAllComponente() {
+
+		return iComponenteDetalleRepository.findAll();
+	}
+
+	// ------ SELECT --------
+	//------- LISTADO PAGINADO ---------
 	public List<ComponenteDetalleEntity> getAllComponente(Pageable pageable) {
 
 		return iComponenteDetalleRepository.findAll(pageable).getContent();
@@ -979,14 +1003,26 @@ public class ComponenteDetalleService {
 * Usamos log4j para los logs de error en los métodos CRUD para la persistencia. 
 * Desarrollamos el cuerpo de cada método de la interfaz
 * Cada Método CRUD de Tipo HTTP (POST, DELETE, PUT, GET) tiene su comprobación de Persistencia y los métodos devolverán un booleano según el resultado de la operación, menos el get que trae el Componente. Los mismos pueden ser modificados para adicionar mayor seguridad.
+* Además crearemos un método que nos devolverá la lista de componentes en la Vista, dicho método se llamará viewHomePage y nos devolverá el index
+ ```java
+ 	//---GET---
+	//---LISTA DE COMPONENTES PARA EL MODEL---
+	@GetMapping("/")
+	public String viewHomePage(Model model) {
+		model.addAttribute("listaComponentes", componenteService.getAllComponente());
+		return "index";
+	}
+ 
+ ```
+ </br>
  
  ```java
- package com.gestion.microelectronica.controllers;
-
+package com.gestion.microelectronica.controllers;
 
 import java.util.List;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -1034,7 +1070,15 @@ public class ComponenteController {
 	@GetMapping("/listado")
 	public List<ComponenteEntity> getAll(Pageable pageable) {
 
-		return componenteService.getAllComponente(pageable);
+		return componenteService.getAllComponentePageable(pageable);
+	}
+	
+	//---GET---
+	//---LISTA DE COMPONENTES PARA EL MODEL---
+	@GetMapping("/")
+	public String viewHomePage(Model model) {
+		model.addAttribute("listaComponentes", componenteService.getAllComponente());
+		return "index";
 	}
 	
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
@@ -1059,12 +1103,13 @@ public class ComponenteController {
 
 }
 
+
  ```
 
 
 #### Paso w) Creación y Configuración del Controller  `ComponenteDetalleController` 
  ```java
- package com.gestion.microelectronica.controllers;
+package com.gestion.microelectronica.controllers;
 
 import java.util.List;
 
@@ -1117,7 +1162,7 @@ public class ComponenteDetalleController {
 	@GetMapping("/listado")
 	public List<ComponenteDetalleEntity> getAll(Pageable pageable) {
 
-		return componenteDetalleService.getAllComponente(pageable);
+		return componenteDetalleService.getAllComponentePageable(pageable);
 	}
 	
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
@@ -1154,8 +1199,6 @@ public class ComponenteDetalleController {
 
 </br>
 
-   - [Paso zz) Prueba del Servicio de la Tabla componentes](#paso-zz-prueba-del-servicio-de-la-tabla-componentes) 
-   - [Paso zx) Prueba del Servicio de la Tabla componentes_detalles](#paso-zz-prueba-del-servicio-de-la-tabla-componentes-detalles) 
 
 
 ### Paso zz) Prueba del Servicio de la Tabla `componentes`
@@ -2302,7 +2345,27 @@ public class ComponenteDetalleController {
 * Nuestra API REST cumple y es completamente funcional con lo desarrollado
 
 
+
 </br>
+
+##  Sección 8) Creación de la Vista con Thymeleaf
+
+</br>
+
+
+
+### Paso zy) Creación de la Vista con Thymeleaf
+#### (Vamos a desarrollar la Vista que será la que se manejará del lado del Cliente)
+
+ </br>
+ 
+ * Para el uso y manejo de Thymeleaf debemos tener instalado el plugin a travsés del Eclipse Marketplace
+ * Click en Help, luego Eclipse Marketplace, buscamos Thymeleaf e instalamos el plugin según la versión de cada IDE
+ * Seguidamente creamos un archivo de tipo HTML dentro del directorio templates , click derecho sobre templates (src/main/resources/templates)
+ * Buscamos en Other html, selecionamos html file, asignamos el nombre `index.html`
+
+
+
 
 
 
