@@ -614,7 +614,7 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 	
 		public abstract List<ComponenteEntity> findAll();
 		
-		public abstract Page<ComponenteEntity> findAllPageable(Pageable pageable);
+		public abstract Page<ComponenteEntity> findAll(Pageable pageable);
 		
 		
 	
@@ -671,7 +671,7 @@ public interface I_ComponenteDetalleRepository extends JpaRepository<ComponenteD
 	
 		public abstract List<ComponenteDetalleEntity> findAll();
 		
-		public abstract Page<ComponenteDetalleEntity> findAllPageable(Pageable pageable);
+		public abstract Page<ComponenteDetalleEntity> findAll(Pageable pageable);
 		
 		
 	
@@ -694,7 +694,7 @@ public interface I_ComponenteDetalleRepository extends JpaRepository<ComponenteD
 * Usamos log4j para los logs de error en los métodos CRUD para la persistencia. 
 * Desarrollamos el cuerpo de cada método de busqueda de la interfaz creada
 * Cada uno de los Métodos CRUD tiene su comprobación de Persistencia y devolverán un booleano según el resultado de la operación, los mismos pueden ser modificados para adicionar mayor seguridad.
-* Aplicaremos el metodo de listado de tipo getAll para paginados y para el listado completo de componentes
+* Aplicaremos el metodo de listado de tipo getAll para paginados y el otro método getAll para el listado completo de componentes
 * Código..
 ```java
 package com.gestion.microelectronica.services;
@@ -781,9 +781,9 @@ public class ComponenteService {
 
 	// ------ SELECT --------
 	//------- LISTADO PAGINADO ---------
-	public List<ComponenteEntity> getAllComponentePageable(Pageable pageable) {
+	public List<ComponenteEntity> getAllComponente(Pageable pageable) {
 
-		return iComponenteRepository.findAllPageable(pageable).getContent();
+		return iComponenteRepository.findAll(pageable).getContent();
 	}
 	// =============== MÉTODOS DE BUSQUEDA ====================
 
@@ -927,7 +927,7 @@ public class ComponenteDetalleService {
 	//------- LISTADO PAGINADO ---------
 	public List<ComponenteDetalleEntity> getAllComponente(Pageable pageable) {
 
-		return iComponenteDetalleRepository.findAllPageable(pageable).getContent();
+		return iComponenteDetalleRepository.findAll(pageable).getContent();
 	}
 
 	// =============== MÉTODOS DE BUSQUEDA ====================
@@ -1162,7 +1162,7 @@ public class ComponenteDetalleController {
 	@GetMapping("/listado")
 	public List<ComponenteDetalleEntity> getAll(Pageable pageable) {
 
-		return componenteDetalleService.getAllComponentePageable(pageable);
+		return componenteDetalleService.getAllComponente(pageable);
 	}
 	
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
