@@ -28,7 +28,6 @@
 | Git | 2.29.1  | Control de Versiones |
 
 
-
 </br>
 
 ### Descarga y Documentacion de las Tecnologías Implementadas
