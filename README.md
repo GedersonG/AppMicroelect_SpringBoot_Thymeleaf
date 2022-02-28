@@ -1,5 +1,7 @@
 # AppGestionMicroelectronica_SpringBoot
-Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Thymeleaf, Bootstrap y Oracle
+
+* Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Thymeleaf, Bootstrap y Oracle
+* Repositorio de la Base de Datos : https://github.com/andresWeitzel/db_microelectronica_Oracle
 
 
 
@@ -427,7 +429,6 @@ public class ComponenteEntity {
 * Las anotaciones para lombok son `@Data` , `@AllArgsConstructor` y `@NoArgsConstructor` , la primera para la generacion de los getters y setters y el resto de metodos, la segunda para los constructores sobrecargados de la Entidad y la tercera para constructor vacio 
 * Código..
 ```java
-
 package com.gestion.microelectronica.entities;
 
 import javax.persistence.Column;
@@ -435,6 +436,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -491,7 +493,6 @@ public class ComponenteEntity {
 #### (Se realiza el mismo procedimiento descrito detalladamente en el Paso Anterior )
 * Código..
 ```java
-
 package com.gestion.microelectronica.entities;
 
 
@@ -501,6 +502,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -518,7 +520,6 @@ public class ComponenteDetalleEntity {
 	@SequenceGenerator(name = "seq_comp_det", sequenceName = "id_seq_comp_det" , allocationSize=1)
 	@Id
 	@Column(name="id") 
-	private int id;
 	private int id;
 	
 	@Column(name="id_componente")
@@ -551,7 +552,6 @@ public class ComponenteDetalleEntity {
 
 }
 
-
 ```
 
 
@@ -577,7 +577,6 @@ package com.gestion.microelectronica.repositories;
 
 import java.io.Serializable;
 import java.util.List;
-
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -611,14 +610,14 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 
 		public abstract List<ComponenteEntity> findByPrecio(double precio);
 
-	
 		public abstract List<ComponenteEntity> findAll();
 		
 		public abstract Page<ComponenteEntity> findAll(Pageable pageable);
 		
-		
+	
 	
 }
+
 
 
 ```
@@ -632,9 +631,9 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 ```java
 package com.gestion.microelectronica.repositories;
 
+
 import java.io.Serializable;
 import java.util.List;
-
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -673,10 +672,8 @@ public interface I_ComponenteDetalleRepository extends JpaRepository<ComponenteD
 		
 		public abstract Page<ComponenteDetalleEntity> findAll(Pageable pageable);
 		
-		
 	
 }
-
 
 ```
 
@@ -702,13 +699,14 @@ package com.gestion.microelectronica.services;
 
 import java.util.List;
 
+
 import org.springframework.data.domain.Pageable;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gestion.microelectronica.mypackages.entities.ComponenteEntity;
-import com.gestion.microelectronica.mypackages.repositories.I_ComponenteRepository;
+import com.gestion.microelectronica.entities.ComponenteEntity;
+import com.gestion.microelectronica.repositories.I_ComponenteRepository;
 
 
 @Service
@@ -772,6 +770,7 @@ public class ComponenteService {
 			return false;
 		}
 	}
+
 	// ------ SELECT --------
 	//------- LISTADO COMPLETO ---------
 	public List<ComponenteEntity> getAllComponente() {
@@ -785,6 +784,7 @@ public class ComponenteService {
 
 		return iComponenteRepository.findAll(pageable).getContent();
 	}
+
 	// =============== MÉTODOS DE BUSQUEDA ====================
 
 	// ------ ID --------
@@ -842,6 +842,7 @@ public class ComponenteService {
 * Código..
 ```java
 package com.gestion.microelectronica.services;
+
 
 import java.util.List;
 
@@ -984,6 +985,7 @@ public class ComponenteDetalleService {
 
 }
 
+
 ```
 
 
@@ -1003,17 +1005,20 @@ public class ComponenteDetalleService {
 * Usamos log4j para los logs de error en los métodos CRUD para la persistencia. 
 * Desarrollamos el cuerpo de cada método de la interfaz
 * Cada Método CRUD de Tipo HTTP (POST, DELETE, PUT, GET) tiene su comprobación de Persistencia y los métodos devolverán un booleano según el resultado de la operación, menos el get que trae el Componente. Los mismos pueden ser modificados para adicionar mayor seguridad.
-* Además crearemos un método que nos devolverá la lista de componentes en la Vista, dicho método se llamará viewHomePage y nos devolverá el index
+* Además crearemos un método que nos devolverá la vista del front(index) y a su vez seteamos un objeto que representará la lista de componentes , dicho método se llamará ModelandView y nos devolverá el index
  ```java
- 	//---GET---
-	//---LISTA DE COMPONENTES PARA EL MODEL---
+	//---GET---
+	//---VISTA Y LISTA DE COMPONENTES---
 	@GetMapping("/")
-	public String viewHomePage(Model model) {
-		model.addAttribute("listaComponentes", componenteService.getAllComponente());
-		return "index";
+	public ModelAndView listarModelAndView() {
+	    ModelAndView mav = new ModelAndView();
+	    mav.addObject("listaComponentes", componenteService.getAllComponente());
+	    mav.setViewName("index");
+	    return mav;
 	}
  
  ```
+ * Código del Controller...
  </br>
  
  ```java
@@ -1032,6 +1037,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gestion.microelectronica.entities.ComponenteEntity;
 import com.gestion.microelectronica.services.ComponenteService;
@@ -1065,22 +1071,24 @@ public class ComponenteController {
 
 		return componenteService.deleteComponente(id);
 	}
-
+	
 	// ---GET---
+	//---LISTADO PAGINADO Y COMPLETO---
 	@GetMapping("/listado")
 	public List<ComponenteEntity> getAll(Pageable pageable) {
 
-		return componenteService.getAllComponentePageable(pageable);
+		return componenteService.getAllComponente(pageable);
 	}
 	
 	//---GET---
-	//---LISTA DE COMPONENTES PARA EL MODEL---
+	//---VISTA Y LISTA DE COMPONENTES---
 	@GetMapping("/")
-	public String viewHomePage(Model model) {
-		model.addAttribute("listaComponentes", componenteService.getAllComponente());
-		return "index";
+	public ModelAndView listarModelAndView() {
+	    ModelAndView mav = new ModelAndView();
+	    mav.addObject("listaComponentes", componenteService.getAllComponente());
+	    mav.setViewName("componentes");
+	    return mav;
 	}
-	
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
 
 	// ---GET---
@@ -1096,19 +1104,18 @@ public class ComponenteController {
 
 		return componenteService.findByCodigo(codigo);
 	}
-	
-	
-	
-	
 
 }
 
 
  ```
+ 
+ </br>
 
 
-#### Paso w) Creación y Configuración del Controller  `ComponenteDetalleController` 
- ```java
+#### Paso w) Creación y Configuración del Controller `ComponenteDetalleController` 
+* Mismos Procedimientos que el controlador anterior..
+ ```java	
 package com.gestion.microelectronica.controllers;
 
 import java.util.List;
@@ -1123,8 +1130,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
+import com.gestion.microelectronica.entities.ComponenteEntity;
 import com.gestion.microelectronica.services.ComponenteDetalleService;
 
 @RestController
@@ -1158,11 +1167,26 @@ public class ComponenteDetalleController {
 		return componenteDetalleService.deleteComponente(id);
 	}
 
+
+	
 	// ---GET---
+	// --- LISTADO PAGINADO Y COMPLETO---
 	@GetMapping("/listado")
 	public List<ComponenteDetalleEntity> getAll(Pageable pageable) {
 
 		return componenteDetalleService.getAllComponente(pageable);
+	}
+	
+	
+	
+	//---GET---
+	//---VISTA Y LISTA DE COMPONENTES---
+	@GetMapping("/")
+	public ModelAndView listarModelAndView() {
+	    ModelAndView mav = new ModelAndView();
+	    mav.addObject("listaComponentesDetalles", componenteDetalleService.getAllComponente());
+	    mav.setViewName("componentes_detalles");
+	    return mav;
 	}
 	
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
@@ -2348,21 +2372,22 @@ public class ComponenteDetalleController {
 
 </br>
 
-##  Sección 8) Creación de la Vista con Thymeleaf
+##  Sección 8) Creación de las Vistas con Thymeleaf
 
 </br>
 
 
 
-### Paso zy) Creación de la Vista con Thymeleaf
-#### (Vamos a desarrollar la Vista que será la que se manejará del lado del Cliente)
+### Paso zy) Creación de la Vista `componentes.html`
+#### (Esta vista contendrá el listado de componentes de la tabla componentes)
 
  </br>
  
- * Para el uso y manejo de Thymeleaf debemos tener instalado el plugin a travsés del Eclipse Marketplace
+ * Para el uso y manejo de Thymeleaf debemos tener instalado el plugin a través de Eclipse Marketplace
  * Click en Help, luego Eclipse Marketplace, buscamos Thymeleaf e instalamos el plugin según la versión de cada IDE
  * Seguidamente creamos un archivo de tipo HTML dentro del directorio templates , click derecho sobre templates (src/main/resources/templates)
- * Buscamos en Other html, selecionamos html file, asignamos el nombre `index.html`
+ * Buscamos en Other html, selecionamos html file, asignamos el nombre `componentes.html`
+ * 
 
 
 
