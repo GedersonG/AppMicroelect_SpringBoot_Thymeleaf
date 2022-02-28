@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div align="center">
+	
+	<h2>Listado Detalles de Componentes</h2>
+
+		<table border="1">
+
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>ID Componente</th>
+					<th>Hoja de Datos</th>
+					<th>Longitud</th>
+					<th>Ancho</th>
+					<th>Peso</th>
+					<th>Material</th>
+					<th>Voltaje Recomendado</th>
+					<th>Voltaje Mínimo de Entrada</th>
+					<th>Voltaje Máximo de Entrada</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr th:each="compDet : ${listaComponentesDetalles}">
+					<td th:text="${compDet.getId()}"></td>
+					<td th:text="${compDet.getIdComponente()}"></td>
+					<td th:text="${compDet.getHojaDeDatos()}"></td>
+					<td th:text="${compDet.getLongitud()}"></td>
+					<td th:text="${compDet.getAncho()}"></td>
+					<td th:text="${compDet.getPeso()}"></td>
+					<td th:text="${compDet.getMaterial()}"></td>
+					<td th:text="${compDet.getVoltajeRecomendado()}"></td>
+					<td th:text="${compDet.getVoltajeMinEntrada()}"></td>
+					<td th:text="${compDet.getVoltajeMaxEntrada()}"></td>
+				</tr>
+
+			</tbody>
+
+
+		</table>
+
+
+	</div>
+
+</body>
+</html>

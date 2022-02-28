@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
+import com.gestion.microelectronica.entities.ComponenteEntity;
 import com.gestion.microelectronica.services.ComponenteDetalleService;
 
 @RestController
@@ -47,11 +49,27 @@ public class ComponenteDetalleController {
 		return componenteDetalleService.deleteComponente(id);
 	}
 
+
+
+
 	// ---GET---
+	// --- LISTADO PAGINADO Y COMPLETO ---
 	@GetMapping("/listado")
 	public List<ComponenteDetalleEntity> getAll(Pageable pageable) {
 
 		return componenteDetalleService.getAllComponente(pageable);
+	}
+	
+	
+	
+	//---GET---
+	//---VISTA Y LISTA DE COMPONENTES---
+	@GetMapping("/")
+	public ModelAndView listarModelAndView() {
+	    ModelAndView mav = new ModelAndView();
+	    mav.addObject("listaComponentesDetalles", componenteDetalleService.getAllComponente());
+	    mav.setViewName("componentes_detalles");
+	    return mav;
 	}
 	
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
