@@ -6,6 +6,7 @@
 
 
 
+
 </br>
 
 ### Tecnologías Implementadas
@@ -1004,7 +1005,7 @@ public class ComponenteDetalleService {
 * Usamos log4j para los logs de error en los métodos CRUD para la persistencia. 
 * Desarrollamos el cuerpo de cada método de la interfaz
 * Cada Método CRUD de Tipo HTTP (POST, DELETE, PUT, GET) tiene su comprobación de Persistencia y los métodos devolverán un booleano según el resultado de la operación, menos el get que trae el Componente. Los mismos pueden ser modificados para adicionar mayor seguridad.
-* Además crearemos un método que nos devolverá la vista del front(index) y a su vez seteamos un objeto que representará la lista de componentes , dicho método se llamará ModelandView y nos devolverá el index
+* Además crearemos un método que nos devolverá la vista del front para la tabla de componentes(Componentes.html) y a su vez seteamos un objeto que representará la lista de componentes , dicho método se llamará ModelandView y nos devolverá la vista
  ```java
 	//---GET---
 	//---VISTA Y LISTA DE COMPONENTES---
@@ -1012,7 +1013,7 @@ public class ComponenteDetalleService {
 	public ModelAndView listarModelAndView() {
 	    ModelAndView mav = new ModelAndView();
 	    mav.addObject("listaComponentes", componenteService.getAllComponente());
-	    mav.setViewName("index");
+	    mav.setViewName("componentes");
 	    return mav;
 	}
  
@@ -1070,7 +1071,8 @@ public class ComponenteController {
 
 		return componenteService.deleteComponente(id);
 	}
-	
+
+
 	// ---GET---
 	//---LISTADO PAGINADO Y COMPLETO---
 	@GetMapping("/listado")
@@ -1103,8 +1105,13 @@ public class ComponenteController {
 
 		return componenteService.findByCodigo(codigo);
 	}
+	
+	
+	
+	
 
 }
+
 
 
  ```
@@ -1136,7 +1143,7 @@ import com.gestion.microelectronica.entities.ComponenteEntity;
 import com.gestion.microelectronica.services.ComponenteDetalleService;
 
 @RestController
-@RequestMapping("/componentes_detalles")
+@RequestMapping("/componentes-detalles")
 public class ComponenteDetalleController {
 	
 
@@ -1167,9 +1174,10 @@ public class ComponenteDetalleController {
 	}
 
 
-	
+
+
 	// ---GET---
-	// --- LISTADO PAGINADO Y COMPLETO---
+	// --- LISTADO PAGINADO Y COMPLETO ---
 	@GetMapping("/listado")
 	public List<ComponenteDetalleEntity> getAll(Pageable pageable) {
 
@@ -1184,7 +1192,7 @@ public class ComponenteDetalleController {
 	public ModelAndView listarModelAndView() {
 	    ModelAndView mav = new ModelAndView();
 	    mav.addObject("listaComponentesDetalles", componenteDetalleService.getAllComponente());
-	    mav.setViewName("componentes_detalles");
+	    mav.setViewName("componentes-detalles");
 	    return mav;
 	}
 	
@@ -2139,7 +2147,7 @@ public class ComponenteDetalleController {
  </br>
  
  
-  * Testeamos el Método GET junto con la paginación creada para visualizar los componentes de la db con la siguiente uri `http://localhost:8092/componentes_detalles/listado?page=0&size=0`
+  * Testeamos el Método GET junto con la paginación creada para visualizar los componentes de la db con la siguiente uri `http://localhost:8092/componentes-detalles/listado?page=0&size=0`
  * Obtenemos un Status 200 OK junto con el listado total de componentes_detalles..
  * Response..
   ```json
