@@ -19,7 +19,7 @@ import com.gestion.microelectronica.entities.ComponenteEntity;
 import com.gestion.microelectronica.services.ComponenteDetalleService;
 
 @RestController
-@RequestMapping("/componentes_detalles")
+@RequestMapping("/componentes-detalles")
 public class ComponenteDetalleController {
 	
 
@@ -68,7 +68,7 @@ public class ComponenteDetalleController {
 	public ModelAndView listarModelAndView() {
 	    ModelAndView mav = new ModelAndView();
 	    mav.addObject("listaComponentesDetalles", componenteDetalleService.getAllComponente());
-	    mav.setViewName("componentes_detalles");
+	    mav.setViewName("componentes-detalles");
 	    return mav;
 	}
 	
