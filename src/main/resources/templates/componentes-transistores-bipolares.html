@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Transistores Bipolares</title>
+</head>
+<body>
+
+	<div align="center">
+	
+	<h2>Listado Transistores Bipolares</h2>
+
+		<table border="1">
+
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>ID Componente</th>
+					<th>Tipo</th>
+					<th>Voltaje Colector-Emisor</th>
+					<th>Voltaje Colector-Base</th>
+					<th>Voltaje Emisor-Base</th>
+					<th>Voltaje Colector-Emisor Saturación</th>
+					<th>Corriente Colector</th>
+					<th>Ganancia HFE</th>
+					<th>Disipación Máxima</th>
+					<th>Temperatura de Juntura</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr th:each="compTranBip : ${listaComponentesTransistoresBipolares}">
+					<td th:text="${compTranBip.getId()}"></td>
+					<td th:text="${compTranBip.getIdComponente()}"></td>
+					<td th:text="${compTranBip.getTipo()}"></td>
+					<td th:text="${compTranBip.getVoltajeColecEmis()}"></td>
+					<td th:text="${compTranBip.getVoltajeColecBase()}"></td>
+					<td th:text="${compTranBip.getVoltajeEmisBase()}"></td>
+					<td th:text="${compTranBip.getVoltajeColecEmisSat()}"></td>
+					<td th:text="${compTranBip.getCorrienteColec()}"></td>
+					<td th:text="${compTranBip.getGananciaHfe()}"></td>
+					<td th:text="${compTranBip.getDisipMax()}"></td>
+					<td th:text="${compTranBip.getTempJuntura()}"></td>
+				</tr>
+
+			</tbody>
+
+
+		</table>
+
+
+	</div>
+
+</body>
+</html>

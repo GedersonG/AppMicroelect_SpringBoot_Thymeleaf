@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Capacitores Electroliticos</title>
+</head>
+<body>
+
+	<div align="center">
+	
+	<h2>Listado Capacitores Electroliticos</h2>
+
+		<table border="1">
+
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>ID Componente</th>
+					<th>Tipo</th>
+					<th>Capacitancia</th>
+					<th>Tolerancia</th>
+					<th>Rango Temperatura</th>
+					<th>Rango Tensión Nominal</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr th:each="compTranBip : ${listaComponentesCapacitoresElectroliticos}">
+					<td th:text="${compTranBip.getId()}"></td>
+					<td th:text="${compTranBip.getIdComponente()}"></td>
+					<td th:text="${compTranBip.getTipo()}"></td>
+					<td th:text="${compTranBip.getCapacitancia()}"></td>
+					<td th:text="${compTranBip.getTolerancia()}"></td>
+					<td th:text="${compTranBip.getRangoTemperatura()}"></td>
+					<td th:text="${compTranBip.getRangoTensionNominal()}"></td>
+				</tr>
+
+			</tbody>
+
+
+		</table>
+
+
+	</div>
+
+</body>
+</html>

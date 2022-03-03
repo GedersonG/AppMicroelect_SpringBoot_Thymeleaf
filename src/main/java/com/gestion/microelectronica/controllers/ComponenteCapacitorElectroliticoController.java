@@ -67,7 +67,7 @@ public class ComponenteCapacitorElectroliticoController {
 	public ModelAndView listarModelAndView() {
 	    ModelAndView mav = new ModelAndView();
 	    mav.addObject("listaComponentesCapacitoresElectroliticos", componenteCapacitorElectroliticoService.getAllComponente());
-	    mav.setViewName("componentes-capacitor-electrolitico");
+	    mav.setViewName("componentes-capacitores-electroliticos");
 	    return mav;
 	}
 	

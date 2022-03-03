@@ -67,7 +67,7 @@ public class ComponenteTransistorBipolarController {
 	@GetMapping("/")
 	public ModelAndView listarModelAndView() {
 	    ModelAndView mav = new ModelAndView();
-	    mav.addObject("listaComponentesTransistoresBioplares", componenteTransistorBipolarService.getAllComponente());
+	    mav.addObject("listaComponentesTransistoresBipolares", componenteTransistorBipolarService.getAllComponente());
 	    mav.setViewName("componentes-transistores-bipolares");
 	    return mav;
 	}
