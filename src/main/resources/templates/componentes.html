@@ -4,8 +4,11 @@
 <meta charset="utf-8">
 <title>Componentes</title>
 
-<!--CSS NAVBAR -->
-<link href="../src/main/resources/templates/fragment/navbar/navbar.css" rel="stylesheet" />
+<!-- Icono -->
+<link rel="icon" type="image/x-icon" href="../images/electronic.png">
+
+<!--CSS COMPONENTES.CSS-->
+<link th:href="@{../css-templates/general-template.css}" rel="stylesheet">
 
 <!--CSS BOOTSTRAP-->
 <link
@@ -23,19 +26,19 @@
 
 
 	<!-- LISTADO DE COMPONENTES -->
-	<div class="container text-center m-4 mt-4 p-1">
+	<div class="container text-center m-5 mt-4 p-1">
 
-		<div class="m-4 text-center">
+		<div class="m-4 text-center justify-content-center">
 			<h1>
 				<span class="badge bg-dark mt-4">Listado de Componentes</span>
 			</h1>
 		</div>
 
 		<!-- TABLA COMPONENTES -->
-		<div class=" m-3 cols-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<table class="table table-bordered border-secondary table-hover">
+		<div class=" m-2 cols-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+			<table class="table table-secondary table-bordered border-dark table-hover">
 
-				<thead class="table-secondary">
+				<thead class="table-dark">
 					<tr>
 						<th>ID</th>
 						<th>CÓDIGO</th>
@@ -54,7 +57,7 @@
 					<tr th:each="comp : ${listaComponentes}">
 						<td th:text="${comp.getId()}"></td>
 						<td th:text="${comp.getCodigo()}"></td>
-						<td th:text="${comp.getImagen()}"></td>
+						<td><a th:href="@{|${comp.getImagen()}|}">Link</a></td>
 						<td th:text="${comp.getNroPieza()}"></td>
 						<td th:text="${comp.getCategoria()}"></td>
 						<td th:text="${comp.getDescripcion()}"></td>
@@ -71,6 +74,27 @@
 		<!-- FIN TABLA COMPONENTES -->
 	</div>
 	<!-- FIN LISTADO DE COMPONENTES -->
+	
+	
+	
+	
+	<!-- FOOTER FRAGMENT -->
+	<footer th:replace="../static/fragments/footer/footer.html::pie-pagina"></footer>
+	<!-- FIN FOOTER FRAGMENT -->
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<!--JS Bootstrap-->
 	<script

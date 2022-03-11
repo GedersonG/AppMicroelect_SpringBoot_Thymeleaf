@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+footer {
+    position: relative;
+    background-size: cover;
+    bottom: 0;
+    width: 100%;
+}

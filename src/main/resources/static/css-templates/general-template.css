@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+
+body {
+    background-image: url(../images/background/wallpaperTech.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 500px;
+    text-align:center;
+}
+
+table{
+	opacity : 0.7;
+	
+	
+}
