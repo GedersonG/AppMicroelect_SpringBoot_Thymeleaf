@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gestion.microelectronica.entities.ComponenteCapacitorElectroliticoEntity;
+import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
 import com.gestion.microelectronica.services.ComponenteCapacitorElectroliticoService;
 
 @RestController
 @RequestMapping("/componentes-capacitores-electroliticos")
 public class ComponenteCapacitorElectroliticoController {
-
 
 	@Autowired
 	private ComponenteCapacitorElectroliticoService componenteCapacitorElectroliticoService;
@@ -36,7 +36,8 @@ public class ComponenteCapacitorElectroliticoController {
 
 	// ----PUT-----
 	@PutMapping("/")
-	public boolean updateComponente(@RequestBody ComponenteCapacitorElectroliticoEntity componenteCapacitorElectrolitico) {
+	public boolean updateComponente(
+			@RequestBody ComponenteCapacitorElectroliticoEntity componenteCapacitorElectrolitico) {
 
 		return componenteCapacitorElectroliticoService.updateComponente(componenteCapacitorElectrolitico);
 	}
@@ -48,9 +49,6 @@ public class ComponenteCapacitorElectroliticoController {
 		return componenteCapacitorElectroliticoService.deleteComponente(id);
 	}
 
-
-
-
 	// ---GET---
 	// --- LISTADO PAGINADO Y COMPLETO ---
 	@GetMapping("/listado")
@@ -58,37 +56,79 @@ public class ComponenteCapacitorElectroliticoController {
 
 		return componenteCapacitorElectroliticoService.getAllComponente(pageable);
 	}
-	
-	
-	
-	//---GET---
-	//---VISTA Y LISTA DE COMPONENTES-CAPACITORES-ELECTROLITICOS---
+
+	// ---GET---
+	// ---VISTA Y LISTA DE COMPONENTES-CAPACITORES-ELECTROLITICOS---
 	@GetMapping("/")
 	public ModelAndView listarModelAndView() {
-	    ModelAndView mav = new ModelAndView();
-	    mav.addObject("listaComponentesCapacitoresElectroliticos", componenteCapacitorElectroliticoService.getAllComponente());
-	    mav.setViewName("componentes-capacitores-electroliticos");
-	    return mav;
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("listaComponentesCapacitoresElectroliticos",
+				componenteCapacitorElectroliticoService.getAllComponente());
+		mav.setViewName("componentes-capacitores-electroliticos");
+		return mav;
 	}
-	
+
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
 
 	// ---GET---
-	@GetMapping("/{id}")
+	@GetMapping("/id/{id}")
 	public ComponenteCapacitorElectroliticoEntity getById(@PathVariable("id") int id) {
 
 		return componenteCapacitorElectroliticoService.findById(id);
 	}
-	
+
 	// ---GET---
-	@GetMapping("/{id_componente}")
-	public ComponenteCapacitorElectroliticoEntity getByIdComponente(@PathVariable("id_componente") int id_componente) {
+	@GetMapping("/id-componente/{idComp}")
+	public ComponenteCapacitorElectroliticoEntity getByIdComponente(@PathVariable("idComp") int id_componente) {
 
 		return componenteCapacitorElectroliticoService.findByIdComponente(id_componente);
+	}
+
+	// ---GET---
+	@GetMapping("/tipo/{tipo}")
+	public List<ComponenteCapacitorElectroliticoEntity> getByTipo(@PathVariable("tipo") String tipo) {
+
+		return componenteCapacitorElectroliticoService.findByTipo(tipo);
+	}
+	
+	// ---GET---
+	@GetMapping("/capacitancia/{capacitancia}")
+	public List<ComponenteCapacitorElectroliticoEntity> getByCapacitancia(@PathVariable("capacitancia") String capacitancia) {
+
+		return componenteCapacitorElectroliticoService.findByCapacitancia(capacitancia);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/tolerancia/{tolerancia}")
+	public List<ComponenteCapacitorElectroliticoEntity> getByTolerancia(@PathVariable("tolerancia") String tolerancia) {
+
+		return componenteCapacitorElectroliticoService.findByTolerancia(tolerancia);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/rango-temperatura/{rangoTemp}")
+	public List<ComponenteCapacitorElectroliticoEntity> getByRangoTemperatura(@PathVariable("rangoTemp") String rangoTemperatura) {
+
+		return componenteCapacitorElectroliticoService.findByRangoTemperatura(rangoTemperatura);
+	}
+	
+	// ---GET---
+	@GetMapping("/rango-tension-nominal/{rangoTensNom}")
+	public List<ComponenteCapacitorElectroliticoEntity> getByRangoTensionNominal(@PathVariable("rangoTensNom") String rangoTensionNominal) {
+
+		return componenteCapacitorElectroliticoService.findByRangoTensionNominal(rangoTensionNominal);
 	}
 	
 	
 	
 	
 	
+	
+	
+	
+	
+	
+
 }

@@ -69,18 +69,72 @@ public class ComponenteController {
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
 
 	// ---GET---
-	@GetMapping("/{id}")
+	@GetMapping("/id/{id}")
 	public ComponenteEntity getById(@PathVariable("id") int id) {
 
 		return componenteService.findById(id);
 	}
 	
 	// ---GET---
-	@GetMapping("/{codigo}")
+	@GetMapping("/codigo/{codigo}")
 	public List<ComponenteEntity> getByCodigo(@PathVariable("codigo") String codigo) {
 
 		return componenteService.findByCodigo(codigo);
 	}
+	
+	// ---GET---
+	@GetMapping("/imagen/{imagen}")
+	public List<ComponenteEntity> getByImagen(@PathVariable("imagen") String imagen) {
+
+		return componenteService.findByImagen(imagen);
+	}
+	
+	// ---GET---
+	@GetMapping("/nro-de-pieza/{nroPieza}")
+	public List<ComponenteEntity> getByNroPieza(@PathVariable("nroPieza") String nroPieza) {
+
+		return componenteService.findByNroPieza(nroPieza);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/categoria/{categoria}")
+	public List<ComponenteEntity> getByCategoria(@PathVariable("nroPieza") String nroPieza) {
+
+		return componenteService.findByNroPieza(nroPieza);
+	}
+	
+	// ---GET---
+	@GetMapping("/descripcion/{descripcion}")
+	public List<ComponenteEntity> getByDescripcion(@PathVariable("descripcion") String descripcion) {
+
+		return componenteService.findByDescripcion(descripcion);
+	}
+	
+	// ---GET---
+	@GetMapping("/fabricante/{fabricante}")
+	public List<ComponenteEntity> getByFabricante(@PathVariable("fabricante") String fabricante) {
+
+		return componenteService.findByFabricante(fabricante);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/stock/{stock}")
+	public List<ComponenteEntity> getByStock(@PathVariable("stock") int stock) {
+
+		return componenteService.findByStock(stock);
+	}
+	
+	// ---GET---
+	@GetMapping("/precio/{precio}")
+	public List<ComponenteEntity> getByPrecio(@PathVariable("precio") double precio) {
+
+		return componenteService.findByPrecio(precio);
+	}
+	
+	
+	
 	
 	
 	
