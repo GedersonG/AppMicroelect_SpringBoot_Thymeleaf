@@ -1,7 +1,8 @@
 # AppGestionMicroelectronica_SpringBoot
 
 * Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Thymeleaf, Bootstrap y Oracle
-* Repositorio de la Base de Datos : https://github.com/andresWeitzel/db_microelectronica_Oracle
+* Por motivos de tiempos se desarrollan solamente cuatro servicios Rest, cada uno correspondientes a una tabla de la base de datos. 
+* Repositorio de la Base de Datos del Proyecto : https://github.com/andresWeitzel/db_microelectronica_Oracle
 
 
 
@@ -98,9 +99,13 @@
 
 #### Sección 3) Creación y Configuración de las Clases Entities/Models
   
-   - [Paso 6) Creación y Configuración de la Clase ComponenteEntity](#paso-6-creación-y-configuración-de-la-clase-componente-entity)
+   - [Paso 6) Creación y Configuración de la Clase ComponenteEntity](#paso-6-creación-y-configuración-de-la-clase-componenteentity)
    
-   - [Paso 7) Creación y Configuración de la Clase ComponenteDetalleEntity](#paso-7-creación-y-configuración-de-la-clase-componente-detalle-entity)
+   - [Paso 7) Creación y Configuración de la Clase ComponenteDetalleEntity](#paso-7-creación-y-configuración-de-la-clase-componentedetalleentity)
+
+   - [Paso 8) Creación y Configuración de la Clase ComponenteCapacitorElectroliticoEntity](#paso-8-creación-y-configuración-de-la-clase-componentecapacitorelectroliticoentity)
+  
+   - [Paso 9) Creación y Configuración de la Clase ComponenteTransistorBipolarEntity](#paso-9-creación-y-configuración-de-la-clase-componentetransistorbipolarentity)
   
   
 
@@ -108,39 +113,59 @@
   
 #### Sección 4) Creación y Configuración de las Interfaces Repositories  
 
-   - [Paso x) Creación y Configuración de la Interfaz Repository I_ComponenteRepository](#paso-x-creación-y-configuración-de-la-interfaz-repository-i-componenterepository)
+   - [Paso 10) Creación y Configuración de la Interfaz Repository I_ComponenteRepository](#paso-10-creación-y-configuración-de-la-interfaz-repository-i-componenterepository)
 
+   - [Paso 11) Creación y Configuración de la Interfaz Repository I_ComponenteDetalleRepository](#paso-11-creación-y-configuración-de-la-interfaz-repository-i-componentedetallerepository)
 
-   - [Paso y) Creación y Configuración de la Interfaz Repository I_ComponenteDetalleRepository](#paso-x-creación-y-configuración-de-la-interfaz-repository-i-componentedetallerepository)
+   - [Paso 12) Creación y Configuración de la Interfaz Repository I_ComponenteCapacitorElectroliticoRepository](#paso-12-creación-y-configuración-de-la-interfaz-repository-i-componentecapacitorelectroliticorepository)
+
+   - [Paso 13) Creación y Configuración de la Interfaz Repository I_ComponenteTransistorBipolarRepository](#paso-13-creación-y-configuración-de-la-interfaz-repository-i-componentetransistorbipolarrepository)
 
 
 
 
 #### Sección 5) Creación y Configuración de los Services 
 
-   - [Paso f) Creación y Configuración del Service ComponenteService](#paso-f-creación-y-configuración-del-service-componenteservice)
+   - [Paso 14) Creación y Configuración del Service ComponenteService](#paso-14-creación-y-configuración-del-service-componenteservice)
    
-   - [Paso k) Creación y Configuración del Service ComponenteDetalleService](#paso-k-creación-y-configuración-del-service-componentedetalleservice) 
+   - [Paso 15) Creación y Configuración del Service ComponenteDetalleService](#paso-15-creación-y-configuración-del-service-componentedetalleservice) 
+
+   - [Paso 16) Creación y Configuración del Service ComponenteCapacitorElectroliticoService](#paso-16-creación-y-configuración-del-service-componentecapacitorelectroliticoservice) 
+   - 
+   - [Paso 17) Creación y Configuración del Service ComponenteTransistorBipolarService](#paso-17-creación-y-configuración-del-service-componentetransistorbipolarservice) 
 
 
 
 
 #### Sección 6) Creación y Configuración de los Controllers
 	
-   - [Paso w) Creación y Configuración del Controller ComponenteController](#paso-w-creación-y-configuración-del-controller-componentecontroller)
+   - [Paso 18) Creación y Configuración del Controller ComponenteController](#paso-18-creación-y-configuración-del-controller-componentecontroller)
    
-   - [Paso z) Creación y Configuración del Controller ComponenteDetalleController](#paso-z-creación-y-configuración-del-service-componentedetallecontroller) 
+   - [Paso 19) Creación y Configuración del Controller ComponenteDetalleController](#paso-19-creación-y-configuración-del-service-componentedetallecontroller) 
+ 
+   - [Paso 20) Creación y Configuración del Controller ComponenteCapacitorElectroliticoController](#paso-20-creación-y-configuración-del-service-componentecapacitorelectroliticocontroller) 
+   
+   - [Paso 21) Creación y Configuración del Controller ComponenteTransistorBipolarController](#paso-21-creación-y-configuración-del-service-componentetransistorbipolarcontroller) 
 
 
-#### Sección 7) Prueba del Servicio Rest Desarrollado
 
-   - [Paso zz) Prueba del Servicio de la Tabla componentes](#paso-zz-prueba-del-servicio-de-la-tabla-componentes) 
-   - [Paso zx) Prueba del Servicio de la Tabla componentes_detalles](#paso-zz-prueba-del-servicio-de-la-tabla-componentes-detalles) 
+
+#### Sección 7) Prueba de los Servicios Rest Desarrollados
+
+   - [Paso 22) Prueba del Servicio Rest de la Tabla componentes](#paso-22-prueba-del-servicio-rest-de-la-tabla-componentes) 
+   
+   - [Paso 23) Prueba del Servicio Rest de la Tabla componentes_detalles](#paso-23-prueba-del-servicio-rest-de-la-tabla-componentes-detalles) 
+
+   - [Paso 24) Prueba del Servicio Rest de la Tabla componentes-capacitores-electroliticos](#paso-24-prueba-del-servicio-rest-de-la-tabla-componentes-capacitores-electroliticos) 
+
+   - [Paso 25) Prueba del Servicio Rest de la Tabla componentes-transistores_bipolares](#paso-25-prueba-del-servicio-rest-de-la-tabla-componentes-transistores-bipolares) 
+
+
 
 
 #### Sección 8) Creación de la Vista con Thymeleaf
 
-   - [Paso zy) Creación de la Vista](#paso-zy-creacion-de-la-vista) 
+   - [Paso 26) Creación de la Vista](#paso-26-creacion-de-la-vista) 
 
 
 
@@ -553,16 +578,140 @@ public class ComponenteDetalleEntity {
 }
 
 ```
+</br>
 
+### Paso 8) Creación y Configuración de la Clase `ComponenteCapacitorElectroliticoEntity`
+#### (Se realiza el mismo procedimiento descrito detalladamente en los Pasos Anteriores )
+* Código..
+```java
+package com.gestion.microelectronica.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Table(name = "componentes_capacitores_electroliticos")
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ComponenteCapacitorElectroliticoEntity {
+
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_comp_cap_elect")
+	@SequenceGenerator(name = "seq_comp_cap_elect", sequenceName = "id_seq_comp_cap_elect", allocationSize = 1)
+	@Id
+	@Column(name = "id")
+	private int id;
+
+	@Column(name = "id_componente")
+	private int idComponente;
+
+	@Column(name = "tipo")
+	private String tipo;
+
+	@Column(name = "capacitancia")
+	private String capacitancia;
+
+	@Column(name = "tolerancia")
+	private String tolerancia;
+
+	@Column(name = "rango_temperatura")
+	private String rangoTemperatura;
+
+	@Column(name = "rango_tension_nominal")
+	private String rangoTensionNominal;
+
+}
+
+```
 
 
 </br>
+
+### Paso 9) Creación y Configuración de la Clase `ComponenteTransistorBipolarEntity`
+#### (Se realiza el mismo procedimiento descrito detalladamente en los Pasos Anteriores )
+* Código..
+```java
+package com.gestion.microelectronica.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Table(name="componentes_transistores_bipolares")
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ComponenteTransistorBipolarEntity {
+
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_comp_trans_bip")
+	@SequenceGenerator(name = "seq_comp_trans_bip", sequenceName = "id_seq_comp_trans_bip" , allocationSize=1)
+	@Id
+	@Column(name="id") 
+	private int id;
+	
+	@Column(name="id_componente")
+	private int idComponente;
+	
+	@Column(name="tipo")
+	private  String tipo;
+	
+	@Column(name="voltaje_colec_emis")
+	private String voltajeColecEmis;
+	
+	@Column(name="voltaje_colec_base")
+	private String voltajeColecBase;
+	
+	@Column(name="voltaje_emis_base")
+	private String voltajeEmisBase;
+	
+	@Column(name="voltaje_colec_emis_sat")
+	private String voltajeColecEmisSat;
+	
+	@Column(name="corriente_colec")
+	private String corrienteColec;
+	
+	@Column(name="ganancia_hfe")
+	private String gananciaHfe;
+	
+	@Column(name="disip_max")
+	private String disipMax;
+	
+	@Column(name="temp_juntura")
+	private String tempJuntura;
+	
+
+	
+}
+
+```
+</br>
+
+
+
 
 ## Sección 4) Creación y Configuración de las Interfaces Repositories  
 
 </br>
 
-#### Paso x) Creación y Configuración de la Interfaz Repository `I_ComponenteRepository` 
+#### Paso 10) Creación y Configuración de la Interfaz Repository `I_ComponenteRepository` 
 * Dentro de la jerarquia de paquetes `com.gestion.microelectronica` creamos el paquete `repositories`
 * Dentro del mismo la Interfaz `I_ComponenteRepository`
 * Agregamos la annotation `@Repository` de la clase para JPA y usamos la interfaz  `JpaRepository<ComponenteEntity, Serializable>` junto con la Interfaz de Paginación `PagingAndSortingRepository<ComponenteEntity, Long>` para toda la funcionalidad para la creación de los métodos Jpa.
@@ -625,7 +774,7 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 
 </br>
 
-#### Paso y) Creación y Configuración de la Interfaz Repository `I_ComponenteDetalleRepository` 
+#### Paso 11) Creación y Configuración de la Interfaz Repository `I_ComponenteDetalleRepository` 
 #### (Se realiza el mismo procedimiento descrito detalladamente en el Paso Anterior)
 * Código..
 ```java
@@ -677,6 +826,110 @@ public interface I_ComponenteDetalleRepository extends JpaRepository<ComponenteD
 
 ```
 
+</br>
+
+### Paso 12) Creación y Configuración de la Interfaz Repository `I_ComponenteCapacitorElectroliticoRepository` 
+#### (Se realiza el mismo procedimiento descrito detalladamente en los Pasos Anteriores)
+* Código..
+```java
+package com.gestion.microelectronica.repositories;
+
+import java.io.Serializable;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+import com.gestion.microelectronica.entities.ComponenteCapacitorElectroliticoEntity;
+
+@Repository
+public interface I_ComponenteCapacitorElectroliticoRepository extends JpaRepository<ComponenteCapacitorElectroliticoEntity, Serializable>, PagingAndSortingRepository<ComponenteCapacitorElectroliticoEntity, Serializable>{
+
+
+	//============================ MÉTODOS DE BÚSQUEDA ============================== 
+	
+		public abstract ComponenteCapacitorElectroliticoEntity findById(int id);
+		
+		public abstract ComponenteCapacitorElectroliticoEntity findByIdComponente(int idComponente);
+		
+		public abstract List<ComponenteCapacitorElectroliticoEntity> findByTipo(String tipo);
+	
+		public abstract List<ComponenteCapacitorElectroliticoEntity> findByCapacitancia(String capacitancia);
+		
+		public abstract List<ComponenteCapacitorElectroliticoEntity> findByTolerancia(String tolerancia);
+		
+		public abstract List<ComponenteCapacitorElectroliticoEntity> findByRangoTemperatura(String rangoTemperatura);
+		
+		public abstract List<ComponenteCapacitorElectroliticoEntity> findByRangoTensionNominal(String rangoTensionNominal);
+		
+}
+
+
+```
+
+
+</br>
+
+### Paso 13) Creación y Configuración de la Interfaz Repository `I_ComponenteTransistorBipolarRepository` 
+#### (Se realiza el mismo procedimiento descrito detalladamente en los Pasos Anteriores)
+* Código..
+```java
+package com.gestion.microelectronica.repositories;
+
+import java.io.Serializable;
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+import com.gestion.microelectronica.entities.ComponenteTransistorBipolarEntity;
+
+@Repository
+public interface I_ComponenteTransistorBipolarRepository extends JpaRepository<ComponenteTransistorBipolarEntity, Serializable>, PagingAndSortingRepository<ComponenteTransistorBipolarEntity, Serializable>{
+
+	
+
+	//============================ MÉTODOS DE BÚSQUEDA ============================== 
+	
+		public abstract ComponenteTransistorBipolarEntity findById(int id);
+		
+		public abstract ComponenteTransistorBipolarEntity findByIdComponente(int idComponente);
+		
+		public abstract List<ComponenteTransistorBipolarEntity> findByTipo(String tipo);
+	
+		public abstract List<ComponenteTransistorBipolarEntity> findByVoltajeColecEmis(String voltajeColecEmis);
+		
+		public abstract List<ComponenteTransistorBipolarEntity> findByVoltajeColecBase(String voltajeColecBase);
+		
+		public abstract List<ComponenteTransistorBipolarEntity> findByVoltajeEmisBase(String voltajeEmisBase);
+		
+		public abstract List<ComponenteTransistorBipolarEntity> findByVoltajeColecEmisSat(String voltajeColecEmisSat);
+	
+		public abstract List<ComponenteTransistorBipolarEntity> findByCorrienteColec(String corrienteColec);
+		
+		public abstract List<ComponenteTransistorBipolarEntity> findByGananciaHfe(String gananciaHfe);
+
+		public abstract List<ComponenteTransistorBipolarEntity> findByDisipMax(String disipMax);
+
+		public abstract List<ComponenteTransistorBipolarEntity> findByTempJuntura(String tempJuntura);
+
+		public abstract List<ComponenteTransistorBipolarEntity> findAll();
+		
+		public abstract Page<ComponenteTransistorBipolarEntity> findAll(Pageable pageable);
+		
+	
+
+
+}
+
+
+```
+
+
 
 </br>
 
@@ -684,7 +937,7 @@ public interface I_ComponenteDetalleRepository extends JpaRepository<ComponenteD
 
 </br>
 
-#### Paso f) Creación y Configuración del Service `ComponenteService` 
+#### Paso 14) Creación y Configuración del Service `ComponenteService` 
 * Dentro de la jerarquia de paquetes `com.gestion.microelectronica` creamos el paquete `services`
 * Dentro del mismo la Clase `ComponenteService`
 * Agregamos la annotation `@Service` de la clase haciendo referencia para Spring y `@Autowired` para implementar Inyección de Dependencias de la interfaz creada.
@@ -837,7 +1090,7 @@ public class ComponenteService {
 
 </br>
 
-#### Paso k) Creación y Configuración del Service `ComponenteDetalleService` 
+#### Paso 15) Creación y Configuración del Service `ComponenteDetalleService` 
 #### (Se realiza el mismo procedimiento descrito detalladamente en el Paso Anterior)
 * Código..
 ```java
@@ -989,13 +1242,339 @@ public class ComponenteDetalleService {
 ```
 
 
+
+</br>
+
+#### Paso 16) Creación y Configuración del Service `ComponenteCapacitorElectroliticoService` 
+#### (Se realiza el mismo procedimiento descrito detalladamente en los Pasos Anteriores)
+* Código..
+```java
+package com.gestion.microelectronica.services;
+
+import java.util.List;
+
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.gestion.microelectronica.entities.ComponenteCapacitorElectroliticoEntity;
+import com.gestion.microelectronica.repositories.I_ComponenteCapacitorElectroliticoRepository;
+
+@Service
+public class ComponenteCapacitorElectroliticoService {
+
+
+	@Autowired
+	private I_ComponenteCapacitorElectroliticoRepository iComponenteCapacitorElectroliticoRepository;
+
+
+	// =============== LOGS ====================
+	private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ComponenteCapacitorElectroliticoService.class);
+
+	// =============== MÉTODOS CRUD ====================
+
+	// ------ INSERT --------
+	public boolean addComponente(ComponenteCapacitorElectroliticoEntity componenteCapacitorElectrolitico) {
+		try {
+			if (componenteCapacitorElectrolitico == null) {
+				logger.error("ERROR addComponente : EL COMPONENTE " + componenteCapacitorElectrolitico + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteCapacitorElectroliticoRepository.save(componenteCapacitorElectrolitico);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR addComponente : EL COMPONENTE " + componenteCapacitorElectrolitico + " NO SE HA INSERTADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ UPDATE --------
+	public boolean updateComponente(ComponenteCapacitorElectroliticoEntity componenteCapacitorElectrolitico) {
+		try {
+			if (componenteCapacitorElectrolitico == null) {
+				logger.error("ERROR updateComponente : EL COMPONENTE " + componenteCapacitorElectrolitico + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteCapacitorElectroliticoRepository.save(componenteCapacitorElectrolitico);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error(
+					"ERROR updateComponente : EL COMPONENTE " + componenteCapacitorElectrolitico + " NO SE HA ACTUALIZADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ DELETE --------
+	public boolean deleteComponente(int id) {
+		try {
+			if (id <= 0) {
+				logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO EXISTE!!");
+				return false;
+			} else {
+				iComponenteCapacitorElectroliticoRepository.delete(iComponenteCapacitorElectroliticoRepository.findById(id));
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO SE HA ELIMINADO DE LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ SELECT --------
+	//------- LISTADO COMPLETO ---------
+	public List<ComponenteCapacitorElectroliticoEntity> getAllComponente() {
+
+		return iComponenteCapacitorElectroliticoRepository.findAll();
+	}
+
+	// ------ SELECT --------
+	//------- LISTADO PAGINADO ---------
+	public List<ComponenteCapacitorElectroliticoEntity> getAllComponente(Pageable pageable) {
+
+		return iComponenteCapacitorElectroliticoRepository.findAll(pageable).getContent();
+	}
+
+	// =============== MÉTODOS DE BUSQUEDA ====================
+
+	// ------ ID --------
+	public ComponenteCapacitorElectroliticoEntity findById(int id) {
+		return iComponenteCapacitorElectroliticoRepository.findById(id);
+	}
+
+	// ------ ID DE COMPONENTE --------
+	public ComponenteCapacitorElectroliticoEntity findByIdComponente(int id) {
+		return iComponenteCapacitorElectroliticoRepository.findByIdComponente(id);
+	}
+
+	// ------ TIPO --------
+	public List<ComponenteCapacitorElectroliticoEntity> findByTipo(String tipo) {
+		return iComponenteCapacitorElectroliticoRepository.findByTipo(tipo);
+	}
+
+	// ------ CAPACITANCIA --------
+	public List<ComponenteCapacitorElectroliticoEntity> findByCapacitancia(String capacitancia) {
+		return iComponenteCapacitorElectroliticoRepository.findByCapacitancia(capacitancia);
+	}
+
+	// ------ TOLERANCIA --------
+	public List<ComponenteCapacitorElectroliticoEntity> findByTolerancia(String tolerancia) {
+		return iComponenteCapacitorElectroliticoRepository.findByTolerancia(tolerancia);
+	}
+
+	// ------ RANGO_TEMPERATURA --------
+	public List<ComponenteCapacitorElectroliticoEntity> findByRangoTemperatura(String rangoTemperatura) {
+		return iComponenteCapacitorElectroliticoRepository.findByRangoTemperatura(rangoTemperatura);
+	}
+	// ------ RANGO_TENSION_NOMINAL --------
+		public List<ComponenteCapacitorElectroliticoEntity> findByRangoTensionNominal(String rangoTensionNominal) {
+			return iComponenteCapacitorElectroliticoRepository.findByRangoTensionNominal(rangoTensionNominal);
+		}
+
+	
+}
+
+
+
+```
+
+
+
+</br>
+
+#### Paso 17) Creación y Configuración del Service `ComponenteTransistorBipolarService` 
+#### (Se realiza el mismo procedimiento descrito detalladamente en los Pasos Anteriores)
+* Código..
+```java
+package com.gestion.microelectronica.services;
+
+import java.util.List;
+
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.gestion.microelectronica.entities.ComponenteTransistorBipolarEntity;
+import com.gestion.microelectronica.repositories.I_ComponenteTransistorBipolarRepository;
+
+@Service
+public class ComponenteTransistorBipolarService {
+
+	@Autowired
+	private I_ComponenteTransistorBipolarRepository iComponenteTransistorBipolarRepository;
+
+	// =============== LOGS ====================
+	private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ComponenteTransistorBipolarService.class);
+
+	// =============== MÉTODOS CRUD ====================
+
+	// ------ INSERT --------
+	public boolean addComponente(ComponenteTransistorBipolarEntity componenteTransistorBipolar) {
+		try {
+			if (componenteTransistorBipolar == null) {
+				logger.error("ERROR addComponente : EL COMPONENTE " + componenteTransistorBipolar + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteTransistorBipolarRepository.save(componenteTransistorBipolar);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR addComponente : EL COMPONENTE " + componenteTransistorBipolar + " NO SE HA INSERTADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ UPDATE --------
+	public boolean updateComponente(ComponenteTransistorBipolarEntity componenteTransistorBipolar) {
+		try {
+			if (componenteTransistorBipolar == null) {
+				logger.error("ERROR updateComponente : EL COMPONENTE " + componenteTransistorBipolar + " ES NULO!!");
+				return false;
+			} else {
+				iComponenteTransistorBipolarRepository.save(componenteTransistorBipolar);
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error(
+					"ERROR updateComponente : EL COMPONENTE " + componenteTransistorBipolar + " NO SE HA ACTUALIZADO EN LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ DELETE --------
+	public boolean deleteComponente(int id) {
+		try {
+			if (id <= 0) {
+				logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO EXISTE!!");
+				return false;
+			} else {
+				iComponenteTransistorBipolarRepository.delete(iComponenteTransistorBipolarRepository.findById(id));
+				return true;
+			}
+
+		} catch (Exception e) {
+			logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO SE HA ELIMINADO DE LA DB!!");
+			return false;
+		}
+	}
+
+	// ------ SELECT --------
+	//------- LISTADO COMPLETO ---------
+	public List<ComponenteTransistorBipolarEntity> getAllComponente() {
+
+		return iComponenteTransistorBipolarRepository.findAll();
+	}
+
+	// ------ SELECT --------
+	//------- LISTADO PAGINADO ---------
+	public List<ComponenteTransistorBipolarEntity> getAllComponente(Pageable pageable) {
+
+		return iComponenteTransistorBipolarRepository.findAll(pageable).getContent();
+	}
+
+	// =============== MÉTODOS DE BUSQUEDA ====================
+
+	// ------ ID --------
+	public ComponenteTransistorBipolarEntity findById(int id) {
+		return iComponenteTransistorBipolarRepository.findById(id);
+	}
+
+	// ------ ID DE COMPONENTE --------
+	public ComponenteTransistorBipolarEntity findByIdComponente(int id) {
+		return iComponenteTransistorBipolarRepository.findByIdComponente(id);
+	}
+
+	// ------ TIPO --------
+	public List<ComponenteTransistorBipolarEntity> findByTipo(String tipo) {
+		return iComponenteTransistorBipolarRepository.findByTipo(tipo);
+	}
+
+	// ------ VOLTAJE_COLEC_EMIS --------
+	public List<ComponenteTransistorBipolarEntity> findByVoltajeColecEmis(String voltajeColecEmis) {
+		return iComponenteTransistorBipolarRepository.findByVoltajeColecEmis(voltajeColecEmis);
+	}
+
+	// ------ VOLTAJE_COLEC_BASE --------
+	public List<ComponenteTransistorBipolarEntity> findByVoltajeColecBase(String voltajeColecBase) {
+		return iComponenteTransistorBipolarRepository.findByVoltajeColecBase(voltajeColecBase);
+	}
+
+	// ------ VOLTAJE_EMIS_BASE --------
+	public List<ComponenteTransistorBipolarEntity> findByVoltajeEmisBase(String voltajeEmisBase) {
+		return iComponenteTransistorBipolarRepository.findByVoltajeEmisBase(voltajeEmisBase);
+	}
+
+	// ------ VOLTAJE_COLEC_EMIS_SAT --------
+	public List<ComponenteTransistorBipolarEntity> findByVoltajeColecEmisSat(String voltajeColecEmisSat) {
+		return iComponenteTransistorBipolarRepository.findByVoltajeColecEmisSat(voltajeColecEmisSat);
+	}
+
+	// ------ CORRIENTE_COLEC --------
+	public List<ComponenteTransistorBipolarEntity> findByCorrienteColec(String corriente_colec) {
+		return iComponenteTransistorBipolarRepository.findByCorrienteColec(corriente_colec);
+	}
+
+	// ------ GANANCIA_HFE --------
+	public List<ComponenteTransistorBipolarEntity> findByGananciaHfe(String gananciaHfe) {
+		return iComponenteTransistorBipolarRepository.findByGananciaHfe(gananciaHfe);
+	}
+
+	// ------ DISIP_MAX --------
+	public List<ComponenteTransistorBipolarEntity> findByDisipMax(String disipMax) {
+		return iComponenteTransistorBipolarRepository.findByDisipMax(disipMax);
+	}
+	
+	// ------ TEMP_JUNTURA --------
+	public List<ComponenteTransistorBipolarEntity> findByTempJuntura(String tempJuntura) {
+		return iComponenteTransistorBipolarRepository.findByTempJuntura(tempJuntura);
+	}
+
+	
+}
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </br>
 
 ##  Sección 6) Creación y Configuración de los Controllers
 
 </br>
 
-#### Paso w) Creación y Configuración del Controller  `ComponenteController` 
+#### Paso 18) Creación y Configuración del Controller  `ComponenteController` 
 * Dentro de la jerarquia de paquetes `com.inmueble.service` creamos el paquete `controller`
 * Dentro del mismo la Clase Controller `ComponenteController`
 * Agregamos la annotation `@RestController` de la clase haciendo referencia al controlador y la annotation `@RequestMapping` haciendo referencia a la ruta principal de acceso para Spring.
@@ -1093,18 +1672,72 @@ public class ComponenteController {
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
 
 	// ---GET---
-	@GetMapping("/{id}")
+	@GetMapping("/id/{id}")
 	public ComponenteEntity getById(@PathVariable("id") int id) {
 
 		return componenteService.findById(id);
 	}
 	
 	// ---GET---
-	@GetMapping("/{codigo}")
+	@GetMapping("/codigo/{codigo}")
 	public List<ComponenteEntity> getByCodigo(@PathVariable("codigo") String codigo) {
 
 		return componenteService.findByCodigo(codigo);
 	}
+	
+	// ---GET---
+	@GetMapping("/imagen/{imagen}")
+	public List<ComponenteEntity> getByImagen(@PathVariable("imagen") String imagen) {
+
+		return componenteService.findByImagen(imagen);
+	}
+	
+	// ---GET---
+	@GetMapping("/nro-de-pieza/{nroPieza}")
+	public List<ComponenteEntity> getByNroPieza(@PathVariable("nroPieza") String nroPieza) {
+
+		return componenteService.findByNroPieza(nroPieza);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/categoria/{categoria}")
+	public List<ComponenteEntity> getByCategoria(@PathVariable("nroPieza") String nroPieza) {
+
+		return componenteService.findByNroPieza(nroPieza);
+	}
+	
+	// ---GET---
+	@GetMapping("/descripcion/{descripcion}")
+	public List<ComponenteEntity> getByDescripcion(@PathVariable("descripcion") String descripcion) {
+
+		return componenteService.findByDescripcion(descripcion);
+	}
+	
+	// ---GET---
+	@GetMapping("/fabricante/{fabricante}")
+	public List<ComponenteEntity> getByFabricante(@PathVariable("fabricante") String fabricante) {
+
+		return componenteService.findByFabricante(fabricante);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/stock/{stock}")
+	public List<ComponenteEntity> getByStock(@PathVariable("stock") int stock) {
+
+		return componenteService.findByStock(stock);
+	}
+	
+	// ---GET---
+	@GetMapping("/precio/{precio}")
+	public List<ComponenteEntity> getByPrecio(@PathVariable("precio") double precio) {
+
+		return componenteService.findByPrecio(precio);
+	}
+	
+	
+	
 	
 	
 	
@@ -1113,14 +1746,15 @@ public class ComponenteController {
 }
 
 
-
  ```
  
  </br>
 
 
-#### Paso w) Creación y Configuración del Controller `ComponenteDetalleController` 
-* Mismos Procedimientos que el controlador anterior..
+#### Paso 19) Creación y Configuración del Controller `ComponenteDetalleController` 
+* Mismos Procedimientos que el controlador anterior
+* Código..
+
  ```java	
 package com.gestion.microelectronica.controllers;
 
@@ -1145,7 +1779,6 @@ import com.gestion.microelectronica.services.ComponenteDetalleService;
 @RestController
 @RequestMapping("/componentes-detalles")
 public class ComponenteDetalleController {
-	
 
 	@Autowired
 	private ComponenteDetalleService componenteDetalleService;
@@ -1173,9 +1806,6 @@ public class ComponenteDetalleController {
 		return componenteDetalleService.deleteComponente(id);
 	}
 
-
-
-
 	// ---GET---
 	// --- LISTADO PAGINADO Y COMPLETO ---
 	@GetMapping("/listado")
@@ -1183,42 +1813,96 @@ public class ComponenteDetalleController {
 
 		return componenteDetalleService.getAllComponente(pageable);
 	}
-	
-	
-	
-	//---GET---
-	//---VISTA Y LISTA DE COMPONENTES---
+
+	// ---GET---
+	// ---VISTA Y LISTA DE COMPONENTES---
 	@GetMapping("/")
 	public ModelAndView listarModelAndView() {
-	    ModelAndView mav = new ModelAndView();
-	    mav.addObject("listaComponentesDetalles", componenteDetalleService.getAllComponente());
-	    mav.setViewName("componentes-detalles");
-	    return mav;
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("listaComponentesDetalles", componenteDetalleService.getAllComponente());
+		mav.setViewName("componentes-detalles");
+		return mav;
 	}
-	
+
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
 
 	// ---GET---
-	@GetMapping("/{id}")
+	@GetMapping("/id/{id}")
 	public ComponenteDetalleEntity getById(@PathVariable("id") int id) {
 
 		return componenteDetalleService.findById(id);
 	}
-	
+
 	// ---GET---
-	@GetMapping("/{id_componente}")
+	@GetMapping("/id-componente/{id_componente}")
 	public ComponenteDetalleEntity getByIdComponente(@PathVariable("id_componente") int id_componente) {
 
 		return componenteDetalleService.findByIdComponente(id_componente);
 	}
+
+	// ---GET---
+	@GetMapping("/hoja-de-datos/{hojaDatos}")
+	public List<ComponenteDetalleEntity> getByHojaDeDatos(@PathVariable("hojaDatos") String hojaDatos) {
+
+		return componenteDetalleService.findByHojaDeDatos(hojaDatos);
+	}
+
+	// ---GET---
+	@GetMapping("/longitud/{longitud}")
+	public List<ComponenteDetalleEntity> getByLongitud(@PathVariable("longitud") String longitud) {
+
+		return componenteDetalleService.findByLongitud(longitud);
+	}
 	
+	
+	// ---GET---
+	@GetMapping("/ancho/{ancho}")
+	public List<ComponenteDetalleEntity> getByAncho(@PathVariable("ancho") String ancho) {
+
+		return componenteDetalleService.findByAncho(ancho);
+	}
+	
+	// ---GET---
+	@GetMapping("/peso/{peso}")
+	public List<ComponenteDetalleEntity> getByPeso(@PathVariable("peso") String peso) {
+
+		return componenteDetalleService.findByPeso(peso);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/material/{material}")
+	public List<ComponenteDetalleEntity> getByMaterial(@PathVariable("material") String material) {
+
+		return componenteDetalleService.findByMaterial(material);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/voltaje-recomendado/{voltajeRecomendado}")
+	public List<ComponenteDetalleEntity> getByVoltajeRecomendado(@PathVariable("voltajeRecomendado") String voltajeRecomendado) {
+
+		return componenteDetalleService.findByVoltajeRecomendado(voltajeRecomendado);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/voltaje-min-entrada/{voltajeMinEntrada}")
+	public List<ComponenteDetalleEntity> getByVoltajeMinEntrada(@PathVariable("voltajeMinEntrada") String voltajeMinEntrada) {
+
+		return componenteDetalleService.findByVoltajeMinEntrada(voltajeMinEntrada);
+	}
+	
+	// ---GET---
+	@GetMapping("/voltaje-max-entrada/{voltajeMaxEntrada}")
+	public List<ComponenteDetalleEntity> getByVoltajeMaxEntrada(@PathVariable("voltajeMaxEntrada") String voltajeMaxEntrada) {
+
+		return componenteDetalleService.findByVoltajeMaxEntrada(voltajeMaxEntrada);
+	}
 	
 
-	
-	
-	
 
-
+	
 }
 
 
@@ -1226,19 +1910,339 @@ public class ComponenteDetalleController {
 
 </br>
 
-##  Sección 7) Prueba del Servicio Rest Desarrollado
+
+#### Paso 20) Creación y Configuración del Controller `ComponenteCapacitorElectroliticoController` 
+* Mismos Procedimientos que los controladores anteriores
+* Código..
+
+ ```java	
+package com.gestion.microelectronica.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.gestion.microelectronica.entities.ComponenteCapacitorElectroliticoEntity;
+import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
+import com.gestion.microelectronica.services.ComponenteCapacitorElectroliticoService;
+
+@RestController
+@RequestMapping("/componentes-capacitores-electroliticos")
+public class ComponenteCapacitorElectroliticoController {
+
+	@Autowired
+	private ComponenteCapacitorElectroliticoService componenteCapacitorElectroliticoService;
+
+	// ============= MÉTODOS HTTP CRUD ==============
+
+	// ----POST----
+	@PostMapping("/")
+	public boolean addComponente(@RequestBody ComponenteCapacitorElectroliticoEntity componenteCapacitorElectrolitico) {
+
+		return componenteCapacitorElectroliticoService.addComponente(componenteCapacitorElectrolitico);
+	}
+
+	// ----PUT-----
+	@PutMapping("/")
+	public boolean updateComponente(
+			@RequestBody ComponenteCapacitorElectroliticoEntity componenteCapacitorElectrolitico) {
+
+		return componenteCapacitorElectroliticoService.updateComponente(componenteCapacitorElectrolitico);
+	}
+
+	// ---DELETE---
+	@DeleteMapping("/{id}")
+	public boolean deleteComponente(@PathVariable("id") int id) {
+
+		return componenteCapacitorElectroliticoService.deleteComponente(id);
+	}
+
+	// ---GET---
+	// --- LISTADO PAGINADO Y COMPLETO ---
+	@GetMapping("/listado")
+	public List<ComponenteCapacitorElectroliticoEntity> getAll(Pageable pageable) {
+
+		return componenteCapacitorElectroliticoService.getAllComponente(pageable);
+	}
+
+	// ---GET---
+	// ---VISTA Y LISTA DE COMPONENTES-CAPACITORES-ELECTROLITICOS---
+	@GetMapping("/")
+	public ModelAndView listarModelAndView() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("listaComponentesCapacitoresElectroliticos",
+				componenteCapacitorElectroliticoService.getAllComponente());
+		mav.setViewName("componentes-capacitores-electroliticos");
+		return mav;
+	}
+
+	// ============= MÉTODOS HTTP BÚSQUEDA ==============
+
+	// ---GET---
+	@GetMapping("/id/{id}")
+	public ComponenteCapacitorElectroliticoEntity getById(@PathVariable("id") int id) {
+
+		return componenteCapacitorElectroliticoService.findById(id);
+	}
+
+	// ---GET---
+	@GetMapping("/id-componente/{idComp}")
+	public ComponenteCapacitorElectroliticoEntity getByIdComponente(@PathVariable("idComp") int id_componente) {
+
+		return componenteCapacitorElectroliticoService.findByIdComponente(id_componente);
+	}
+
+	// ---GET---
+	@GetMapping("/tipo/{tipo}")
+	public List<ComponenteCapacitorElectroliticoEntity> getByTipo(@PathVariable("tipo") String tipo) {
+
+		return componenteCapacitorElectroliticoService.findByTipo(tipo);
+	}
+	
+	// ---GET---
+	@GetMapping("/capacitancia/{capacitancia}")
+	public List<ComponenteCapacitorElectroliticoEntity> getByCapacitancia(@PathVariable("capacitancia") String capacitancia) {
+
+		return componenteCapacitorElectroliticoService.findByCapacitancia(capacitancia);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/tolerancia/{tolerancia}")
+	public List<ComponenteCapacitorElectroliticoEntity> getByTolerancia(@PathVariable("tolerancia") String tolerancia) {
+
+		return componenteCapacitorElectroliticoService.findByTolerancia(tolerancia);
+	}
+	
+	
+	// ---GET---
+	@GetMapping("/rango-temperatura/{rangoTemp}")
+	public List<ComponenteCapacitorElectroliticoEntity> getByRangoTemperatura(@PathVariable("rangoTemp") String rangoTemperatura) {
+
+		return componenteCapacitorElectroliticoService.findByRangoTemperatura(rangoTemperatura);
+	}
+	
+	// ---GET---
+	@GetMapping("/rango-tension-nominal/{rangoTensNom}")
+	public List<ComponenteCapacitorElectroliticoEntity> getByRangoTensionNominal(@PathVariable("rangoTensNom") String rangoTensionNominal) {
+
+		return componenteCapacitorElectroliticoService.findByRangoTensionNominal(rangoTensionNominal);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}
+
+
+ ```
+ 
+ 
+ 
+  </br>
+
+
+#### Paso 21) Creación y Configuración del Controller `ComponenteTransistoresBipolaresController` 
+* Mismos Procedimientos que los controladores anteriores
+* Código..
+
+ ```java	
+package com.gestion.microelectronica.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.gestion.microelectronica.entities.ComponenteCapacitorElectroliticoEntity;
+import com.gestion.microelectronica.entities.ComponenteTransistorBipolarEntity;
+import com.gestion.microelectronica.services.ComponenteTransistorBipolarService;
+
+@RestController
+@RequestMapping("/componentes-transistores-bipolares")
+public class ComponenteTransistorBipolarController {
+
+	@Autowired
+	private ComponenteTransistorBipolarService componenteTransistorBipolarService;
+
+	// ============= MÉTODOS HTTP CRUD ==============
+
+	// ----POST----
+	@PostMapping("/")
+	public boolean addComponenteDetalle(@RequestBody ComponenteTransistorBipolarEntity componenteTransistorBipolar) {
+
+		return componenteTransistorBipolarService.addComponente(componenteTransistorBipolar);
+	}
+
+	// ----PUT-----
+	@PutMapping("/")
+	public boolean updateComponenteDetalle(@RequestBody ComponenteTransistorBipolarEntity componenteTransistorBipolar) {
+
+		return componenteTransistorBipolarService.updateComponente(componenteTransistorBipolar);
+	}
+
+	// ---DELETE---
+	@DeleteMapping("/{id}")
+	public boolean deleteComponenteDetalle(@PathVariable("id") int id) {
+
+		return componenteTransistorBipolarService.deleteComponente(id);
+	}
+
+	// ---GET---
+	// --- LISTADO PAGINADO Y COMPLETO ---
+	@GetMapping("/listado")
+	public List<ComponenteTransistorBipolarEntity> getAll(Pageable pageable) {
+
+		return componenteTransistorBipolarService.getAllComponente(pageable);
+	}
+
+	// ---GET---
+	// ---VISTA Y LISTA DE COMPONENTES---
+	@GetMapping("/")
+	public ModelAndView listarModelAndView() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("listaComponentesTransistoresBipolares", componenteTransistorBipolarService.getAllComponente());
+		mav.setViewName("componentes-transistores-bipolares");
+		return mav;
+	}
+
+	// ============= MÉTODOS HTTP BÚSQUEDA ==============
+
+	// ---GET---
+	@GetMapping("/id/{id}")
+	public ComponenteTransistorBipolarEntity getById(@PathVariable("id") int id) {
+
+		return componenteTransistorBipolarService.findById(id);
+	}
+
+	// ---GET---
+	@GetMapping("/id-componente/{id_componente}")
+	public ComponenteTransistorBipolarEntity getByIdComponente(@PathVariable("id_componente") int id_componente) {
+
+		return componenteTransistorBipolarService.findByIdComponente(id_componente);
+	}
+
+	// ---GET---
+	@GetMapping("/tipo/{tipo}")
+	public List<ComponenteTransistorBipolarEntity> getByTipo(@PathVariable("tipo") String tipo) {
+
+		return componenteTransistorBipolarService.findByTipo(tipo);
+	}
+
+	// ---GET---
+	@GetMapping("/voltaje-colec-emis/{voltColecEmis}")
+	public List<ComponenteTransistorBipolarEntity> getByVoltajeColecEmis(
+			@PathVariable("voltColecEmis") String voltajeColecEmis) {
+
+		return componenteTransistorBipolarService.findByVoltajeColecEmis(voltajeColecEmis);
+	}
+
+	// ---GET---
+	@GetMapping("/voltaje-colec-base/{voltColecBase}")
+	public List<ComponenteTransistorBipolarEntity> getByVoltajeColecBase(
+			@PathVariable("voltColecBase") String voltajeColecBase) {
+
+		return componenteTransistorBipolarService.findByVoltajeColecBase(voltajeColecBase);
+	}
+
+	// ---GET---
+	@GetMapping("/voltaje-emis-base/{voltEmisBase}")
+	public List<ComponenteTransistorBipolarEntity> getByVoltajeEmisBase(
+			@PathVariable("voltColecEmis") String voltajeEmisBase) {
+
+		return componenteTransistorBipolarService.findByVoltajeEmisBase(voltajeEmisBase);
+	}
+
+	// ---GET---
+	@GetMapping("/voltaje-colec-emis-sat/{voltColecEmisSat}")
+	public List<ComponenteTransistorBipolarEntity> getByVoltajeColecEmisSat(
+			@PathVariable("voltColecEmis") String voltajeColecEmisSat) {
+
+		return componenteTransistorBipolarService.findByVoltajeColecEmisSat(voltajeColecEmisSat);
+	}
+
+	// ---GET---
+	@GetMapping("/corriente-colec/{corColec}")
+	public List<ComponenteTransistorBipolarEntity> getByCorrienteColec(
+			@PathVariable("corColec") String corrienteColec) {
+
+		return componenteTransistorBipolarService.findByCorrienteColec(corrienteColec);
+	}
+
+	// ---GET---
+	@GetMapping("/ganancia-hfe/{gananciaHfe}")
+	public List<ComponenteTransistorBipolarEntity> getByGananciaHfe(
+			@PathVariable("gananciaHfe") String gananciaHfe) {
+
+		return componenteTransistorBipolarService.findByGananciaHfe(gananciaHfe);
+	}
+	// ---GET---
+	@GetMapping("/disip-max/{disipMax}")
+	public List<ComponenteTransistorBipolarEntity> getByDisipMax(
+			@PathVariable("disipMax") String disipMax) {
+
+		return componenteTransistorBipolarService.findByDisipMax(disipMax);
+	}
+
+	// ---GET---
+	@GetMapping("/temp-juntura/{tempJuntura}")
+	public List<ComponenteTransistorBipolarEntity> getByTempJuntura(
+			@PathVariable("tempJuntura") String tempJuntura) {
+
+		return componenteTransistorBipolarService.findByTempJuntura(tempJuntura);
+	}
+
+	
+}
+
+
+ ```
+ 
+ 
+
+ 
+
+</br>
+
+##  Sección 7) Prueba de los Servicios Rest Desarrollados
 
 </br>
 
 
 
-### Paso zz) Prueba del Servicio de la Tabla `componentes`
+### Paso 22 ) Prueba del Servicio de la Tabla `componentes`
 #### (Vamos a testear los métodos desarrollados con Postman, es importante que se hayan ejecutado los pasos anteriores de forma correcta y se hayan agregado a la db sus registros y tablas correctamente según el repositorio de la db)
 
  </br>
  
  
-  * Testeamos el Método GET junto con la paginación creada para visualizar los componentes de la db con la siguiente uri `http://localhost:8092/componentes/listado?page=0&size=0`
+  * Testeamos el Método GET junto con la paginación creada para visualizar los componentes de la db con la siguiente uri `http://localhost:8092/componentes/listado?page=0&size=0` o mismo sin la paginación `http://localhost:8092/componentes/listado`. En este caso que no especificamos la cantidad de páginas y el tamaño es indiferente. Pero si hace diferencia si limitamos la cantidad o página
  * Obtenemos un Status 200 OK junto con el listado total de componentes..
  * Response..
   ```json
@@ -1443,11 +2447,65 @@ public class ComponenteDetalleController {
     }
 ]
  ```
-  * Se puede obtener mayor información acerca del manejo y uso de una API Rest con los paginados en otro repositorio https://github.com/andresWeitzel/Api_Rest_Spring_Productos
- 
+ * Podemos testear cada uno de los métodos GET para la obtención de los componentes según campos independientes, a través de su id, categoria, nro de pieza, etc
+ * Testeamos el método para obtener el componente a través de su id con la URI `http://localhost:8092/componentes/id/3`
+ * Obtenemos el componente correspondiente..
+  ```json
+  {
+    "id": 3,
+    "codigo": "JDHFYT-AP4519GED",
+    "imagen": "https://alltransistors.com/adv/pdfdatasheet_ape/image/ap4511gh-hf_0001.jpg",
+    "nroPieza": "AP4519GED",
+    "categoria": "Transistores MOSFET",
+    "descripcion": "Transistor Mosfet NP",
+    "fabricante": "Advanced Power",
+    "stock": 200,
+    "precio": 4.0
+}
+  
+  ```
+  </br>
+  
+  * Testeamos el método para obtener el componentes o los componentes según su stock con la siguiente URI `http://localhost:8092/componentes/stodck/10` 
+  * Obtenemos un listado con los componentes correspondientes..
+  ```json 
+  [
+    {
+        "id": 15,
+        "codigo": "2471S0A-ESP8266",
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/ESP-01.jpg/375px-ESP-01.jpg",
+        "nroPieza": "0A-ESP8266",
+        "categoria": "Placas Esp8266",
+        "descripcion": "Placa Esp8266 EX",
+        "fabricante": "Espressif Systems",
+        "stock": 10,
+        "precio": 10.0
+    },
+    {
+        "id": 11,
+        "codigo": "ATMEGA32-16AURTR-ND",
+        "imagen": "https://media.digikey.com/Renders/Atmel%20Renders/313;44A;A;44.jpg",
+        "nroPieza": "16AURTR-ND",
+        "categoria": "Microcontroladores AVRS",
+        "descripcion": "Microcontrolador AVR ATMEGA32-16AUR",
+        "fabricante": "Microchip Technology",
+        "stock": 10,
+        "precio": 30.0
+    }
+]
+  ```
+
 </br>
 
-* Para la inserción de Registros recordar que se debio haber modificados la anotation de la entity correspondiente haciendo relacion a la secuencia creada de java con la de la base de datos, para que no se presente el error de id duplicado
+* Testear y comprobar el resto de los métodos del controller, los mismos funcionan correctamente
+* Se puede obtener mayor información acerca del manejo y uso de una API Rest con los paginados en otro repositorio https://github.com/andresWeitzel/Api_Rest_Spring_Productos
+
+</br>
+
+
+
+
+* Para la inserción de Registros recordar que se tuvo que haber modificados la anotation de la entity correspondiente haciendo relacion a la secuencia creada de java con la de la base de datos, para que no se presente el error de id duplicado
 * Testeamos el método POST de inserción de registros mediante la siguiente uri `http://localhost:8092/listado/` y agregando en el Body en formato Json el Registro de Inserción..
  ```json
 {
@@ -2140,7 +3198,7 @@ public class ComponenteDetalleController {
   
 </br>
 
-### Paso zz) Prueba del Servicio de la Tabla `componentes-detalles`
+### Paso 23) Prueba del Servicio de la Tabla `componentes-detalles`
 #### (Vamos a testear los métodos desarrollados con Postman, es importante que se hayan ejecutado los pasos anteriores de forma correcta y se hayan agregado a la db sus registros y tablas correctamente según el repositorio de la db)
 
 
@@ -2370,10 +3428,107 @@ public class ComponenteDetalleController {
     }
 ]
  ```
+ </br>
+ 
+ * Podemos testear cada uno de los métodos GET para la obtención de los componentes según campos independientes, a través de su id, id de componente, longitud, material,  etc
+ * Testeamos el método para obtener el componente a través de su id con la URI `http://localhost:8092/componentes-detalles/id/3`
+ * Obtenemos el componente correspondiente..
+  ```json
+  {
+    "id": 1,
+    "idComponente": 1,
+    "hojaDeDatos": "https://www.alldatasheet.com/datasheet-pdf/pdf/335783/HUASHAN/KSH13005.html?gclid=CjwKCAiAlrSPBhBaEiwAuLSDUFeS6YrIZoRclGdfPAGVxkvXDpENZQ76uvZ1PCot50KcnlLYfYgNwBoCdwoQAvD_BwE",
+    "longitud": "45mm",
+    "ancho": "25mm",
+    "peso": "0.23 g",
+    "material": "silicio",
+    "voltajeRecomendado": "20-25 VDC",
+    "voltajeMinEntrada": "20 VDC",
+    "voltajeMaxEntrada": "25 VDC"
+}
+  
+  ```
+  </br>
+  
+  * Testeamos el método para obtener el componentes o los componentes según su material con la siguiente URI `http://localhost:8092/componentes-detalles/material/Metal` 
+  * Obtenemos un listado con los componentes correspondientes..
+  ```json 
+  [
+    {
+        "id": 12,
+        "idComponente": 12,
+        "hojaDeDatos": "https://www.farnell.com/datasheets/2047852.pdf",
+        "longitud": "222mm",
+        "ancho": "177mm",
+        "peso": "0.123 g",
+        "material": "Metal",
+        "voltajeRecomendado": "1.8 - 5.5 VDC",
+        "voltajeMinEntrada": "1.8 VDC",
+        "voltajeMaxEntrada": "5.5 VDC"
+    },
+    {
+        "id": 11,
+        "idComponente": 11,
+        "hojaDeDatos": "https://ww1.microchip.com/downloads/en/DeviceDoc/2503S.pdf",
+        "longitud": "212mm",
+        "ancho": "112mm",
+        "peso": "0.180 g",
+        "material": "Metal",
+        "voltajeRecomendado": "2.7 - 5.5 VDC",
+        "voltajeMinEntrada": "2.7 VDC",
+        "voltajeMaxEntrada": "5.5 VDC"
+    },
+    {
+        "id": 10,
+        "idComponente": 10,
+        "hojaDeDatos": "https://www.alldatasheet.com/view.jsp?Searchword=PIC-00130-001",
+        "longitud": "192mm",
+        "ancho": "190mm",
+        "peso": "0.130 g",
+        "material": "Metal",
+        "voltajeRecomendado": "4.5 - 17 VDC",
+        "voltajeMinEntrada": "4.5 VDC",
+        "voltajeMaxEntrada": "17 VDC"
+    },
+    {
+        "id": 9,
+        "idComponente": 9,
+        "hojaDeDatos": "https://www.kynix.com/uploadfiles/pdf8798/PIC18F4520-I2fPT_10386.pdf",
+        "longitud": "189mm",
+        "ancho": "110mm",
+        "peso": "0.110 g",
+        "material": "Metal",
+        "voltajeRecomendado": "2 - 5.5 VDC",
+        "voltajeMinEntrada": "2.0 VDC",
+        "voltajeMaxEntrada": "5.5 VDC"
+    }
+]
+  ```
+
+</br> 
+ 
+ 
 * Se puede obtener mayor información acerca del manejo y uso de una API Rest con los paginados en otro repositorio https://github.com/andresWeitzel/Api_Rest_Spring_Productos 
 * La Prueba del Resto de los Métodos HTTP siguen el mismo proceso que el testeo realizado anteriormente, no se anexa paso a paso el resultado de la tabla componentes-detalles por temas de simplificación.
-* Hay que tener en consideración que para insertar un registro en esta tabla se debe tener registrado el Componente que hace referencia al campo id_componente de esta Tabla. Insertar un Registro en `componentes` y luego en `componentes-detalles`
+* Hay que tener en consideración que para insertar un registro en esta tabla se debe tener registrado el Componente que hace referencia al campo id_componente de esta Tabla. Insertar un Registro en la tabla `componentes` y luego en la tabla `componentes-detalles`
 * Nuestra API REST cumple y es completamente funcional con lo desarrollado
+
+
+</br>
+
+### Paso 24) Prueba del Servicio de la Tabla `componentes-capacitores-electroliticos`
+* Por temas de tiempo y redundancia de código en esta documentación no se anexa detalladamente el testeo de este servicio, para la prueba del mismo, seguir los pasos de los anteriores services, todos los métodos fueron testeados y cumplen la funcionalidad requerida
+
+
+ </br>
+
+
+### Paso 25) Prueba del Servicio de la Tabla `componentes-transistores-bipolares`
+* Por temas de tiempo y redundancia de código en esta documentación no se anexa detalladamente el testeo de este servicio, para la prueba del mismo, seguir los pasos de los anteriores services, todos los métodos fueron testeados y cumplen la funcionalidad requerida
+
+
+ </br>
+
 
 
 
