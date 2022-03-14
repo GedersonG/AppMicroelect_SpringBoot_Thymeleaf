@@ -2,7 +2,7 @@
 
 
 body {
-    background-image: url(../images/background/wallpaperTech.jpg);
+    background-image: url(../images/background/background03.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -12,7 +12,7 @@ body {
 }
 
 table{
-	opacity : 0.7;
+	opacity : 0.9;
 	
 	
 }

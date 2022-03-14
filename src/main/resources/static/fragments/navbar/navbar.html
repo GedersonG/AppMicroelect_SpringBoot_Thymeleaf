@@ -35,20 +35,23 @@
             </div>
             <div class="offcanvas-body text-white">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item" routerLinkActive="active">
-                        <a class="nav-link text-white" [routerLink]="['/']" id="menu">Componentes</a>
+                    <li class="nav-item">
+                        <a th:href="@{'/#/'}" class="nav-link text-white" >Inicio</a>
                     </li>
-                    <li class="nav-item" routerLinkActive="active">
-                        <a class="nav-link text-white" [routerLink]="['/listado-componentes']" id="menu">Detalles Componentes</a>
+                    <li class="nav-item">
+                        <a th:href="@{'/componentes/'}" class="nav-link text-white" >Componentes</a>
                     </li>
-                    <li class="nav-item" routerLinkActive="active">
-                        <a class="nav-link text-white" [routerLink]="['/agregar-componentes']" id="menu">Transistores</a>
+                    <li class="nav-item" >
+                        <a th:href="@{'/componentes-detalles/'}" class="nav-link text-white" >Detalles</a>
                     </li>
-                    <li class="nav-item" routerLinkActive="active">
-                        <a class="nav-link text-white" [routerLink]="['/editar-componentes']" id="menu">Capacitores</a>
+                    <li class="nav-item" >
+                         <a th:href="@{'/componentes-transistores-bipolares/'}" class="nav-link text-white" >Transistores</a>
                     </li>
-                    <li class="nav-item" routerLinkActive="active">
-                        <a class="nav-link text-white" [routerLink]="['/ayuda']" id="menu">Ayuda</a>
+                    <li class="nav-item">
+                        <a th:href="@{'/componentes-capacitores-electroliticos/'}" class="nav-link text-white" >Capacitores</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a th:href="@{'//'}" class="nav-link text-white" >Ayuda</a>
                     </li>
                 </ul>
 
