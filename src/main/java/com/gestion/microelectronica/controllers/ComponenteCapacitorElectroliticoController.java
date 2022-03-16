@@ -59,12 +59,12 @@ public class ComponenteCapacitorElectroliticoController {
 
 	// ---GET---
 	// ---VISTA Y LISTA DE COMPONENTES-CAPACITORES-ELECTROLITICOS---
-	@GetMapping("/")
+	@GetMapping("/listar")
 	public ModelAndView listarModelAndView() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("listaComponentesCapacitoresElectroliticos",
 				componenteCapacitorElectroliticoService.getAllComponente());
-		mav.setViewName("componentes-capacitores-electroliticos");
+		mav.setViewName("componentes-capacitores-electroliticos/comp-cap-electr-listar");
 		return mav;
 	}
 

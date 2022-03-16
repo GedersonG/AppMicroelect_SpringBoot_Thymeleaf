@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <meta charset="utf-8">
 <title>Componentes</title>
@@ -8,7 +8,8 @@
 <link rel="icon" type="image/x-icon" href="../images/electronic.png">
 
 <!--CSS COMPONENTES.CSS-->
-<link th:href="@{../css-templates/general-template.css}" rel="stylesheet">
+<link th:href="@{../css-templates/general-template.css}"
+	rel="stylesheet">
 
 <!--CSS BOOTSTRAP-->
 <link
@@ -19,24 +20,27 @@
 
 </head>
 <body>
-	
+
 	<!-- NAVBAR FRAGMENT -->
-	<header th:replace = "../static/fragments/navbar/navbar.html::menu"></header>
+	<header th:replace="../static/fragments/navbar/navbar.html::menu"></header>
 	<!-- FIN NAVBAR FRAGMENT -->
 
 
 	<!-- LISTADO DE COMPONENTES -->
 	<div class="container text-center m-5 mt-4 p-1">
 
-		<div class="m-4 text-center justify-content-center">
+		<div class="m-4 p-3 d-flex justify-content-center ">
 			<h1>
-				<span class="badge bg-dark mt-4">Listado de Componentes</span>
+				<span class="badge bg-dark mt-3">Listado de Componentes</span>
 			</h1>
+			<a th:href="@{'/componentes/agregar'}"><button type="button" class="btn btn-primary btn-lg p-1 m-4">Agregar</button></a>
+
 		</div>
 
 		<!-- TABLA COMPONENTES -->
 		<div class=" m-2 cols-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-			<table class="table table-secondary table-bordered border-dark table-hover">
+			<table
+				class="table table-secondary table-bordered border-dark table-hover">
 
 				<thead class="table-dark">
 					<tr>
@@ -49,6 +53,7 @@
 						<th>FABRICANTE</th>
 						<th>STOCK</th>
 						<th>PRECIO</th>
+						<th>ACCION</th>
 					</tr>
 				</thead>
 
@@ -64,6 +69,14 @@
 						<td th:text="${comp.getFabricante()}"></td>
 						<td th:text="${comp.getStock()}"></td>
 						<td th:text="${comp.getPrecio()}"></td>
+						<td>
+							<div class="d-flex justify-content-center p-1">
+								<a th:href="@{'/componentes/editar'}"><button type="button"
+										class="btn btn-secondary m-1">Editar</button></a> <a
+									th:href="@{'/componentes/eliminar'}"><button type="button"
+										class="btn btn-danger m-1">Eliminar</button></a>
+							</div>
+						</td>
 
 					</tr>
 
@@ -75,26 +88,26 @@
 	</div>
 	<!-- FIN LISTADO DE COMPONENTES -->
 	
-	
-	
-	
+
+
+
 	<!-- FOOTER FRAGMENT -->
 	<footer th:replace="../static/fragments/footer/footer.html::pie-pagina"></footer>
 	<!-- FIN FOOTER FRAGMENT -->
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<!--JS Bootstrap-->
 	<script

@@ -58,11 +58,11 @@ public class ComponenteTransistorBipolarController {
 
 	// ---GET---
 	// ---VISTA Y LISTA DE COMPONENTES---
-	@GetMapping("/")
+	@GetMapping("/listar")
 	public ModelAndView listarModelAndView() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("listaComponentesTransistoresBipolares", componenteTransistorBipolarService.getAllComponente());
-		mav.setViewName("componentes-transistores-bipolares");
+		mav.setViewName("componentes-transistores-bipolares/comp-trans-bip-listar");
 		return mav;
 	}
 

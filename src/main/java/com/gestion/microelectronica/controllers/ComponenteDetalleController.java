@@ -58,11 +58,11 @@ public class ComponenteDetalleController {
 
 	// ---GET---
 	// ---VISTA Y LISTA DE COMPONENTES---
-	@GetMapping("/")
+	@GetMapping("/listar")
 	public ModelAndView listarModelAndView() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("listaComponentesDetalles", componenteDetalleService.getAllComponente());
-		mav.setViewName("componentes-detalles");
+		mav.setViewName("componentes-detalles/comp-det-listar");
 		return mav;
 	}
 
