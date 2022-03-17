@@ -70,8 +70,15 @@ public class ComponenteController {
 	// ---VISTA COMPONENTES-AGREGAR.HTML---
 	@GetMapping("/agregar")
 	public ModelAndView agregarModelAndView() {
+		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("componentes/comp-agregar");
+		
+		//Creamos un nuevo componente y lo agregamos a la vista
+		ComponenteEntity componente = new ComponenteEntity();
+		mav.addObject("nuevoComponente",componente);
+		
+		mav.setViewName("componentes/comp-agregar-form");
+		
 		return mav;
 	}
 
