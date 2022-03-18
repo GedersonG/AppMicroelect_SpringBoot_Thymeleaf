@@ -37,106 +37,131 @@
 				<span class="badge bg-dark mt-4"> Formulario Agregar
 					Componentes</span>
 			</h1>
+			<a th:href="@{'/componentes/listar'}"><button type="button" class="btn btn-primary btn-lg p-1 m-4">Listado</button></a>
+			
 		</div>
 
 
 		<!--FORMULARIO -->
 		<div
 			class="container text-center  d-flex justify-content-center m-3 p-1  ">
-			<!--La lógica de js esta en .ts-->
-			<form class="" id="formulario">
+			
+			<form class="" id="formulario" th:action="@{'/componentes/agregar-componente'}"
+			 th:object="${nuevoComponente}" method="POST">
 
-				<div class="text-left p-2 m-2 bg-dark text-white">
+				<div class="text-left p-2 m-2 bg-dark text-white ">
+					<!-- PRIMERA FILA -->
+					<div class="d-flex justify-content-inline">
+						<div class="form-group m-3 ">
+							<label for="codigo">
+								<h5>Código</h5>
+							</label>
+							<!-- PATTERN LETRAS MINUS/MAYUSC, NUMEROS Y GUIONES MEDIO  [a-zA-Z0-9.-]+ -->
+							<input type="text" class="form-control" id="codigo" required
+								pattern="[a-zA-Z0-9.-]+"
+								title=" SOLO LETRAS MINUS/MAYUSC, NUMEROS Y GUIONES MEDIO"
+								minlength="3" maxlength="100" placeholder="Código "
+								th:field="*{codigo}">
 
-					<div class="form-group mb-3">
-						<label for="codigo">
-							<h5>Código:</h5>
-						</label>
+						</div>
+						<div class="form-group m-3 ">
+							<label for="imagen">
+								<h5>Imagen</h5> <!-- PATTERN COMPLETO URL -->
+							</label> <input class="form-control" type="url" id="imagen"
+								placeholder="Link Imagen" required
+								pattern="^(http(s)?:\/\/)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+$"
+								title=" SOLO URL"
+								th:field="*{imagen}">
+
+						</div>
+					</div>
+					<!-- FIN PRIMERA FILA -->
+					<!-- SEGUNDA FILA -->
+					<div class="d-flex justify-content-inline">
+					<div class="form-group m-3">
+						<label for="nro_pieza"><h5>Nro de Pieza</h5></label>
 						<!-- PATTERN LETRAS MINUS/MAYUSC, NUMEROS Y GUIONES MEDIO  [a-zA-Z0-9.-]+ -->
-						<input type="text" class="form-control" id="codigo" required
+						<input type="text" class="form-control" id="nro-pieza" required
 							pattern="[a-zA-Z0-9.-]+"
 							title=" SOLO LETRAS MINUS/MAYUSC, NUMEROS Y GUIONES MEDIO"
-							minlength="3" maxlength="100" placeholder="Código del Componente">
+							minlength="3" maxlength="100" placeholder="Nro de Pieza"
+							th:field="*{nroPieza}">
 
 					</div>
-					<div class="form-group mb-3">
-						<label for="imagen">
-							<h5>Imagen:</h5>
-							<!-- PATTERN COMPLETO URL -->
-						</label> <input class="form-control" type="url" id="imagen"
-							placeholder="Ingrese el link de la imagen" required
-							pattern="^(http(s)?:\/\/)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+$"
-							title=" SOLO URL">
+					<div class="form-group m-3">
+						<label for="categoria"><h5>Categoría</h5></label>
+						<!-- PATTERN LETRAS MINUS/MAYUSC, NUMEROS Y GUIONES MEDIO  [a-zA-Z0-9.-]+ -->
+						<input type="text" class="form-control" id="categoria" required
+							pattern="[a-zA-Z0-9.-]+"
+							title=" SOLO LETRAS MINUS/MAYUSC, NUMEROS Y GUIONES MEDIO"
+							minlength="3" maxlength="100" placeholder="Categoria"
+							th:field="*{categoria}">
 
 					</div>
-					<div class="form-group">
-						<label for="edad"><h5>Edad:</h5></label> <input
-							class="form-control" type="number" id="edad"
-							placeholder="Ingrese su edad" required>
-						<div class="valid-feedback">Edad Ingresado!</div>
-						<div class="invalid-feedback">Debes ingresar una Edad!</div>
-
-					</div>
-					<div class="form-group">
-						<label for="email"><h5>Correo Electrónico</h5></label> <input
-							type="email" class="form-control" id="email"
-							placeholder="ingrese algun correo electronico (ej: ejemplo@gmail.com)"
-							required>
-						<div class="valid-feedback">Correo Electrónico Ingresado!</div>
-						<div class="invalid-feedback">Debes ingresar un Correo
-							Electrónico!</div>
+						</div>
+					<!-- FIN SEGUNDA FILA -->
+					<!-- TERCERA FILA -->
+					<div class="d-flex justify-content-inline">
+					<div class="form-group m-3">
+						<label for="descripcion"><h5>Descripción</h5></label>
+						<!-- PATTERN LETRAS MINUS/MAYUSC, NUMEROS Y GUIONES MEDIO  [a-zA-Z0-9.-]+ -->
+						<input type="text" class="form-control" id="descripcion" required
+							pattern="[a-zA-Z0-9.-]+"
+							title=" SOLO LETRAS MINUS/MAYUSC, NUMEROS Y GUIONES MEDIO"
+							minlength="3" maxlength="100" placeholder="descripcion"
+							th:field="*{descripcion}">
 
 					</div>
 
-					<div class="form-group">
-						<label for="tipo_denuncia"><h5>Tipo de Denuncia</h5></label> <select
-							class="form-control" id="denuncia" required>
-							<option selected disabled value="">Elija una opción</option>
-							<option>Violencia de Género</option>
-							<option>Violencia Familiar y Sexual</option>
-							<option>Trata de Personas</option>
-							<option>Otros</option>
-						</select>
-						<div class="valid-feedback">Tipo de Denuncia Ingresada!</div>
-						<div class="invalid-feedback">Debes ingresar un Tipo de
-							Denuncia!</div>
-					</div>
-
-					<div class="form-group">
-						<label for="comentarios"><h5>Descripción de la
-								Denuncia</h5></label>
-
-						<textarea class="form-control" id="descripcion" rows="3" required></textarea>
-						<div class="valid-feedback">Descripción de Denuncia
-							Ingresada!</div>
-						<div class="invalid-feedback">Es importante que des una
-							descripción de la denuncia !</div>
+					<div class="form-group m-3">
+						<label for="fabricante"><h5>Fabricante</h5></label>
+						<!-- PATTERN LETRAS MINUS/MAYUSC, NUMEROS Y GUIONES MEDIO  [a-zA-Z0-9.-]+ -->
+						<input type="text" class="form-control" id="fabricante" required
+							pattern="[a-zA-Z0-9.-]+"
+							title=" SOLO LETRAS MINUS/MAYUSC, NUMEROS Y GUIONES MEDIO"
+							minlength="3" maxlength="100" placeholder="fabricante"
+							th:field="*{fabricante}">
 
 					</div>
+							</div>
+					<!-- FIN TERCERA FILA -->
+					<!-- CUARTA FILA -->
+					<div class="d-flex justify-content-inline">
+					<div class="form-group m-3">
+						<label for="stock"><h5>Stock</h5> </label>
+						<!-- PATTERN  NUMEROS ENTEROS  [0-9]+ -->
+						<input type="number" class="form-control" id="stock" required
+							pattern="[0-9]+" title=" SOLO NUMEROS " minlength="3"
+							maxlength="100" placeholder="stock"
+							th:field="*{stock}">
 
-					<hr>
-					<div class="form-group">
-						<label for="archivo_usuario"><h5>Archivo para
-								Comprobar</h5> </label> <input type="file"
-							class="form-control-file text-danger m-3 p-2"
-							id="archivo_usuario" required>
-						<div class="valid-feedback">Archivo Ingresado!</div>
-						<div class="invalid-feedback">Es importante que Ingreses un
-							archivo para comprobación!</div>
 
 					</div>
+
+					<div class="form-group m-3">
+						<label for="precio"><h5>Precio</h5> </label>
+						<!-- PATTERN  NUMEROS ENTEROS Y DECIMALES  /^[0-9]+\.?[0-9]*$/ -->
+						<input type="number" class="form-control" id="precio" required
+							pattern="/^[0-9]+\.?[0-9]*$/" title=" SOLO NUMEROS "
+							 placeholder="precio"
+							th:field="*{precio}">
+
+
+					</div>
+							</div>
+					<!-- FIN CUARTA FILA -->
+
 					<hr>
 					<br>
 
 
 					<div class="m-2 p-2 text-center">
-						<button type="reset" class="btn btn-danger mb-2">BORRAR</button>
-						<button type="submit" class="btn btn-success ml-3 mb-2">ENVIAR</button>
+						<button type="reset" class="btn btn-danger mb-2 mr-2">BORRAR</button>
+						<button type="submit" class="btn btn-primary ml-4 mb-2">ENVIAR</button>
+						
 					</div>
 
-					<br> <br>
-					<hr>
-
+				
 				</div>
 
 

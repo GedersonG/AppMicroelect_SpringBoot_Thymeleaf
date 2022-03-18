@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -67,9 +68,9 @@ public class ComponenteController {
 	}
 
 	// ---GET---
-	// ---VISTA COMPONENTES-AGREGAR.HTML---
-	@GetMapping("/agregar")
-	public ModelAndView agregarModelAndView() {
+	// ---VISTA COMPONENTES-AGREGAR-FORM.HTML---
+	@GetMapping("/agregar-formulario")
+	public ModelAndView agregarFormModelAndView() {
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -79,6 +80,26 @@ public class ComponenteController {
 		
 		mav.setViewName("componentes/comp-agregar-form");
 		
+		return mav;
+	}
+	
+	// ---POST---
+	// ---VISTA COMP-AGREGAR-FORM-VALIDADO.HTML---
+	@PostMapping("/agregar-componente")
+	public ModelAndView agregarCompModelAndView(@ModelAttribute("nuevoComponente") ComponenteEntity componente) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		//Agregamos el componente a la db y a la vista
+		mav.addObject( componenteService.addComponente(componente));
+		
+		//Buscamos el componente agregado a traves de su id
+		mav.addObject("componenteAgregado", componenteService.findById(componente.getId()));
+		
+		//Agregamos el componente a la vista
+		mav.setViewName("componentes/comp-agregar-form-validado");
+		
+	
 		return mav;
 	}
 
