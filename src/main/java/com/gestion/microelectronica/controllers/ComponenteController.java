@@ -68,9 +68,9 @@ public class ComponenteController {
 	}
 
 	// ---GET---
-	// ---VISTA COMPONENTES-AGREGAR-FORM.HTML---
-	@GetMapping("/agregar-formulario")
-	public ModelAndView agregarFormModelAndView() {
+	// ---Vista Formulario Agregar Componentes---
+	@GetMapping("/agregar-comp-form")
+	public ModelAndView agregarComFormModelAndView() {
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -84,17 +84,18 @@ public class ComponenteController {
 	}
 	
 	// ---POST---
-	// ---VISTA COMP-AGREGAR-FORM-VALIDADO.HTML---
-	@PostMapping("/agregar-componente")
-	public ModelAndView agregarCompModelAndView(@ModelAttribute("nuevoComponente") ComponenteEntity componente) {
+	// ---Vista Formulario Validado Agregar Componentes---
+	//Obtenemos el componente del Modelo agregarComFormModelAndView
+	@PostMapping("/agregar-comp-form-validado")
+	public ModelAndView agregarCompFormValidadoModelAndView(@ModelAttribute("nuevoComponente") ComponenteEntity nuevoComponente) {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		//Agregamos el componente a la db y a la vista
-		mav.addObject( componenteService.addComponente(componente));
+		//Agregamos el componente a la db y al modelo
+		mav.addObject( componenteService.addComponente(nuevoComponente));
 		
 		//Buscamos el componente agregado a traves de su id
-		mav.addObject("componenteAgregado", componenteService.findById(componente.getId()));
+		mav.addObject("componenteAgregado", componenteService.findById(nuevoComponente.getId()));
 		
 		//Agregamos el componente a la vista
 		mav.setViewName("componentes/comp-agregar-form-validado");
@@ -102,15 +103,53 @@ public class ComponenteController {
 	
 		return mav;
 	}
+	
 
+	
 	// ---GET---
-	// ---VISTA COMPONENTES-EDITAR.HTML---
-	@GetMapping("/editar")
-	public ModelAndView editarModelAndView() {
+	// ---Vista Formulario Editar Componentes---
+	//Pasamos el id con el formato String porque obtenemos los datos en formato String con Thymeleaf 
+	//luego lo parseamops para el findBy
+	@GetMapping("/editar-comp-form/id/{id}")
+	public ModelAndView editarCompFormModelAndView(@PathVariable("id") String id) {
+		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("componentes/comp-editar");
+		
+
+		//Buscamos el componente segun su id y lo Agregamos al modelo
+		mav.addObject("editarComponente",componenteService.findById(Integer.valueOf(id)));
+		
+	
+		//Agregamos el componente a la vista
+		mav.setViewName("componentes/comp-editar-form");
+		
+	
 		return mav;
 	}
+	
+	// ---POST---
+	// ---VISTA COMP-EDITAR.HTML---
+	//---Vista Formulario Validado Editar Componentes---
+	//Obtenemos el componente del Modelo editarCompFormModelAndView
+	@PostMapping("/editar-comp-form-validado")
+	public ModelAndView editarCompFormValidadoModelAndView(@ModelAttribute("editarComponente") ComponenteEntity componenteEditado) {
+		
+		
+		ModelAndView mav = new ModelAndView();
+		
+		//Agregamos el componente a la db y al modelo
+		mav.addObject( componenteService.addComponente(componenteEditado));
+		
+		//Buscamos el componente agregado a traves de su id
+		mav.addObject("componenteAgregado", componenteService.findById(componenteEditado.getId()));
+		
+		//Agregamos el componente a la vista
+		mav.setViewName("componentes/comp-editar-form-validado");
+		
+	
+		return mav;
+	}
+
 
 	// ---GET---
 	// ---VISTA COMPONENTES-ELIMINAR.HTML---
@@ -123,7 +162,7 @@ public class ComponenteController {
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
 
 	// ---GET---
-	@GetMapping("/id/{id}")
+	@PostMapping("/id/{id}")
 	public ComponenteEntity getById(@PathVariable("id") int id) {
 
 		return componenteService.findById(id);

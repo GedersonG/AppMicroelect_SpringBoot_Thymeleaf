@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Componente Agregado</title>
+<title>Componente Agregado Validado</title>
 <!-- Icono -->
 <link rel="icon" type="image/x-icon" href="../images/electronic.png">
 
@@ -28,21 +28,23 @@
 	<!-- COMPONENTE AGREGADO -->
 	<div class="container text-center m-5 mt-4 p-1">
 
-		<div class="m-4 p-3 d-flex justify-content-center ">
+		<div class="d-flex justify-content-center m-4 mb-1 p-3 ">
 			<h1>
-				<span class="badge bg-dark mt-3">Componente Ingresado</span>
+				<span class="badge bg-dark mt-3 mb-0">Componente Ingresado</span>
 			</h1>
+		
 
-			<div class="p-1 m-4">
+				<div class="p-1 m-4">
 
-				<a th:href="@{'/componentes/agregar-formulario'}"><button
-						type="button" class="btn btn-primary btn-lg ">Agregar Otro</button></a> 
+				<a th:href="@{'/componentes/agregar-comp-form'}"><button
+						type="button" class="btn btn-primary  btn-lg p-1 ">Agregar Otro</button></a> 
 				<a th:href="@{'/componentes/listar'}"><button type="button"
-						class="btn btn-primary btn-lg ">Listado</button></a>
+						class="btn btn-primary  btn-lg p-1  ">Listado</button></a>
 			</div>
 		</div>
-		
-		
+
+
+
 		<!-- TABLA COMPONENTE -->
 		<div class=" m-2 cols-xs-12 col-sm-12 col-md-12 col-lg-12 ">
 			<table
@@ -91,9 +93,13 @@
 			</table>
 		</div>
 		<!-- FIN TABLA COMPONENTE -->
-		
-		
-		
+
+			<div class="alert alert-primary mt-5" role="alert"> Si el Componente se Muestra en la Tabla, ha sido 
+			agregado de forma correcta al sistema, caso contrario no se ha agregado, repetir el proceso verificando 
+			la informacion ingresada!!
+				</div>
+
+
 	</div>
 	<!-- COMPONENTE AGREGADO -->
 </body>

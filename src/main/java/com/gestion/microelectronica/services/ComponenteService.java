@@ -1,8 +1,7 @@
 package com.gestion.microelectronica.services;
 
-
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
 import org.apache.logging.log4j.Logger;
@@ -12,9 +11,8 @@ import org.springframework.stereotype.Service;
 import com.gestion.microelectronica.entities.ComponenteEntity;
 import com.gestion.microelectronica.repositories.I_ComponenteRepository;
 
-
 @Service
-public class ComponenteService {
+public class ComponenteService{
 
 	@Autowired
 	private I_ComponenteRepository iComponenteRepository;
@@ -76,14 +74,14 @@ public class ComponenteService {
 	}
 
 	// ------ SELECT --------
-	//------- LISTADO COMPLETO ---------
+	// ------- LISTADO COMPLETO ---------
 	public List<ComponenteEntity> getAllComponente() {
 
 		return iComponenteRepository.findAll();
 	}
 
 	// ------ SELECT --------
-	//------- LISTADO PAGINADO ---------
+	// ------- LISTADO PAGINADO ---------
 	public List<ComponenteEntity> getAllComponente(Pageable pageable) {
 
 		return iComponenteRepository.findAll(pageable).getContent();
@@ -94,6 +92,24 @@ public class ComponenteService {
 	// ------ ID --------
 	public ComponenteEntity findById(int id) {
 		return iComponenteRepository.findById(id);
+	}
+
+	// ------ ID WITH OPCIONAL --------
+	public ComponenteEntity findByIdOptional(int id) {
+		
+		Optional<ComponenteEntity> optional = Optional.of(iComponenteRepository.findById(id));
+		
+		ComponenteEntity componente = null;
+		
+		if(optional.isPresent()) {
+			
+			componente = optional.get();
+		}else {
+			throw new RuntimeException("No se ha encontrado el componente con el id "+id+" en la db!!");
+		}
+		
+		return componente;
+		
 	}
 
 	// ------ CODIGO --------
@@ -110,29 +126,30 @@ public class ComponenteService {
 	public List<ComponenteEntity> findByNroPieza(String nroPieza) {
 		return iComponenteRepository.findByNroPieza(nroPieza);
 	}
+
 	// ------ CATEGORIA --------
 	public List<ComponenteEntity> findByCategoria(String categoria) {
 		return iComponenteRepository.findByCategoria(categoria);
 	}
+
 	// ------ DESCRIPCION --------
 	public List<ComponenteEntity> findByDescripcion(String descripcion) {
 		return iComponenteRepository.findByDescripcion(descripcion);
 	}
+
 	// ------ FABRICANTE --------
 	public List<ComponenteEntity> findByFabricante(String fabricante) {
 		return iComponenteRepository.findByFabricante(fabricante);
 	}
+
 	// ------ STOCK --------
 	public List<ComponenteEntity> findByStock(int cantidad) {
 		return iComponenteRepository.findByStock(cantidad);
 	}
+
 	// ------ PRECIO --------
 	public List<ComponenteEntity> findByPrecio(double precio) {
 		return iComponenteRepository.findByPrecio(precio);
 	}
 
-	
-	
-	
-	
 }

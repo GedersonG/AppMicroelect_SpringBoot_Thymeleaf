@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title>Formulario Agregar Componentes</title>
+<title>Formulario Editar Componente</title>
+
 
 <!-- Icono -->
-<link rel="icon" type="image/x-icon" href="../images/electronic.png">
+<link rel="icon" type="image/x-icon" th:href="@{/images/electronic.png}">
 
 <!--CSS COMPONENTES.CSS-->
-<link th:href="@{../css-templates/general-template.css}"
-	rel="stylesheet">
+<link th:href="@{/css-templates/general-template.css}" rel="stylesheet">
 
 <!--CSS BOOTSTRAP-->
 <link
@@ -30,30 +30,39 @@
 
 
 	<!-- AGREGAR COMPONENTE -->
-	<div class="container text-center  m-4 mt-4 p-1">
+	<div class="container text-center  m-5 mt-4 p-1">
 
 		<div class="text-center  d-flex justify-content-center mt-4">
 			<h1>
-				<span class="badge bg-dark mt-4"> Formulario Agregar
+				<span class="badge bg-dark mt-4"> Formulario Editar
 					Componente</span>
 			</h1>
-			<a th:href="@{'/componentes/listar'}">
-				<button type="button" class="btn btn-primary btn-lg p-1 m-4">Listado</button>
-			</a>
+			<a th:href="@{'/componentes/listar'}"><button type="button"
+					class="btn btn-primary btn-lg p-1 m-4">Listado</button></a>
 
 		</div>
 
 
-		<!--FORMULARIO -->
+		<!--FORMULARIO  -->
 		<div class="container text-center  d-flex justify-content-center ">
 
 			<form class="" id="formulario"
-				th:action="@{'/componentes/agregar-comp-form-validado'}"
-				th:object="${nuevoComponente}" method="POST">
+				th:action="@{'/componentes/editar-comp-form-validado'}"
+				th:object="${editarComponente}" method="POST">
 
 				<div class="text-left p-2 m-2 bg-dark text-white ">
 					<!-- PRIMERA FILA -->
-
+					<!-- Ocultamos el Id que traemos del otro MODEL -->
+					<div class="d-flex justify-content-inline">
+						<div class="form-group m-3 ">
+							<label for="id">
+								<h5></h5>
+							</label>
+							<!-- Ocultamos el Id que traemos del otro MODEL -->
+							<input type="hidden" class="form-control" id="id"
+								th:field="*{id}">
+						</div>
+					</div>
 					<div class="d-flex justify-content-inline">
 						<div class="form-group m-3 ">
 							<label for="codigo">
@@ -163,27 +172,13 @@
 					</div>
 					<!-- FIN BOTONES -->
 
+
 				</div>
-
-
 			</form>
-
-			<!-- RESTRICCIONES-DB FRAGMENT -->
-			<div
-				th:replace="../static/fragments/db-restricciones-comp/db-restricciones-comp.html::restric-db-comp">
-			</div>
-			<!-- FIN RESTRICCIONES-DB FRAGMENT -->
-
-
 		</div>
 		<!-- FIN FORMULARIO -->
-
 	</div>
 	<!-- FIN AGREGAR COMPONENTE -->
-
-
-
-
 
 
 
@@ -212,6 +207,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+
 
 
 
