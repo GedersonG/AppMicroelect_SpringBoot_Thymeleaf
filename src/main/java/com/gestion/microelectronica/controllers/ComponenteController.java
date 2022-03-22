@@ -2,6 +2,7 @@ package com.gestion.microelectronica.controllers;
 
 import java.util.List;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,14 +59,20 @@ public class ComponenteController {
 	}
 
 	// ---GET---
-	// ---VISTA COMPONENTES-LISTAR.HTML---
-	@GetMapping("/listar")
-	public ModelAndView listarModelAndView() {
+	// ---VISTA listado componentes paginacion---
+	//Obtenemos formato String y parseamos
+	@GetMapping("/listar-paginado/{nroPagina}/{nroElementos}")
+	public ModelAndView listarPaginadosModelAndView(@PathVariable("nroPagina")String nroPagina , @PathVariable("nroElementos") String nroElementos) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("listaComponentes", componenteService.getAllComponente());
+		
+		//(nro Paginas, nro de objetos)
+		Pageable paginado = PageRequest.of(Integer.parseInt(nroPagina), Integer.parseInt(nroElementos));
+		
+		mav.addObject("listaComponentes", componenteService.getAllComponente(paginado));
 		mav.setViewName("componentes/comp-listar");
 		return mav;
 	}
+	
 
 	// ---GET---
 	// ---Vista Formulario Agregar Componentes---
@@ -138,7 +145,7 @@ public class ComponenteController {
 		ModelAndView mav = new ModelAndView();
 		
 		//Agregamos el componente a la db y al modelo
-		mav.addObject( componenteService.addComponente(componenteEditado));
+		mav.addObject( componenteService.updateComponente(componenteEditado));
 		
 		//Buscamos el componente agregado a traves de su id
 		mav.addObject("componenteAgregado", componenteService.findById(componenteEditado.getId()));
@@ -150,15 +157,77 @@ public class ComponenteController {
 		return mav;
 	}
 
-
 	// ---GET---
-	// ---VISTA COMPONENTES-ELIMINAR.HTML---
-	@GetMapping("/eliminar")
-	public ModelAndView eliminarModelAndView() {
+	// ---Vista Eliminar Componentes---
+	//Pasamos el id con el formato String porque obtenemos los datos en formato String con Thymeleaf 
+	//luego lo parseamos para el findBy
+	@GetMapping("/eliminar-comp/id/{id}")
+	public ModelAndView eliminarCompModelAndView(@PathVariable("id") String id) {
+		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("componentes/comp-eliminar");
+		
+
+		int idComponente = Integer.valueOf(id);
+	
+
+		//Buscamos el Componente
+		ComponenteEntity componenteEliminar= componenteService.findById(idComponente);
+		
+		
+
+		if((idComponente > 0) && !(componenteEliminar == null)) {
+
+
+			//Lo Agregamos al modelo
+			mav.addObject("eliminarComponente",componenteEliminar);
+			
+		
+			//Agregamos el componente a la vista
+			mav.setViewName("componentes/comp-eliminar");
+			
+		}else {
+			mav.setViewName("componentes/comp-eliminar");
+		}
+		
+	
 		return mav;
 	}
+	
+	
+	// ---POST---
+	//---Vista Eliminar Componentes Validado---
+	//--No pude obtener el id del modelo anterior, la solucion es obtener nuevamente el id y eliminar
+	@GetMapping("/eliminar-comp-validado/id/{id}")
+	public ModelAndView eliminarCompValidadoModelAndView(@PathVariable("id") String id) {
+		
+		
+		ModelAndView mav = new ModelAndView();
+		
+		
+		int idComponente = Integer.valueOf(id);
+		
+		//Buscamos el Componente
+		ComponenteEntity componenteEliminar= componenteService.findById(idComponente);
+		
+		
+
+		if((idComponente > 0) && !(componenteEliminar == null)) {
+
+
+			//Eliminamos el componente de la db y al modelo
+			mav.addObject(componenteService.deleteComponente(componenteEliminar.getId()));
+			
+			//Agregamos el componente a la vista
+			mav.setViewName("componentes/comp-eliminar-validado");
+			
+		}else {
+			mav.setViewName("componentes/comp-eliminar-validado");
+		}
+		
+	
+		return mav;
+	}
+	
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
 
 	// ---GET---

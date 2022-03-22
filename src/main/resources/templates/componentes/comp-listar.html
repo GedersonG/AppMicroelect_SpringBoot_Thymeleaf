@@ -33,9 +33,12 @@
 			<h1>
 				<span class="badge bg-dark mt-3">Listado de Componentes</span>
 			</h1>
-			<a th:href="@{'/componentes/agregar-comp-form'}">
-			<button type="button" class="btn btn-primary btn-lg p-1 m-4">Agregar</button>
-			</a>
+			<!-- BTN-AGREGAR FRAGMENT -->
+			<div 
+				th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn">
+				</div>
+			<!-- FIN BTN-AGREGAR FRAGMENT -->
+
 
 		</div>
 
@@ -62,7 +65,7 @@
 
 				<tbody>
 					<tr th:each="comp : ${listaComponentes}">
-						<td th:text ="${comp.getId()}"></td>
+						<td th:text="${comp.getId()}"></td>
 						<td th:text="${comp.getCodigo()}"></td>
 						<td><a th:href="@{|${comp.getImagen()}|}">Link</a></td>
 						<td th:text="${comp.getNroPieza()}"></td>
@@ -73,10 +76,13 @@
 						<td th:text="${comp.getPrecio()}"></td>
 						<td>
 							<div class="d-flex justify-content-center p-1">
-								<a th:href="@{/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}"><button type="button"
-										class="btn btn-secondary m-1">Editar</button></a> <a
-									th:href="@{'/componentes/eliminar'}"><button type="button"
-										class="btn btn-danger m-1">Eliminar</button></a>
+								<a
+									th:href="@{/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}">
+									<button type="button" class="btn btn-secondary m-1">Editar</button>
+								</a> <a
+									th:href="@{/componentes/eliminar-comp/id/{id}(id=${comp.getId()})}">
+									<button type="button" class="btn btn-danger m-1">Eliminar</button>
+								</a>
 							</div>
 						</td>
 
@@ -87,9 +93,45 @@
 			</table>
 		</div>
 		<!-- FIN TABLA COMPONENTES -->
+
+
+		<!-- PAGINACION -->
+		<div class="d-flex justify-content-center p-1">
+			<a th:href="@{/componentes/listar-paginado/0/7}">
+				<button type="button"
+					class="btn btn-dark border-light alert-link m-2 ">
+					<!--icono Anterior-->
+					<img th:src="@{../images/pagination/anterior.png}" alt="" width="20"
+						height="20" class="d-inline-block align-text-center ">
+					<!--Fin icono Anterior-->
+				</button> <!--NUMEROS -->
+			</a> <a th:href="@{/componentes/listar-paginado/0/7}">
+				<h2 class="text-white p-1">1</h2>
+			</a> <a th:href="@{/componentes/listar-paginado/1/7}">
+				<h2 class="text-white p-1">2</h2>
+			</a> <a th:href="@{/componentes/listar-paginado/2/7}">
+				<h2 class="text-white p-1">3</h2>
+			</a> <a th:href="@{/componentes/listar-paginado/3/7}">
+				<h2 class="text-white p-1">4</h2>
+			</a>
+			<!-- FIN NUMEROS -->
+			<a th:href="@{/componentes/listar-paginado/0/7}">
+				<button type="button"
+					class="btn btn-dark border-light alert-link m-2 ">
+					<!--icono siguiente-->
+					<img th:src="@{../images/pagination/siguiente.png}" alt="" width="20"
+						height="20" class="d-inline-block align-text-center ">
+					<!--Fin icono siguiente-->
+				</button>
+			</a>
+		</div>
+		<!-- FIN PAGINACION -->
+
+
+
 	</div>
 	<!-- FIN LISTADO DE COMPONENTES -->
-	
+
 
 
 

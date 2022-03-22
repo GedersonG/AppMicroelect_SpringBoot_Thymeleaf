@@ -25,13 +25,13 @@
 	<!-- FIN NAVBAR FRAGMENT -->
 
 
-	<!-- COMPONENTE AGREGADO -->
+	<!-- COMPONENTE EDITADO-->
 	<div class="container text-center m-5 mt-4 p-1">
 	
-		<div class="alert alert-primary mt-5" role="alert"> Si el Componente se Muestra en la Tabla, ha sido 
-			editado y agregado de forma correcta al sistema, caso contrario no se ha agregado, repetir el proceso verificando 
-			la informacion ingresada!!
-				</div>
+		<!-- ALERT FRAGMENT -->
+	<header th:replace="../static/fragments/agregado-editado-alert/agregado-editado-alert.html::agreg-edit-alert"></header>
+	<!-- FIN ALERT FRAGMENT -->
+	
 
 		<div class="m-4 p-3 d-flex justify-content-center ">
 			<h1>
@@ -42,7 +42,7 @@
 
 				<a th:href="@{'/componentes/agregar-comp-form'}"><button
 						type="button" class="btn btn-primary  btn-lg p-1 ">Agregar Otro</button></a> 
-				<a th:href="@{'/componentes/listar'}"><button type="button"
+				<a th:href="@{'/componentes/listar-paginado/0/7'}"><button type="button"
 						class="btn btn-primary  btn-lg p-1  ">Listado</button></a>
 			</div>
 		</div>
@@ -83,10 +83,10 @@
 						<td th:text="${comp.getStock()}"></td>
 						<td th:text="${comp.getPrecio()}"></td>
 						<td>
-							<div class="d-flex justify-content-center p-1">
+								<div class="d-flex justify-content-center p-1">
 								<a th:href="@{/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}"><button type="button"
 										class="btn btn-secondary m-1">Editar</button></a> <a
-									th:href="@{'/componentes/eliminar'}"><button type="button"
+									th:href="@{/componentes/eliminar-comp/id/{id}(id=${comp.getId()})}"><button type="button"
 										class="btn btn-danger m-1">Eliminar</button></a>
 							</div>
 						</td>
@@ -102,6 +102,33 @@
 		
 		
 	</div>
-	<!-- COMPONENTE AGREGADO -->
+	<!-- FIN COMPONENTE EDITADO -->
+	
+	
+
+
+
+	<!-- FOOTER FRAGMENT -->
+	<footer th:replace="../static/fragments/footer/footer.html::pie-pagina"></footer>
+	<!-- FIN FOOTER FRAGMENT -->
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--JS Bootstrap-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+
+	
 </body>
 </html>

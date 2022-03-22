@@ -60,7 +60,7 @@ public class ComponenteService{
 	public boolean deleteComponente(int id) {
 		try {
 			if (id <= 0) {
-				logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO EXISTE!!");
+				logger.error("ERROR deleteComponente : EL COMPONENTE CON EL id " + id + " NO EXISTE!!");
 				return false;
 			} else {
 				iComponenteRepository.delete(iComponenteRepository.findById(id));
@@ -68,7 +68,7 @@ public class ComponenteService{
 			}
 
 		} catch (Exception e) {
-			logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO SE HA ELIMINADO DE LA DB!!");
+			logger.error("ERROR deleteComponente : EL COMPONENTE CON EL id " + id + " NO SE HA ELIMINADO DE LA DB!!");
 			return false;
 		}
 	}
