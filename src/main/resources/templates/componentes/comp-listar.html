@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <title>Componentes</title>
 
+
 <!-- Icono -->
-<link rel="icon" type="image/x-icon" href="../images/electronic.png">
+<link rel="icon" type="image/x-icon" th:href="@{/images/electronic.png}">
 
 <!--CSS COMPONENTES.CSS-->
-<link th:href="@{../css-templates/general-template.css}"
-	rel="stylesheet">
+<link th:href="@{/css-templates/general-template.css}" rel="stylesheet">
 
 <!--CSS BOOTSTRAP-->
 <link
@@ -34,9 +34,9 @@
 				<span class="badge bg-dark mt-3">Listado de Componentes</span>
 			</h1>
 			<!-- BTN-AGREGAR FRAGMENT -->
-			<div 
+			<div
 				th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn">
-				</div>
+			</div>
 			<!-- FIN BTN-AGREGAR FRAGMENT -->
 
 
@@ -49,7 +49,10 @@
 
 				<thead class="table-dark">
 					<tr>
-						<th>ID</th>
+						<th>ID <a
+							th:href="@{/componentes/ordenar-por-id-paginado/0/7}">
+								<button type="button" class="btn-sm btn-secondary ">Ordenar</button>
+						</a></th>
 						<th>CÓDIGO</th>
 						<th>IMAGEN</th>
 						<th>NRO.PIEZA</th>
@@ -64,10 +67,10 @@
 
 
 				<tbody>
-					<tr th:each="comp : ${listaComponentes}">
+					<tr th:each="comp : ${listaComponentesPaginado}">
 						<td th:text="${comp.getId()}"></td>
 						<td th:text="${comp.getCodigo()}"></td>
-						<td><a th:href="@{|${comp.getImagen()}|}">Link</a></td>
+						<td><a th:href="@{|${comp.getImagen()}|}" target="_blank">Link</a></td>
 						<td th:text="${comp.getNroPieza()}"></td>
 						<td th:text="${comp.getCategoria()}"></td>
 						<td th:text="${comp.getDescripcion()}"></td>
@@ -91,42 +94,46 @@
 				</tbody>
 
 			</table>
+
+
+			<!-- PAGINACION -->
+
+			<div class="d-flex justify-content-center bg-dark p-1">
+
+				<a th:href="@{/componentes/listar-paginado-anterior}">
+					<button type="button"
+						class="btn btn-dark border-light alert-link m-2 ">
+						<!--icono Anterior-->
+						<img th:src="@{/images/pagination/anterior.png}" alt="" width="20"
+							height="20" class="d-inline-block align-text-center ">
+						<!--Fin icono Anterior-->
+					</button> <!--NUMEROS -->
+				</a> <a th:href="@{/componentes/listar-paginado/0/7}">
+					<h2 class="text-white p-1">1</h2>
+				</a> <a th:href="@{/componentes/listar-paginado/1/7}">
+					<h2 class="text-white p-1">2</h2>
+				</a> <a th:href="@{/componentes/listar-paginado/2/7}">
+					<h2 class="text-white p-1">3</h2>
+				</a> <a th:href="@{/componentes/listar-paginado/3/7}">
+					<h2 class="text-white p-1">4</h2>
+				</a>
+				<!-- FIN NUMEROS -->
+				<a th:href="@{/componentes/listar-paginado/0/7}">
+					<button type="button"
+						class="btn btn-dark border-light alert-link m-2 ">
+						<!--icono siguiente-->
+						<img th:src="@{/images/pagination/siguiente.png}" alt=""
+							width="20" height="20" class="d-inline-block align-text-center ">
+						<!--Fin icono siguiente-->
+					</button>
+				</a>
+			</div>
+
+			<!-- FIN PAGINACION -->
+
+
 		</div>
 		<!-- FIN TABLA COMPONENTES -->
-
-
-		<!-- PAGINACION -->
-		<div class="d-flex justify-content-center p-1">
-			<a th:href="@{/componentes/listar-paginado/0/7}">
-				<button type="button"
-					class="btn btn-dark border-light alert-link m-2 ">
-					<!--icono Anterior-->
-					<img th:src="@{../images/pagination/anterior.png}" alt="" width="20"
-						height="20" class="d-inline-block align-text-center ">
-					<!--Fin icono Anterior-->
-				</button> <!--NUMEROS -->
-			</a> <a th:href="@{/componentes/listar-paginado/0/7}">
-				<h2 class="text-white p-1">1</h2>
-			</a> <a th:href="@{/componentes/listar-paginado/1/7}">
-				<h2 class="text-white p-1">2</h2>
-			</a> <a th:href="@{/componentes/listar-paginado/2/7}">
-				<h2 class="text-white p-1">3</h2>
-			</a> <a th:href="@{/componentes/listar-paginado/3/7}">
-				<h2 class="text-white p-1">4</h2>
-			</a>
-			<!-- FIN NUMEROS -->
-			<a th:href="@{/componentes/listar-paginado/0/7}">
-				<button type="button"
-					class="btn btn-dark border-light alert-link m-2 ">
-					<!--icono siguiente-->
-					<img th:src="@{../images/pagination/siguiente.png}" alt="" width="20"
-						height="20" class="d-inline-block align-text-center ">
-					<!--Fin icono siguiente-->
-				</button>
-			</a>
-		</div>
-		<!-- FIN PAGINACION -->
-
 
 
 	</div>

@@ -32,14 +32,25 @@
 	<!-- AGREGAR COMPONENTE -->
 	<div class="container text-center  m-5 mt-4 p-1">
 
-		<div class="text-center  d-flex justify-content-center mt-4">
-			<h1>
-				<span class="badge bg-dark mt-4"> Formulario Editar
-					Componente</span>
+		<div class="m-4 p-3 d-flex justify-content-center d-inline-flex">
+				<h1>
+				<span class="badge bg-dark mt-3">Formulario Editar Componente</span>
 			</h1>
-			<a th:href="@{'/componentes/listar-paginado/0/7'}"><button type="button"
-					class="btn btn-primary btn-lg p-1 m-4">Listado</button></a>
+			<div
+				class="card-body  d-flex justify-content-inline text-center ms-1 p-2">
+				
+				<!-- BTN-AGREGAR FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></div>
+				<!-- FIN BTN-AGREGAR FRAGMENT -->
 
+				<!-- BTN-LISTADO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn"></div>
+				<!-- FIN BTN-LISTADO FRAGMENT -->
+
+
+			</div>
 		</div>
 
 
@@ -54,7 +65,7 @@
 					<!-- PRIMERA FILA -->
 					<!-- Ocultamos el Id que traemos del otro MODEL -->
 					<div class="d-flex justify-content-inline">
-						<div class="form-group m-3 ">
+						<div class="form-group  ">
 							<label for="id">
 								<h5></h5>
 							</label>
@@ -175,15 +186,15 @@
 
 				</div>
 			</form>
-			
-				<!-- RESTRICCIONES-DB FRAGMENT -->
+
+			<!-- RESTRICCIONES-DB FRAGMENT -->
 			<div
-				th:replace="../static/fragments/db-restricciones-comp/db-restricciones-comp.html::restric-db-comp">
+				th:replace="../static/fragments/componentes/db-restricciones-comp/db-restricciones-comp.html::restric-db-comp">
 			</div>
 			<!-- FIN RESTRICCIONES-DB FRAGMENT -->
 
-			
-			
+
+
 		</div>
 		<!-- FIN FORMULARIO -->
 	</div>

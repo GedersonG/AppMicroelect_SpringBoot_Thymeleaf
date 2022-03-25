@@ -2,8 +2,10 @@ package com.gestion.microelectronica.controllers;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +29,9 @@ public class ComponenteController {
 	@Autowired
 	private ComponenteService componenteService;
 
+	//===============================================
 	// ============= MÉTODOS HTTP CRUD ==============
+	//===============================================
 
 	// ----POST----
 	@PostMapping("/")
@@ -58,20 +62,92 @@ public class ComponenteController {
 		return componenteService.getAllComponente(pageable);
 	}
 
+	//==================================================
+	// ============= MÉTODOS HTTP BÚSQUEDA =============
+	//==================================================
+
 	// ---GET---
-	// ---VISTA listado componentes paginacion---
-	//Obtenemos formato String y parseamos
-	@GetMapping("/listar-paginado/{nroPagina}/{nroElementos}")
-	public ModelAndView listarPaginadosModelAndView(@PathVariable("nroPagina")String nroPagina , @PathVariable("nroElementos") String nroElementos) {
+	@PostMapping("/id/{id}")
+	public ComponenteEntity getById(@PathVariable("id") int id) {
+
+		return componenteService.findById(id);
+	}
+
+	// ---GET---
+	@GetMapping("/codigo/{codigo}")
+	public List<ComponenteEntity> getByCodigo(@PathVariable("codigo") String codigo) {
+
+		return componenteService.findByCodigo(codigo);
+	}
+
+	// ---GET---
+	@GetMapping("/imagen/{imagen}")
+	public List<ComponenteEntity> getByImagen(@PathVariable("imagen") String imagen) {
+
+		return componenteService.findByImagen(imagen);
+	}
+
+	// ---GET---
+	@GetMapping("/nro-de-pieza/{nroPieza}")
+	public List<ComponenteEntity> getByNroPieza(@PathVariable("nroPieza") String nroPieza) {
+
+		return componenteService.findByNroPieza(nroPieza);
+	}
+
+	// ---GET---
+	@GetMapping("/categoria/{categoria}")
+	public List<ComponenteEntity> getByCategoria(@PathVariable("nroPieza") String nroPieza) {
+
+		return componenteService.findByNroPieza(nroPieza);
+	}
+
+	// ---GET---
+	@GetMapping("/descripcion/{descripcion}")
+	public List<ComponenteEntity> getByDescripcion(@PathVariable("descripcion") String descripcion) {
+
+		return componenteService.findByDescripcion(descripcion);
+	}
+
+	// ---GET---
+	@GetMapping("/fabricante/{fabricante}")
+	public List<ComponenteEntity> getByFabricante(@PathVariable("fabricante") String fabricante) {
+
+		return componenteService.findByFabricante(fabricante);
+	}
+
+	// ---GET---
+	@GetMapping("/stock/{stock}")
+	public List<ComponenteEntity> getByStock(@PathVariable("stock") int stock) {
+
+		return componenteService.findByStock(stock);
+	}
+
+	// ---GET---
+	@GetMapping("/precio/{precio}")
+	public List<ComponenteEntity> getByPrecio(@PathVariable("precio") double precio) {
+
+		return componenteService.findByPrecio(precio);
+	}
+
+	
+	//============================================================
+	// ============= VISTAS Y OPERACIONES GENERALES ==============
+	//============================================================
+	
+	//---GET---
+	//-- VISTA del index--
+	@GetMapping("/inicio")
+	public ModelAndView inicioModelAndView() {
+	
 		ModelAndView mav = new ModelAndView();
 		
-		//(nro Paginas, nro de objetos)
-		Pageable paginado = PageRequest.of(Integer.parseInt(nroPagina), Integer.parseInt(nroElementos));
+		mav.setViewName("index");
 		
-		mav.addObject("listaComponentes", componenteService.getAllComponente(paginado));
-		mav.setViewName("componentes/comp-listar");
 		return mav;
+		
 	}
+	
+	
 	
 
 	// ---GET---
@@ -228,69 +304,91 @@ public class ComponenteController {
 		return mav;
 	}
 	
-	// ============= MÉTODOS HTTP BÚSQUEDA ==============
+	
+
+	//===========================================
+	// ============= PAGINACIONES  ==============
+	//===========================================
+	
 
 	// ---GET---
-	@PostMapping("/id/{id}")
-	public ComponenteEntity getById(@PathVariable("id") int id) {
-
-		return componenteService.findById(id);
+	// ---VISTA listado componentes paginacion---
+	//Obtenemos formato String y parseamos
+	@GetMapping("/listar-paginado/{nroPagina}/{nroElementos}")
+	public ModelAndView listarPaginadoModelAndView(@PathVariable("nroPagina")String nroPagina , @PathVariable("nroElementos") String nroElementos) {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		//Seteamos un paginado (nro Paginas, nro de objetos)
+		Pageable paginado = PageRequest.of(Integer.parseInt(nroPagina), Integer.parseInt(nroElementos));
+		
+		//Agregamos el ultimo estado del paginado para tener ultima referencia
+		mav.addObject("ultimoPaginado", paginado);
+		
+		//Agregamos la lista de paginados al modelo
+		mav.addObject("listaComponentesPaginado", componenteService.getAllComponente(paginado) );
+		
+		//Seteamos la vista
+		mav.setViewName("componentes/comp-listar");
+		return mav;
 	}
+	
+	// ---GET---
+	// ---VISTA listado componentes paginacion---
+	//Obtenemos el paginado del Modelo anterior
+	@GetMapping("/listar-paginado-anterior")
+	public ModelAndView listarPaginadoAnteriorModelAndView(@ModelAttribute("ultimoPaginado") Pageable ultimoPaginado) {
+		ModelAndView mav = new ModelAndView();
+		
+	
+		//(nro Paginas, nro de objetos)
+		Pageable paginado = PageRequest.of(((ultimoPaginado.getPageNumber()) - 1) , (ultimoPaginado.getPageSize()));
+		
+		mav.addObject("ultimoPaginado", componenteService.getAllComponente(paginado));
+		mav.setViewName("componentes/comp-listar");
+		return mav;
+	}
+	
+	// ---GET---
+	// ---VISTA listado componentes paginacion---
+	//Obtenemos formato String y parseamos
+	@GetMapping("/listar-paginado-siguiente/{nroPagina}/{nroElementos}")
+	public ModelAndView listarPaginadoSiguienteModelAndView(@PathVariable("nroPagina")String nroPagina , @PathVariable("nroElementos") String nroElementos) {
+		ModelAndView mav = new ModelAndView();
+		
+		//(nro Paginas, nro de objetos)
+		Pageable paginado = PageRequest.of((Integer.parseInt(nroPagina)+1), Integer.parseInt(nroElementos));
+		
+		mav.addObject("listaComponentes", componenteService.getAllComponente(paginado));
+		mav.setViewName("componentes/comp-listar");
+		return mav;
+	}
+	
+
+	//====================================================
+	// ============= ORDENACIONES PAGINADAS ==============
+	//====================================================
+	
 
 	// ---GET---
-	@GetMapping("/codigo/{codigo}")
-	public List<ComponenteEntity> getByCodigo(@PathVariable("codigo") String codigo) {
-
-		return componenteService.findByCodigo(codigo);
+	//Ordenacion por ID
+	@GetMapping("/ordenar-por-id-paginado/{nroPagina}/{nroElementos}")
+	public ModelAndView ordenarPorIdPaginadoModelAndView(@PathVariable("nroPagina")String nroPagina , @PathVariable("nroElementos") String nroElementos) {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		//Seteamos un paginado ordenado por id (nro Paginas, nro de objetos, sortBy..)
+		Pageable sortByIdPaginado = PageRequest.of(Integer.parseInt(nroPagina), Integer.parseInt(nroElementos), Sort.by("id"));
+		
+	
+		//Agregamos la lista de paginados ordenados por id al modelo
+		mav.addObject("sortByIdPaginado", componenteService.getAllComponente(sortByIdPaginado) );
+		
+		//Seteamos la vista
+		mav.setViewName("componentes/comp-listar");
+		
+		return mav;
 	}
-
-	// ---GET---
-	@GetMapping("/imagen/{imagen}")
-	public List<ComponenteEntity> getByImagen(@PathVariable("imagen") String imagen) {
-
-		return componenteService.findByImagen(imagen);
-	}
-
-	// ---GET---
-	@GetMapping("/nro-de-pieza/{nroPieza}")
-	public List<ComponenteEntity> getByNroPieza(@PathVariable("nroPieza") String nroPieza) {
-
-		return componenteService.findByNroPieza(nroPieza);
-	}
-
-	// ---GET---
-	@GetMapping("/categoria/{categoria}")
-	public List<ComponenteEntity> getByCategoria(@PathVariable("nroPieza") String nroPieza) {
-
-		return componenteService.findByNroPieza(nroPieza);
-	}
-
-	// ---GET---
-	@GetMapping("/descripcion/{descripcion}")
-	public List<ComponenteEntity> getByDescripcion(@PathVariable("descripcion") String descripcion) {
-
-		return componenteService.findByDescripcion(descripcion);
-	}
-
-	// ---GET---
-	@GetMapping("/fabricante/{fabricante}")
-	public List<ComponenteEntity> getByFabricante(@PathVariable("fabricante") String fabricante) {
-
-		return componenteService.findByFabricante(fabricante);
-	}
-
-	// ---GET---
-	@GetMapping("/stock/{stock}")
-	public List<ComponenteEntity> getByStock(@PathVariable("stock") int stock) {
-
-		return componenteService.findByStock(stock);
-	}
-
-	// ---GET---
-	@GetMapping("/precio/{precio}")
-	public List<ComponenteEntity> getByPrecio(@PathVariable("precio") double precio) {
-
-		return componenteService.findByPrecio(precio);
-	}
+	
 
 }

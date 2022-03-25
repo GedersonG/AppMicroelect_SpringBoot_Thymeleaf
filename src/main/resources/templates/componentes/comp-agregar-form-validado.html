@@ -27,7 +27,7 @@
 
 
 	<!-- COMPONENTE AGREGADO -->
-	<div class="container text-center m-5 mt-4 p-1">
+	<div class="container text-center ms-5 me-5 mb-0 mt-4 p-1">
 
 		<div class="alert alert-primary mt-5" role="alert">Si el
 			Componente se Muestra en la Tabla, ha sido agregado de forma correcta
@@ -38,16 +38,20 @@
 
 			<div class="d-flex justify-content-center m-4 mb-1 p-3 ">
 				<h1>
-					<span class="badge bg-dark mt-3 mb-0">Componente Ingresado</span>
+					<span class="badge bg-dark mt-3 mb-0">Componente Agregado</span>
 				</h1>
 
-				<div class="p-1 m-4">
+					<div class="card-body d-flex justify-content-inline align-text-center ms-1 p-2">
+							<!-- BTN-AGREGAR FRAGMENT -->
+							<header th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></header>
+							<!-- FIN BTN-AGREGAR FRAGMENT -->
 
-					<a th:href="@{'/componentes/agregar-comp-form'}"><button
-							type="button" class="btn btn-primary  btn-lg p-1 ">Agregar
-							Otro</button></a> <a th:href="@{'/componentes/listar-paginado/0/7'}"><button
-							type="button" class="btn btn-primary  btn-lg p-1  ">Listado</button></a>
-				</div>
+							<!-- BTN-LISTADO FRAGMENT -->
+							<header th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn"></header>
+							<!-- FIN BTN-LISTADO FRAGMENT -->
+
+
+						</div>
 			</div>
 		</div>
 
