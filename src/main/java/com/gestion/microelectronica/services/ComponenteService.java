@@ -3,6 +3,7 @@ package com.gestion.microelectronica.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,6 +86,13 @@ public class ComponenteService{
 	public List<ComponenteEntity> getAllComponente(Pageable pageable) {
 
 		return iComponenteRepository.findAll(pageable).getContent();
+	}
+	
+	// ------ SELECT --------
+	// ------- PAGINADO ---------
+	public Page<ComponenteEntity> getAllComponentePage(Pageable pageable) {
+
+		return iComponenteRepository.findAll(pageable);
 	}
 
 	// =============== MÉTODOS DE BUSQUEDA ====================

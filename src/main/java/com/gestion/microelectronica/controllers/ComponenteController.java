@@ -159,6 +159,7 @@ public class ComponenteController {
 		
 		//Creamos un nuevo componente y lo agregamos a la vista
 		ComponenteEntity componente = new ComponenteEntity();
+		
 		mav.addObject("nuevoComponente",componente);
 		
 		mav.setViewName("componentes/comp-agregar-form");
@@ -316,22 +317,55 @@ public class ComponenteController {
 	//Obtenemos formato String y parseamos
 	@GetMapping("/listar-paginado/{nroPagina}/{nroElementos}")
 	public ModelAndView listarPaginadoModelAndView(@PathVariable("nroPagina")String nroPagina , @PathVariable("nroElementos") String nroElementos) {
+		
+		
 		ModelAndView mav = new ModelAndView();
 		
-		
+
 		//Seteamos un paginado (nro Paginas, nro de objetos)
 		Pageable paginado = PageRequest.of(Integer.parseInt(nroPagina), Integer.parseInt(nroElementos));
 		
-		//Agregamos el ultimo estado del paginado para tener ultima referencia
-		mav.addObject("ultimoPaginado", paginado);
+		
+		
+		//Creamos objeto paginado para obtener datos y pasarlos al modelo
+		Page<ComponenteEntity> ultimoPaginado =  componenteService.getAllComponentePage(paginado);
+		
+		
+		//--Operaciones Info del Paginado--
+
+		mav.addObject("ultimoNroPagina",ultimoPaginado.getNumber());
+		
+		//Ultimo Nro de Pagina Vista para Cliente comienza desde uno
+		mav.addObject("ultimoNroPaginaVistaCliente",(ultimoPaginado.getNumber() + 1));
+				
+		
+		mav.addObject("ultimoNroElementos",ultimoPaginado.getNumberOfElements());
+		
+		mav.addObject("totalElementos",ultimoPaginado.getTotalElements());
+		
+		mav.addObject("totalPaginas",ultimoPaginado.getTotalPages());
+		
+		//Total de Paginas Vista para Cliente comienza desde uno
+		mav.addObject("totalPaginasVistaCliente",(ultimoPaginado.getTotalPages() + 1));
+					
+		
+		//Paginado Siguiente
+		mav.addObject("siguientePaginado", ultimoPaginado.getNumber() + 1);
+		
+		//Paginado Anterior
+		mav.addObject("anteriorPaginado", ultimoPaginado.getNumber() - 1);
+
+		
 		
 		//Agregamos la lista de paginados al modelo
-		mav.addObject("listaComponentesPaginado", componenteService.getAllComponente(paginado) );
+		mav.addObject("listaComponentesPaginado", ultimoPaginado);
 		
 		//Seteamos la vista
 		mav.setViewName("componentes/comp-listar");
 		return mav;
 	}
+	
+	/*
 	
 	// ---GET---
 	// ---VISTA listado componentes paginacion---
@@ -349,6 +383,7 @@ public class ComponenteController {
 		return mav;
 	}
 	
+	
 	// ---GET---
 	// ---VISTA listado componentes paginacion---
 	//Obtenemos formato String y parseamos
@@ -363,31 +398,42 @@ public class ComponenteController {
 		mav.setViewName("componentes/comp-listar");
 		return mav;
 	}
+	*/
 	
 
 	//====================================================
-	// ============= ORDENACIONES PAGINADAS ==============
+	// ============= ORDENACIONES PAGINADOS ==============
 	//====================================================
 	
 
 	// ---GET---
 	//Ordenacion por ID
-	@GetMapping("/ordenar-por-id-paginado/{nroPagina}/{nroElementos}")
-	public ModelAndView ordenarPorIdPaginadoModelAndView(@PathVariable("nroPagina")String nroPagina , @PathVariable("nroElementos") String nroElementos) {
+	@GetMapping("/ordenar-por-id-paginado")
+	public ModelAndView ordenarPorIdPaginadoModelAndView(@ModelAttribute("ultimoPaginado") Page<ComponenteEntity> ultimoPaginado) {
+
 		ModelAndView mav = new ModelAndView();
-		
+
 		
 		//Seteamos un paginado ordenado por id (nro Paginas, nro de objetos, sortBy..)
-		Pageable sortByIdPaginado = PageRequest.of(Integer.parseInt(nroPagina), Integer.parseInt(nroElementos), Sort.by("id"));
+		Pageable sortByIdPaginado = PageRequest.of(ultimoPaginado.getNumber()
+				, ultimoPaginado.getNumberOfElements(), Sort.by("id").ascending());
 		
-	
+
+		//Pageable sortByIdPaginado = PageRequest.of(nroPagina , nroElementos);
+		
 		//Agregamos la lista de paginados ordenados por id al modelo
-		mav.addObject("sortByIdPaginado", componenteService.getAllComponente(sortByIdPaginado) );
+		mav.addObject("listaComponentesPaginado", componenteService.getAllComponente(sortByIdPaginado) );
 		
 		//Seteamos la vista
 		mav.setViewName("componentes/comp-listar");
 		
 		return mav;
+		
+		
+		
+		
+		
+	
 	}
 	
 

@@ -49,10 +49,7 @@
 
 				<thead class="table-dark">
 					<tr>
-						<th>ID <a
-							th:href="@{/componentes/ordenar-por-id-paginado/0/7}">
-								<button type="button" class="btn-sm btn-secondary ">Ordenar</button>
-						</a></th>
+						<th>ID</th>
 						<th>CÓDIGO</th>
 						<th>IMAGEN</th>
 						<th>NRO.PIEZA</th>
@@ -62,6 +59,8 @@
 						<th>STOCK</th>
 						<th>PRECIO</th>
 						<th>ACCION</th>
+
+
 					</tr>
 				</thead>
 
@@ -77,15 +76,19 @@
 						<td th:text="${comp.getFabricante()}"></td>
 						<td th:text="${comp.getStock()}"></td>
 						<td th:text="${comp.getPrecio()}"></td>
+
 						<td>
 							<div class="d-flex justify-content-center p-1">
-								<a
+								<a th:href="@{/componentes/ordenar-por-id-paginado}">
+									<button type="button" class="btn-sm btn-secondary ">Ordenar</button>
+								</a> <a
 									th:href="@{/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}">
 									<button type="button" class="btn btn-secondary m-1">Editar</button>
 								</a> <a
 									th:href="@{/componentes/eliminar-comp/id/{id}(id=${comp.getId()})}">
 									<button type="button" class="btn btn-danger m-1">Eliminar</button>
 								</a>
+
 							</div>
 						</td>
 
@@ -114,9 +117,7 @@
 					<h2 class="text-white p-1">2</h2>
 				</a> <a th:href="@{/componentes/listar-paginado/2/7}">
 					<h2 class="text-white p-1">3</h2>
-				</a> <a th:href="@{/componentes/listar-paginado/3/7}">
-					<h2 class="text-white p-1">4</h2>
-				</a>
+				</a> 
 				<!-- FIN NUMEROS -->
 				<a th:href="@{/componentes/listar-paginado/0/7}">
 					<button type="button"
@@ -127,9 +128,43 @@
 						<!--Fin icono siguiente-->
 					</button>
 				</a>
+
+				<!-- INFO NRO DE PAGINA Y ELEMENTOS -->
+				<div class="bg-dark text-white d-inline-block align-text-center ms-5">
+					<h6 class= "">
+						 Nro Página: <span class="bg-dark " th:text="${ultimoNroPaginaVistaCliente}"></span>
+					</h6>
+						<h6 class= "">
+						Nro Elementos: <span class="bg-dark " th:text="${ultimoNroElementos}"></span>
+					</h6>
+
+				</div>
+				<!-- FIN  INFO NRO DE PAGINA Y ELEMENTOS -->
+
+				<!-- TOTAL DE PAGINAS Y DE ELEMENTOS -->
+			
+				<div class="bg-dark text-white  d-inline-block align-text-center ms-5">
+					<!-- Sumamos 1 para no comenzar desde la pag cero -->
+					<h6 class= "">
+						Total de Páginas: <span class="bg-dark " th:text="${totalPaginasVistaCliente}"></span>
+					</h6>
+						<h6 class= "">
+						Total de Elementos: <span class="bg-dark " th:text="${totalElementos}"></span>
+					</h6>
+
+				</div>
+
+				<!-- FIN TOTAL DE PAGINAS Y DE ELEMENTOS -->
+
+
 			</div>
 
 			<!-- FIN PAGINACION -->
+
+
+
+
+
 
 
 		</div>
