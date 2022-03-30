@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -315,15 +316,24 @@ public class ComponenteController {
 	// ---GET---
 	// ---VISTA listado componentes paginacion---
 	//Obtenemos formato String y parseamos
-	@GetMapping("/listar-paginado/{nroPagina}/{nroElementos}")
-	public ModelAndView listarPaginadoModelAndView(@PathVariable("nroPagina")String nroPagina , @PathVariable("nroElementos") String nroElementos) {
+	@GetMapping("/listar-paginado/{nroPagina}/{nroElementos}/{orden}/{direccion}")
+	public ModelAndView listarPaginadoModelAndView(
+			@PathVariable("nroPagina")String nroPagina 
+			, @PathVariable("nroElementos") String nroElementos
+			, @PathVariable("orden") String orden
+			, @PathVariable("direccion") String direccion
+			) {
 		
 		
 		ModelAndView mav = new ModelAndView();
 		
 
 		//Seteamos un paginado (nro Paginas, nro de objetos)
-		Pageable paginado = PageRequest.of(Integer.parseInt(nroPagina), Integer.parseInt(nroElementos));
+		Pageable paginado = PageRequest.of(
+				Integer.parseInt(nroPagina)
+				, Integer.parseInt(nroElementos)
+				, Sort.by(Sort.Direction.fromString(direccion), orden)
+				);
 		
 		
 		
@@ -331,29 +341,25 @@ public class ComponenteController {
 		Page<ComponenteEntity> ultimoPaginado =  componenteService.getAllComponentePage(paginado);
 		
 		
+		
 		//--Operaciones Info del Paginado--
 
-		mav.addObject("ultimoNroPagina",ultimoPaginado.getNumber());
-		
+
 		//Ultimo Nro de Pagina Vista para Cliente comienza desde uno
-		mav.addObject("ultimoNroPaginaVistaCliente",(ultimoPaginado.getNumber() + 1));
-				
-		
+		mav.addObject("ultimoNroPagina",(ultimoPaginado.getNumber() + 1));
+		//Total de Paginas Vista para Cliente comienza desde uno
+		mav.addObject("totalNroPaginas",(ultimoPaginado.getTotalPages() + 1));
+			
 		mav.addObject("ultimoNroElementos",ultimoPaginado.getNumberOfElements());
 		
 		mav.addObject("totalElementos",ultimoPaginado.getTotalElements());
 		
-		mav.addObject("totalPaginas",ultimoPaginado.getTotalPages());
-		
-		//Total de Paginas Vista para Cliente comienza desde uno
-		mav.addObject("totalPaginasVistaCliente",(ultimoPaginado.getTotalPages() + 1));
-					
-		
+	
+
 		//Paginado Siguiente
-		mav.addObject("siguientePaginado", ultimoPaginado.getNumber() + 1);
-		
+		mav.addObject("siguientePagina", String.valueOf(ultimoPaginado.getNumber() + 1));
 		//Paginado Anterior
-		mav.addObject("anteriorPaginado", ultimoPaginado.getNumber() - 1);
+		mav.addObject("anteriorPagina", ultimoPaginado.getNumber() - 1	);
 
 		
 		
@@ -365,40 +371,7 @@ public class ComponenteController {
 		return mav;
 	}
 	
-	/*
-	
-	// ---GET---
-	// ---VISTA listado componentes paginacion---
-	//Obtenemos el paginado del Modelo anterior
-	@GetMapping("/listar-paginado-anterior")
-	public ModelAndView listarPaginadoAnteriorModelAndView(@ModelAttribute("ultimoPaginado") Pageable ultimoPaginado) {
-		ModelAndView mav = new ModelAndView();
-		
-	
-		//(nro Paginas, nro de objetos)
-		Pageable paginado = PageRequest.of(((ultimoPaginado.getPageNumber()) - 1) , (ultimoPaginado.getPageSize()));
-		
-		mav.addObject("ultimoPaginado", componenteService.getAllComponente(paginado));
-		mav.setViewName("componentes/comp-listar");
-		return mav;
-	}
-	
-	
-	// ---GET---
-	// ---VISTA listado componentes paginacion---
-	//Obtenemos formato String y parseamos
-	@GetMapping("/listar-paginado-siguiente/{nroPagina}/{nroElementos}")
-	public ModelAndView listarPaginadoSiguienteModelAndView(@PathVariable("nroPagina")String nroPagina , @PathVariable("nroElementos") String nroElementos) {
-		ModelAndView mav = new ModelAndView();
-		
-		//(nro Paginas, nro de objetos)
-		Pageable paginado = PageRequest.of((Integer.parseInt(nroPagina)+1), Integer.parseInt(nroElementos));
-		
-		mav.addObject("listaComponentes", componenteService.getAllComponente(paginado));
-		mav.setViewName("componentes/comp-listar");
-		return mav;
-	}
-	*/
+
 	
 
 	//====================================================
