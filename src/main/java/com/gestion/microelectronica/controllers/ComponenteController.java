@@ -316,26 +316,47 @@ public class ComponenteController {
 	// ---GET---
 	// ---VISTA listado componentes paginacion---
 	//Obtenemos formato String y parseamos
-	@GetMapping("/listar-paginado/{nroPagina}/{nroElementos}/{orden}/{direccion}")
+	@GetMapping("/listar-paginado/{nroPagina}/{nroElementos}/{campo}/{direccion}")
 	public ModelAndView listarPaginadoModelAndView(
 			@PathVariable("nroPagina")String nroPagina 
 			, @PathVariable("nroElementos") String nroElementos
-			, @PathVariable("orden") String orden
+			, @PathVariable("campo") String campo
 			, @PathVariable("direccion") String direccion
 			) {
 		
 		
 		ModelAndView mav = new ModelAndView();
 		
+		/*
+		if((campo.equals("id") || (campo.equals("stock") || (campo.equals("precio"))))) 
+		{
+			
 
+			//Seteamos un paginado (nro Paginas, nro de objetos)
+			Pageable paginado = PageRequest.of(
+					Integer.parseInt(nroPagina)
+					, Integer.parseInt(nroElementos)
+					, Sort.by(Sort.Direction.fromString(direccion), campo)
+					);
+			
+			
+		}else {
+			//Seteamos un paginado (nro Paginas, nro de objetos)
+			Pageable paginado = PageRequest.of(
+					Integer.parseInt(nroPagina)
+					, Integer.parseInt(nroElementos)
+					, Sort.by(Sort.Direction.fromString(direccion), campo)
+					);
+
+		}
+		*/
+		
 		//Seteamos un paginado (nro Paginas, nro de objetos)
 		Pageable paginado = PageRequest.of(
 				Integer.parseInt(nroPagina)
 				, Integer.parseInt(nroElementos)
-				, Sort.by(Sort.Direction.fromString(direccion), orden)
+				, Sort.by(Sort.Direction.fromString(direccion), campo)
 				);
-		
-		
 		
 		//Creamos objeto paginado para obtener datos y pasarlos al modelo
 		Page<ComponenteEntity> ultimoPaginado =  componenteService.getAllComponentePage(paginado);
@@ -344,22 +365,29 @@ public class ComponenteController {
 		
 		//--Operaciones Info del Paginado--
 
-
-		//Ultimo Nro de Pagina Vista para Cliente comienza desde uno
-		mav.addObject("ultimoNroPagina",(ultimoPaginado.getNumber() + 1));
-		//Total de Paginas Vista para Cliente comienza desde uno
-		mav.addObject("totalNroPaginas",(ultimoPaginado.getTotalPages() + 1));
+		
+		//Caracteristicas Paginado
+		mav.addObject("ultimoNroPagina",(ultimoPaginado.getNumber()));
+		mav.addObject("totalNroPaginas",(ultimoPaginado.getTotalPages()));
+		
+		//PaginadoVista arranca de Uno
+		mav.addObject("ultimoNroPaginaVista",(ultimoPaginado.getNumber() + 1));
+		
 			
 		mav.addObject("ultimoNroElementos",ultimoPaginado.getNumberOfElements());
-		
 		mav.addObject("totalElementos",ultimoPaginado.getTotalElements());
+		
+		
+		//Limites de Paginado
+		mav.addObject("limiteMenorPaginado",ultimoPaginado.getNumber() > 0);
+		// -1 porque arrancamos la vista desde 1
+		mav.addObject("limiteMayorPaginado",ultimoPaginado.getNumber() < (ultimoPaginado.getTotalPages() - 1));
 		
 	
 
-		//Paginado Siguiente
-		mav.addObject("siguientePagina", String.valueOf(ultimoPaginado.getNumber() + 1));
-		//Paginado Anterior
-		mav.addObject("anteriorPagina", ultimoPaginado.getNumber() - 1	);
+		//Paginados btn
+		mav.addObject("siguientePagina",ultimoPaginado.getNumber() + 1 );
+		mav.addObject("anteriorPagina", ultimoPaginado.getNumber() - 1 );
 
 		
 		
