@@ -355,8 +355,7 @@ public class ComponenteController {
 		Pageable paginado = PageRequest.of(
 				Integer.parseInt(nroPagina)
 				, Integer.parseInt(nroElementos)
-				, Sort.by(Sort.Direction.fromString(direccion), campo)
-				);
+				, Sort.by(Sort.Direction.fromString(direccion), campo ));
 		
 		//Creamos objeto paginado para obtener datos y pasarlos al modelo
 		Page<ComponenteEntity> ultimoPaginado =  componenteService.getAllComponentePage(paginado);
