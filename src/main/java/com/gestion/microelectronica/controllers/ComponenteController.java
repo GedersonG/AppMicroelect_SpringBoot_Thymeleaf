@@ -307,6 +307,11 @@ public class ComponenteController {
 	}
 	
 	
+	//=================================================
+	// ============= FILTROS Y BUSQUEDAS ==============
+	//=================================================
+
+	
 
 	//===========================================
 	// ============= PAGINACIONES  ==============
@@ -364,6 +369,8 @@ public class ComponenteController {
 		
 		//--Operaciones Info del Paginado--
 
+		//Seteamos el Paginado en la Vista
+		mav.addObject("objetoPaginado",ultimoPaginado);
 		
 		//Caracteristicas Paginado
 		mav.addObject("ultimoNroPagina",(ultimoPaginado.getNumber()));

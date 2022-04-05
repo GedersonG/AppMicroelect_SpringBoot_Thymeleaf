@@ -47,6 +47,10 @@
 
 			<!-- SELECCION CAMPO -->
 			<div class="col-2">
+			<form action="/busqueda-por-campo" 
+			th:action="@{/busqueda-por-campo}"
+			th:object="${campoSeleccionado}"
+			method="post">
 				<select class="form-select mb-3 bg-dark text-white"
 					aria-label=".form-select example">
 					<option value="1">ID</option>
@@ -59,6 +63,7 @@
 					<option value="3">STOCK</option>
 					<option value="3">PRECIO</option>
 				</select>
+				</form>
 			</div>
 			<!-- FIN SELECCION CAMPO -->
 
@@ -83,6 +88,9 @@
 						</a>
 					</div>
 					<!--FIN BTN BUSQUEDA-->
+					
+					
+						
 
 
 				</div>
