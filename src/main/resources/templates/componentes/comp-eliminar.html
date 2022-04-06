@@ -45,11 +45,26 @@
 				<span class="badge bg-dark mt-3">Componente Seleccionado</span>
 			</h1>
 
-			<div class="p-1 m-4">
+				<div
+				class="card-body  d-flex justify-content-inline text-center ms-1 p-2">
+				
+				
+					<!-- BTN-INICIO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn"></div>
+				<!-- FIN BTN-INICIO FRAGMENT -->
+				
+				<!-- BTN-AGREGAR FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></div>
+				<!-- FIN BTN-AGREGAR FRAGMENT -->
+
+				<!-- BTN-LISTADO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn"></div>
+				<!-- FIN BTN-LISTADO FRAGMENT -->
 
 
-				<a th:href="@{'/componentes/listar-paginado/0/7'}"><button type="button"
-						class="btn btn-primary  btn-lg p-1  ">Listado</button></a>
 			</div>
 		</div>
 
@@ -92,10 +107,16 @@
 						<td th:text="${comp.getPrecio()}"></td>
 						<td>
 							<div class="d-flex justify-content-center p-1">
-								<a th:href="@{/componentes/listar}"><button type="button"
-										class="btn btn-secondary m-1">Cancelar</button></a> <a
+							 <a
 									th:href="@{/componentes/eliminar-comp-validado/id/{id}(id=${comp.getId()})}"><button
-										type="button" class="btn btn-danger m-1">Eliminar</button></a>
+										type="button" class="btn bg-none m-1">
+										
+											
+						<img th:src="@{/images/actions/delete.png}" alt="" width="50"
+									height="50">
+						
+						</button>
+										</a>
 							</div>
 						</td>
 

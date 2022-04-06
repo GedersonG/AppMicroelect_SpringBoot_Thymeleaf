@@ -33,75 +33,118 @@
 			<h1>
 				<span class="badge bg-dark mt-3">Listado de Componentes</span>
 			</h1>
+			<!-- BTN-INICIO FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn">
+			</div>
+			<!-- FIN BTN-INICIO FRAGMENT -->
+
 			<!-- BTN-AGREGAR FRAGMENT -->
 			<div
 				th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn">
 			</div>
 			<!-- FIN BTN-AGREGAR FRAGMENT -->
 
+
+
 		</div>
 
-		<!-- FILTER COMPONENTE -->
-		<div class="mt-4 mb-1 d-flex justify-content-end row">
 
+
+
+		<!-- FILTER COMPONENTE AND UTILS -->
+		<div class="mt-5 mb-1 d-flex justify-content-end row">
 
 			<!-- SELECCION CAMPO -->
-			<div class="col-2">
-			<form action="/busqueda-por-campo" 
-			th:action="@{/busqueda-por-campo}"
-			th:object="${campoSeleccionado}"
-			method="post">
-				<select class="form-select mb-3 bg-dark text-white"
-					aria-label=".form-select example">
-					<option value="1">ID</option>
-					<option value="2">CÓDIGO</option>
-					<option value="3">IMAGEN</option>
-					<option value="3">NRO. PIEZA</option>
-					<option value="3">CATEGORIA</option>
-					<option value="3">DESCRIPCION</option>
-					<option value="3">FABRICANTE</option>
-					<option value="3">STOCK</option>
-					<option value="3">PRECIO</option>
-				</select>
+			<div class="col-2 ">
+				<form action="/busqueda-por-campo"
+					th:action="@{/busqueda-por-campo}" th:object="${campoSeleccionado}"
+					method="post">
+					<select class="form-select mb-3 bg-dark text-white"
+						aria-label=".form-select example">
+						<option value="1">ID</option>
+						<option value="2">CÓDIGO</option>
+						<option value="3">IMAGEN</option>
+						<option value="3">NRO. PIEZA</option>
+						<option value="3">CATEGORIA</option>
+						<option value="3">DESCRIPCION</option>
+						<option value="3">FABRICANTE</option>
+						<option value="3">STOCK</option>
+						<option value="3">PRECIO</option>
+					</select>
 				</form>
 			</div>
 			<!-- FIN SELECCION CAMPO -->
 
 			<!-- VALOR BUSQUEDA -->
-			<div class="col-7">
+			<div class="col-7 ">
 				<div class="d-flex flex-row">
 					<div class="col-6">
 						<input type="text" class="form-control bg-white"
 							placeholder="Ingresar el Valor" aria-label="valor">
 					</div>
-					
+
 					<!--BTN BUSQUEDA-->
 					<div class="col-1">
 						<a
-							th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/id/asc'}">
-							<button type="button" class="btn  bg-white ">
+							th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc'}">
+							<button type="button" class="btn  bg-dark p-1">
 
-								<img th:src="@{/images/pagination/lupa.png}" alt="" width="20"
-									height="25">
-
+								<img th:src="@{/images/filters/lupa04.png}" alt="" width="30"
+									height="30" class="bg-white">
 							</button>
 						</a>
 					</div>
 					<!--FIN BTN BUSQUEDA-->
-					
-					
-						
 
+
+					<!--BTN'S UTILS-->
+					<div class="d-flex flex-row ms-5">
+
+						<!--BTN PDF-->
+						<div class="p-1">
+							<a
+								th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc?format=pdf'}">
+								<button type="button" class="btn bg-none p-1 ">
+
+									<img th:src="@{/images/utils/pdf.png}" alt="" width="45"
+										height="45">
+
+								</button>
+							</a>
+						</div>
+						<!--BTN PDF-->
+
+						<!--BTN EXCEL-->
+						<div class="p-1">
+							<a
+								th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc'}">
+								<button type="button" class="btn  bg-none  p-1 ">
+
+									<img th:src="@{/images/utils/excel.png}" alt="" width="45"
+										height="45">
+
+								</button>
+							</a>
+						</div>
+						<!--BTN EXCEL-->
+
+					</div>
+					<!--FIN BTN'S UTILS-->
 
 				</div>
 
 			</div>
 
-
-
-
 		</div>
-		<!-- FIN FILTER COMPONENTE -->
+		<!-- FIN FILTER COMPONENTE AND UTILS-->
+
+
+
+
+
+
+
 
 
 		<!-- TABLA COMPONENTES -->
@@ -115,7 +158,7 @@
 							<div class="d-flex justify-content-column ">
 								<!--order asc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/id/asc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -127,7 +170,7 @@
 								<!--fin order asc-->
 								<!--order desc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/id/desc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/desc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -145,7 +188,7 @@
 							<div class="d-flex justify-content-row text-center">
 								<!--order asc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/codigo/asc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/codigo/asc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -157,7 +200,7 @@
 								<!--fin order asc-->
 								<!--order desc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/codigo/desc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/codigo/desc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 										<!--icono down-->
@@ -174,7 +217,7 @@
 							<div class="d-flex justify-content-row text-center">
 								<!--order asc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/imagen/asc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/imagen/asc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -186,7 +229,7 @@
 								<!--fin order asc-->
 								<!--order desc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/imagen/desc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/imagen/desc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 										<!--icono down-->
@@ -203,7 +246,7 @@
 							<div class="d-flex justify-content-row text-center">
 								<!--order asc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/nroPieza/asc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/nroPieza/asc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -215,7 +258,7 @@
 								<!--fin order asc-->
 								<!--order desc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/nroPieza/desc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/nroPieza/desc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 										<!--icono down-->
@@ -231,7 +274,7 @@
 							<div class="d-flex justify-content-row text-center">
 								<!--order asc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/categoria/asc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -243,7 +286,7 @@
 								<!--fin order asc-->
 								<!--order desc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/categoria/desc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/desc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 										<!--icono down-->
@@ -259,7 +302,7 @@
 							<div class="d-flex justify-content-row text-center">
 								<!--order asc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/descripcion/asc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/descripcion/asc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -271,7 +314,7 @@
 								<!--fin order asc-->
 								<!--order desc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/descripcion/desc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/descripcion/desc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 										<!--icono down-->
@@ -287,7 +330,7 @@
 							<div class="d-flex justify-content-row text-center">
 								<!--order asc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/fabricante/asc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/fabricante/asc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -299,7 +342,7 @@
 								<!--fin order asc-->
 								<!--order desc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/fabricante/desc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/fabricante/desc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 										<!--icono down-->
@@ -315,7 +358,7 @@
 							<div class="d-flex justify-content-row ">
 								<!--order asc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/stock/asc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/stock/asc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -327,7 +370,7 @@
 								<!--fin order asc-->
 								<!--order desc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/stock/desc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/stock/desc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -343,7 +386,7 @@
 							<div class="d-flex justify-content-row ">
 								<!--order asc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/precio/asc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/precio/asc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -355,7 +398,7 @@
 								<!--fin order asc-->
 								<!--order desc-->
 								<a
-									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/7/precio/desc'}">
+									th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/precio/desc'}">
 									<button type="button"
 										class="btn-sm btn-secondary bg-secondary m-2">
 
@@ -390,14 +433,27 @@
 							<div class="d-flex justify-content-center p-1">
 								<a
 									th:href="@{/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}">
-									<button type="button" class="btn btn-primary m-1">Editar</button>
+									<button type="button" class="btn bg-none ">
+
+										<img th:src="@{/images/actions/edit.png}" alt="" width="45"
+											height="45">
+
+									</button>
 								</a> <a
 									th:href="@{/componentes/eliminar-comp/id/{id}(id=${comp.getId()})}">
-									<button type="button" class="btn btn-danger m-1">Eliminar</button>
+									<button type="button" class="btn bg-none ">
+
+										<img th:src="@{/images/actions/delete.png}" alt="" width="45"
+											height="45">
+
+									</button>
 								</a>
 
 							</div>
 						</td>
+
+
+
 
 					</tr>
 
@@ -412,7 +468,7 @@
 
 				<!-- BTN LAST PAGINA -->
 				<a th:if="${limiteMenorPaginado}"
-					th:href="@{'/componentes/listar-paginado/' + ${anteriorPagina} + '/7/id/asc'}">
+					th:href="@{'/componentes/listar-paginado/' + ${anteriorPagina} + '/10/id/asc'}">
 					<button type="button"
 						class="btn btn-dark border-light alert-link m-2 ">
 						<!--icono Anterior-->
@@ -426,16 +482,16 @@
 				<!--NUMEROS -->
 				<a th:href="@{/componentes/listar-paginado/0/7/id/asc}">
 					<h2 class="text-white p-1">1</h2>
-				</a> <a th:href="@{/componentes/listar-paginado/1/7/id/asc}">
+				</a> <a th:href="@{/componentes/listar-paginado/1/10/id/asc}">
 					<h2 class="text-white p-1">2</h2>
-				</a> <a th:href="@{/componentes/listar-paginado/2/7/id/asc}">
+				</a> <a th:href="@{/componentes/listar-paginado/2/10/id/asc}">
 					<h2 class="text-white p-1">3</h2>
 				</a>
 				<!-- FIN NUMEROS -->
 
 				<!-- BTN NEXT PAGINA -->
 				<a th:if="${limiteMayorPaginado }"
-					th:href="@{'/componentes/listar-paginado/' + ${siguientePagina} + '/7/id/asc'}">
+					th:href="@{'/componentes/listar-paginado/' + ${siguientePagina} + '/10/id/asc'}">
 					<button type="button"
 						class="btn btn-dark border-light alert-link m-2 ">
 						<!--icono siguiente-->
@@ -467,18 +523,18 @@
 					</h5>
 					<h5 class="" th:if="${ultimoNroPagina == 1}">
 						| Elementos: <span class="bg-dark "
-							th:text="${ultimoNroElementos + 7}"></span> de <span
+							th:text="${ultimoNroElementos + 10}"></span> de <span
 							class="bg-dark " th:text="${totalElementos}"></span> |
 					</h5>
 					<h5 class="" th:if="${ultimoNroPagina == 2}">
 						| Elementos: <span class="bg-dark "
-							th:text="${ultimoNroElementos + 14}"></span> de <span
+							th:text="${ultimoNroElementos + 20}"></span> de <span
 							class="bg-dark " th:text="${totalElementos}"></span> |
 					</h5>
 
 					<h5 class="" th:if="${ultimoNroPagina == 3}">
 						| Elementos: <span class="bg-dark "
-							th:text="${ultimoNroElementos + 21}"></span> de <span
+							th:text="${ultimoNroElementos + 30}"></span> de <span
 							class="bg-dark " th:text="${totalElementos}"></span> |
 					</h5>
 

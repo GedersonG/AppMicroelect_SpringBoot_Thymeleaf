@@ -9,8 +9,7 @@
 <link rel="icon" type="image/x-icon" th:href="@{/images/electronic.png}">
 
 <!--CSS COMPONENTES.CSS-->
-<link th:href="@{/css-templates/general-template.css}"
-	rel="stylesheet">
+<link th:href="@{/css-templates/general-template.css}" rel="stylesheet">
 
 <!--CSS BOOTSTRAP-->
 <link
@@ -52,20 +51,50 @@
 						<h3 class="card-title">Componentes</h3>
 						<hr>
 						<ul class="card-text text-left">
-							<li>Listado de Componentes</li>
-							<li>Edición de Componentes</li>
-							<li>Eliminación de Componentes</li>
-							<li>Agregación de Componentes</li>
+							<li>Listado</li>
+							<li>Filtro de Búsqueda</li>
+							<li>Paginación</li>
+
+							<li>Edición</li>
+							<li>Eliminación</li>
+							<li>Agregación</li>
+							<li>Restricciones de Agregación</li>
+
+
 
 						</ul>
-						<div class="card-body d-flex justify-content-inline align-text-center ms-5 p-2">
-							<!-- BTN-AGREGAR FRAGMENT -->
-							<header th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></header>
-							<!-- FIN BTN-AGREGAR FRAGMENT -->
+						<div
+							class="card-body d-flex justify-content-inline align-text-center ms-5 p-2">
+
 
 							<!-- BTN-LISTADO FRAGMENT -->
-							<header th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn"></header>
+							<header
+								th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn"></header>
 							<!-- FIN BTN-LISTADO FRAGMENT -->
+
+							<!-- BTN-AGREGAR FRAGMENT -->
+							<header
+								th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></header>
+							<!-- FIN BTN-AGREGAR FRAGMENT -->
+
+							<!-- BTN-ELIMINAR FRAGMENT -->
+							<header
+								th:replace="../static/fragments/componentes/btn-eliminar-comp/btn-eliminar-comp.html::btn"></header>
+							<!-- FIN BTN-ELIMINAR FRAGMENT -->
+
+
+							<!-- BTN-EDITAR FRAGMENT -->
+							<header
+								th:replace="../static/fragments/componentes/btn-editar-comp/btn-editar-comp.html::btn"></header>
+							<!-- FIN BTN-EDITAR FRAGMENT -->
+
+
+
+
+							<!-- BTN-AYUDA FRAGMENT -->
+							<header
+								th:replace="../static/fragments/componentes/btn-ayuda-comp/btn-ayuda-comp.html::btn"></header>
+							<!-- FIN BTN-AYUDA FRAGMENT -->
 
 
 						</div>
