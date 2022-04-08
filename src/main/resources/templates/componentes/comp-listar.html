@@ -104,7 +104,8 @@
 						<!--BTN PDF-->
 						<div class="p-1">
 							<a
-								th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc?format=pdf'}">
+								th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc?format=pdf'}"
+								target="_blanck">
 								<button type="button" class="btn bg-none p-1 ">
 
 									<img th:src="@{/images/utils/pdf.png}" alt="" width="45"
@@ -118,7 +119,7 @@
 						<!--BTN EXCEL-->
 						<div class="p-1">
 							<a
-								th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc'}">
+								th:href="@{'/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc?format=xlsx'}">
 								<button type="button" class="btn  bg-none  p-1 ">
 
 									<img th:src="@{/images/utils/excel.png}" alt="" width="45"
