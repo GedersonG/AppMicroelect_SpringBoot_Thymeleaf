@@ -187,126 +187,30 @@ public class ListadoComponentesPDF extends AbstractPdfView {
 
 		PdfPTable campos = new PdfPTable(9);
 
-		// campos.setWidths(new float[] {0.8f,1.5f,2.5f,1.5f,1.5f,2.5f,1.5f,0.8f,0.8f});
-
-		PdfPCell celdaCampoId = null;
-		PdfPCell celdaCampoCod = null;
-		PdfPCell celdaCampoImagen = null;
-		PdfPCell celdaCampoNroPieza = null;
-		PdfPCell celdaCampoCategoria = null;
-		PdfPCell celdaCampoDescripcion = null;
-		PdfPCell celdaCampoFabricante = null;
-		PdfPCell celdaCampoStock = null;
-		PdfPCell celdaCampoPrecio = null;
-
+		
 		int alignCenter = Element.ALIGN_CENTER;
 		Color colorCampos = new Color(204, 224, 255);
+		
+		
+		String camposValor[] = { "ID", "CÓDIGO","IMAGEN"
+				,"NRO PIEZA","CATEGORÍA","DESCRIPCIÓN"
+				,"FABRICANTE","STOCK","PRECIO" };
 
-		// --------------- CAMPO ID -----------------
-		// Config cada Celda
-		celdaCampoId = new PdfPCell(new Phrase("ID"));
-		celdaCampoId.setHorizontalAlignment(alignCenter);
-		celdaCampoId.setVerticalAlignment(alignCenter);
-		celdaCampoId.setBorderWidth(1);
-		celdaCampoId.setBackgroundColor(colorCampos);
-
-		// Agregamos cada una de las celdas de los campos
-		campos.addCell(celdaCampoId);
-
-		// Agregamos los campos al documento
-		document.add(campos);
-
-		// --------------- CAMPO CODIGO -----------------
-		celdaCampoCod = new PdfPCell(new Phrase("CÓDIGO"));
-		celdaCampoCod.setHorizontalAlignment(alignCenter);
-		celdaCampoCod.setVerticalAlignment(alignCenter);
-		celdaCampoCod.setBorderWidth(1);
-		celdaCampoCod.setBackgroundColor(colorCampos);
-
-		campos.addCell(celdaCampoCod);
-
-		document.add(campos);
-
-		// --------------- CAMPO IMAGEN -----------------
-		celdaCampoImagen = new PdfPCell(new Phrase("IMAGEN"));
-		celdaCampoImagen.setHorizontalAlignment(alignCenter);
-		celdaCampoImagen.setVerticalAlignment(alignCenter);
-		celdaCampoImagen.setBorderWidth(1);
-		celdaCampoImagen.setBackgroundColor(colorCampos);
-
-		campos.addCell(celdaCampoImagen);
-
-		document.add(campos);
-
-		// --------------- CAMPO NRO PIEZA -----------------
-		celdaCampoNroPieza = new PdfPCell(new Phrase("NRO DE PIEZA"));
-		celdaCampoNroPieza.setHorizontalAlignment(alignCenter);
-		celdaCampoNroPieza.setVerticalAlignment(alignCenter);
-		celdaCampoNroPieza.setBorderWidth(1);
-		celdaCampoNroPieza.setBackgroundColor(colorCampos);
-
-		campos.addCell(celdaCampoNroPieza);
-
-		document.add(campos);
-
-		// --------------- CAMPO CATEGORIA -----------------
-		celdaCampoCategoria = new PdfPCell(new Phrase("CATEGORIA"));
-		celdaCampoCategoria.setHorizontalAlignment(alignCenter);
-		celdaCampoCategoria.setVerticalAlignment(alignCenter);
-		celdaCampoCategoria.setBorderWidth(1);
-		celdaCampoCategoria.setBackgroundColor(colorCampos);
-
-		campos.addCell(celdaCampoCategoria);
-
-		document.add(campos);
-
-		// --------------- CAMPO DESCRIPCION -----------------
-		celdaCampoDescripcion = new PdfPCell(new Phrase("DESCRIPCION"));
-		celdaCampoDescripcion.setHorizontalAlignment(alignCenter);
-		celdaCampoDescripcion.setVerticalAlignment(alignCenter);
-		celdaCampoDescripcion.setBorderWidth(1);
-		celdaCampoDescripcion.setBackgroundColor(colorCampos);
-
-		campos.addCell(celdaCampoDescripcion);
-
-		document.add(campos);
-
-		// --------------- CAMPO FABRICANTE -----------------
-		celdaCampoFabricante = new PdfPCell(new Phrase("FABRICANTE"));
-		celdaCampoFabricante.setHorizontalAlignment(alignCenter);
-		celdaCampoFabricante.setVerticalAlignment(alignCenter);
-		celdaCampoFabricante.setBorderWidth(1);
-		celdaCampoFabricante.setBackgroundColor(colorCampos);
-
-		campos.addCell(celdaCampoFabricante);
-
-		document.add(campos);
-
-		// --------------- CAMPO STOCK -----------------
-		celdaCampoStock = new PdfPCell(new Phrase("STOCK"));
-		celdaCampoStock.setHorizontalAlignment(alignCenter);
-		celdaCampoStock.setVerticalAlignment(alignCenter);
-		celdaCampoStock.setBorderWidth(1);
-		celdaCampoStock.setBackgroundColor(colorCampos);
-
-		campos.addCell(celdaCampoStock);
-
-		document.add(campos);
-
-		// --------------- CAMPO PRECIO -----------------
-		// Config cada Celda
-		celdaCampoPrecio = new PdfPCell(new Phrase("PRECIO"));
-		celdaCampoPrecio.setHorizontalAlignment(alignCenter);
-		celdaCampoPrecio.setVerticalAlignment(alignCenter);
-		celdaCampoPrecio.setBorderWidth(1);
-		celdaCampoPrecio.setBackgroundColor(colorCampos);
-
-		// Agregamos cada una de las celdas de los campos
-		campos.addCell(celdaCampoPrecio);
-
-		// Agregamos los campos al documento
-		document.add(campos);
-
+		//Generamos los encabezados
+		for (int i = 0; i < camposValor.length; i++) {
+			
+			PdfPCell celda = new PdfPCell(new Phrase(camposValor[i]));
+			celda.setHorizontalAlignment(alignCenter);
+			celda.setVerticalAlignment(alignCenter);
+			celda.setBorderWidth(1);
+			celda.setBackgroundColor(colorCampos);
+			
+			campos.addCell(celda);
+			
+			document.add(campos);
+		}
+		
+		
 		// ----------------------------------------
 		// =========== CONFIG REGISTROS ==========
 

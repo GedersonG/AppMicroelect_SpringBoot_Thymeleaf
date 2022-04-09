@@ -296,13 +296,86 @@ public class ComponenteController {
 		
 		ModelAndView mav = new ModelAndView();
 		
+		List<ComponenteEntity> listComp = componenteService.getAllComponente();
+		
+		//Stock de Transistores BJT
+		int stockTransBjt = 
+				(int)(listComp
+						.stream()
+						.filter(comp->comp.getCategoria().equalsIgnoreCase("Transistores BJT"))
+						.mapToInt(comp->comp.getStock()).sum());
+		
+		//Stock de Transistores MOSFET
+		int stockTransMosfet = 
+				(int)(listComp
+						.stream()
+						.filter(comp->comp.getCategoria().equalsIgnoreCase("Transistores MOSFET"))
+						.mapToInt(comp->comp.getStock()).sum());
+		
+		
+		//Stock de Capacitores Electroliticos
+		int stockCapElectr = 
+				(int)(listComp
+						.stream()
+						.filter(comp->comp.getCategoria().equalsIgnoreCase("Capacitores Electroliticos"))
+						.mapToInt(comp->comp.getStock()).sum());
+		
+		
+		//Stock de Resistores de Alta Frecuencia
+		int stockResisAltFrec = 
+				(int)(listComp
+						.stream()
+						.filter(comp->comp.getCategoria().equalsIgnoreCase("Resistores de Alta Frecuencia"))
+						.mapToInt(comp->comp.getStock()).sum());
+		
+		
+		//Stock de Microcontroladores PICS
+		int stockMicrosPics = 
+				(int)(listComp
+						.stream()
+						.filter(comp->comp.getCategoria().equalsIgnoreCase("Microcontroladores PICS"))
+						.mapToInt(comp->comp.getStock()).sum());
+		
+		//Stock de Microcontroladores AVRS
+		int stockMicrosAvrs = 
+				(int)(listComp
+						.stream()
+						.filter(comp->comp.getCategoria().equalsIgnoreCase("Microcontroladores AVRS"))
+						.mapToInt(comp->comp.getStock()).sum());
+		
+		int stockPlacasArd = 
+				(int)(listComp
+						.stream()
+						.filter(comp->comp.getCategoria().equalsIgnoreCase("Placas Arduino"))
+						.mapToInt(comp->comp.getStock()).sum());
+		
+		int stockPlacasEsp8266 = 
+				(int)(listComp
+						.stream()
+						.filter(comp->comp.getCategoria().equalsIgnoreCase("Placas Esp8266"))
+						.mapToInt(comp->comp.getStock()).sum());
+		
+		int stockPlacasEsp32 = 
+				(int)(listComp
+						.stream()
+						.filter(comp->comp.getCategoria().equalsIgnoreCase("Placas Esp32"))
+						.mapToInt(comp->comp.getStock()).sum());
+		
+		
+		
+		
 		
 		Map<String, Integer> data = new LinkedHashMap();
 		
-		data.put("a01", 30);
-		data.put("a02", 40);
-		data.put("a03", 60);
-		data.put("a04", 20);
+		data.put("Transistores BJT", stockTransBjt);
+		data.put("Transistores MOSFET", stockTransMosfet);
+		data.put("Capacitores Electr.",stockCapElectr);
+		data.put("Resist. Alta Frec", stockResisAltFrec);
+		data.put("Micros PICS", stockMicrosPics);
+		data.put("Micros AVRS", stockMicrosAvrs);
+		data.put("Placas Arduino", stockPlacasArd);
+		data.put("Placas ESP8266", stockPlacasEsp8266);
+		data.put("Placas ESP32", stockPlacasEsp32);
 		
 		mav.addObject("keySet",data.keySet());
 		mav.addObject("values",data.values());
