@@ -446,12 +446,15 @@ public class ComponenteController {
 		mav.addObject("totalNroPaginas", (ultimoPaginado.getTotalPages()));
 
 		// PaginadoVista arranca de Uno
-		mav.addObject("ultimoNroPaginaVista", (ultimoPaginado.getNumber() + 1));
+		mav.addObject("ultimoNroPaginaVistaModelo", (ultimoPaginado.getNumber() + 1));
+		mav.addObject("totalNroPaginasVistaModelo", (ultimoPaginado.getTotalPages() - 1));
 
+		
+		
 		mav.addObject("ultimoNroElementos", ultimoPaginado.getNumberOfElements());
 		mav.addObject("totalElementos", ultimoPaginado.getTotalElements());
 
-		// Limites de Paginado
+		// Limites de Paginado (true or false)
 		mav.addObject("limiteMenorPaginado", ultimoPaginado.getNumber() > 0);
 		// -1 porque arrancamos la vista desde 1
 		mav.addObject("limiteMayorPaginado", ultimoPaginado.getNumber() < (ultimoPaginado.getTotalPages() - 1));
