@@ -1,7 +1,8 @@
 # AppGestionMicroelectronica_SpringBoot
 
 * Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Thymeleaf, Bootstrap y Oracle
-* Por motivos de tiempos se desarrollan solamente cuatro servicios Rest, cada uno correspondientes a una tabla de la base de datos. 
+* La aplicación consta de todas las Operaciones CRUD, Paginación, Filtro y Búsqueda, Ordenamientos por campos, Generación de Reportes en PDF con openPDF y Excel con Apache POI, Generación de Gráficos de Barras y Tortas con High Charts según el stock del producto en relación al fabricante o categoría, etc. 
+* Se pone a disposición todos los recursos anteriores para únicamente la Tabla Componentes de la Base de Datos. 
 * Repositorio de la Base de Datos del Proyecto : https://github.com/andresWeitzel/db_microelectronica_Oracle
 
 
@@ -60,13 +61,16 @@
 
 | **Dependencia Maven**  | **Versión** | **Finalidad** |             
 | ------------- | ------------- | ------------- |
-| oracle-driver | 8.0.21 |  Conexión al SGDB Mysql |
 | spring-boot-starter-data-jpa | 2.6.4 | Api de JpaRepository para el manejo de métodos | 
+| spring-boot-starter-test | 2.6.4 | Para Testing | 
 | spring-boot-starter-web | 2.6.4 | Se agrega toda la configuración web automáticamente de Maven a Spring | 
 | spring-boot-starter-thymeleaf | 2.6.4 | Plantillas para el Front |
 | spring-boot-devtools | 2.6.4 | Herramientas para el Manejo de Spring Boot | 
 | ojdbc8 | 21.3.0.0 | Driver para el SGDB Oracle | 
 | lombok | 1.18.22 |  Dependencia para la automatización de Código |
+| openpdf | 1.3.27 |  Generación de Reportes en Formato PDF |
+| poi | 5.2.0 |  Generación de Reportes en Formato EXCEL |
+| poi-ooxml | 5.2.0 |  Manejo de  Recursos Formato EXCEL |
 
 
 
