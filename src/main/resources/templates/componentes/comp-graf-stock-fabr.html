@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title>Gráfico Componentes</title>
+<title>Gráfico Stock Fabricantes</title>
 
 
 <!-- Icono -->
@@ -29,9 +29,17 @@
 	<header th:replace="../static/fragments/navbar/navbar.html::menu"></header>
 	<!-- FIN NAVBAR FRAGMENT -->
 
-<div id="container"
-			style="width: 850px; height: 500px; margin: 0 auto"></div>
-	</div>
+
+<!-- GRAFICO STOCK FABR -->
+<div id="containerStockFabr" style="width: 850px; height: 450px; margin: 0 auto">
+</div>
+<!-- FIN GRAFICO STOCK FABR -->
+
+
+
+
+
+<!-- SCRIPT GRAFICO STOCK FABR -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
@@ -41,7 +49,7 @@
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<script th:inline="javascript">
     $(function(){
-    Highcharts.chart('container', {
+    Highcharts.chart('containerStockFabr', {
         chart: {
             type: 'column'
         },
@@ -49,16 +57,16 @@
             text: 'Stock Total de Componentes'
         },
         subtitle: {
-            text: 'por Categoría'
+            text: 'por Fabricante'
         },
         xAxis: {
-            categories: [[${keySet}]],
+            categories: [[${keySetFabr}]],
             crosshair: true
         
         },
         yAxis: {
             min: 0,
-            max:3000,
+            max:2000,
             title: {
                 text: 'Cantidad'
             }
@@ -78,17 +86,15 @@
             }
         },
         series: [{
-            name: 'Componentes',
-            data: [[${values}]]
+            name: 'Componentes por Fabricante',
+            data: [[${valuesFabr}]]
            
         }]
       });
     });
 </script>
 
-
-
-
+<!-- FIN SCRIPT GRAFICO STOCK FABR -->
 
 
 
@@ -116,6 +122,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+
 
 </body>
 </html>

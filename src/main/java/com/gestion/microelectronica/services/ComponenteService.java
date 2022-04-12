@@ -159,5 +159,30 @@ public class ComponenteService{
 	public List<ComponenteEntity> findByPrecio(double precio) {
 		return iComponenteRepository.findByPrecio(precio);
 	}
+	
+	
+	// =============== MÉTODOS PARA GRAFICO ====================
 
+	//------ STOCK POR CATEGORIA ------
+	public int stockPorCategoria(List<ComponenteEntity> listComp , String categoria ) {
+		
+		return (int)(listComp
+						.stream()
+						.filter(comp->comp.getCategoria().equalsIgnoreCase(categoria))
+						.mapToInt(comp->comp.getStock()).sum());
+	}
+	
+	//------ STOCK POR FABRICANTE ------
+	public int stockPorFabricante(List<ComponenteEntity> listComp , String fabricante ) {
+		
+		return (int)(listComp
+						.stream()
+						.filter(comp->comp.getFabricante().equalsIgnoreCase(fabricante))
+						.mapToInt(comp->comp.getStock()).sum());
+	}
+	
+	
+	
+	
+	
 }

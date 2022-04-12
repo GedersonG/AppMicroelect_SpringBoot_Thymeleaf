@@ -290,109 +290,177 @@ public class ComponenteController {
 	// ========================================
 	// ============= GRÁFICOS ==============
 	// ========================================
-
-	@GetMapping("/grafico")
-	public ModelAndView grafico() {
+	
+	
+	@GetMapping("grafico-select")
+	public ModelAndView graficoSeleccion() {
 		
 		ModelAndView mav = new ModelAndView();
 		
+		mav.setViewName("componentes/comp-graf-select");
+
+		return mav;
+		
+	}
+
+	@GetMapping("/grafico-stock-categoria")
+	public ModelAndView graficoStockCateg() {
+
+		ModelAndView mav = new ModelAndView();
+
 		List<ComponenteEntity> listComp = componenteService.getAllComponente();
+
+		// ----------- VARIABLES CATEGORIA ---------------
+		String transBjt = "Transistores BJT";
+		String transMosfet = "Transistores MOSFET";
+		String capElectr = "Capacitores Electrolíticos";
+		String resAltFrec = "Resistores de Alta Frecuencia";
+		String microsPics = "Microcontroladores PICS";
+		String microsAvrs = "Microcontroladores AVRS";
+		String placasArd = "Placas Arduino";
+		String placasEsp8266 = "Placas Esp8266";
+		String placasEsp32 = "Placas Esp32";
+
+		// ------------- STOCK POR CATEGORIA ------------------
+		// Stock de Transistores BJT
+		int stockTransBjt = componenteService.stockPorCategoria(listComp, transBjt);
+
+		// Stock de Transistores MOSFET
+		int stockTransMosfet = componenteService.stockPorCategoria(listComp, transMosfet);
+
+		// Stock de Capacitores Electroliticos
+		int stockCapElectr = componenteService.stockPorCategoria(listComp, capElectr);
+
+		// Stock de Resistores de Alta Frecuencia
+		int stockResisAltFrec = componenteService.stockPorCategoria(listComp, resAltFrec);
+
+		// Stock de Microcontroladores PICS
+		int stockMicrosPics = componenteService.stockPorCategoria(listComp, microsPics);
+
+		// Stock de Microcontroladores AVRS
+		int stockMicrosAvrs = componenteService.stockPorCategoria(listComp, microsAvrs);
+
+		int stockPlacasArd = componenteService.stockPorCategoria(listComp, placasArd);
+
+		int stockPlacasEsp8266 = componenteService.stockPorCategoria(listComp, placasEsp8266);
+
+		int stockPlacasEsp32 = componenteService.stockPorCategoria(listComp, placasEsp32);
+
 		
-		//Stock de Transistores BJT
-		int stockTransBjt = 
-				(int)(listComp
-						.stream()
-						.filter(comp->comp.getCategoria().equalsIgnoreCase("Transistores BJT"))
-						.mapToInt(comp->comp.getStock()).sum());
-		
-		//Stock de Transistores MOSFET
-		int stockTransMosfet = 
-				(int)(listComp
-						.stream()
-						.filter(comp->comp.getCategoria().equalsIgnoreCase("Transistores MOSFET"))
-						.mapToInt(comp->comp.getStock()).sum());
-		
-		
-		//Stock de Capacitores Electroliticos
-		int stockCapElectr = 
-				(int)(listComp
-						.stream()
-						.filter(comp->comp.getCategoria().equalsIgnoreCase("Capacitores Electroliticos"))
-						.mapToInt(comp->comp.getStock()).sum());
-		
-		
-		//Stock de Resistores de Alta Frecuencia
-		int stockResisAltFrec = 
-				(int)(listComp
-						.stream()
-						.filter(comp->comp.getCategoria().equalsIgnoreCase("Resistores de Alta Frecuencia"))
-						.mapToInt(comp->comp.getStock()).sum());
-		
-		
-		//Stock de Microcontroladores PICS
-		int stockMicrosPics = 
-				(int)(listComp
-						.stream()
-						.filter(comp->comp.getCategoria().equalsIgnoreCase("Microcontroladores PICS"))
-						.mapToInt(comp->comp.getStock()).sum());
-		
-		//Stock de Microcontroladores AVRS
-		int stockMicrosAvrs = 
-				(int)(listComp
-						.stream()
-						.filter(comp->comp.getCategoria().equalsIgnoreCase("Microcontroladores AVRS"))
-						.mapToInt(comp->comp.getStock()).sum());
-		
-		int stockPlacasArd = 
-				(int)(listComp
-						.stream()
-						.filter(comp->comp.getCategoria().equalsIgnoreCase("Placas Arduino"))
-						.mapToInt(comp->comp.getStock()).sum());
-		
-		int stockPlacasEsp8266 = 
-				(int)(listComp
-						.stream()
-						.filter(comp->comp.getCategoria().equalsIgnoreCase("Placas Esp8266"))
-						.mapToInt(comp->comp.getStock()).sum());
-		
-		int stockPlacasEsp32 = 
-				(int)(listComp
-						.stream()
-						.filter(comp->comp.getCategoria().equalsIgnoreCase("Placas Esp32"))
-						.mapToInt(comp->comp.getStock()).sum());
-		
-		
-		
-		
+	
+		//--------- SET DE STOCK POR CATEGORIA ------------
 		
 		Map<String, Integer> data = new LinkedHashMap();
-		
-		data.put("Transistores BJT", stockTransBjt);
-		data.put("Transistores MOSFET", stockTransMosfet);
-		data.put("Capacitores Electr.",stockCapElectr);
-		data.put("Resist. Alta Frec", stockResisAltFrec);
-		data.put("Micros PICS", stockMicrosPics);
-		data.put("Micros AVRS", stockMicrosAvrs);
-		data.put("Placas Arduino", stockPlacasArd);
-		data.put("Placas ESP8266", stockPlacasEsp8266);
-		data.put("Placas ESP32", stockPlacasEsp32);
-		
-		mav.addObject("keySet",data.keySet());
-		mav.addObject("values",data.values());
-		
-		mav.setViewName("componentes/comp-grafico");
-		
+
+		data.put(transBjt, stockTransBjt);
+		data.put(transMosfet, stockTransMosfet);
+		data.put(capElectr, stockCapElectr);
+		data.put(resAltFrec, stockResisAltFrec);
+		data.put(microsPics, stockMicrosPics);
+		data.put(microsAvrs, stockMicrosAvrs);
+		data.put(placasArd, stockPlacasArd);
+		data.put(placasEsp8266, stockPlacasEsp8266);
+		data.put(placasEsp32, stockPlacasEsp32);
+
+		mav.addObject("keySetCateg", data.keySet());
+		mav.addObject("valuesCateg", data.values());
+
+	
+		mav.setViewName("componentes/comp-graf-stock-categ");
+
 		return mav;
 	}
 	
 	
 	
 	
+	@GetMapping("/grafico-stock-fabricante")
+	public ModelAndView graficoStockFabr() {
+
+		ModelAndView mav = new ModelAndView();
+
+		List<ComponenteEntity> listComp = componenteService.getAllComponente();
+
+		// ----------- VARIABLES FABRICANTES ---------------
+		String vish = "VISHAY";
+		String eln = "ELNA";
+		String kysh = "KYSHOCERA";
+		String shanHuash = "SHANTOU HUASHAN";
+		String slk = "SLKOR";
+		String micr = "MICROCHIP";
+		String micrTech = "MICROCHIP TECHNOLOGY";
+		String twi = "T-WINS";
+		String pan = "PANASONIC";
+		String hit = "HITACHI";
+		String advPow = "ADVANCED POWER";
+		String ard = "ARDUINO";
+		String wem = "WEMOS";
+		String esprSys = "ESPRESSIF SYSTEMS";
+		String stMicr = "STMICROELECTRONICS";
+		String renElec = "RENESAS ELECTRONIC";
+		String centSem = "CENTRAL SEMICONDUCTOR";
+		String inchSem = "INCHANGE SEMICONDUCTOR";
+
+		// ------------- STOCK POR FABRICANTE ------------------
+		int stockVishay = componenteService.stockPorFabricante(listComp, vish);
+		int stockElna = componenteService.stockPorFabricante(listComp, eln);
+		int stockKyshoc = componenteService.stockPorFabricante(listComp, kysh);
+		int stockShantHuash = componenteService.stockPorFabricante(listComp, shanHuash);
+		int stockSlkor = componenteService.stockPorFabricante(listComp, slk);
+		int stockMicr = componenteService.stockPorFabricante(listComp, micr);
+		int stockMicrTech = componenteService.stockPorFabricante(listComp, micrTech);
+		int stockTwins = componenteService.stockPorFabricante(listComp, twi);
+		int stockPanas = componenteService.stockPorFabricante(listComp, pan);
+		int stockHit = componenteService.stockPorFabricante(listComp, hit);
+		int stockAdvPow = componenteService.stockPorFabricante(listComp, advPow);
+		int stockArd = componenteService.stockPorFabricante(listComp, ard);
+		int stockWemos = componenteService.stockPorFabricante(listComp, wem);
+		int stockEsprSys = componenteService.stockPorFabricante(listComp, esprSys);
+		int stockStMicr = componenteService.stockPorFabricante(listComp, stMicr);
+		int stockRenElec = componenteService.stockPorFabricante(listComp, renElec);
+		int stockCentSem = componenteService.stockPorFabricante(listComp, centSem);
+		int stockInchSem = componenteService.stockPorFabricante(listComp, inchSem);
+		
+		
+
+		//--------- SET DE STOCK POR FABRICANTE ------------
+		
+		Map<String, Integer> data02 = new LinkedHashMap();
+
+		data02.put(vish, stockVishay);
+		data02.put(eln, stockElna);
+		data02.put(kysh, stockKyshoc);
+		data02.put(shanHuash, stockShantHuash);
+		data02.put(slk, stockSlkor);
+		data02.put(micr, stockMicr);
+		data02.put(micrTech, stockMicrTech);
+		data02.put(twi, stockTwins);
+		data02.put(pan, stockPanas);
+		data02.put(hit, stockHit);
+		data02.put(advPow, stockAdvPow);
+		data02.put(ard, stockArd);
+		data02.put(wem, stockWemos);
+		data02.put(esprSys, stockEsprSys);
+		data02.put(stMicr, stockStMicr);
+		data02.put(renElec, stockRenElec);
+		data02.put(centSem, stockCentSem);
+		data02.put(inchSem, stockInchSem);
+		
+
+		mav.addObject("keySetFabr", data02.keySet());
+		mav.addObject("valuesFabr", data02.values());
+		
+		
+		
+		
+		
+		
 	
-	
-	
-	
-	
+		mav.setViewName("componentes/comp-graf-stock-fabr");
+
+		return mav;
+	}
+
 	// =================================================
 	// ============= FILTROS Y BUSQUEDAS ==============
 	// =================================================
@@ -449,8 +517,6 @@ public class ComponenteController {
 		mav.addObject("ultimoNroPaginaVistaModelo", (ultimoPaginado.getNumber() + 1));
 		mav.addObject("totalNroPaginasVistaModelo", (ultimoPaginado.getTotalPages() - 1));
 
-		
-		
 		mav.addObject("ultimoNroElementos", ultimoPaginado.getNumberOfElements());
 		mav.addObject("totalElementos", ultimoPaginado.getTotalElements());
 
