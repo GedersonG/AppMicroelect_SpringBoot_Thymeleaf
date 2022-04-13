@@ -17,25 +17,23 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-	<!-- HIGH CHARTS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<!-- FIN HIGH CHARTS -->
+
 
 </head>
 <body>
 
-<!-- NAVBAR FRAGMENT -->
+	<!-- NAVBAR FRAGMENT -->
 	<header th:replace="../static/fragments/navbar/navbar.html::menu"></header>
 	<!-- FIN NAVBAR FRAGMENT -->
 
 
-<!-- TITULO LISTADO DE COMPONENTES -->
+	<!-- TITULO LISTADO DE COMPONENTES -->
 	<div class="container text-center mt-4 p-1">
 
 		<div class="m-4 p-3 d-flex justify-content-center ">
 			<h1>
-				<span class="badge bg-dark mt-3">Listado de Componentes</span>
+				<span class="badge bg-dark mt-3">Gráficos Stock de Componentes por
+					Categoría</span>
 			</h1>
 			<!-- BTN-INICIO FRAGMENT -->
 			<div
@@ -48,27 +46,30 @@
 				th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn">
 			</div>
 			<!-- FIN BTN-AGREGAR FRAGMENT -->
+			<!-- BTN-AGREGAR FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn">
+			</div>
+			<!-- FIN BTN-AGREGAR FRAGMENT -->
 		</div>
-		</div>
-		<!-- FIN TITULO LISTADO DE COMPONENTES -->
+	</div>
+	<!-- FIN TITULO LISTADO DE COMPONENTES -->
 
 
-<!-- GRAFICOS -->
-<div class="d-flex justify-content-center m-1 p-1">
-<!-- GRAFICO STOCK CATEG COLUMNAS-->
-<div id="containerStockCategColumnas" class="m-1" >
-</div>
-<!-- FIN GRAFICO STOCK CATEG COLUMNAS -->
+	<!-- GRAFICOS -->
+	<div class="d-flex justify-content-center m-1 p-1">
+		<!-- GRAFICO STOCK CATEG COLUMNAS-->
+		<div id="containerStockCategColumnas" class="m-1"></div>
+		<!-- FIN GRAFICO STOCK CATEG COLUMNAS -->
 
-<!-- GRAFICO STOCK CATEG TORTA-->
-<div id="containerStockCategTorta" class="m-1" >
-</div>
-<!-- FIN GRAFICO STOCK CATEG TORTA-->
-</div>
-<!-- FIN GRAFICOS -->
-	
-	
-	
+		<!-- GRAFICO STOCK CATEG TORTA-->
+		<div id="containerStockCategTorta" class="m-1"></div>
+		<!-- FIN GRAFICO STOCK CATEG TORTA-->
+	</div>
+	<!-- FIN GRAFICOS -->
+
+
+
 	<!-- SCRIPT GRAFICO STOCK CATEG -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -84,7 +85,7 @@
             type: 'column'
         },
         title: {
-            text: 'Stock Total de Componentes'
+            text: 'Stock de Componentes(Unidades)'
         },
         subtitle: {
             text: 'por Categoría'
@@ -116,7 +117,7 @@
             }
         },
         series: [{
-            name: 'Componentes por Categoría',
+            name: 'Stock ',
             data: [[${valuesCateg}]]
            
         }]
@@ -127,7 +128,7 @@
 <!-- FIN SCRIPT GRAFICO STOCK CATEG -->
 
 
-<!-- SCRIPT GRAFICO STOCK CATEG -->
+	<!-- SCRIPT GRAFICO STOCK CATEG -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
@@ -139,10 +140,15 @@
     $(function(){
     Highcharts.chart('containerStockCategTorta', {
         chart: {
-            type: 'pie'
+            type: 'pie',
+            options3d: {
+      enabled: true,
+      alpha: 45,
+      beta: 0
+    }
         },
         title: {
-            text: 'Stock Total de Componentes'
+            text: 'Stock de Componentes(%)'
         },
         subtitle: {
             text: 'por Categoría'
@@ -168,13 +174,18 @@
             useHTML: true
         },
         plotOptions: {
-            column: {
-                pointPadding: 0.1,
-                borderWidth: 0
-            }
-        },
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      depth: 35,
+      dataLabels: {
+        enabled: true,
+        format: '{point.name}'
+      }
+    }
+  },
         series: [{
-            name: 'Componentes por Categoría',
+            name: 'Stock ',
             data: [[${valuesCateg}]]
            
         }]
@@ -190,7 +201,7 @@
 
 
 
-<!-- FOOTER FRAGMENT -->
+	<!-- FOOTER FRAGMENT -->
 	<footer th:replace="../static/fragments/footer/footer.html::pie-pagina"></footer>
 	<!-- FIN FOOTER FRAGMENT -->
 
