@@ -17,10 +17,7 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-	<!-- HIGH CHARTS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<!-- FIN HIGH CHARTS -->
+
 
 </head>
 <body>
@@ -28,36 +25,90 @@
 <!-- NAVBAR FRAGMENT -->
 	<header th:replace="../static/fragments/navbar/navbar.html::menu"></header>
 	<!-- FIN NAVBAR FRAGMENT -->
+	
+	
+	<!-- TITULO LISTADO DE COMPONENTES -->
+	<div class="container text-center mt-4 p-1">
+
+		<div class="mt-4 p-3 d-flex justify-content-center ">
+			<h1>
+				<span class="badge bg-dark mt-3">Gráficos Stock de Componentes por
+					Fabricantes</span>
+			</h1>
+			<!-- BTN-INICIO FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn">
+			</div>
+			<!-- FIN BTN-INICIO FRAGMENT -->
+
+			<!-- BTN-AGREGAR FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn">
+			</div>
+			<!-- FIN BTN-AGREGAR FRAGMENT -->
+			<!-- BTN-AGREGAR FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn">
+			</div>
+			<!-- FIN BTN-AGREGAR FRAGMENT -->
+			<!-- BTN-GRAFICOS FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-grafico-comp/btn-grafico-comp.html::btn">
+			</div>
+			<!-- FIN BTN-GRAFICOS FRAGMENT -->
+			
+		</div>
+	</div>
+	<!-- FIN TITULO LISTADO DE COMPONENTES -->
 
 
-<!-- GRAFICO STOCK FABR -->
-<div id="containerStockFabr" style="width: 850px; height: 450px; margin: 0 auto">
-</div>
-<!-- FIN GRAFICO STOCK FABR -->
+	<!-- GRAFICOS -->
+	<div class="d-flex justify-content-center  ">
+		<!-- GRAFICO STOCK CATEG COLUMNAS-->
+		<div id="containerStockCategColumnas" class="m-1"></div>
+		<!-- FIN GRAFICO STOCK CATEG COLUMNAS -->
+
+		<!-- GRAFICO STOCK CATEG TORTA-->
+		<div id="containerStockCategTorta" class="m-1"></div>
+		<!-- FIN GRAFICO STOCK CATEG TORTA-->
+	</div>
+	<!-- FIN GRAFICOS -->
 
 
 
-
-
-<!-- SCRIPT GRAFICO STOCK FABR -->
+	<!-- SCRIPT GRAFICO STOCK CATEG -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<script th:inline="javascript">
     $(function(){
-    Highcharts.chart('containerStockFabr', {
+    
+
+    
+    Highcharts.chart('containerStockCategColumnas', {
         chart: {
-            type: 'column'
+        	 height: 550,
+        	  width:650,
+            type: 'column',
+            options3d: {
+      enabled: true,
+      alpha: 15,
+      beta: 15,
+      depth: 50,
+      viewDistance: 25
+    }
         },
         title: {
-            text: 'Stock Total de Componentes'
+            text: 'Stock de Componentes(Unidades)'
         },
         subtitle: {
-            text: 'por Fabricante'
+            text: 'Ordenados por Cantidad de Mayor a Menor'
         },
         xAxis: {
             categories: [[${keySetFabr}]],
@@ -65,15 +116,16 @@
         
         },
         yAxis: {
-            min: 0,
-            max:2000,
+        	min:0,
+        	max:2000,
             title: {
-                text: 'Cantidad'
+                text: 'Cantidad',
+                
             }
         },
         tooltip: {
-            headerFormat: '<span style="font-size:25px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            headerFormat: '<span style="font-size:20px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">Stock : </td>' +
             '<td style="padding:0"><b> {point.y: f} unidades</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
@@ -81,20 +133,113 @@
         },
         plotOptions: {
             column: {
-                pointPadding: 0.1,
-                borderWidth: 0
+                pointPadding: 0,
+                borderWidth: 0,
+                depth:25
+            },
+            series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y: f} u'
             }
+        }
         },
         series: [{
-            name: 'Componentes por Fabricante',
-            data: [[${valuesFabr}]]
+            name: 'Unidades por Fabricante',
+            dataSorting:{
+            	enabled:true
+            },
+            data: [[${valuesFabr}]],
+            color: '#F96C6C'
            
         }]
       });
     });
 </script>
 
-<!-- FIN SCRIPT GRAFICO STOCK FABR -->
+<!-- FIN SCRIPT GRAFICO STOCK CATEG -->
+
+
+	<!-- SCRIPT GRAFICO STOCK CATEG -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script th:inline="javascript">
+    $(function(){
+    Highcharts.chart('containerStockCategTorta', {
+    chart: {
+    
+        	 height: 550,
+        	  width:650,
+        type: 'areaspline'
+    },
+    title: {
+        text: 'Stock de Componentes(Unidades)'
+    },
+     subtitle: {
+        text: 'Ordenados por Fabricantes'
+    },
+    xAxis: {
+         categories: [[${keySetFabr}]],
+         crosshair: true
+         
+    },
+     yAxis: {
+        	min:0,
+        	max:2000,
+            title: {
+                text: 'Cantidad',
+                
+            }
+    },
+    tooltip: {
+            headerFormat: '<span style="font-size:20px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">Stock : </td>' +
+            '<td style="padding:0"><b> {point.y: f} unidades</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+    },
+    credits: {
+        enabled: false
+    },
+   plotOptions: {
+            column: {
+                pointPadding: 0,
+                borderWidth: 0,
+                depth:25
+            },
+            series: {
+	            borderWidth: 0,
+	            dataLabels: {
+	                enabled: true,
+	                format: '{point.y: f} u'
+            }
+        }
+        },
+    series: [{
+            name: 'Unidades por Fabricante ',
+            
+            data: [[${valuesFabr}]],
+            color: '#DC1F1F'
+           
+        }]
+});
+    });
+</script>
+
+<!-- FIN SCRIPT GRAFICO STOCK CATEG -->
+
+
+
+
 
 
 

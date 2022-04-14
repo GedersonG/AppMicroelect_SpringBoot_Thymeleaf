@@ -30,7 +30,7 @@
 	<!-- TITULO LISTADO DE COMPONENTES -->
 	<div class="container text-center mt-4 p-1">
 
-		<div class="m-4 p-3 d-flex justify-content-center ">
+		<div class="mt-4 p-3 d-flex justify-content-center ">
 			<h1>
 				<span class="badge bg-dark mt-3">Gráficos Stock de Componentes por
 					Categoría</span>
@@ -51,6 +51,12 @@
 				th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn">
 			</div>
 			<!-- FIN BTN-AGREGAR FRAGMENT -->
+			<!-- BTN-GRAFICOS FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-grafico-comp/btn-grafico-comp.html::btn">
+			</div>
+			<!-- FIN BTN-GRAFICOS FRAGMENT -->
+			
 		</div>
 	</div>
 	<!-- FIN TITULO LISTADO DE COMPONENTES -->
@@ -77,18 +83,32 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<script th:inline="javascript">
     $(function(){
+    
+
+    
     Highcharts.chart('containerStockCategColumnas', {
         chart: {
-            type: 'column'
+        	 height: 550,
+        	  width:650,
+            type: 'column',
+            options3d: {
+      enabled: true,
+      alpha: 15,
+      beta: 15,
+      depth: 50,
+      viewDistance: 25
+    }
         },
         title: {
             text: 'Stock de Componentes(Unidades)'
         },
         subtitle: {
-            text: 'por Categoría'
+            text: 'Ordenados por Cantidad de Mayor a Menor'
         },
         xAxis: {
             categories: [[${keySetCateg}]],
@@ -96,15 +116,16 @@
         
         },
         yAxis: {
-            min: 0,
-            max:3000,
+        	min:0,
+        	max:2500,
             title: {
-                text: 'Cantidad'
+                text: 'Cantidad',
+                
             }
         },
         tooltip: {
-            headerFormat: '<span style="font-size:25px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            headerFormat: '<span style="font-size:20px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">Stock : </td>' +
             '<td style="padding:0"><b> {point.y: f} unidades</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
@@ -112,13 +133,25 @@
         },
         plotOptions: {
             column: {
-                pointPadding: 0.1,
-                borderWidth: 0
+                pointPadding: 0,
+                borderWidth: 0,
+                depth:25
+            },
+            series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y: f} u'
             }
+        }
         },
         series: [{
-            name: 'Stock ',
-            data: [[${valuesCateg}]]
+            name: 'Unidades por Categoría',
+            dataSorting:{
+            	enabled:true
+            },
+            data: [[${valuesCateg}]],
+            color: '#5F96F3'
            
         }]
       });
@@ -135,61 +168,71 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<script th:inline="javascript">
     $(function(){
     Highcharts.chart('containerStockCategTorta', {
-        chart: {
-            type: 'pie',
-            options3d: {
-      enabled: true,
-      alpha: 45,
-      beta: 0
-    }
-        },
-        title: {
-            text: 'Stock de Componentes(%)'
-        },
-        subtitle: {
-            text: 'por Categoría'
-        },
-        xAxis: {
-            categories: [[${keySetCateg}]],
-            crosshair: true
-        
-        },
-        yAxis: {
-            min: 0,
-            max:3000,
+    chart: {
+    
+        height: 550,
+       	width:650,
+        type: 'areaspline',
+     
+    },
+    title: {
+        text: 'Stock de Componentes(Unidades)'
+    },
+     subtitle: {
+        text: 'Ordenados por Categoría'
+    },
+    xAxis: {
+         categories: [[${keySetCateg}]],
+         crosshair: true,
+   
+    },
+     yAxis: {
+        	min:0,
+        	max:2500,
             title: {
-                text: 'Cantidad'
+                text: 'Cantidad',
+                
             }
-        },
-        tooltip: {
-            headerFormat: '<span style="font-size:25px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+    },
+    tooltip: {
+            headerFormat: '<span style="font-size:20px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">Stock : </td>' +
             '<td style="padding:0"><b> {point.y: f} unidades</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
+    },
+    credits: {
+        enabled: false
+    },
+   plotOptions: {
+            column: {
+                pointPadding: 0,
+                borderWidth: 0,
+                depth:25
+            },
+            series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y: f} u'
+            }
+        }
         },
-        plotOptions: {
-    pie: {
-      allowPointSelect: true,
-      cursor: 'pointer',
-      depth: 35,
-      dataLabels: {
-        enabled: true,
-        format: '{point.name}'
-      }
-    }
-  },
-        series: [{
-            name: 'Stock ',
-            data: [[${valuesCateg}]]
+    series: [{
+            name: 'Unidades por Categoría ',
+            
+            data: [[${valuesCateg}]],
+             color: '#0B3E93'
            
         }]
-      });
+});
     });
 </script>
 

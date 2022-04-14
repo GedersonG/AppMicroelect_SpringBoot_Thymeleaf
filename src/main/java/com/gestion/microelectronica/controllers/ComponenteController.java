@@ -313,7 +313,7 @@ public class ComponenteController {
 		// ----------- VARIABLES CATEGORIA ---------------
 		String transBjt = "Transistores BJT";
 		String transMosfet = "Transistores MOSFET";
-		String capElectr = "Capacitores Electrolíticos";
+		String capElectr = "Capacitores Electroliticos";
 		String resAltFrec = "Resistores de Alta Frecuencia";
 		String microsPics = "Microcontroladores PICS";
 		String microsAvrs = "Microcontroladores AVRS";
@@ -361,9 +361,13 @@ public class ComponenteController {
 		data.put(placasArd, stockPlacasArd);
 		data.put(placasEsp8266, stockPlacasEsp8266);
 		data.put(placasEsp32, stockPlacasEsp32);
+		
+		
 
 		mav.addObject("keySetCateg", data.keySet());
 		mav.addObject("valuesCateg", data.values());
+		
+		
 
 	
 		mav.setViewName("componentes/comp-graf-stock-categ");
