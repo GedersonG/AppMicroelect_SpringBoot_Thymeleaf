@@ -35,33 +35,32 @@
 			verificando la informacion ingresada!!</div>
 
 		<div class="m-4 p-3 d-flex justify-content-center ">
-
-			<div class="d-flex justify-content-center m-4 mb-1 p-3 ">
+			<!-- TITULO AGREGAR COMPONENTES VALIDADO -->
+			<div
+				class="d-flex flex-row justify-content-center bd-highlight m-4 p-3 ">
 				<h1>
-					<span class="badge bg-dark mt-3 mb-0">Componente Agregado</span>
+					<span class="badge bg-dark mt-3">Componente Agregado</span>
 				</h1>
-
+				<!-- BTN-INICIO FRAGMENT -->
 				<div
-					class="card-body d-flex justify-content-inline align-text-center ms-1 p-2">
-
-					<!-- BTN-INICIO FRAGMENT -->
-					<div
-						th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn"></div>
-					<!-- FIN BTN-INICIO FRAGMENT -->
-
-					<!-- BTN-AGREGAR FRAGMENT -->
-					<header
-						th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></header>
-					<!-- FIN BTN-AGREGAR FRAGMENT -->
-
-					<!-- BTN-LISTADO FRAGMENT -->
-					<header
-						th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn"></header>
-					<!-- FIN BTN-LISTADO FRAGMENT -->
-
-
+					th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn">
 				</div>
+				<!-- FIN BTN-INICIO FRAGMENT -->
+					<!-- BTN-LISTADO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn">
+				</div>
+				<!-- FIN BTN-LISTADO FRAGMENT -->
+
+				<!-- BTN-AGREGAR FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn">
+				</div>
+				<!-- FIN BTN-AGREGAR FRAGMENT -->
 			</div>
+			<!-- FIN TITULO AGREGAR COMPONENTES VALIDADO -->
+
+
 		</div>
 
 
@@ -99,26 +98,23 @@
 						<td th:text="${comp.getStock()}"></td>
 						<td th:text="${comp.getPrecio()}"></td>
 						<td>
-						
-						<!-- BTN'S ACCION -->
+							<!-- BTN'S ACCION -->
 							<div class="d-flex justify-content-center p-1">
 								<a
-									th:href="@{/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}">
-									<button
-										type="button" class="btn bg-none m-1">
-										
+									th:href="@{/v1/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}">
+									<button type="button" class="btn bg-none m-1">
+
 										<img th:src="@{/images/actions/edit.png}" alt="" width="50"
-									height="50">
-										
-										</button></a> 
-										<a
-									th:href="@{/componentes/eliminar-comp/id/{id}(id=${comp.getId()})}"><button
+											height="50">
+
+									</button>
+								</a> <a
+									th:href="@{/v1/componentes/eliminar-comp/id/{id}(id=${comp.getId()})}"><button
 										type="button" class="btn bg-none m-1">
 										<img th:src="@{/images/actions/delete.png}" alt="" width="50"
-									height="50">
-										</button></a>
-							</div>
-							<!--FIN  BTN'S ACCION -->
+											height="50">
+									</button></a>
+							</div> <!--FIN  BTN'S ACCION -->
 						</td>
 
 					</tr>

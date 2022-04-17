@@ -8,8 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Order;
-import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +23,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.gestion.microelectronica.entities.ComponenteEntity;
 import com.gestion.microelectronica.services.ComponenteService;
 
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
-@RequestMapping("/componentes")
+@RequestMapping("/v1/componentes")
 public class ComponenteController {
 
 	@Autowired
@@ -36,31 +39,67 @@ public class ComponenteController {
 	// ============= MÉTODOS HTTP CRUD ==============
 	// ===============================================
 
-	// ----POST----
+	// ================
+	// ===== POST =====
+	// =================
+	@Operation(summary = "Inserción de un Componente")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se ha Insertado el Componente Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudo Insertar el Componente. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Inserción del Componente no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@PostMapping("/")
-	public boolean addComponente(@RequestBody ComponenteEntity componente) {
+	public void addComponente(@RequestBody ComponenteEntity componente) {
 
-		return componenteService.addComponente(componente);
+		componenteService.addComponente(componente);
 	}
 
-	// ----PUT-----
+	// ================
+	// ===== PUT=====
+	// =================
+	@Operation(summary = "Actualización de un Componente")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se ha Actualizado el Componente Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudo Actualizar el Componente. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Actualización del Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@PutMapping("/")
-	public boolean updateComponente(@RequestBody ComponenteEntity componente) {
+	public void updateComponente(@RequestBody ComponenteEntity componente) {
 
-		return componenteService.updateComponente(componente);
+		componenteService.updateComponente(componente);
 	}
 
-	// ---DELETE---
+	// ==================
+	// ===== DELETE =====
+	// ==================
+	@Operation(summary = "Eliminación de un Componente por su ID")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se ha Eliminado el Componente Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudo Eliminar el Componente. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Eliminación del Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@DeleteMapping("/{id}")
-	public boolean deleteComponente(@PathVariable("id") int id) {
+	public void deleteComponente(@PathVariable("id") int id) {
 
-		return componenteService.deleteComponente(id);
+		componenteService.deleteComponente(id);
 	}
 
-	// ---GET---
+	// ===============
+	// ===== GET =====
+	// ===============
 	// ---LISTADO PAGINADO Y COMPLETO---
+	@Operation(summary = "Listado Paginado de Componentes")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se ha Traído el Listado de Componentes", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudo traer el Listado de Componentes. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "El Listado de Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@GetMapping("/listado")
-	public List<ComponenteEntity> getAll(Pageable pageable) {
+	public Page<ComponenteEntity> getAll(Pageable pageable) {
 
 		return componenteService.getAllComponente(pageable);
 	}
@@ -69,67 +108,148 @@ public class ComponenteController {
 	// ============= MÉTODOS HTTP BÚSQUEDA =============
 	// ==================================================
 
-	// ---GET---
-	@PostMapping("/id/{id}")
+	// ===============
+	// ===== GET =====
+	// ===============
+	@Operation(summary = "Búsqueda de un Componente por su ID")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se ha Traído el Componente Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudo Encontrar el Componente. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Búsqueda del Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
+	@GetMapping("/id/{id}")
 	public ComponenteEntity getById(@PathVariable("id") int id) {
 
 		return componenteService.findById(id);
 	}
 
-	// ---GET---
+	// ===============
+	// ===== GET =====
+	// ===============
+	@Operation(summary = "Búsqueda Paginada de Componentes por su Código")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se han Traído los Componentes Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudieron Encontrar los Componentes. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Búsqueda de los Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@GetMapping("/codigo/{codigo}")
-	public List<ComponenteEntity> getByCodigo(@PathVariable("codigo") String codigo) {
+	public Page<ComponenteEntity> getByCodigo(@PathVariable("codigo") String codigo, Pageable pageable) {
 
-		return componenteService.findByCodigo(codigo);
+		return componenteService.findByCodigo(codigo, pageable);
 	}
 
-	// ---GET---
+	// ===============
+	// ===== GET =====
+	// ===============
+	@Operation(summary = "Búsqueda Paginada de Componentes por su Imagen")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se han Traído los Componentes Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudieron Encontrar los Componentes. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Búsqueda de los Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@GetMapping("/imagen/{imagen}")
-	public List<ComponenteEntity> getByImagen(@PathVariable("imagen") String imagen) {
+	public Page<ComponenteEntity> getByImagen(@PathVariable("imagen") String imagen, Pageable pageable) {
 
-		return componenteService.findByImagen(imagen);
+		return componenteService.findByImagen(imagen, pageable);
 	}
 
-	// ---GET---
+	// ===============
+	// ===== GET =====
+	// ===============
+	@Operation(summary = "Búsqueda Paginada de Componentes por su Número de Piezas")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se han Traído los Componentes Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudieron Encontrar los Componentes. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Búsqueda de los Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@GetMapping("/nro-de-pieza/{nroPieza}")
-	public List<ComponenteEntity> getByNroPieza(@PathVariable("nroPieza") String nroPieza) {
+	public Page<ComponenteEntity> getByNroPieza(@PathVariable("nroPieza") String nroPieza, Pageable pageable) {
 
-		return componenteService.findByNroPieza(nroPieza);
+		return componenteService.findByNroPieza(nroPieza, pageable);
 	}
 
-	// ---GET---
+	// ===============
+	// ===== GET =====
+	// ===============
+	@Operation(summary = "Búsqueda Paginada de Componentes por su Categoría")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se han Traído los Componentes Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudieron Encontrar los Componentes. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Búsqueda de los Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@GetMapping("/categoria/{categoria}")
-	public List<ComponenteEntity> getByCategoria(@PathVariable("nroPieza") String nroPieza) {
+	public Page<ComponenteEntity> getByCategoria(@PathVariable("nroPieza") String nroPieza, Pageable pageable) {
 
-		return componenteService.findByNroPieza(nroPieza);
+		return componenteService.findByNroPieza(nroPieza, pageable);
 	}
 
-	// ---GET---
+	// ===============
+	// ===== GET =====
+	// ===============
+	@Operation(summary = "Búsqueda Paginada de Componentes por su Descripción")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se han Traído los Componentes Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudieron Encontrar los Componentes. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Búsqueda de los Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@GetMapping("/descripcion/{descripcion}")
-	public List<ComponenteEntity> getByDescripcion(@PathVariable("descripcion") String descripcion) {
+	public Page<ComponenteEntity> getByDescripcion(@PathVariable("descripcion") String descripcion, Pageable pageable) {
 
-		return componenteService.findByDescripcion(descripcion);
+		return componenteService.findByDescripcion(descripcion, pageable);
 	}
 
-	// ---GET---
+	// ===============
+	// ===== GET =====
+	// ===============
+	@Operation(summary = "Búsqueda Paginada de Componentes por su Fabricante")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se han Traído los Componentes Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudieron Encontrar los Componentes. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Búsqueda de los Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@GetMapping("/fabricante/{fabricante}")
-	public List<ComponenteEntity> getByFabricante(@PathVariable("fabricante") String fabricante) {
+	public Page<ComponenteEntity> getByFabricante(@PathVariable("fabricante") String fabricante, Pageable pageable) {
 
-		return componenteService.findByFabricante(fabricante);
+		return componenteService.findByFabricante(fabricante, pageable);
 	}
 
-	// ---GET---
+	// ===============
+	// ===== GET =====
+	// ===============
+	@Operation(summary = "Búsqueda Paginada de Componentes por su Stock")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se han Traído los Componentes Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudieron Encontrar los Componentes. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Búsqueda de los Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@GetMapping("/stock/{stock}")
-	public List<ComponenteEntity> getByStock(@PathVariable("stock") int stock) {
+	public Page<ComponenteEntity> getByStock(@PathVariable("stock") int stock, Pageable pageable) {
 
-		return componenteService.findByStock(stock);
+		return componenteService.findByStock(stock, pageable);
 	}
 
-	// ---GET---
+	// ===============
+	// ===== GET =====
+	// ===============
+	@Operation(summary = "Búsqueda Paginada de Componentes por su Precio")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se han Traído los Componentes Correctamente", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudieron Encontrar los Componentes. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "La Búsqueda de los Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@GetMapping("/precio/{precio}")
-	public List<ComponenteEntity> getByPrecio(@PathVariable("precio") double precio) {
+	public Page<ComponenteEntity> getByPrecio(@PathVariable("precio") double precio, Pageable pageable) {
 
-		return componenteService.findByPrecio(precio);
+		return componenteService.findByPrecio(precio, pageable);
 	}
 
 	// ============================================================
@@ -175,8 +295,8 @@ public class ComponenteController {
 
 		ModelAndView mav = new ModelAndView();
 
-		// Agregamos el componente a la db y al modelo
-		mav.addObject(componenteService.addComponente(nuevoComponente));
+		// Agregamos el componente a la db
+		componenteService.addComponente(nuevoComponente);
 
 		// Buscamos el componente agregado a traves de su id
 		mav.addObject("componenteAgregado", componenteService.findById(nuevoComponente.getId()));
@@ -216,8 +336,8 @@ public class ComponenteController {
 
 		ModelAndView mav = new ModelAndView();
 
-		// Agregamos el componente a la db y al modelo
-		mav.addObject(componenteService.updateComponente(componenteEditado));
+		// Agregamos el componente a la db
+		componenteService.updateComponente(componenteEditado);
 
 		// Buscamos el componente agregado a traves de su id
 		mav.addObject("componenteAgregado", componenteService.findById(componenteEditado.getId()));
@@ -274,8 +394,8 @@ public class ComponenteController {
 
 		if ((idComponente > 0) && !(componenteEliminar == null)) {
 
-			// Eliminamos el componente de la db y al modelo
-			mav.addObject(componenteService.deleteComponente(componenteEliminar.getId()));
+			// Eliminamos el componente de la db
+			componenteService.deleteComponente(componenteEliminar.getId());
 
 			// Agregamos el componente a la vista
 			mav.setViewName("componentes/comp-eliminar-validado");
@@ -287,183 +407,20 @@ public class ComponenteController {
 		return mav;
 	}
 
-	// ========================================
-	// ============= GRÁFICOS ==============
-	// ========================================
-	
-	
-	@GetMapping("grafico-select")
-	public ModelAndView graficoSeleccion() {
-		
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("componentes/comp-graf-select");
+	// ---GET---
 
-		return mav;
-		
-	}
-
-	@GetMapping("/grafico-stock-categoria")
-	public ModelAndView graficoStockCateg() {
+	@GetMapping("/ayuda-comp")
+	public ModelAndView ayudaComModelAndView() {
 
 		ModelAndView mav = new ModelAndView();
 
-		List<ComponenteEntity> listComp = componenteService.getAllComponente();
-
-		// ----------- VARIABLES CATEGORIA ---------------
-		String transBjt = "Transistores BJT";
-		String transMosfet = "Transistores MOSFET";
-		String capElectr = "Capacitores Electroliticos";
-		String resAltFrec = "Resistores de Alta Frecuencia";
-		String microsPics = "Microcontroladores PICS";
-		String microsAvrs = "Microcontroladores AVRS";
-		String placasArd = "Placas Arduino";
-		String placasEsp8266 = "Placas Esp8266";
-		String placasEsp32 = "Placas Esp32";
-
-		// ------------- STOCK POR CATEGORIA ------------------
-		// Stock de Transistores BJT
-		int stockTransBjt = componenteService.stockPorCategoria(listComp, transBjt);
-
-		// Stock de Transistores MOSFET
-		int stockTransMosfet = componenteService.stockPorCategoria(listComp, transMosfet);
-
-		// Stock de Capacitores Electroliticos
-		int stockCapElectr = componenteService.stockPorCategoria(listComp, capElectr);
-
-		// Stock de Resistores de Alta Frecuencia
-		int stockResisAltFrec = componenteService.stockPorCategoria(listComp, resAltFrec);
-
-		// Stock de Microcontroladores PICS
-		int stockMicrosPics = componenteService.stockPorCategoria(listComp, microsPics);
-
-		// Stock de Microcontroladores AVRS
-		int stockMicrosAvrs = componenteService.stockPorCategoria(listComp, microsAvrs);
-
-		int stockPlacasArd = componenteService.stockPorCategoria(listComp, placasArd);
-
-		int stockPlacasEsp8266 = componenteService.stockPorCategoria(listComp, placasEsp8266);
-
-		int stockPlacasEsp32 = componenteService.stockPorCategoria(listComp, placasEsp32);
-
-		
-	
-		//--------- SET DE STOCK POR CATEGORIA ------------
-		
-		Map<String, Integer> data = new LinkedHashMap();
-
-		data.put(transBjt, stockTransBjt);
-		data.put(transMosfet, stockTransMosfet);
-		data.put(capElectr, stockCapElectr);
-		data.put(resAltFrec, stockResisAltFrec);
-		data.put(microsPics, stockMicrosPics);
-		data.put(microsAvrs, stockMicrosAvrs);
-		data.put(placasArd, stockPlacasArd);
-		data.put(placasEsp8266, stockPlacasEsp8266);
-		data.put(placasEsp32, stockPlacasEsp32);
-		
-		
-
-		mav.addObject("keySetCateg", data.keySet());
-		mav.addObject("valuesCateg", data.values());
-		
-		
-
-	
-		mav.setViewName("componentes/comp-graf-stock-categ");
+		// Agregamos el componente a la vista
+		mav.setViewName("componentes/comp-ayuda");
 
 		return mav;
 	}
 	
 	
-	
-	
-	@GetMapping("/grafico-stock-fabricante")
-	public ModelAndView graficoStockFabr() {
-
-		ModelAndView mav = new ModelAndView();
-
-		List<ComponenteEntity> listComp = componenteService.getAllComponente();
-
-		// ----------- VARIABLES FABRICANTES ---------------
-		String vish = "VISHAY";
-		String eln = "ELNA";
-		String kysh = "KYSHOCERA";
-		String shanHuash = "SHANTOU HUASHAN";
-		String slk = "SLKOR";
-		String micr = "MICROCHIP";
-		String micrTech = "MICROCHIP TECHNOLOGY";
-		String twi = "T-WINS";
-		String pan = "PANASONIC";
-		String hit = "HITACHI";
-		String advPow = "ADVANCED POWER";
-		String ard = "ARDUINO";
-		String wem = "WEMOS";
-		String esprSys = "ESPRESSIF SYSTEMS";
-		String stMicr = "STMICROELECTRONICS";
-		String renElec = "RENESAS ELECTRONIC";
-		String centSem = "CENTRAL SEMICONDUCTOR";
-		String inchSem = "INCHANGE SEMICONDUCTOR";
-
-		// ------------- STOCK POR FABRICANTE ------------------
-		int stockVishay = componenteService.stockPorFabricante(listComp, vish);
-		int stockElna = componenteService.stockPorFabricante(listComp, eln);
-		int stockKyshoc = componenteService.stockPorFabricante(listComp, kysh);
-		int stockShantHuash = componenteService.stockPorFabricante(listComp, shanHuash);
-		int stockSlkor = componenteService.stockPorFabricante(listComp, slk);
-		int stockMicr = componenteService.stockPorFabricante(listComp, micr);
-		int stockMicrTech = componenteService.stockPorFabricante(listComp, micrTech);
-		int stockTwins = componenteService.stockPorFabricante(listComp, twi);
-		int stockPanas = componenteService.stockPorFabricante(listComp, pan);
-		int stockHit = componenteService.stockPorFabricante(listComp, hit);
-		int stockAdvPow = componenteService.stockPorFabricante(listComp, advPow);
-		int stockArd = componenteService.stockPorFabricante(listComp, ard);
-		int stockWemos = componenteService.stockPorFabricante(listComp, wem);
-		int stockEsprSys = componenteService.stockPorFabricante(listComp, esprSys);
-		int stockStMicr = componenteService.stockPorFabricante(listComp, stMicr);
-		int stockRenElec = componenteService.stockPorFabricante(listComp, renElec);
-		int stockCentSem = componenteService.stockPorFabricante(listComp, centSem);
-		int stockInchSem = componenteService.stockPorFabricante(listComp, inchSem);
-		
-		
-
-		//--------- SET DE STOCK POR FABRICANTE ------------
-		
-		Map<String, Integer> data02 = new LinkedHashMap();
-
-		data02.put(vish, stockVishay);
-		data02.put(eln, stockElna);
-		data02.put(kysh, stockKyshoc);
-		data02.put(shanHuash, stockShantHuash);
-		data02.put(slk, stockSlkor);
-		data02.put(micr, stockMicr);
-		data02.put(micrTech, stockMicrTech);
-		data02.put(twi, stockTwins);
-		data02.put(pan, stockPanas);
-		data02.put(hit, stockHit);
-		data02.put(advPow, stockAdvPow);
-		data02.put(ard, stockArd);
-		data02.put(wem, stockWemos);
-		data02.put(esprSys, stockEsprSys);
-		data02.put(stMicr, stockStMicr);
-		data02.put(renElec, stockRenElec);
-		data02.put(centSem, stockCentSem);
-		data02.put(inchSem, stockInchSem);
-		
-
-		mav.addObject("keySetFabr", data02.keySet());
-		mav.addObject("valuesFabr", data02.values());
-		
-		
-		
-		
-		
-		
-	
-		mav.setViewName("componentes/comp-graf-stock-fabr");
-
-		return mav;
-	}
 
 	// =================================================
 	// ============= FILTROS Y BUSQUEDAS ==============
@@ -477,8 +434,8 @@ public class ComponenteController {
 	// ---VISTA listado componentes paginacion---
 	// Obtenemos formato String y parseamos
 	@GetMapping("/listar-paginado/{nroPagina}/{nroElementos}/{campo}/{direccion}")
-	public ModelAndView listarPaginadoModelAndView(@PathVariable("nroPagina") String nroPagina,
-			@PathVariable("nroElementos") String nroElementos, @PathVariable("campo") String campo,
+	public ModelAndView listarPaginadoModelAndView(@PathVariable("nroPagina") int nroPagina,
+			@PathVariable("nroElementos") int nroElementos, @PathVariable("campo") String campo,
 			@PathVariable("direccion") String direccion) {
 
 		ModelAndView mav = new ModelAndView();
@@ -501,12 +458,11 @@ public class ComponenteController {
 		 * }
 		 */
 
-		// Seteamos un paginado (nro Paginas, nro de objetos)
-		Pageable paginado = PageRequest.of(Integer.parseInt(nroPagina), Integer.parseInt(nroElementos),
+		Pageable paginado = PageRequest.of(nroPagina, nroElementos,
 				Sort.by(Sort.Direction.fromString(direccion), campo));
 
 		// Creamos objeto paginado para obtener datos y pasarlos al modelo
-		Page<ComponenteEntity> ultimoPaginado = componenteService.getAllComponentePage(paginado);
+		Page<ComponenteEntity> ultimoPaginado = componenteService.getAllComponente(paginado);
 
 		// --Operaciones Info del Paginado--
 
@@ -567,6 +523,171 @@ public class ComponenteController {
 
 		return mav;
 
+	}
+
+
+	// ========================================
+	// ============= GRÁFICOS ==============
+	// ========================================
+
+	@GetMapping("grafico-select")
+	public ModelAndView graficoSeleccion() {
+
+		ModelAndView mav = new ModelAndView();
+
+		mav.setViewName("componentes/comp-graf-select");
+
+		return mav;
+
+	}
+
+	@GetMapping("/grafico-stock-categoria")
+	public ModelAndView graficoStockCateg() {
+
+		ModelAndView mav = new ModelAndView();
+
+		// Seteamos un paginado de 500 elementos hipoteticos
+		Pageable paginado = PageRequest.of(0, 500, Sort.by("id").ascending());
+
+		Page<ComponenteEntity> listComp = componenteService.getAllComponente(paginado);
+
+		// ----------- VARIABLES CATEGORIA ---------------
+		String transBjt = "Transistores BJT";
+		String transMosfet = "Transistores MOSFET";
+		String capElectr = "Capacitores Electroliticos";
+		String resAltFrec = "Resistores de Alta Frecuencia";
+		String microsPics = "Microcontroladores PICS";
+		String microsAvrs = "Microcontroladores AVRS";
+		String placasArd = "Placas Arduino";
+		String placasEsp8266 = "Placas Esp8266";
+		String placasEsp32 = "Placas Esp32";
+
+		// ------------- STOCK POR CATEGORIA ------------------
+		// Stock de Transistores BJT
+		int stockTransBjt = componenteService.stockPorCategoria(listComp, transBjt);
+
+		// Stock de Transistores MOSFET
+		int stockTransMosfet = componenteService.stockPorCategoria(listComp, transMosfet);
+
+		// Stock de Capacitores Electroliticos
+		int stockCapElectr = componenteService.stockPorCategoria(listComp, capElectr);
+
+		// Stock de Resistores de Alta Frecuencia
+		int stockResisAltFrec = componenteService.stockPorCategoria(listComp, resAltFrec);
+
+		// Stock de Microcontroladores PICS
+		int stockMicrosPics = componenteService.stockPorCategoria(listComp, microsPics);
+
+		// Stock de Microcontroladores AVRS
+		int stockMicrosAvrs = componenteService.stockPorCategoria(listComp, microsAvrs);
+
+		int stockPlacasArd = componenteService.stockPorCategoria(listComp, placasArd);
+
+		int stockPlacasEsp8266 = componenteService.stockPorCategoria(listComp, placasEsp8266);
+
+		int stockPlacasEsp32 = componenteService.stockPorCategoria(listComp, placasEsp32);
+
+		// --------- SET DE STOCK POR CATEGORIA ------------
+
+		Map<String, Integer> data = new LinkedHashMap();
+
+		data.put(transBjt, stockTransBjt);
+		data.put(transMosfet, stockTransMosfet);
+		data.put(capElectr, stockCapElectr);
+		data.put(resAltFrec, stockResisAltFrec);
+		data.put(microsPics, stockMicrosPics);
+		data.put(microsAvrs, stockMicrosAvrs);
+		data.put(placasArd, stockPlacasArd);
+		data.put(placasEsp8266, stockPlacasEsp8266);
+		data.put(placasEsp32, stockPlacasEsp32);
+
+		mav.addObject("keySetCateg", data.keySet());
+		mav.addObject("valuesCateg", data.values());
+
+		mav.setViewName("componentes/comp-graf-stock-categ");
+
+		return mav;
+	}
+
+	@GetMapping("/grafico-stock-fabricante")
+	public ModelAndView graficoStockFabr() {
+
+		ModelAndView mav = new ModelAndView();
+
+		// Seteamos un paginado de 500 elementos hipoteticos
+		Pageable paginado = PageRequest.of(0, 500, Sort.by("id").ascending());
+
+		Page<ComponenteEntity> listComp = componenteService.getAllComponente(paginado);
+
+		// ----------- VARIABLES FABRICANTES ---------------
+		String vish = "VISHAY";
+		String eln = "ELNA";
+		String kysh = "KYSHOCERA";
+		String shanHuash = "SHANTOU HUASHAN";
+		String slk = "SLKOR";
+		String micr = "MICROCHIP";
+		String micrTech = "MICROCHIP TECHNOLOGY";
+		String twi = "T-WINS";
+		String pan = "PANASONIC";
+		String hit = "HITACHI";
+		String advPow = "ADVANCED POWER";
+		String ard = "ARDUINO";
+		String wem = "WEMOS";
+		String esprSys = "ESPRESSIF SYSTEMS";
+		String stMicr = "STMICROELECTRONICS";
+		String renElec = "RENESAS ELECTRONIC";
+		String centSem = "CENTRAL SEMICONDUCTOR";
+		String inchSem = "INCHANGE SEMICONDUCTOR";
+
+		// ------------- STOCK POR FABRICANTE ------------------
+		int stockVishay = componenteService.stockPorFabricante(listComp, vish);
+		int stockElna = componenteService.stockPorFabricante(listComp, eln);
+		int stockKyshoc = componenteService.stockPorFabricante(listComp, kysh);
+		int stockShantHuash = componenteService.stockPorFabricante(listComp, shanHuash);
+		int stockSlkor = componenteService.stockPorFabricante(listComp, slk);
+		int stockMicr = componenteService.stockPorFabricante(listComp, micr);
+		int stockMicrTech = componenteService.stockPorFabricante(listComp, micrTech);
+		int stockTwins = componenteService.stockPorFabricante(listComp, twi);
+		int stockPanas = componenteService.stockPorFabricante(listComp, pan);
+		int stockHit = componenteService.stockPorFabricante(listComp, hit);
+		int stockAdvPow = componenteService.stockPorFabricante(listComp, advPow);
+		int stockArd = componenteService.stockPorFabricante(listComp, ard);
+		int stockWemos = componenteService.stockPorFabricante(listComp, wem);
+		int stockEsprSys = componenteService.stockPorFabricante(listComp, esprSys);
+		int stockStMicr = componenteService.stockPorFabricante(listComp, stMicr);
+		int stockRenElec = componenteService.stockPorFabricante(listComp, renElec);
+		int stockCentSem = componenteService.stockPorFabricante(listComp, centSem);
+		int stockInchSem = componenteService.stockPorFabricante(listComp, inchSem);
+
+		// --------- SET DE STOCK POR FABRICANTE ------------
+
+		Map<String, Integer> data02 = new LinkedHashMap();
+
+		data02.put(vish, stockVishay);
+		data02.put(eln, stockElna);
+		data02.put(kysh, stockKyshoc);
+		data02.put(shanHuash, stockShantHuash);
+		data02.put(slk, stockSlkor);
+		data02.put(micr, stockMicr);
+		data02.put(micrTech, stockMicrTech);
+		data02.put(twi, stockTwins);
+		data02.put(pan, stockPanas);
+		data02.put(hit, stockHit);
+		data02.put(advPow, stockAdvPow);
+		data02.put(ard, stockArd);
+		data02.put(wem, stockWemos);
+		data02.put(esprSys, stockEsprSys);
+		data02.put(stMicr, stockStMicr);
+		data02.put(renElec, stockRenElec);
+		data02.put(centSem, stockCentSem);
+		data02.put(inchSem, stockInchSem);
+
+		mav.addObject("keySetFabr", data02.keySet());
+		mav.addObject("valuesFabr", data02.values());
+
+		mav.setViewName("componentes/comp-graf-stock-fabr");
+
+		return mav;
 	}
 
 }

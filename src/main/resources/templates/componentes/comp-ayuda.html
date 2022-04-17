@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Componente Eliminado</title>
+<meta charset="utf-8">
+<title>Ayuda Componentes</title>
+
 
 <!-- Icono -->
-<link rel="icon" type="image/x-icon" th:href="@{../images/electronic.png}">
+<link rel="icon" type="image/x-icon" th:href="@{/images/electronic.png}">
 
 <!--CSS COMPONENTES.CSS-->
 <link th:href="@{/css-templates/general-template.css}" rel="stylesheet">
@@ -20,24 +21,9 @@
 </head>
 <body>
 
-
-
-
 	<!-- NAVBAR FRAGMENT -->
 	<header th:replace="../static/fragments/navbar/navbar.html::menu"></header>
 	<!-- FIN NAVBAR FRAGMENT -->
-
-
-
-	<div class="container text-center m-5 mt-5 p-1">
-	
-	<!-- ALERT FRAGMENT -->
-	<div th:replace="../static/fragments/componentes/eliminado-alert-comp/eliminado-alert.html::eliminado-alert"></div>
-	<!-- FIN ALERT FRAGMENT -->
-	
-	
-	</div>
-
 
 
 

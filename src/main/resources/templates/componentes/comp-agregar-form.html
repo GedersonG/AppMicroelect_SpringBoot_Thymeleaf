@@ -32,36 +32,33 @@
 	<!-- AGREGAR COMPONENTE -->
 	<div class="container text-center  m-5 mt-4 p-1">
 
-		<div class="m-4 p-3 d-flex justify-content-center d-inline-flex">
-				<h1>
-				<span class="badge bg-dark mt-4"> Formulario Agregar
-					Componente</span>
+		<!-- TITULO AGREGAR COMPONENTES -->
+		<div class="d-flex flex-row justify-content-center bd-highlight m-4 p-3 ">
+			<h1>
+				<span class="badge bg-dark mt-3">Formulario Agregar Componentes</span>
 			</h1>
+			<!-- BTN-INICIO FRAGMENT -->
 			<div
-				class="card-body  d-flex justify-content-inline text-center ms-1 p-2">
-			
-					<!-- BTN-INICIO FRAGMENT -->
-				<div
-					th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn"></div>
-				<!-- FIN BTN-INICIO FRAGMENT -->
-					
-		
-				<!-- BTN-LISTADO FRAGMENT -->
-				<div
-					th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn"></div>
-				<!-- FIN BTN-LISTADO FRAGMENT -->
-
-
+				th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn">
 			</div>
+			<!-- FIN BTN-INICIO FRAGMENT -->
 
+			<!-- BTN-LISTAR FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn">
+			</div>
+			<!-- FIN BTN-LISTAR FRAGMENT -->
 		</div>
+		<!-- FIN TITULO AGREGAR COMPONENTES -->
+
+
 
 
 		<!--FORMULARIO -->
 		<div class="container text-center  d-flex justify-content-center ">
 
 			<form class="" id="formulario"
-				th:action="@{'/componentes/agregar-comp-form-validado'}"
+				th:action="@{'/v1/componentes/agregar-comp-form-validado'}"
 				th:object="${nuevoComponente}" method="POST">
 
 				<div class="text-left p-2 m-2 bg-dark text-white ">
