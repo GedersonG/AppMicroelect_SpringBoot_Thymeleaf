@@ -103,6 +103,23 @@ public class ComponenteController {
 
 		return componenteService.getAllComponente(pageable);
 	}
+	
+	// ===============
+	// ===== GET =====
+	// ===============
+	// ---LISTADO PAGINADO FILTROS ---
+	@Operation(summary = "Listado Paginado de Componentes con Filtros")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Se ha Traído el Listado de Componentes", content = {
+					@Content(mediaType = "application/json") }),
+			@ApiResponse(responseCode = "400", description = "No se pudo traer el Listado de Componentes. Comprobar la Solicitud", content = @Content),
+			@ApiResponse(responseCode = "404", description = "El Listado de Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
+	@GetMapping("/listado-filtrado")
+	public Page<ComponenteEntity> getAllFilter(String filtro, Pageable pageable) {
+
+		return componenteService.getAllFilterComponente(filtro,pageable);
+	}
 
 	// ==================================================
 	// ============= MÉTODOS HTTP BÚSQUEDA =============
@@ -425,6 +442,34 @@ public class ComponenteController {
 	// =================================================
 	// ============= FILTROS Y BUSQUEDAS ==============
 	// =================================================
+	@GetMapping("/filtrar-comp/{nroPagina}/{nroElementos}/{filtro}/{direccion}")
+	public ModelAndView filtrarCompModelAndView(@PathVariable("nroPagina") int nroPagina,
+			@PathVariable("nroElementos") int nroElementos, @PathVariable("filtro") String filtro,
+			@PathVariable("direccion") String direccion) {
+		
+		
+		ModelAndView mav = new ModelAndView();
+		
+		Pageable paginado = PageRequest.of(nroPagina, nroElementos,
+				Sort.by(Sort.Direction.fromString(direccion), filtro));
+
+		// Creamos un objeto paginado con los componentes para obtener datos y pasarlos al modelo
+		Page<ComponenteEntity> ultimoPaginadoFilter = componenteService.getAllFilterComponente(filtro,paginado);
+
+		
+
+		// --Operaciones Info del Paginado--
+
+		// Seteamos el Paginado en la Vista
+		mav.addObject("listaPaginadosFilter", ultimoPaginadoFilter);
+		
+		
+		mav.setViewName("componentes/comp-listar");
+
+		
+		
+		return mav;
+	}
 
 	// ===========================================
 	// ============= PAGINACIONES ==============
@@ -461,7 +506,7 @@ public class ComponenteController {
 		Pageable paginado = PageRequest.of(nroPagina, nroElementos,
 				Sort.by(Sort.Direction.fromString(direccion), campo));
 
-		// Creamos objeto paginado para obtener datos y pasarlos al modelo
+		// Creamos un objeto paginado con los componentes para obtener datos y pasarlos al modelo
 		Page<ComponenteEntity> ultimoPaginado = componenteService.getAllComponente(paginado);
 
 		// --Operaciones Info del Paginado--

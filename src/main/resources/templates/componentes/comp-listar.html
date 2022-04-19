@@ -46,42 +46,36 @@
 			</div>
 			<!-- FIN BTN-AGREGAR FRAGMENT -->
 		</div>
+		
 		<!-- FIN TITULO LISTADO DE COMPONENTES -->
 
 
 
 
 		<!-- FILTER COMPONENTE AND UTILS -->
-		<div class="mt-5 mb-1 d-flex justify-content-end row">
+		<div class=" d-flex justify-content-end row mt-5 mb-1">
 
-			<!-- SELECCION CAMPO -->
-			<div class="col-2 ">
-				<form action="/busqueda-por-campo"
-					th:action="@{/busqueda-por-campo}" th:object="${campoSeleccionado}"
-					method="post">
-					<select class="form-select mb-3 bg-dark text-white"
-						aria-label=".form-select example">
-						<option value="1">ID</option>
-						<option value="2">CÓDIGO</option>
-						<option value="3">IMAGEN</option>
-						<option value="3">NRO. PIEZA</option>
-						<option value="3">CATEGORIA</option>
-						<option value="3">DESCRIPCION</option>
-						<option value="3">FABRICANTE</option>
-						<option value="3">STOCK</option>
-						<option value="3">PRECIO</option>
-					</select>
-				</form>
-			</div>
-			<!-- FIN SELECCION CAMPO -->
+	<div class="d-flex flex-row justify-content-center bd-highlight  ">
+	
 
 			<!-- VALOR BUSQUEDA -->
 			<div class="col-7 ">
+			
+				
 				<div class="d-flex flex-row">
 					<div class="col-6">
+					
+					<h4>
+				<span class="badge bg-dark mt-3">Filtrar:</span>
+				</h4>
+				<form action="/busqueda-por-campo"
+					th:action="@{/busqueda-por-campo}" th:object="${campoSeleccionado}"
+					method="post">
+					
+				</form>
 						<input type="text" class="form-control bg-white"
 							placeholder="Ingresar el Valor" aria-label="valor">
-					</div>
+					
 
 					<!--BTN BUSQUEDA-->
 					<div class="col-1">
@@ -94,7 +88,9 @@
 							</button>
 						</a>
 					</div>
+					</div>
 					<!--FIN BTN BUSQUEDA-->
+					</div>
 
 
 					<!--BTN'S UTILS-->
@@ -152,7 +148,7 @@
 		</div>
 		<!-- FIN FILTER COMPONENTE AND UTILS-->
 
-
+</div>
 
 
 

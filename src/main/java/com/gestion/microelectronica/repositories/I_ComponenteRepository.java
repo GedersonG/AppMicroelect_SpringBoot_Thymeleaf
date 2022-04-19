@@ -1,6 +1,7 @@
 package com.gestion.microelectronica.repositories;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,7 +40,11 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 		public abstract Page<ComponenteEntity> findByPrecio(double precio , Pageable pageable);
 
 		public abstract Page<ComponenteEntity> findAll(Pageable pageable );
+		
+		@Query("select c from ComponenteEntity c where concat(c.id,c.imagen,c.codigo,c.nroPieza,c.categoria,c.descripcion,c.fabricante) like %?1%")
+		public abstract Page<ComponenteEntity> findAll(String filtro, Pageable pageable);
 
+		
 	
 	
 	

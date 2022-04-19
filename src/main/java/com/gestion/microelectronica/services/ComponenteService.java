@@ -1,7 +1,5 @@
 package com.gestion.microelectronica.services;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.apache.logging.log4j.Logger;
@@ -105,6 +103,23 @@ public class ComponenteService {
 			
 			logger.error("ERROR getAllComponente : NO SE HAN LISTADO LOS COMPONENTES. CAUSADO POR "+e);
 			throw new ComponenteNotFoundException("NO SE PUDO ENCONTRAR EL LISTADO DE COMPONENTES ", e);
+		} 
+	}
+	
+	
+
+	// ==========================
+	// ===== GET ALL FILTER =====
+	// ==========================
+	// ------- LISTADO CON FILTER PAGINADO ---------
+	public Page<ComponenteEntity> getAllFilterComponente(String filter,Pageable pageable) {
+
+		try {
+			return iComponenteRepository.findAll(filter,pageable);
+		} catch (Exception e) {
+			
+			logger.error("ERROR getAllFilterComponente : NO SE HAN LISTADO LOS COMPONENTES FILTRADOS. CAUSADO POR "+e);
+			throw new ComponenteNotFoundException("NO SE PUDO ENCONTRAR EL LISTADO DE COMPONENTES FILTRADO ", e);
 		} 
 	}
 
