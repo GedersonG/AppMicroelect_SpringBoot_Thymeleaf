@@ -1,148 +1,89 @@
 package com.gestion.microelectronica.services;
 
-import java.util.List;
 
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.gestion.microelectronica.entities.ComponenteTransistorBipolarEntity;
+import com.gestion.microelectronica.exceptions.capacitor.electrolitico.CapElectrNotFoundException;
+import com.gestion.microelectronica.exceptions.transistor.bipolar.TransistorBipolarIdMismatchException;
+import com.gestion.microelectronica.exceptions.transistor.bipolar.TransistorBipolarNotFoundException;
 import com.gestion.microelectronica.repositories.I_ComponenteTransistorBipolarRepository;
 
 @Service
 public class ComponenteTransistorBipolarService {
 
 	@Autowired
-	private I_ComponenteTransistorBipolarRepository iComponenteTransistorBipolarRepository;
+	private I_ComponenteTransistorBipolarRepository iTransistorBipolarRepository;
 
 	// =============== LOGS ====================
-	private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ComponenteTransistorBipolarService.class);
+		private static final Logger logger = org.apache.logging.log4j.LogManager
+				.getLogger(ComponenteCapacitorElectroliticoService.class);
 
-	// =============== MÉTODOS CRUD ====================
+		// =============== MÉTODOS CRUD ====================
 
-	// ------ INSERT --------
-	public boolean addComponente(ComponenteTransistorBipolarEntity componenteTransistorBipolar) {
-		try {
-			if (componenteTransistorBipolar == null) {
-				logger.error("ERROR addComponente : EL COMPONENTE " + componenteTransistorBipolar + " ES NULO!!");
-				return false;
-			} else {
-				iComponenteTransistorBipolarRepository.save(componenteTransistorBipolar);
-				return true;
+		// ==================
+		// ===== INSERT =====
+		// ==================
+		public void addTransistorBipolar(ComponenteTransistorBipolarEntity transistorBipolar) {
+			try {
+				if (transistorBipolar == null) {
+					logger.error("ERROR addTransistorBipolar : EL TRANSISTOR BIPOLAR " + transistorBipolar + " ES NULO!!");
+					throw new CapElectrNotFoundException("EL TRANSISTOR BIPOLAR ES NULO");
+				} else {
+					iTransistorBipolarRepository.save(transistorBipolar);
+					
+				}
+
+			} catch (Exception e) {
+				logger.error("ERROR addTransistorBipolar : EL TRANSISTOR BIPOLAR " + transistorBipolar
+						+ " NO SE HA INSERTADO EN LA DB!!");
+				throw new TransistorBipolarNotFoundException("NO SE PUDO INSERTAR EL TRANSISTOR BIPOLAR ", e, false,
+						true);
 			}
-
-		} catch (Exception e) {
-			logger.error("ERROR addComponente : EL COMPONENTE " + componenteTransistorBipolar + " NO SE HA INSERTADO EN LA DB!!");
-			return false;
 		}
-	}
 
-	// ------ UPDATE --------
-	public boolean updateComponente(ComponenteTransistorBipolarEntity componenteTransistorBipolar) {
-		try {
-			if (componenteTransistorBipolar == null) {
-				logger.error("ERROR updateComponente : EL COMPONENTE " + componenteTransistorBipolar + " ES NULO!!");
-				return false;
-			} else {
-				iComponenteTransistorBipolarRepository.save(componenteTransistorBipolar);
-				return true;
+		// ==================
+		// ===== UPDATE =====
+		// ==================
+		public void updateTransistorBipolar(ComponenteTransistorBipolarEntity transistorBipolar) {
+			try {
+				if (transistorBipolar == null) {
+					logger.error("ERROR updateTransistorBipolar : EL TRANSISTOR BIPOLAR " + transistorBipolar + " ES NULO!!");
+					throw new TransistorBipolarNotFoundException("EL TRANSISTOR BIPOLAR ES NULO");
+				} else {
+					iTransistorBipolarRepository.save(transistorBipolar);
+					
+				}
+
+			} catch (Exception e) {
+				logger.error("ERROR updateTransistorBipolar : EL TRANSISTOR BIPOLAR " + transistorBipolar
+						+ " NO SE HA ACTUALIZADO EN LA DB!!");
+				throw new TransistorBipolarNotFoundException("NO SE PUDO ACTUALIZAR EL TRANSISTOR BIPOLAR ", e, false,
+						true);
 			}
-
-		} catch (Exception e) {
-			logger.error(
-					"ERROR updateComponente : EL COMPONENTE " + componenteTransistorBipolar + " NO SE HA ACTUALIZADO EN LA DB!!");
-			return false;
 		}
-	}
 
-	// ------ DELETE --------
-	public boolean deleteComponente(int id) {
-		try {
-			if (id <= 0) {
-				logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO EXISTE!!");
-				return false;
-			} else {
-				iComponenteTransistorBipolarRepository.delete(iComponenteTransistorBipolarRepository.findById(id));
-				return true;
+
+		// ==================
+		// ===== DELETE =====
+		// ==================
+		public void deleteTransistorBipolar(int id) {
+			try {
+				if (id <= 0 || iTransistorBipolarRepository.findById(id).getId() != id) {
+					logger.error("ERROR deleteTransistorBipolar : EL CAPACITOR ELECTROLITICO CON EL " + id + " NO EXISTE!!");
+					throw new TransistorBipolarIdMismatchException("EL ID NO EXISTE EN LA DB");
+				} else {
+					iTransistorBipolarRepository
+							.delete(iTransistorBipolarRepository.findById(id));
+					
+				}
+
+			} catch (Exception e) {
+				logger.error("ERROR deleteTransistorBipolar : EL CAPACITOR ELECTROLITICO CON EL " + id + " NO SE HA ELIMINADO DE LA DB!!");
+				throw new TransistorBipolarNotFoundException("NO SE PUDO ELIMINAR EL CAPACITOR ELECTROLITICO ", e, false,
+						true);
 			}
-
-		} catch (Exception e) {
-			logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO SE HA ELIMINADO DE LA DB!!");
-			return false;
 		}
-	}
-
-	// ------ SELECT --------
-	//------- LISTADO COMPLETO ---------
-	public List<ComponenteTransistorBipolarEntity> getAllComponente() {
-
-		return iComponenteTransistorBipolarRepository.findAll();
-	}
-
-	// ------ SELECT --------
-	//------- LISTADO PAGINADO ---------
-	public List<ComponenteTransistorBipolarEntity> getAllComponente(Pageable pageable) {
-
-		return iComponenteTransistorBipolarRepository.findAll(pageable).getContent();
-	}
-
-	// =============== MÉTODOS DE BUSQUEDA ====================
-
-	// ------ ID --------
-	public ComponenteTransistorBipolarEntity findById(int id) {
-		return iComponenteTransistorBipolarRepository.findById(id);
-	}
-
-	// ------ ID DE COMPONENTE --------
-	public ComponenteTransistorBipolarEntity findByIdComponente(int id) {
-		return iComponenteTransistorBipolarRepository.findByIdComponente(id);
-	}
-
-	// ------ TIPO --------
-	public List<ComponenteTransistorBipolarEntity> findByTipo(String tipo) {
-		return iComponenteTransistorBipolarRepository.findByTipo(tipo);
-	}
-
-	// ------ VOLTAJE_COLEC_EMIS --------
-	public List<ComponenteTransistorBipolarEntity> findByVoltajeColecEmis(String voltajeColecEmis) {
-		return iComponenteTransistorBipolarRepository.findByVoltajeColecEmis(voltajeColecEmis);
-	}
-
-	// ------ VOLTAJE_COLEC_BASE --------
-	public List<ComponenteTransistorBipolarEntity> findByVoltajeColecBase(String voltajeColecBase) {
-		return iComponenteTransistorBipolarRepository.findByVoltajeColecBase(voltajeColecBase);
-	}
-
-	// ------ VOLTAJE_EMIS_BASE --------
-	public List<ComponenteTransistorBipolarEntity> findByVoltajeEmisBase(String voltajeEmisBase) {
-		return iComponenteTransistorBipolarRepository.findByVoltajeEmisBase(voltajeEmisBase);
-	}
-
-	// ------ VOLTAJE_COLEC_EMIS_SAT --------
-	public List<ComponenteTransistorBipolarEntity> findByVoltajeColecEmisSat(String voltajeColecEmisSat) {
-		return iComponenteTransistorBipolarRepository.findByVoltajeColecEmisSat(voltajeColecEmisSat);
-	}
-
-	// ------ CORRIENTE_COLEC --------
-	public List<ComponenteTransistorBipolarEntity> findByCorrienteColec(String corriente_colec) {
-		return iComponenteTransistorBipolarRepository.findByCorrienteColec(corriente_colec);
-	}
-
-	// ------ GANANCIA_HFE --------
-	public List<ComponenteTransistorBipolarEntity> findByGananciaHfe(String gananciaHfe) {
-		return iComponenteTransistorBipolarRepository.findByGananciaHfe(gananciaHfe);
-	}
-
-	// ------ DISIP_MAX --------
-	public List<ComponenteTransistorBipolarEntity> findByDisipMax(String disipMax) {
-		return iComponenteTransistorBipolarRepository.findByDisipMax(disipMax);
-	}
-	
-	// ------ TEMP_JUNTURA --------
-	public List<ComponenteTransistorBipolarEntity> findByTempJuntura(String tempJuntura) {
-		return iComponenteTransistorBipolarRepository.findByTempJuntura(tempJuntura);
-	}
-
-	
 }

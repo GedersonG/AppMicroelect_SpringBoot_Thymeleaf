@@ -1,4 +1,4 @@
-package com.gestion.microelectronica.utils.pdf;
+package com.gestion.microelectronica.utils;
 
 import java.awt.Color;
 import java.text.SimpleDateFormat;
@@ -27,7 +27,7 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
 @Component("componentes/comp-listar.pdf")
-public class ListadoComponentesPDF extends AbstractPdfView {
+public class ListadoComponentesPDFController extends AbstractPdfView {
 
 	@Override
 	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,

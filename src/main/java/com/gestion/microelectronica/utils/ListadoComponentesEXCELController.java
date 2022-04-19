@@ -1,4 +1,4 @@
-package com.gestion.microelectronica.utils.excel;
+package com.gestion.microelectronica.utils;
 
 import java.awt.Color;
 import java.util.Map;
@@ -18,7 +18,7 @@ import com.gestion.microelectronica.entities.ComponenteEntity;
 import com.lowagie.text.Element;
 
 @Component("componentes/comp-listar.xlsx")
-public class ListadoComponentesEXCEL extends AbstractXlsxView {
+public class ListadoComponentesEXCELController extends AbstractXlsxView {
 
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,

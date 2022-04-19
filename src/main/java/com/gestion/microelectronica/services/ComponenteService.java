@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gestion.microelectronica.entities.ComponenteEntity;
-import com.gestion.microelectronica.exceptions.componentes.ComponenteIdMismatchException;
-import com.gestion.microelectronica.exceptions.componentes.ComponenteNotFoundException;
+import com.gestion.microelectronica.exceptions.componente.ComponenteIdMismatchException;
+import com.gestion.microelectronica.exceptions.componente.ComponenteNotFoundException;
 import com.gestion.microelectronica.repositories.I_ComponenteRepository;
 
 @Service

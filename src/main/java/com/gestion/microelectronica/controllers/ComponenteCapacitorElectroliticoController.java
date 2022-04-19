@@ -3,6 +3,7 @@ package com.gestion.microelectronica.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gestion.microelectronica.entities.ComponenteCapacitorElectroliticoEntity;
-import com.gestion.microelectronica.entities.ComponenteDetalleEntity;
+
 import com.gestion.microelectronica.services.ComponenteCapacitorElectroliticoService;
 
 @RestController
-@RequestMapping("/componentes-capacitores-electroliticos")
+@RequestMapping("/v1/componentes-capacitores-electroliticos")
 public class ComponenteCapacitorElectroliticoController {
 
 	@Autowired
@@ -29,24 +30,24 @@ public class ComponenteCapacitorElectroliticoController {
 
 	// ----POST----
 	@PostMapping("/")
-	public boolean addComponente(@RequestBody ComponenteCapacitorElectroliticoEntity componenteCapacitorElectrolitico) {
+	public void addComponente(@RequestBody ComponenteCapacitorElectroliticoEntity componenteCapacitorElectrolitico) {
 
-		return componenteCapacitorElectroliticoService.addComponente(componenteCapacitorElectrolitico);
+		componenteCapacitorElectroliticoService.addCapacitorElectrolitico(componenteCapacitorElectrolitico);
 	}
 
 	// ----PUT-----
 	@PutMapping("/")
-	public boolean updateComponente(
+	public void updateComponente(
 			@RequestBody ComponenteCapacitorElectroliticoEntity componenteCapacitorElectrolitico) {
 
-		return componenteCapacitorElectroliticoService.updateComponente(componenteCapacitorElectrolitico);
+		componenteCapacitorElectroliticoService.updateCapacitorElectrolitico(componenteCapacitorElectrolitico);
 	}
 
 	// ---DELETE---
 	@DeleteMapping("/{id}")
-	public boolean deleteComponente(@PathVariable("id") int id) {
+	public void deleteComponente(@PathVariable("id") int id) {
 
-		return componenteCapacitorElectroliticoService.deleteComponente(id);
+		componenteCapacitorElectroliticoService.deleteCapacitorElectrolitico(id);
 	}
 
 	// ---GET---
@@ -54,19 +55,10 @@ public class ComponenteCapacitorElectroliticoController {
 	@GetMapping("/listado")
 	public List<ComponenteCapacitorElectroliticoEntity> getAll(Pageable pageable) {
 
-		return componenteCapacitorElectroliticoService.getAllComponente(pageable);
+		return componenteCapacitorElectroliticoService.getAllCapacitorElectrolitico(pageable);
 	}
 
-	// ---GET---
-	// ---VISTA Y LISTA DE COMPONENTES-CAPACITORES-ELECTROLITICOS---
-	@GetMapping("/listar")
-	public ModelAndView listarModelAndView() {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("listaComponentesCapacitoresElectroliticos",
-				componenteCapacitorElectroliticoService.getAllComponente());
-		mav.setViewName("componentes-capacitores-electroliticos/comp-cap-electr-listar");
-		return mav;
-	}
+
 
 	// ============= MÉTODOS HTTP BÚSQUEDA ==============
 
@@ -86,39 +78,57 @@ public class ComponenteCapacitorElectroliticoController {
 
 	// ---GET---
 	@GetMapping("/tipo/{tipo}")
-	public List<ComponenteCapacitorElectroliticoEntity> getByTipo(@PathVariable("tipo") String tipo) {
+	public Page<ComponenteCapacitorElectroliticoEntity> getByTipo(@PathVariable("tipo") String tipo , Pageable pageable) {
 
-		return componenteCapacitorElectroliticoService.findByTipo(tipo);
+		return componenteCapacitorElectroliticoService.findByTipo(tipo, pageable );
 	}
 	
 	// ---GET---
 	@GetMapping("/capacitancia/{capacitancia}")
-	public List<ComponenteCapacitorElectroliticoEntity> getByCapacitancia(@PathVariable("capacitancia") String capacitancia) {
+	public Page<ComponenteCapacitorElectroliticoEntity> getByCapacitancia(@PathVariable("capacitancia") String capacitancia , Pageable pageable) {
 
-		return componenteCapacitorElectroliticoService.findByCapacitancia(capacitancia);
+		return componenteCapacitorElectroliticoService.findByCapacitancia(capacitancia , pageable);
 	}
 	
 	
 	// ---GET---
 	@GetMapping("/tolerancia/{tolerancia}")
-	public List<ComponenteCapacitorElectroliticoEntity> getByTolerancia(@PathVariable("tolerancia") String tolerancia) {
+	public Page<ComponenteCapacitorElectroliticoEntity> getByTolerancia(@PathVariable("tolerancia") String tolerancia , Pageable pageable) {
 
-		return componenteCapacitorElectroliticoService.findByTolerancia(tolerancia);
+		return componenteCapacitorElectroliticoService.findByTolerancia(tolerancia , pageable);
 	}
 	
 	
 	// ---GET---
 	@GetMapping("/rango-temperatura/{rangoTemp}")
-	public List<ComponenteCapacitorElectroliticoEntity> getByRangoTemperatura(@PathVariable("rangoTemp") String rangoTemperatura) {
+	public Page<ComponenteCapacitorElectroliticoEntity> getByRangoTemperatura(@PathVariable("rangoTemp") String rangoTemperatura , Pageable pageable) {
 
-		return componenteCapacitorElectroliticoService.findByRangoTemperatura(rangoTemperatura);
+		return componenteCapacitorElectroliticoService.findByRangoTemperatura(rangoTemperatura ,  pageable);
 	}
 	
 	// ---GET---
 	@GetMapping("/rango-tension-nominal/{rangoTensNom}")
-	public List<ComponenteCapacitorElectroliticoEntity> getByRangoTensionNominal(@PathVariable("rangoTensNom") String rangoTensionNominal) {
+	public Page<ComponenteCapacitorElectroliticoEntity> getByRangoTensionNominal(@PathVariable("rangoTensNom") String rangoTensionNominal , Pageable pageable) {
 
-		return componenteCapacitorElectroliticoService.findByRangoTensionNominal(rangoTensionNominal);
+		return componenteCapacitorElectroliticoService.findByRangoTensionNominal(rangoTensionNominal , pageable);
+	}
+	
+	
+
+	// ============= MODELS AND VIEWS ==============
+
+	// ===============
+	// ===== GET =====
+	// ===============
+
+	@GetMapping("/estado-servicio")
+	public ModelAndView estadoServicioModelAndView() {
+
+		ModelAndView mav = new ModelAndView();
+
+		mav.setViewName("componentes-capacitores-electroliticos/comp-cap-electr-estado-servicio");
+
+		return mav;
 	}
 	
 	

@@ -1,4 +1,4 @@
-package com.gestion.microelectronica.exceptions.componentes;
+package com.gestion.microelectronica.exceptions.componente;
 
 public class ComponenteIdMismatchException extends RuntimeException{
 
