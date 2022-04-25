@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -103,7 +104,7 @@ public class ComponenteController {
 
 		return componenteService.getAllComponente(pageable);
 	}
-	
+
 	// ===============
 	// ===== GET =====
 	// ===============
@@ -118,7 +119,7 @@ public class ComponenteController {
 	@GetMapping("/listado-filtrado")
 	public Page<ComponenteEntity> getAllFilter(String filtro, Pageable pageable) {
 
-		return componenteService.getAllFilterComponente(filtro,pageable);
+		return componenteService.getAllFilterComponente(filtro, pageable);
 	}
 
 	// ==================================================
@@ -436,44 +437,10 @@ public class ComponenteController {
 
 		return mav;
 	}
-	
-	
 
-	// =================================================
-	// ============= FILTROS Y BUSQUEDAS ==============
-	// =================================================
-	@GetMapping("/filtrar-comp/{nroPagina}/{nroElementos}/{filtro}/{direccion}")
-	public ModelAndView filtrarCompModelAndView(@PathVariable("nroPagina") int nroPagina,
-			@PathVariable("nroElementos") int nroElementos, @PathVariable("filtro") String filtro,
-			@PathVariable("direccion") String direccion) {
-		
-		
-		ModelAndView mav = new ModelAndView();
-		
-		Pageable paginado = PageRequest.of(nroPagina, nroElementos,
-				Sort.by(Sort.Direction.fromString(direccion), filtro));
-
-		// Creamos un objeto paginado con los componentes para obtener datos y pasarlos al modelo
-		Page<ComponenteEntity> ultimoPaginadoFilter = componenteService.getAllFilterComponente(filtro,paginado);
-
-		
-
-		// --Operaciones Info del Paginado--
-
-		// Seteamos el Paginado en la Vista
-		mav.addObject("listaPaginadosFilter", ultimoPaginadoFilter);
-		
-		
-		mav.setViewName("componentes/comp-listar");
-
-		
-		
-		return mav;
-	}
-
-	// ===========================================
-	// ============= PAGINACIONES ==============
-	// ===========================================
+	// ================================================
+	// ============= PAGINACION Y FILTRO ==============
+	// ================================================
 
 	// ---GET---
 	// ---VISTA listado componentes paginacion---
@@ -481,7 +448,7 @@ public class ComponenteController {
 	@GetMapping("/listar-paginado/{nroPagina}/{nroElementos}/{campo}/{direccion}")
 	public ModelAndView listarPaginadoModelAndView(@PathVariable("nroPagina") int nroPagina,
 			@PathVariable("nroElementos") int nroElementos, @PathVariable("campo") String campo,
-			@PathVariable("direccion") String direccion) {
+			@PathVariable("direccion") String direccion, @Param("filtro") String filtro) {
 
 		ModelAndView mav = new ModelAndView();
 
@@ -506,7 +473,11 @@ public class ComponenteController {
 		Pageable paginado = PageRequest.of(nroPagina, nroElementos,
 				Sort.by(Sort.Direction.fromString(direccion), campo));
 
-		// Creamos un objeto paginado con los componentes para obtener datos y pasarlos al modelo
+		//===============================================
+		// ================== SIN FILTER =================
+
+		// Creamos un objeto paginado con los componentes para obtener datos y pasarlos
+		// al modelo
 		Page<ComponenteEntity> ultimoPaginado = componenteService.getAllComponente(paginado);
 
 		// --Operaciones Info del Paginado--
@@ -537,6 +508,23 @@ public class ComponenteController {
 		// Agregamos la lista de paginados al modelo
 		mav.addObject("listaComponentesPaginado", ultimoPaginado);
 
+		// ===============================================
+		// ================== CON FILTER =================
+
+		// Objeto Paginado con el filter tomado del parametro de entrada
+		Page<ComponenteEntity> ultimoPaginadoFilter = componenteService.getAllFilterComponente(filtro, paginado);
+
+		mav.addObject("listaComponentesPaginadoFiltro", ultimoPaginadoFilter);
+
+		mav.addObject("ultimoNroElementosFiltro", ultimoPaginadoFilter.getNumberOfElements());
+
+		mav.addObject("filtro", filtro);
+
+		
+		
+		
+		
+		
 		// Seteamos la vista
 		mav.setViewName("componentes/comp-listar");
 		return mav;
@@ -569,7 +557,6 @@ public class ComponenteController {
 		return mav;
 
 	}
-
 
 	// ========================================
 	// ============= GRÁFICOS ==============
