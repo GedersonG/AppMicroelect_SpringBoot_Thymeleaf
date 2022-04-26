@@ -281,7 +281,7 @@ public class ComponenteController {
 
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("index");
+		mav.setViewName("index.html");
 
 		return mav;
 
