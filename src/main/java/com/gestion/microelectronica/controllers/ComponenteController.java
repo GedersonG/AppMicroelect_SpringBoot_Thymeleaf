@@ -433,7 +433,7 @@ public class ComponenteController {
 		ModelAndView mav = new ModelAndView();
 
 		// Agregamos el componente a la vista
-		mav.setViewName("componentes/comp-ayuda");
+		mav.setViewName("utils/ayuda");
 
 		return mav;
 	}

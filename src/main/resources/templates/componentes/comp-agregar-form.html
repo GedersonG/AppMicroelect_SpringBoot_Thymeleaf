@@ -8,7 +8,7 @@
 <link rel="icon" type="image/x-icon" href="../images/electronic.png">
 
 <!--CSS COMPONENTES.CSS-->
-<link th:href="@{../css-templates/general-template.css}"
+<link th:href="@{/css-templates/general-template.css}"
 	rel="stylesheet">
 
 <!--CSS BOOTSTRAP-->
@@ -48,6 +48,12 @@
 				th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn">
 			</div>
 			<!-- FIN BTN-LISTAR FRAGMENT -->
+			
+			<!-- BTN-AYUDA FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-ayuda-comp/btn-ayuda-comp.html::btn">
+			</div>
+			<!-- FIN BTN-AYUDA FRAGMENT -->
 		</div>
 		<!-- FIN TITULO AGREGAR COMPONENTES -->
 

@@ -33,27 +33,28 @@
 	<div class="container text-center  m-5 mt-4 p-1">
 
 		<div class="m-4 p-3 d-flex justify-content-center d-inline-flex">
-				<h1>
+			<h1>
 				<span class="badge bg-dark mt-3">Formulario Editar Componente</span>
 			</h1>
 			<div
 				class="card-body  d-flex justify-content-inline text-center ms-1 p-2">
-				
-				
-					<!-- BTN-INICIO FRAGMENT -->
+
+
+				<!-- BTN-INICIO FRAGMENT -->
 				<div
 					th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn"></div>
 				<!-- FIN BTN-INICIO FRAGMENT -->
-				
-				<!-- BTN-AGREGAR FRAGMENT -->
-				<div
-					th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></div>
-				<!-- FIN BTN-AGREGAR FRAGMENT -->
+
 
 				<!-- BTN-LISTADO FRAGMENT -->
 				<div
 					th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn"></div>
 				<!-- FIN BTN-LISTADO FRAGMENT -->
+
+				<!-- BTN-AGREGAR FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></div>
+				<!-- FIN BTN-AGREGAR FRAGMENT -->
 
 
 			</div>
@@ -180,16 +181,16 @@
 					<!-- FIN CUARTA FILA -->
 
 					<hr>
-										<!-- BOTONES -->
+					<!-- BOTONES -->
 					<div class=" mt-0 p-1 text-center">
 						<button type="reset" class="btn bg-none mb-2 mr-2">
-								<img th:src="@{/images/actions/limpiar.png}" alt="" width="60"
-									height="60">
+							<img th:src="@{/images/actions/limpiar.png}" alt="" width="60"
+								height="60">
 						</button>
 						<button type="submit" class="btn bg-none ml-4 mb-2">
-						<img th:src="@{/images/actions/enviar.png}" alt="" width="60"
-									height="60">
-						
+							<img th:src="@{/images/actions/enviar.png}" alt="" width="60"
+								height="60">
+
 						</button>
 
 					</div>
