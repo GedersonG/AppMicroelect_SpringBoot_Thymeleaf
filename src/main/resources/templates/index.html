@@ -28,19 +28,28 @@
 
 
 	<!-- INICIO APP -->
-	<div class="container text-center m-5 mt-4 p-1">
+	<div class="container text-center mt-5 p-1">
 
 		<!-- TITULO APP -->
-		<div class="m-4 text-center justify-content-center">
+		<div class="text-center justify-content-center">
 			<h1>
-				<span class="badge bg-dark mt-4">Gestión Microelectrónica</span>
+				<span class="badge bg-dark text-decoration-underline mt-4">GESTIÓN DE MICROELECTRÓNICA</span>
 			</h1>
+			
+				<!-- FECHA-HORA FRAGMENT -->
+				<div class="d-flex flex-row justify-content-end">
+			<div 
+				th:replace="../static/fragments/componentes/fecha-hora/fecha-hora.html::fecha-hora">
+			</div>
+			</div>
+			<!-- FIN FECHA-HORA FRAGMENT -->
+			
 		</div>
 		<!-- FIN TITULO APP -->
 
 
 		<!-- CARD COMPONENTES -->
-		<div class="card mt-5">
+		<div class="card mt-0">
 			<div class="row g-0">
 				<div class="col-md-7">
 					<img src="/images/ele01.jpg" class="img-fluid rounded-start"
@@ -85,14 +94,18 @@
 
 								<!-- SEGUNDA FILA -->
 								<div class="d-flex flex-column text-left m-1">
-								<div class="d-flex justify-content-left mt-3 mb-2">
-									<li><strong>Gráficos Stock de Componentes</strong></li>
+								<div class="d-flex justify-content-left mt-1 mb-1">
+									<li><strong>Gráficos y Utilidades</strong></li>
 								</div>
 								<ul>
 									<li>Gráfico de Barras Ordenado por Categoría y Proveedor
 									</li>
 									
-									<li>Gráfico de Área Componentes según Categoría y Proveedor</li>
+									<li>Gráfico de Área de Comp. por Categoría y Proveedor</li>
+									
+									<li>Reporte en Excel Listado de Componentes Paginados</li>
+									
+									<li>Reporte en PDF Listado de Componentes Paginados</li>
 									
 								</ul>
 								</div>

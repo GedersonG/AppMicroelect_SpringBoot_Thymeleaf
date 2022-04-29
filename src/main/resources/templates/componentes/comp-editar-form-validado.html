@@ -27,16 +27,16 @@
 
 	<!-- COMPONENTE EDITADO-->
 
-	<div class="container text-center  m-5 mt-4 p-1">
+	<div class="container text-center mt-4 p-1">
 
 		<!-- ALERT FRAGMENT -->
 		<header
 			th:replace="../static/fragments/componentes/agregado-editado-alert-comp/agregado-editado-alert.html::agreg-edit-alert"></header>
 		<!-- FIN ALERT FRAGMENT -->
 
-		<div class="m-4 p-3 d-flex justify-content-center d-inline-flex">
+		<div class="d-flex justify-content-center d-inline-flex mt-4 p-3 ">
 			<h1>
-				<span class="badge bg-dark mt-3">Componente Editado</span>
+				<span class="badge bg-dark text-decoration-underline mt-3">Componente Editado</span>
 			</h1>
 
 			<div
@@ -57,6 +57,15 @@
 				<header
 					th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></header>
 				<!-- FIN BTN-AGREGAR FRAGMENT -->
+					<!-- BTN-AYUDA FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-ayuda-comp/btn-ayuda-comp.html::btn"></div>
+				<!-- FIN BTN-AYUDA FRAGMENT -->
+
+				<!-- BTN-GRAFICO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-grafico-comp/btn-grafico-comp.html::btn"></div>
+				<!-- FIN BTN-GRAFICO FRAGMENT -->
 				
 
 			</div>
@@ -67,6 +76,16 @@
 
 		<!-- TABLA COMPONENTE -->
 		<div class=" m-2 cols-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+			
+				<!-- FECHA-HORA FRAGMENT -->
+				<div class="d-flex flex-row justify-content-end">
+					<div
+						th:replace="../static/fragments/componentes/fecha-hora/fecha-hora.html::fecha-hora">
+					</div>
+				</div>
+				<!-- FIN FECHA-HORA FRAGMENT -->
+			
+			
 			<table
 				class="table table-secondary table-bordered border-dark table-hover">
 

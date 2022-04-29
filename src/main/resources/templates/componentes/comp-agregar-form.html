@@ -5,11 +5,10 @@
 <title>Formulario Agregar Componentes</title>
 
 <!-- Icono -->
-<link rel="icon" type="image/x-icon" href="../images/electronic.png">
+<link rel="icon" type="image/x-icon" href="/images/electronic.png">
 
 <!--CSS COMPONENTES.CSS-->
-<link th:href="@{/css-templates/general-template.css}"
-	rel="stylesheet">
+<link th:href="@{/css-templates/general-template.css}" rel="stylesheet">
 
 <!--CSS BOOTSTRAP-->
 <link
@@ -33,9 +32,11 @@
 	<div class="container text-center  m-5 mt-4 p-1">
 
 		<!-- TITULO AGREGAR COMPONENTES -->
-		<div class="d-flex flex-row justify-content-center bd-highlight m-4 p-3 ">
+		<div
+			class="d-flex flex-row justify-content-center bd-highlight m-4 p-3 ">
 			<h1>
-				<span class="badge bg-dark mt-3">Formulario Agregar Componentes</span>
+				<span class="badge bg-dark text-decoration-underline mt-3">Formulario Agregar
+					Componentes</span>
 			</h1>
 			<!-- BTN-INICIO FRAGMENT -->
 			<div
@@ -48,20 +49,36 @@
 				th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn">
 			</div>
 			<!-- FIN BTN-LISTAR FRAGMENT -->
-			
+
 			<!-- BTN-AYUDA FRAGMENT -->
 			<div
 				th:replace="../static/fragments/componentes/btn-ayuda-comp/btn-ayuda-comp.html::btn">
 			</div>
 			<!-- FIN BTN-AYUDA FRAGMENT -->
+
+			<!--BTN GRAPHICS-->
+
+			<div
+				th:replace="../static/fragments/componentes/btn-grafico-comp/btn-grafico-comp.html::btn">
+			</div>
+			<!--BTN GRAPHICS-->
+
+
+
+
+
 		</div>
 		<!-- FIN TITULO AGREGAR COMPONENTES -->
 
 
 
 
+
 		<!--FORMULARIO -->
 		<div class="container text-center  d-flex justify-content-center ">
+
+
+
 
 			<form class="" id="formulario"
 				th:action="@{'/v1/componentes/agregar-comp-form-validado'}"
@@ -173,13 +190,13 @@
 					<!-- BOTONES -->
 					<div class=" mt-0 p-1 text-center">
 						<button type="reset" class="btn bg-none mb-2 mr-2">
-								<img th:src="@{/images/actions/limpiar.png}" alt="" width="60"
-									height="60">
+							<img th:src="@{/images/actions/limpiar.png}" alt="" width="60"
+								height="60">
 						</button>
 						<button type="submit" class="btn bg-none ml-4 mb-2">
-						<img th:src="@{/images/actions/enviar.png}" alt="" width="60"
-									height="60">
-						
+							<img th:src="@{/images/actions/enviar.png}" alt="" width="60"
+								height="60">
+
 						</button>
 
 					</div>
@@ -189,16 +206,36 @@
 
 
 			</form>
+			<!-- FIN FORMULARIO -->
 
-			<!-- RESTRICCIONES-DB FRAGMENT -->
-			<div
-				th:replace="../static/fragments/componentes/db-restricciones-comp/db-restricciones-comp.html::restric-db-comp">
+<!-- UTILIDADES -->
+			<div class="d-flex flex-column justify-content-center ms-5">
+				<!-- FECHA-HORA FRAGMENT -->
+				<div class="d-flex flex-row justify-content-start">
+					<div
+						th:replace="../static/fragments/componentes/fecha-hora/fecha-hora.html::fecha-hora">
+					</div>
+				</div>
+				<!-- FIN FECHA-HORA FRAGMENT -->
+
+
+				<!-- RESTRICCIONES-DB FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/db-restricciones-comp/db-restricciones-comp.html::restric-db-comp">
+
+
+				</div>
+				<!-- FIN RESTRICCIONES-DB FRAGMENT -->
+
+
+
+
 			</div>
-			<!-- FIN RESTRICCIONES-DB FRAGMENT -->
+			<!-- FIN UTILIDADES -->
 
 
 		</div>
-		<!-- FIN FORMULARIO -->
+
 
 	</div>
 	<!-- FIN AGREGAR COMPONENTE -->

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Descripción Componente</title>
+<title>Eliminación Componente</title>
 
 
 <!-- Icono -->
@@ -29,46 +29,58 @@
 	<!-- FIN NAVBAR FRAGMENT -->
 
 
-		<!-- ALERT COMPONENTE SELECCIONADO -->
-	
-	<div class="container text-center m-5 mt-4 p-1">
-
-		<div class="alert alert-danger mt-5 ms-3" role="alert">
-			<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
-				aria-label="Danger:">
-				<use xlink:href="#exclamation-triangle-fill" /></svg>
-			El Componente Selecionado será eliminado definitivamente del
-			Sistema!!
-		</div>
 		
-		<!-- FIN ALERT COMPONENTE SELECCIONADO -->
-
+	
 
 <!-- COMPONENTE SELECCIONADO -->
-<div class="d-flex flex-row justify-content-center bd-highlight ">
+	<div class="container text-center ms-5 me-5 mb-0 mt-4 p-1">
 
-			<h1 class="m-4 p-3">
-				<span class="badge bg-dark mt-3 ms-5">Componente Seleccionado</span>
-			</h1>
 
-				<!--BTN'S  -->
+<!-- ALERT COMPONENTE SELECCIONADO -->
+		
+		<div class="alert alert-danger mt-5" role="alert">	El Componente Selecionado será eliminado definitivamente del
+			Sistema!!!! Presione el botón rojo para la eliminación </div>
+
+	<!-- FIN ALERT COMPONENTE SELECCIONADO -->
+
+
+		<div class="m-4 p-3 d-flex justify-content-center ">
+			<!-- TITULO AGREGAR COMPONENTES VALIDADO -->
+			<div
+				class="d-flex flex-row justify-content-center bd-highlight m-4 p-3 ">
+				<h1>
+					<span class="badge bg-dark text-decoration-underline mt-3">Componente Seleccionado</span>
+				</h1>
 				<!-- BTN-INICIO FRAGMENT -->
-				<div class="bd-highlight"
-					th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn"></div>
+				<div
+					th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn">
+				</div>
 				<!-- FIN BTN-INICIO FRAGMENT -->
-				
+				<!-- BTN-LISTADO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn">
+				</div>
+				<!-- FIN BTN-LISTADO FRAGMENT -->
+
 				<!-- BTN-AGREGAR FRAGMENT -->
-				<div class="bd-highlight"
-					th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></div>
+				<div
+					th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn">
+				</div>
 				<!-- FIN BTN-AGREGAR FRAGMENT -->
 
-				<!-- BTN-LISTADO FRAGMENT -->
-				<div class="bd-highlight"
-					th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn"></div>
-				<!-- FIN BTN-LISTADO FRAGMENT -->
-				<!--FIN BTN'S  -->
-		
-</div>
+				<!-- BTN-AYUDA FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-ayuda-comp/btn-ayuda-comp.html::btn"></div>
+				<!-- FIN BTN-AYUDA FRAGMENT -->
+
+				<!-- BTN-GRAFICO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-grafico-comp/btn-grafico-comp.html::btn"></div>
+				<!-- FIN BTN-GRAFICO FRAGMENT -->
+			</div>
+	
+
+		</div>
 <!-- FIN COMPONENTE SELECCIONADO -->
 
 

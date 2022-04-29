@@ -28,15 +28,77 @@
 	<!-- FIN NAVBAR FRAGMENT -->
 
 
-
+	<!-- COMPONENTE ELIMINADO-->
 	<div class="container text-center m-5 mt-5 p-1">
 	
-	<!-- ALERT FRAGMENT -->
-	<div th:replace="../static/fragments/componentes/eliminado-alert-comp/eliminado-alert.html::eliminado-alert"></div>
-	<!-- FIN ALERT FRAGMENT -->
+		<!-- TITULO AGREGAR COMPONENTES VALIDADO -->
+			<div
+				class="d-flex flex-row justify-content-center bd-highlight m-3 mt-5 ">
+				<h1>
+				<span class="badge bg-dark text-decoration-underline mt-4"> Componente Eliminado Correctamente</span>
+			</h1>
+				<!-- BTN-INICIO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-inicio/btn-inicio.html::btn">
+				</div>
+				<!-- FIN BTN-INICIO FRAGMENT -->
+					<!-- BTN-LISTADO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn">
+				</div>
+				<!-- FIN BTN-LISTADO FRAGMENT -->
+
+				<!-- BTN-AGREGAR FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn">
+				</div>
+				<!-- FIN BTN-AGREGAR FRAGMENT -->
+				
+					<!-- BTN-AYUDA FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-ayuda-comp/btn-ayuda-comp.html::btn"></div>
+				<!-- FIN BTN-AYUDA FRAGMENT -->
+
+				<!-- BTN-GRAFICO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-grafico-comp/btn-grafico-comp.html::btn"></div>
+				<!-- FIN BTN-GRAFICO FRAGMENT -->
+			</div>
+			<!-- FIN TITULO AGREGAR COMPONENTES VALIDADO -->
+		
 	
 	
+		<div class=" p-1 ms-5 me-5 mt-5">
+		
+				<!-- FECHA-HORA FRAGMENT -->
+				<div class="d-flex flex-row justify-content-end">
+					<div
+						th:replace="../static/fragments/componentes/fecha-hora/fecha-hora.html::fecha-hora">
+					</div>
+				</div>
+				<!-- FIN FECHA-HORA FRAGMENT -->
+			
+			<div class="card p-1">
+			<div class="card-body bg-dark text-white">
+				
+					
+				<h5 class="card-text">El componente ha sido eliminado del
+					sistema correctamente. Seleccione otra operación deseada desde el menú de iconos o desde 
+					la Barra de Selección a la derecha del Título.
+					Recuerde que la Eliminación de un Componente es una Operación Definitiva y no se podrá recuperar el 
+					componente eliminado</h5>
+					<h5 class="card-text mt-4">
+					Recuerde que la Eliminación de un Componente es una Operación Definitiva y no se podrá recuperar el 
+					componente eliminado</h5>
+			
+			</div>
+			</div>
+			
+		</div>
 	</div>
+
+
+	<!-- FIN COMPONENTE ELIMINADO -->
 
 
 

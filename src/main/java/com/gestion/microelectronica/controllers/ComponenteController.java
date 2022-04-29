@@ -1,7 +1,11 @@
 package com.gestion.microelectronica.controllers;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.data.domain.Page;
@@ -557,7 +561,10 @@ public class ComponenteController {
 		return mav;
 
 	}
+	
+	
 
+	
 	// ========================================
 	// ============= GRÁFICOS ==============
 	// ========================================

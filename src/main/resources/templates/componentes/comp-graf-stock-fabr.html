@@ -32,7 +32,7 @@
 
 		<div class="mt-4 p-3 d-flex justify-content-center ">
 			<h1>
-				<span class="badge bg-dark mt-3">Gráficos Stock de Componentes por
+				<span class="badge bg-dark text-decoration-underline mt-3">Gráficos Stock de Componentes por
 					Fabricantes</span>
 			</h1>
 			<!-- BTN-INICIO FRAGMENT -->
@@ -60,6 +60,20 @@
 		</div>
 	</div>
 	<!-- FIN TITULO LISTADO DE COMPONENTES -->
+	
+	
+<!-- FECHA-HORA FRAGMENT -->
+	<div class="p-1 ms-1 me-5 mt-0">
+
+		
+		<div class="d-flex flex-row justify-content-end me-5">
+			<div
+				th:replace="../static/fragments/componentes/fecha-hora/fecha-hora.html::fecha-hora">
+			</div>
+		</div>
+		
+	</div>
+	<!-- FIN FECHA-HORA FRAGMENT -->
 
 
 	<!-- GRAFICOS -->
@@ -93,7 +107,7 @@
     
     Highcharts.chart('containerStockCategColumnas', {
         chart: {
-        	 height: 550,
+        	 height: 510,
         	  width:650,
             type: 'column',
             options3d: {
@@ -176,7 +190,7 @@
     Highcharts.chart('containerStockCategTorta', {
     chart: {
     
-        	 height: 550,
+        	 height: 510,
         	  width:650,
         type: 'areaspline'
     },

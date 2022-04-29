@@ -30,9 +30,9 @@
 	<!-- TITULO SELECCION DE GRAFICOS -->
 	<div class="container text-center  mt-4 p-1">
 
-		<div class="m-4 p-3 d-flex justify-content-center ">
+		<div class=" d-flex justify-content-center m-4 p-3">
 			<h1>
-				<span class="badge bg-dark mt-3">Selección de Gráfico</span>
+				<span class="badge bg-dark text-decoration-underline mt-3">Selección de Gráfico</span>
 			</h1>
 			<!-- BTN-INICIO FRAGMENT -->
 			<div
@@ -46,24 +46,43 @@
 				th:replace="../static/fragments/componentes/btn-listado-comp/btn-listado-comp.html::btn">
 			</div>
 			<!-- FIN BTN-LISTADO FRAGMENT -->
-			
-						<!-- BTN-AGREGAR FRAGMENT -->
+
+			<!-- BTN-AGREGAR FRAGMENT -->
 			<div
 				th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn">
 			</div>
 			<!-- FIN BTN-AGREGAR FRAGMENT -->
-			
+
+			<!-- BTN-AYUDA FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-ayuda-comp/btn-ayuda-comp.html::btn"></div>
+			<!-- FIN BTN-AYUDA FRAGMENT -->
 
 		</div>
 	</div>
 	<!-- FIN TITULO SELECCION DE GRAFICOS -->
 
 
+<!-- FECHA-HORA FRAGMENT -->
+	<div class="p-1 ms-1 me-5 mt-0">
+
+		
+		<div class="d-flex flex-row justify-content-end me-5">
+			<div
+				th:replace="../static/fragments/componentes/fecha-hora/fecha-hora.html::fecha-hora">
+			</div>
+		</div>
+		
+	</div>
+	<!-- FIN FECHA-HORA FRAGMENT -->
+
 	<!-- CARDS GRAFICOS -->
 	<div class="container d-flex align-content-center">
 
+
 		<!-- CARD GRAFICO STOCK CATEGORIA -->
-		<div class="card bg-dark text-white mb-3 me-5" style="max-width: 540px;">
+		<div class="card bg-dark text-white mb-3 me-5"
+			style="max-width: 540px;">
 			<div class="row g-0">
 				<div class="col-md-4">
 					<img src="/images/graphics/stock01.png"
@@ -71,20 +90,23 @@
 				</div>
 				<div class="col-md-8">
 					<div class="card-body">
-						<h5 class="card-title text-decoration-underline">Stock de Componentes por Categorías</h5>
+						<h5 class="card-title text-decoration-underline">Stock de
+							Componentes por Categorías</h5>
 						<p class="card-text">Agrupaciones del Stock de Componentes por
 							grupos según su Categoría. Ej: Transistores BJT, Capacitores,
 							etc.</p>
 						<br>
-									<!--BTN VER GRAFICO-->
+						<!--BTN VER GRAFICO-->
 						<div class="text-left">
-						<a th:href="@{'/v1/componentes/grafico-stock-categoria'}">
-							<button type="button" class="btn  bg-primary text-white p-1 ms-5">Ver Gráfico</button>
-						</a>
+							<a th:href="@{'/v1/componentes/grafico-stock-categoria'}">
+								<button type="button"
+									class="btn  bg-primary text-white p-1 ms-5">Ver
+									Gráfico</button>
+							</a>
 						</div>
 
 						<!--FIN BTN VER GRAFICO-->
-					
+
 					</div>
 				</div>
 			</div>
@@ -92,7 +114,8 @@
 		<!-- FIN CARD GRAFICO STOCK CATEGORIA -->
 
 		<!-- CARD GRAFICO STOCK FABRICANTE -->
-		<div class="card bg-dark text-white mb-3 ms-5" style="max-width: 540px;">
+		<div class="card bg-dark text-white mb-3 ms-5"
+			style="max-width: 540px;">
 			<div class="row g-0">
 				<div class="col-md-4">
 					<img src="/images/graphics/stock02.png"
@@ -100,17 +123,20 @@
 				</div>
 				<div class="col-md-8">
 					<div class="card-body">
-						<h5 class="card-title text-decoration-underline">Stock de Componentes por Fabricantes</h5>
-						
+						<h5 class="card-title text-decoration-underline">Stock de
+							Componentes por Fabricantes</h5>
+
 						<p class="card-text">Agrupaciones del Stock de Componentes por
 							grupos según su Fabricante. Ej: Central Semiconductor, Panasonic,
 							etc.</p>
-							<br>
-							<!--BTN VER GRAFICO-->
+						<br>
+						<!--BTN VER GRAFICO-->
 						<div class="text-left">
-						<a th:href="@{'/v1/componentes/grafico-stock-fabricante'}">
-							<button type="button" class="btn  bg-primary text-white p-1 ms-5">Ver Gráfico</button>
-						</a>
+							<a th:href="@{'/v1/componentes/grafico-stock-fabricante'}">
+								<button type="button"
+									class="btn  bg-primary text-white p-1 ms-5">Ver
+									Gráfico</button>
+							</a>
 						</div>
 
 						<!--FIN BTN VER GRAFICO-->

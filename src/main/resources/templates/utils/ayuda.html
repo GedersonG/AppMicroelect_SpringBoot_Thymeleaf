@@ -29,13 +29,13 @@
 
 
 	<!--AYUDA -->
-	<div class="container text-center m-5 mt-4 p-1">
+	<div class="container text-center m-5  mt-4 p-1">
 
 		<!-- TITULO LISTADO DE COMPONENTES -->
 		<div
-			class="d-flex flex-row justify-content-center bd-highlight m-4 p-3 ">
+			class="d-flex flex-row justify-content-center bd-highlight m-4 p-3 ms-5 ">
 			<h1>
-				<span class="badge bg-dark mt-3">Ayuda</span>
+				<span class="badge bg-dark text-decoration-underline mt-3 ms-5">Servicio de Ayuda</span>
 			</h1>
 			<!-- BTN-INICIO FRAGMENT -->
 			<div
@@ -52,34 +52,60 @@
 			<div
 				th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn"></div>
 			<!-- FIN BTN-AGREGAR FRAGMENT -->
+			
+					<!-- BTN-GRAFICO FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/btn-grafico-comp/btn-grafico-comp.html::btn"></div>
+				<!-- FIN BTN-GRAFICO FRAGMENT -->
 
 
 		</div>
 		<!-- FIN TITULO LISTADO DE COMPONENTES -->
+		
+		
 
+<!-- FECHA-HORA FRAGMENT -->
+	<div class="d-flex flex-column p-1 ms-1 me-5 mt-0">
 
-		<!-- ACCORDION SERVICIO COMPONENTES -->
-		<div class="container ms-4 mt-2 p-1">
-
-			<div class="text-center text-white text-decoration-underline">
-				<h2>
-					<span class="badge bg-dark"> Servicio Componentes </span>
-				</h2>
+		
+		<div class="d-flex flex-row justify-content-end me-5">
+			<div
+				th:replace="../static/fragments/componentes/fecha-hora/fecha-hora.html::fecha-hora">
 			</div>
+		</div>
+		
+	</div>
+	<!-- FIN FECHA-HORA FRAGMENT -->
+				
+				
+				<!-- TITULO -->
+			<div class="d-flex flex-column text-left text-white ">
+
+				<h1>
+					<span class="badge bg-dark "> Componentes </span>
+				</h1>
+			</div>
+			<!-- FIN TITULO -->
 
 
-			<!-- TABLA RESTRICCIONES -->
+
+		<!-- ACCORDIONES SERVICIO COMPONENTES -->
+		<div class="container d-flex flex-row justify-content-center text-center ms-4 mt-2 p-1">
+		
+					
+
+			<!-- TABLA 01 RESTRICCIONES -->
 
 			<div class="content p-2 m-1 d-flex justify-content-center"
 				id="accordion">
 				<div class="accordion accordion " id="accordionExample">
-					<!-- CODIGO -->
+					<!-- LISTADO -->
 					<div
 						class="accordion-item bg-secondary text-white border border-secondary">
 						<h2 class="accordion-header" id="headingOne">
 							<button class="accordion-button bg-dark text-white" type="button"
 								data-bs-toggle="collapse" data-bs-target="#collapseOne"
-								aria-expanded="false" aria-controls="collapseOne">LISTADO
+								aria-expanded="false" aria-controls="collapseOne">1) LISTADO
 								DE COMPONENTES</button>
 						</h2>
 						<div id="collapseOne" class="accordion-collapse collapse "
@@ -104,15 +130,15 @@
 
 
 
-					<!-- FIN CODIGO -->
-					<!-- IMAGEN -->
+					<!-- FIN LISTADO -->
+					<!-- AGREGAR -->
 					<div
 						class="accordion-item bg-secondary text-white border border-secondary">
 						<h2 class="accordion-header" id="headingTwo">
 							<button class="accordion-button  bg-dark text-white "
 								type="button" data-bs-toggle="collapse"
 								data-bs-target="#collapseTwo" aria-expanded="false"
-								aria-controls="collapseTwo">AGREGAR UN COMPONENTE</button>
+								aria-controls="collapseTwo">2) AGREGAR UN COMPONENTE</button>
 						</h2>
 						<div id="collapseTwo" class="accordion-collapse collapse "
 							aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -136,14 +162,14 @@
 
 						</div>
 					</div>
-					<!-- FIN IMAGEN -->
-					<!-- NRO DE PIEZA -->
+					<!-- FIN AGREGAR -->
+					<!-- EDITAR -->
 					<div
 						class="accordion-item bg-secondary text-white border border-secondary">
 						<h2 class="accordion-header  " id="headingThree">
 							<button class="accordion-button bg-dark text-white" type="button"
 								data-bs-toggle="collapse" data-bs-target="#collapseThree"
-								aria-expanded="false" aria-controls="collapseThree">EDITAR
+								aria-expanded="false" aria-controls="collapseThree">3) EDITAR
 								UN COMPONENTE</button>
 						</h2>
 						<div id="collapseThree" class="accordion-collapse collapse "
@@ -165,14 +191,14 @@
 
 						</div>
 					</div>
-					<!-- FIN NRO DE PIEZA -->
-					<!-- CATEGORIA -->
+					<!-- FIN EDITAR -->
+					<!-- ELIMINAR -->
 					<div
 						class="accordion-item bg-secondary text-white border border-secondary">
 						<h2 class="accordion-header  " id="headingFour">
 							<button class="accordion-button bg-dark text-white" type="button"
 								data-bs-toggle="collapse" data-bs-target="#collapseFour"
-								aria-expanded="false" aria-controls="collapseFour">ELIMINAR
+								aria-expanded="false" aria-controls="collapseFour">4) ELIMINAR
 								UN COMPONENTE</button>
 						</h2>
 						<div id="collapseFour" class="accordion-collapse collapse "
@@ -180,38 +206,28 @@
 							<div
 								class="accordion-body bg-dark text-white d-flex flex-column ">
 								<div>
-									<p>
-										El Nro. de Pieza del Producto <strong> SI se puede
-											repetir y se debe indicar el valor en el formulario.</strong> Está
-										permitido solo letras <strong>minúsculas, mayúsculas,
-											números , espacios y guiones medios</strong>
+								<p>
+										Se puede Seleccionar el Componente deseado desde <strong>el
+											Listado de Componentes </strong> y Eliminarlo .<strong>Existe
+											verificación previa para su eliminación. </strong>
 									</p>
 
 								</div>
-								<div class="ms-5 me-5">
-
-									<h5 class="rounded border border-primary p-1 ms-5 me-5">
-
-										Ejemplo : <strong><code>Microcontroladores
-												PICS</code></strong>
-
-									</h5>
-
-								</div>
+		
 
 							</div>
 
 						</div>
 					</div>
-					<!-- FIN CATEGORIA -->
-					<!-- DESCRIPCION -->
+					<!-- FIN ELIMINAR -->
+					<!-- GRAFICO POR CATEGORIA -->
 					<div
 						class="accordion-item bg-secondary text-white border border-secondary">
 						<h2 class="accordion-header  " id="headingFive">
 							<button class="accordion-button bg-dark text-white" type="button"
 								data-bs-toggle="collapse" data-bs-target="#collapseFive"
-								aria-expanded="false" aria-controls="collapseFive">GRÁFICO
-								STOCK DE PRODUCTOS POR CATEGORÍA</button>
+								aria-expanded="false" aria-controls="collapseFive">5) GRÁFICO
+								STOCK DE COMPONENTES POR CATEGORÍA</button>
 						</h2>
 						<div id="collapseFive" class="accordion-collapse collapse "
 							aria-labelledby="headingFive" data-bs-parent="#accordionExample">
@@ -219,36 +235,28 @@
 								class="accordion-body bg-dark text-white d-flex flex-column ">
 								<div>
 									<p>
-										La Descripción del Producto <strong> SI se puede
-											repetir y se debe indicar el valor en el formulario.</strong> Está
-										permitido solo letras <strong>minúsculas, mayúsculas,
-											números , espacios y guiones medios</strong>
+										Este Servicio despliega <strong>dos Gráficos, uno de Barra Ordenado 
+										de Forma Decreciente y otro de Área.</strong> Es importante aclarar 
+										que el análisis de dichos componentes se realiza en la totalidad de 
+										<strong>Máximo 500 Componentes. Esto está preconfigurado. Se puede cambiar</strong>
 									</p>
 
 								</div>
-								<div class="ms-5 me-5">
-
-									<h5 class="rounded border border-primary p-1 ms-5 me-5">
-
-										Ejemplo : <strong><code>Placa Wemos D1 Mini</code></strong>
-
-									</h5>
-
-								</div>
+					
 
 							</div>
 
 						</div>
 					</div>
-					<!-- FIN DESCRIPCION -->
-					<!-- FABRICANTE -->
+					<!-- FIN GRAFICO POR CATEGORIA -->
+					<!-- GRAFICO POR FABRICANTE -->
 					<div
 						class="accordion-item bg-secondary text-white border border-secondary">
 						<h2 class="accordion-header  " id="headingSix">
 							<button class="accordion-button bg-dark text-white" type="button"
 								data-bs-toggle="collapse" data-bs-target="#collapseSix"
-								aria-expanded="false" aria-controls="collapseFive">GRÁFICO
-								STOCK DE PRODUCTOS POR FABRICANTE</button>
+								aria-expanded="false" aria-controls="collapseFive">6) GRÁFICO
+								STOCK DE COMPONENTES POR FABRICANTE</button>
 						</h2>
 						<div id="collapseSix" class="accordion-collapse collapse "
 							aria-labelledby="headingSix" data-bs-parent="#accordionExample">
@@ -256,34 +264,230 @@
 								class="accordion-body bg-dark text-white d-flex flex-column ">
 								<div>
 									<p>
-										El Fabricante del Producto <strong> SI se puede
-											repetir y se debe indicar el valor en el formulario.</strong> Está
-										permitido solo letras <strong>minúsculas, mayúsculas,
-											números , espacios y guiones medios</strong>
+										Este Servicio despliega <strong>dos Gráficos, uno de Barra Ordenado 
+										de Forma Decreciente y otro de Área.</strong> Es importante aclarar 
+										que el análisis de dichos componentes se realiza en la totalidad de 
+										<strong>Máximo 500 Componentes. Esto está preconfigurado. Se puede cambiar</strong>
 									</p>
 
 								</div>
-								<div class="ms-5 me-5">
-
-									<h5 class="rounded border border-primary p-1 ms-5 me-5">
-
-										Ejemplo : <strong><code>Espressif Systems</code></strong>
-
-									</h5>
-
-								</div>
+			
 
 							</div>
 
 						</div>
 					</div>
-					<!-- FIN FABRICANTE -->
+					<!-- FIN GRAFICO POR FABRICANTE -->
+					
 
 				</div>
 			</div>
+			<!-- FIN TABLA 01 RESTRICCIONES -->
+			
+			
+			
+			
+			
+			
+			
+			
+			<!-- TABLA 02 RESTRICCIONES -->
+
+			<div class="content p-2 m-1 d-flex justify-content-center"
+				id="accordion">
+				<div class="accordion accordion " id="accordionExample02">
+				
+					
+								<!-- REPORTE EN EXCEL -->
+					<div
+						class="accordion-item bg-secondary text-white border border-secondary">
+						<h2 class="accordion-header  " id="headingSeven">
+							<button class="accordion-button bg-dark text-white" type="button"
+								data-bs-toggle="collapse" data-bs-target="#collapseSeven"
+								aria-expanded="false" aria-controls="collapseSeven">
+								6) ARCHIVO LISTADO DE COMPONENTES FORMATO EXCEL</button>
+						</h2>
+						<div id="collapseSeven" class="accordion-collapse collapse "
+							aria-labelledby="headingSeven" data-bs-parent="#accordionExample02">
+							<div
+								class="accordion-body bg-dark text-white d-flex flex-column ">
+								<div>
+									<p>
+										Este Servicio despliega <strong>dos Gráficos, uno de Barra Ordenado 
+										de Forma Decreciente y otro de Área.</strong> Es importante aclarar 
+										que el análisis de dichos componentes se realiza en la totalidad de 
+										<strong>Máximo 500 Componentes. Esto está preconfigurado. Se puede cambiar</strong>
+									</p>
+
+								</div>
+			
+
+							</div>
+
+						</div>
+					</div>
+					<!-- FIN REPORTE EN EXCEL -->
+										<!-- REPORTE EN PDF -->
+					<div
+						class="accordion-item bg-secondary text-white border border-secondary">
+						<h2 class="accordion-header  " id="headingEight">
+							<button class="accordion-button bg-dark text-white" type="button"
+								data-bs-toggle="collapse" data-bs-target="#collapseEight"
+								aria-expanded="false" aria-controls="collapseEight">
+								7) ARCHIVO LISTADO DE COMPONENTES FORMATO PDF</button>
+						</h2>
+						<div id="collapseEight" class="accordion-collapse collapse "
+							aria-labelledby="headingEight" data-bs-parent="#accordionExample02">
+							<div
+								class="accordion-body bg-dark text-white d-flex flex-column ">
+								<div>
+									<p>
+										Este Servicio despliega <strong>dos Gráficos, uno de Barra Ordenado 
+										de Forma Decreciente y otro de Área.</strong> Es importante aclarar 
+										que el análisis de dichos componentes se realiza en la totalidad de 
+										<strong>Máximo 500 Componentes. Esto está preconfigurado. Se puede cambiar</strong>
+									</p>
+
+								</div>
+			
+
+							</div>
+
+						</div>
+					</div>
+					<!-- FIN REPORTE EN PDF -->
+												<!-- FILTROS Y BUSQUEDAS -->
+					<div
+						class="accordion-item bg-secondary text-white border border-secondary">
+						<h2 class="accordion-header  " id="headingNine">
+							<button class="accordion-button bg-dark text-white" type="button"
+								data-bs-toggle="collapse" data-bs-target="#collapseNine"
+								aria-expanded="false" aria-controls="collapseNine">
+								8) FILTROS Y BÚSQUEDAS</button>
+						</h2>
+						<div id="collapseNine" class="accordion-collapse collapse "
+							aria-labelledby="headingNine" data-bs-parent="#accordionExample02">
+							<div
+								class="accordion-body bg-dark text-white d-flex flex-column ">
+								<div>
+									<p>
+										Este Servicio despliega <strong>dos Gráficos, uno de Barra Ordenado 
+										de Forma Decreciente y otro de Área.</strong> Es importante aclarar 
+										que el análisis de dichos componentes se realiza en la totalidad de 
+										<strong>Máximo 500 Componentes. Esto está preconfigurado. Se puede cambiar</strong>
+									</p>
+
+								</div>
+			
+
+							</div>
+
+						</div>
+					</div>
+					<!-- FIN  FILTROS Y BUSQUEDAS -->
+					<!-- ORDENAMIENTOS -->
+					<div
+						class="accordion-item bg-secondary text-white border border-secondary">
+						<h2 class="accordion-header  " id="headingTen">
+							<button class="accordion-button bg-dark text-white" type="button"
+								data-bs-toggle="collapse" data-bs-target="#collapseTen"
+								aria-expanded="false" aria-controls="collapseTen">
+								9) ORDENAMIENTOS POR CAMPOS</button>
+						</h2>
+						<div id="collapseTen" class="accordion-collapse collapse "
+							aria-labelledby="headingTen" data-bs-parent="#accordionExample02">
+							<div
+								class="accordion-body bg-dark text-white d-flex flex-column ">
+								<div>
+									<p>
+										Este Servicio despliega <strong>dos Gráficos, uno de Barra Ordenado 
+										de Forma Decreciente y otro de Área.</strong> Es importante aclarar 
+										que el análisis de dichos componentes se realiza en la totalidad de 
+										<strong>Máximo 500 Componentes. Esto está preconfigurado. Se puede cambiar</strong>
+									</p>
+
+								</div>
+			
+
+							</div>
+
+						</div>
+					</div>
+					<!-- FIN  ORDENAMIENTOS -->
+					
+					<!-- FORMULARIOS -->
+					<div
+						class="accordion-item bg-secondary text-white border border-secondary">
+						<h2 class="accordion-header  " id="headingEleven">
+							<button class="accordion-button bg-dark text-white" type="button"
+								data-bs-toggle="collapse" data-bs-target="#collapseEleven"
+								aria-expanded="false" aria-controls="collapseEleven">
+								10) FORMULARIOS</button>
+						</h2>
+						<div id="collapseEleven" class="accordion-collapse collapse "
+							aria-labelledby="headingEleven" data-bs-parent="#accordionExample02">
+							<div
+								class="accordion-body bg-dark text-white d-flex flex-column ">
+								<div>
+									<p>
+										Este Servicio despliega <strong>dos Gráficos, uno de Barra Ordenado 
+										de Forma Decreciente y otro de Área.</strong> Es importante aclarar 
+										que el análisis de dichos componentes se realiza en la totalidad de 
+										<strong>Máximo 500 Componentes. Esto está preconfigurado. Se puede cambiar</strong>
+									</p>
+
+								</div>
+			
+
+							</div>
+
+						</div>
+					</div>
+					<!-- FIN  FORMULARIOS -->
+					
+							<!-- OTROS -->
+					<div
+						class="accordion-item bg-secondary text-white border border-secondary">
+						<h2 class="accordion-header  " id="headingEleven">
+							<button class="accordion-button bg-dark text-white" type="button"
+								data-bs-toggle="collapse" data-bs-target="#collapseTwelve"
+								aria-expanded="false" aria-controls="collapseTwelve">
+								11) SERVICIOS NO DISPONIBLES</button>
+						</h2>
+						<div id="collapseTwelve" class="accordion-collapse collapse "
+							aria-labelledby="headingTwelve" data-bs-parent="#accordionExample02">
+							<div
+								class="accordion-body bg-dark text-white d-flex flex-column ">
+								<div>
+									<p>
+										Este Servicio despliega <strong>dos Gráficos, uno de Barra Ordenado 
+										de Forma Decreciente y otro de Área.</strong> Es importante aclarar 
+										que el análisis de dichos componentes se realiza en la totalidad de 
+										<strong>Máximo 500 Componentes. Esto está preconfigurado. Se puede cambiar</strong>
+									</p>
+
+								</div>
+			
+
+							</div>
+
+						</div>
+					</div>
+					<!-- FIN  OTROS -->
+
+				</div>
+			</div>
+			<!-- FIN TABLA 02 RESTRICCIONES -->
+			
+			
+			
+			
+	
+			
+			
 		</div>
 	</div>
-	<!-- FIN ACCORDION SERVICIO COMPONENTES -->
+	<!-- FIN ACCORDIONES SERVICIO COMPONENTES -->
 
 	<!-- FIN AYUDA -->
 

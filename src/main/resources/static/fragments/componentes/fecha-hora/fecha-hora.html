@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!--CSS RESTRICCIONES-->
+<link th:href="@{fecha-hora.css}" rel="stylesheet">
+
+<!--CSS BOOTSTRAP-->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- FECHA-HORA-->
+	<div th:fragment="fecha-hora">
+	<div class="" >
+		<div class="alert alert-primary alert-dismissible fade show text-center d-flex flex-row "
+			role="alert" id="alert">
+			<div class="p-1">
+				<img th:src="@{/images/actions/clock.png}" alt="" width="40"
+									height="35">
+			</div>
+			<div class="m-1 p-1">
+			<strong
+				th:text="${#dates.format(#dates.createNow(),'dd/MM/YYYY HH:mm')}"></strong>
+				
+				</div>
+				
+			<button type="button" class="btn-close m-2" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+				
+		</div>
+		
+		
+</div>
+
+	</div>
+
+	<!-- FIN FECHA-HORA-->
+
+
+</body>

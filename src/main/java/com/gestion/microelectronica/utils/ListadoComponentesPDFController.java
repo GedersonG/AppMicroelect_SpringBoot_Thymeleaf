@@ -193,7 +193,7 @@ public class ListadoComponentesPDFController extends AbstractPdfView {
 		
 		
 		String camposValor[] = { "ID", "CÓDIGO","IMAGEN"
-				,"NRO PIEZA","CATEGORÍA","DESCRIPCIÓN"
+				,"NRO. PIEZA","CATEGORÍA","DESCRIP."
 				,"FABRICANTE","STOCK","PRECIO" };
 
 		//Generamos los encabezados
@@ -267,6 +267,7 @@ public class ListadoComponentesPDFController extends AbstractPdfView {
 			// ---Celda DESCRIPCION---
 			celdaDescripcion = new PdfPCell(new Phrase(comp.getDescripcion()));
 			celdaDescripcion.setBackgroundColor(colorRegistros);
+			
 			celdaDescripcion.setHorizontalAlignment(alignCenter);
 			celdaDescripcion.setVerticalAlignment(alignCenter);
 			tablaComponentes.addCell(celdaDescripcion);

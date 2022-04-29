@@ -26,14 +26,15 @@
 	<!-- FIN NAVBAR FRAGMENT -->
 
 
+
 	<!-- LISTADO DE COMPONENTES -->
-	<div class="container text-center m-5 mt-4 mb-5 p-1">
+	<div class="container text-center mt-5  p-1">
 
 		<!-- TITULO LISTADO DE COMPONENTES -->
 		<div
-			class="d-flex flex-row justify-content-center bd-highlight m-4 mb-5 p-3 ">
+			class="d-flex flex-row justify-content-center bd-highlight mt-4 mb-5 p-3 ">
 			<h1>
-				<span class="badge bg-dark mt-3">Listado de Componentes</span>
+				<span class="badge bg-dark text-decoration-underline mt-2">Listado de Componentes</span>
 			</h1>
 			<!-- BTN-INICIO FRAGMENT -->
 			<div
@@ -46,85 +47,110 @@
 				th:replace="../static/fragments/componentes/btn-agregar-comp/btn-agregar-comp.html::btn">
 			</div>
 			<!-- FIN BTN-AGREGAR FRAGMENT -->
+
+			<!-- BTN-AYUDA FRAGMENT -->
+			<div
+				th:replace="../static/fragments/componentes/btn-ayuda-comp/btn-ayuda-comp.html::btn">
+			</div>
+			<!-- FIN BTN-AYUDA FRAGMENT -->
+
+
+	
+
+
 		</div>
+
 
 
 		<!-- FIN TITULO LISTADO DE COMPONENTES -->
 
 
-
-
-		<!-- FILTER COMPONENTE -->
-		<div class="container text-center mt-5 ">
-
-			<div
-				class="d-flex flex-row justify-content-center bd-highlight mt-5 ">
-
-
-				<!-- VALOR BUSQUEDA -->
-				<div class="col-1 text-right">
-					<h2>
-					 
-						<span class="badge bg-none "><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 text-warning " viewBox="0 0 16 16" role="img" aria-label="Warning:">
-    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-  </svg></span>
-					</h2>
-				</div>
-				<!-- FORM FILTRO -->
-				<div class="col-4 ms-0">
-		
-					<form
-						class="d-flex flex-row justify-content-center"
-						th:action="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc'}"
-						th:object="${nuevoComponente}">
-						
-						<input type="text" name="filtro" id="filtro"
-							class="form-control bg-white" placeholder="INGRESAR EL VALOR DE BÚSQUEDA"
-							aria-label="valor" th:value=${filtro}>
-
-
 	
-					
-					<!--BTN BUSQUEDA-->
-				
-						<button type="submit" class="btn bg-none p-1  ms-2">
 
-							<img th:src="@{/images/filters/buscar04.png}" alt="" width="45"
-								height="45" class="">
-						</button>
-
-				
-					<!--FIN BTN BUSQUEDA-->
-					
-										<!--BTN LIMPIAR-->
-						
-						<button class="btn bg-none p-1" onclick="limpiarFiltro()">
-
-							<img th:src="@{/images/actions/papelera.png}" alt="" width="45"
-								height="45" class="">
-						</button>
-
-				
-					<!--FIN BTN LIMPIAR-->
+		<!--FILTRO Y UTILIDADES-->
+		<div class="d-flex flex-row justify-content-end mt-5 ms-2">
 		
+		
+				<!-- FILTER COMPONENTE -->
+			<div class=" text-left me-5 ms-0">
 
-					</form>
-					
+				<div
+					class="d-flex flex-row justify-content-center mt-3">
 
-					
+
+					<!-- VALOR BUSQUEDA -->
+					<div class="text-left ms-0">
+						<h2>
+
+							<span class="badge bg-none ms-0"><svg
+									xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+									fill="currentColor"
+									class="bi bi-exclamation-triangle-fill flex-shrink-0 text-warning "
+									viewBox="0 0 16 16" role="img" aria-label="Warning:">
+	    <path
+											d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+	  </svg></span>
+						</h2>
+					</div>
+					<!-- FIN  VALOR BUSQUEDA -->
+					<!-- FORM FILTRO -->
+					<div class="text-left ms-0 me-5 col-12">
+
+						<form class="d-flex flex-row text-left col-12"
+							th:action="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc'}"
+							th:object="${nuevoComponente}">
+
+							<input type="text" name="filtro" id="filtro"
+								class="form-control bg-white"
+								placeholder="Ingresar valor Búsqueda" aria-label="valor"
+								th:value=${filtro}>
+
+
+
+
+							<!--BTN BUSQUEDA-->
+
+							<button type="submit" class="btn bg-none p-1 ">
+
+								<img th:src="@{/images/filters/buscar04.png}" alt="" width="45"
+									height="45" class="">
+							</button>
+
+
+							<!--FIN BTN BUSQUEDA-->
+
+							<!--BTN LIMPIAR-->
+
+							<button class="btn bg-none p-1 me-5" onclick="limpiarFiltro()">
+
+								<img th:src="@{/images/actions/papelera.png}" alt="" width="45"
+									height="45" class="">
+							</button>
+
+
+							<!--FIN BTN LIMPIAR-->
+
+
+						</form>
+
+
+					</div>
+					<!-- FIN FORM FILTRO -->
+
+
+
 				</div>
-				<!-- FIN FORM FILTRO -->
-				
-				
-				<!--BTN'S UTILS-->
-		<div class="d-flex flex-row justify-content-end ms-5">
+			</div>
+
+	<!-- FIN FILTER COMPONENTE-->
+		
 
 			<!--BTN PDF-->
-			<div class="p-1 ms-5">
+			<div class="p-1 ">
 				<a
 					th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc?format=pdf'}"
 					target="_blanck">
-					<button type="button" class="btn bg-none p-1 ">
+					<button type="button" class="btn bg-none p-1 m-2">
 
 						<img th:src="@{/images/utils/pdf.png}" alt="" width="45"
 							height="45">
@@ -138,7 +164,7 @@
 			<div class="p-1">
 				<a
 					th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc?format=xlsx'}">
-					<button type="button" class="btn  bg-none  p-1 ">
+					<button type="button" class="btn  bg-none p-1 m-2">
 
 						<img th:src="@{/images/utils/excel.png}" alt="" width="45"
 							height="45">
@@ -149,45 +175,29 @@
 			<!--BTN EXCEL-->
 
 			<!--BTN GRAPHICS-->
-			<div class="p-1">
-				<a th:href="@{'/v1/componentes/grafico-select'}">
-					<button type="button" class="btn  bg-none  p-1 ">
 
-						<img th:src="@{/images/utils/graphics.png}" alt="" width="45"
-							height="45">
-
-					</button>
-				</a>
+			<div
+				th:replace="../static/fragments/componentes/btn-grafico-comp/btn-grafico-comp.html::btn">
 			</div>
 			<!--BTN GRAPHICS-->
-
-		</div>
-		<!--FIN BTN'S UTILS-->
-		
-
-
+			
+		<div>
+				<!-- FECHA-HORA FRAGMENT -->
+				<div
+					th:replace="../static/fragments/componentes/fecha-hora/fecha-hora.html::fecha-hora">
+				</div>
+				<!-- FIN FECHA-HORA FRAGMENT -->
 			</div>
+			
+
 		</div>
-
-
-
-
-	</div>
-
-
-	<!-- FIN FILTER COMPONENTE-->
+		<!--FIN FILTRO Y UTILIDADES-->
 
 
 
 
 
-
-
-
-
-	<!-- TABLA COMPONENTES -->
-	<div class=" ms-4 me-5">
-		
+		<!-- TABLA COMPONENTES -->
 		<table
 			class="table table-secondary table-bordered border-dark table-hover text-center ">
 
@@ -543,12 +553,8 @@
 
 			<!-- FIN REGISTROS CON FILTRO -->
 
-
-
-
-
-
 		</table>
+		<!-- FIN TABLA COMPONENTES -->
 
 
 		<!-- PAGINACION -->
@@ -782,7 +788,6 @@
 
 
 	</div>
-	<!-- FIN TABLA COMPONENTES -->
 
 
 	<!-- FIN LISTADO DE COMPONENTES -->
@@ -800,9 +805,9 @@
 
 
 
-<!-- FUNCION LIMPIAR INPUT FILTRO JS -->
+	<!-- FUNCION LIMPIAR INPUT FILTRO JS -->
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
 function limpiarFiltro(){
 
@@ -811,7 +816,7 @@ function limpiarFiltro(){
 
 }
 </script>
-<!-- FIN FUNCION LIMPIAR INPUT FILTRO JS -->
+	<!-- FIN FUNCION LIMPIAR INPUT FILTRO JS -->
 
 
 
