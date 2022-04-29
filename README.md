@@ -32,7 +32,7 @@
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/paginado/listadoCompPaginado01.png)
 
 
-#### Ordenación de Componentes por Campo Descripción
+#### Ordenación de Componentes por Campo Fabricante
 
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/ordenacion/ordenacionPorDescripcion.png)
 
