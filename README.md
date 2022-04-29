@@ -1,12 +1,44 @@
 # AppGestionMicroelectronica_SpringBoot
 
-* Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Log4J, Thymeleaf, Bootstrap y Oracle
-* La aplicación consta de todas las Operaciones CRUD, Paginación, Filtro y Búsqueda, Ordenamientos por campos, Generación de Reportes en PDF con openPDF y Excel con Apache POI, Generación de Gráficos de Barras y Tortas con High Charts según el stock del producto en relación al fabricante o categoría, etc. 
+* Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Log4J, Thymeleaf, Bootstrap, JS Vanilla, Oracle y Otras Tecnologías
+* La aplicación consta de todas las Operaciones CRUD a Nivel DB, Paginación de Componentes, Filtros y Búsqueda, Ordenamientos por campos, Generación de Reportes en PDF con openPDF y Excel con Apache POI, Generación de Gráficos de Barras y Áreas con High Charts según el stock del producto en relación al fabricante o categoría, etc. 
 * Se pone a disposición todos los recursos anteriores para únicamente la Tabla Componentes de la Base de Datos. 
 * Repositorio de la Base de Datos del Proyecto : https://github.com/andresWeitzel/db_microelectronica_Oracle
 * Repositorio de la Api Rest del Proyecto : https://github.com/andresWeitzel/ApiRest_Microelectronica_SpringBoot_Oracle
 
+</br>
 
+* Seguidamente se representa gráficamente de forma sucinta algunos servicios de la Aplicación
+
+</br>
+
+#### Inicio Componentes
+
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/inicio/inicioComponentes.png)
+
+#### Gráficos de Área y Barra para Stock de Componentes por Categoría y Fabricante
+
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/graficos/graficoStockComponentesPorCategoria.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/graficos/graficoStockComponentesPorFabricante.png)
+
+#### Reportes en Excel y PDF para el Listado de Componentes Paginados según N° de Página
+
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/utilidades/listadoPaginadoExcel.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/utilidades/listadoPaginadoPDF.png)
+
+#### Listado de Componentes Paginados
+
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/paginado/listadoComp.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/paginado/listadoCompPaginado01.png)
+
+
+#### Ordenación de Componentes por Campo Descripción
+
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/ordenacion/ordenacionPorDescripcion.png)
+
+#### Filtro de Componentes por Buscador
+
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/busqueda/busquedaPalabra.png)
 
 
 
@@ -17,6 +49,7 @@
 | **Tecnologías** | **Versión** | **Finalidad** |               
 | ------------- | ------------- | ------------- |
 | Java |   12.0.2 | JDK |
+| Bootstrap | 5.1 | Framework Maquetación |
 | Spring Tool Suite 4 | 4.9.0  | IDE |
 | Spring Boot |   2.6.4  | Framework |
 | Spring Boot Data JPA  | 2.6.3 | Mapeo de objetos y persistencia en la db |
@@ -80,6 +113,10 @@
 
 ## ` Documentación y Guía del Proyecto `
 #### (Esta Documentación que Desarrollé es para la Creación y Configuración del Proyecto, Manejo y Dependencias de Maven, Spring Tool Suite, Spring Booot, Hibernate-JPA, Oracle, Thymeleaf,  Servidor de Despliegue y otros usos. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
+
+</br>
+
+### ` ESTA DOCUMENTACIÓN ESTÁ PENDIENTE DE REVISIÓN, MODIFICACIÓN Y ACTUALIZACIÓN `
 
 </br>
 
@@ -313,63 +350,6 @@
 ### Paso 5) Configuraciones del `application.properties`
 #### (Vamos a utilizar el esquema de conexión de nuestra db ya creado en otro repositorio acerca de productos de microelectronica, las dudas referentes a la misma se encuentra en su respectivo repositorio....https://github.com/andresWeitzel/db_microelectronica_Oracle)
 
-</br>
-
-* Como se mencionó, todos los pasos para trabajar con este esquema/db se encuentra en el respectivo repositorio, la información relevante será el nombre y contraseña de usuario o rol levantado en el respectivo esquema creado (db_microelectronica) de oracle..
-```xml
-username: admin_microelectronica
-
-password: admin_microelectronica
-```
-* Las Configuraciones para el sgdb oracle serían..
-* La URL es un estandar de uso, a comparación de otros sgdb que hay que pasarle que tipo de db se deberá utilizar en oracle no es necesario, sino el tipo de Oracle a implementarm, si es XE(Express Edition), o lo que fuese
-
-```xml
-spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
-spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XE?serverTimezone=UTC
-spring.datasource.username=admin_microelectronica
-spring.datasource.password=admin_microelectronica
-spring.jpa.database=oracle
-```
-* Además del dialect
-```xml
-spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.Oracle12cDialect
-
-```
-
-</br>
-
-* Realizamos las configuraciones pertinentes para trabajar con el sgdb oracle 
- ```xml
-
-
-server.port = 8092
-server.error.whitelabel.enabled=true
-
-spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
-spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XE?serverTimezone=UTC
-spring.datasource.username=admin_microelectronica
-spring.datasource.password=admin_microelectronica
-spring.jpa.database=oracle
-
-
-spring.jpa.show-sql = true
-spring.jpa.hibernate.ddl-auto = update
-spring.jpa.hibernate.naming.strategy = org.hibernate.cfg.ImprovedNamingStrategy
-spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.Oracle12cDialect
-
-
-
-spring.data.rest.page-param-name=page
-spring.data.rest.sort-param-name=sort
-spring.data.rest.limit-param-name=limit
-spring.data.rest.default-page-size = 1
-spring.data.rest.max-page-size = 10
-
-
-```
-
-
 
 </br>
 
@@ -388,141 +368,7 @@ spring.data.rest.max-page-size = 10
 * Aplicaremos el metodo de listado de tipo getAll para paginados y el otro método getAll para el listado completo de componentes
 * Código..
 ```java
-package com.gestion.microelectronica.services;
 
-
-import java.util.List;
-
-
-import org.springframework.data.domain.Pageable;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.gestion.microelectronica.entities.ComponenteEntity;
-import com.gestion.microelectronica.repositories.I_ComponenteRepository;
-
-
-@Service
-public class ComponenteService {
-
-	@Autowired
-	private I_ComponenteRepository iComponenteRepository;
-
-	// =============== LOGS ====================
-	private static final Logger logger = org.apache.logging.log4j.LogManager.getLogger(ComponenteService.class);
-
-	// =============== MÉTODOS CRUD ====================
-
-	// ------ INSERT --------
-	public boolean addComponente(ComponenteEntity componente) {
-		try {
-			if (componente == null) {
-				logger.error("ERROR addComponente : EL COMPONENTE " + componente + " ES NULO!!");
-				return false;
-			} else {
-				iComponenteRepository.save(componente);
-				return true;
-			}
-
-		} catch (Exception e) {
-			logger.error("ERROR addComponente : EL COMPONENTE " + componente + " NO SE HA INSERTADO EN LA DB!!");
-			return false;
-		}
-	}
-
-	// ------ UPDATE --------
-	public boolean updateComponente(ComponenteEntity componente) {
-		try {
-			if (componente == null) {
-				logger.error("ERROR updateComponente : EL COMPONENTE " + componente + " ES NULO!!");
-				return false;
-			} else {
-				iComponenteRepository.save(componente);
-				return true;
-			}
-
-		} catch (Exception e) {
-			logger.error("ERROR updateComponente : EL COMPONENTE " + componente + " NO SE HA ACTUALIZADO EN LA DB!!");
-			return false;
-		}
-	}
-
-	// ------ DELETE --------
-	public boolean deleteComponente(int id) {
-		try {
-			if (id <= 0) {
-				logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO EXISTE!!");
-				return false;
-			} else {
-				iComponenteRepository.delete(iComponenteRepository.findById(id));
-				return true;
-			}
-
-		} catch (Exception e) {
-			logger.error("ERROR deleteComponente : EL COMPONENTE CON EL " + id + " NO SE HA ELIMINADO DE LA DB!!");
-			return false;
-		}
-	}
-
-	// ------ SELECT --------
-	//------- LISTADO COMPLETO ---------
-	public List<ComponenteEntity> getAllComponente() {
-
-		return iComponenteRepository.findAll();
-	}
-
-	// ------ SELECT --------
-	//------- LISTADO PAGINADO ---------
-	public List<ComponenteEntity> getAllComponente(Pageable pageable) {
-
-		return iComponenteRepository.findAll(pageable).getContent();
-	}
-
-	// =============== MÉTODOS DE BUSQUEDA ====================
-
-	// ------ ID --------
-	public ComponenteEntity findById(int id) {
-		return iComponenteRepository.findById(id);
-	}
-
-	// ------ CODIGO --------
-	public List<ComponenteEntity> findByCodigo(String codigo) {
-		return iComponenteRepository.findByCodigo(codigo);
-	}
-
-	// ------ IMAGEN --------
-	public List<ComponenteEntity> findByImagen(String imagen) {
-		return iComponenteRepository.findByImagen(imagen);
-	}
-
-	// ------ NRO_PIEZA --------
-	public List<ComponenteEntity> findByNroPieza(String nroPieza) {
-		return iComponenteRepository.findByNroPieza(nroPieza);
-	}
-	// ------ CATEGORIA --------
-	public List<ComponenteEntity> findByCategoria(String categoria) {
-		return iComponenteRepository.findByCategoria(categoria);
-	}
-	// ------ DESCRIPCION --------
-	public List<ComponenteEntity> findByDescripcion(String descripcion) {
-		return iComponenteRepository.findByDescripcion(descripcion);
-	}
-	// ------ FABRICANTE --------
-	public List<ComponenteEntity> findByFabricante(String fabricante) {
-		return iComponenteRepository.findByFabricante(fabricante);
-	}
-	// ------ STOCK --------
-	public List<ComponenteEntity> findByStock(int cantidad) {
-		return iComponenteRepository.findByStock(cantidad);
-	}
-	// ------ PRECIO --------
-	public List<ComponenteEntity> findByPrecio(double precio) {
-		return iComponenteRepository.findByPrecio(precio);
-	}
-
-	
-}
 
 ```
 
@@ -589,165 +435,13 @@ public class ComponenteService {
 * Cada Método CRUD de Tipo HTTP (POST, DELETE, PUT, GET) tiene su comprobación de Persistencia y los métodos devolverán un booleano según el resultado de la operación, menos el get que trae el Componente. Los mismos pueden ser modificados para adicionar mayor seguridad.
 * Además crearemos un método que nos devolverá la vista del front para la tabla de componentes(Componentes.html) y a su vez seteamos un objeto que representará la lista de componentes , dicho método se llamará ModelandView y nos devolverá la vista
  ```java
-	//---GET---
-	//---VISTA Y LISTA DE COMPONENTES---
-	@GetMapping("/")
-	public ModelAndView listarModelAndView() {
-	    ModelAndView mav = new ModelAndView();
-	    mav.addObject("listaComponentes", componenteService.getAllComponente());
-	    mav.setViewName("componentes");
-	    return mav;
-	}
+
  
  ```
  * Código del Controller...
  </br>
  
  ```java
-package com.gestion.microelectronica.controllers;
-
-import java.util.List;
-
-import org.springframework.data.domain.Pageable;
-import org.springframework.ui.Model;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.gestion.microelectronica.entities.ComponenteEntity;
-import com.gestion.microelectronica.services.ComponenteService;
-
-@RestController
-@RequestMapping("/componentes")
-public class ComponenteController {
-
-	@Autowired
-	private ComponenteService componenteService;
-
-	// ============= MÉTODOS HTTP CRUD ==============
-
-	// ----POST----
-	@PostMapping("/")
-	public boolean addComponente(@RequestBody ComponenteEntity componente) {
-
-		return componenteService.addComponente(componente);
-	}
-
-	// ----PUT-----
-	@PutMapping("/")
-	public boolean updateComponente(@RequestBody ComponenteEntity componente) {
-
-		return componenteService.updateComponente(componente);
-	}
-
-	// ---DELETE---
-	@DeleteMapping("/{id}")
-	public boolean deleteComponente(@PathVariable("id") int id) {
-
-		return componenteService.deleteComponente(id);
-	}
-
-
-	// ---GET---
-	//---LISTADO PAGINADO Y COMPLETO---
-	@GetMapping("/listado")
-	public List<ComponenteEntity> getAll(Pageable pageable) {
-
-		return componenteService.getAllComponente(pageable);
-	}
-	
-	//---GET---
-	//---VISTA Y LISTA DE COMPONENTES---
-	@GetMapping("/")
-	public ModelAndView listarModelAndView() {
-	    ModelAndView mav = new ModelAndView();
-	    mav.addObject("listaComponentes", componenteService.getAllComponente());
-	    mav.setViewName("componentes");
-	    return mav;
-	}
-	// ============= MÉTODOS HTTP BÚSQUEDA ==============
-
-	// ---GET---
-	@GetMapping("/id/{id}")
-	public ComponenteEntity getById(@PathVariable("id") int id) {
-
-		return componenteService.findById(id);
-	}
-	
-	// ---GET---
-	@GetMapping("/codigo/{codigo}")
-	public List<ComponenteEntity> getByCodigo(@PathVariable("codigo") String codigo) {
-
-		return componenteService.findByCodigo(codigo);
-	}
-	
-	// ---GET---
-	@GetMapping("/imagen/{imagen}")
-	public List<ComponenteEntity> getByImagen(@PathVariable("imagen") String imagen) {
-
-		return componenteService.findByImagen(imagen);
-	}
-	
-	// ---GET---
-	@GetMapping("/nro-de-pieza/{nroPieza}")
-	public List<ComponenteEntity> getByNroPieza(@PathVariable("nroPieza") String nroPieza) {
-
-		return componenteService.findByNroPieza(nroPieza);
-	}
-	
-	
-	// ---GET---
-	@GetMapping("/categoria/{categoria}")
-	public List<ComponenteEntity> getByCategoria(@PathVariable("nroPieza") String nroPieza) {
-
-		return componenteService.findByNroPieza(nroPieza);
-	}
-	
-	// ---GET---
-	@GetMapping("/descripcion/{descripcion}")
-	public List<ComponenteEntity> getByDescripcion(@PathVariable("descripcion") String descripcion) {
-
-		return componenteService.findByDescripcion(descripcion);
-	}
-	
-	// ---GET---
-	@GetMapping("/fabricante/{fabricante}")
-	public List<ComponenteEntity> getByFabricante(@PathVariable("fabricante") String fabricante) {
-
-		return componenteService.findByFabricante(fabricante);
-	}
-	
-	
-	// ---GET---
-	@GetMapping("/stock/{stock}")
-	public List<ComponenteEntity> getByStock(@PathVariable("stock") int stock) {
-
-		return componenteService.findByStock(stock);
-	}
-	
-	// ---GET---
-	@GetMapping("/precio/{precio}")
-	public List<ComponenteEntity> getByPrecio(@PathVariable("precio") double precio) {
-
-		return componenteService.findByPrecio(precio);
-	}
-	
-	
-	
-	
-	
-	
-	
-
-}
-
 
  ```
  
