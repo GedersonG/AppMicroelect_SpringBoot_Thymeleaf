@@ -41,6 +41,8 @@
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/busqueda/busquedaPalabra.png)
 
 
+#### Imagenes de Operaciones CRUD en formularios se omiten para simplificación de código
+
 
 </br>
 
