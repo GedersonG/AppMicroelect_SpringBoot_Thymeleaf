@@ -41,7 +41,9 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 
 		public abstract Page<ComponenteEntity> findAll(Pageable pageable );
 		
-		@Query("select c from ComponenteEntity c where concat(c.id,c.imagen,c.codigo,c.nroPieza,c.categoria,c.descripcion,c.fabricante) like %?1%")
+		// ============= MÉTODOS DE BÚSQUEDA CON FILTRO ===================
+		
+		@Query("select c from ComponenteEntity c where concat(lower(c.id), lower(c.imagen), lower(c.codigo), lower(c.nroPieza), lower(c.categoria), lower(c.descripcion), lower(c.fabricante)) like lower( concat ( '%', ?1 , '%'))")
 		public abstract Page<ComponenteEntity> findAll(String filtro, Pageable pageable);
 
 		
