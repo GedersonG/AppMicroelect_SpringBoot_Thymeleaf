@@ -1,11 +1,6 @@
 package com.gestion.microelectronica.controllers;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.data.domain.Page;
@@ -205,9 +200,9 @@ public class ComponenteController {
 			@ApiResponse(responseCode = "404", description = "La Búsqueda de los Componentes no está Disponible ya que el recurso pedido no existe. Comprobar solicitud", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Se ha producido un error interno en el Servidor", content = @Content) })
 	@GetMapping("/categoria/{categoria}")
-	public Page<ComponenteEntity> getByCategoria(@PathVariable("nroPieza") String nroPieza, Pageable pageable) {
+	public Page<ComponenteEntity> getByCategoria(@PathVariable("categoria") String categoria, Pageable pageable) {
 
-		return componenteService.findByNroPieza(nroPieza, pageable);
+		return componenteService.findByCategoria(categoria, pageable);
 	}
 
 	// ===============
@@ -456,23 +451,6 @@ public class ComponenteController {
 
 		ModelAndView mav = new ModelAndView();
 
-		/*
-		 * if((campo.equals("id") || (campo.equals("stock") ||
-		 * (campo.equals("precio"))))) {
-		 * 
-		 * 
-		 * //Seteamos un paginado (nro Paginas, nro de objetos) Pageable paginado =
-		 * PageRequest.of( Integer.parseInt(nroPagina) , Integer.parseInt(nroElementos)
-		 * , Sort.by(Sort.Direction.fromString(direccion), campo) );
-		 * 
-		 * 
-		 * }else { //Seteamos un paginado (nro Paginas, nro de objetos) Pageable
-		 * paginado = PageRequest.of( Integer.parseInt(nroPagina) ,
-		 * Integer.parseInt(nroElementos) ,
-		 * Sort.by(Sort.Direction.fromString(direccion), campo) );
-		 * 
-		 * }
-		 */
 
 		Pageable paginado = PageRequest.of(nroPagina, nroElementos,
 				Sort.by(Sort.Direction.fromString(direccion), campo));
@@ -525,14 +503,11 @@ public class ComponenteController {
 		mav.addObject("filtro", filtro);
 
 		
-		
-		
-		
-		
 		// Seteamos la vista
 		mav.setViewName("componentes/comp-listar");
 		return mav;
 	}
+	
 
 	// ====================================================
 	// ============= ORDENACIONES PAGINADOS ==============

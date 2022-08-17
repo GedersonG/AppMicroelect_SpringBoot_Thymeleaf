@@ -28,7 +28,8 @@
 
 
 	<!-- LISTADO DE COMPONENTES -->
-	<div class="container justify-content-center text-center mt-5  p-1 me-3 ms-5">
+	<div
+		class="container justify-content-center text-center mt-5 ms-1 p-1 me-3 ">
 
 		<!-- TITULO LISTADO DE COMPONENTES -->
 		<div
@@ -104,6 +105,7 @@
 								class="form-control bg-white"
 								placeholder="Ingresar valor Búsqueda" aria-label="valor"
 								th:value=${filtro}>
+
 
 
 
@@ -197,595 +199,883 @@
 
 
 
-		<!-- TABLA COMPONENTES -->
-		<table table-condensed class="table table-secondary table-bordered border-dark table-hover text-center me-5">
 
-			<thead class="table-dark me-5">
-				<tr>
-					<th class="">ID <!-- BTN'S ORDER BY ID ASC DESC -->
-						<div class="d-flex justify-content-column ">
-							<!--order asc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/asc'}">
+		
+		<!-- ELEMENTOS BUSQUEDA, TABLA, PAGINACION -->
+		<div class="d-flex d-row">
+		<!-- ELEMENTOS DE BUSQUEDA -->
+			<div class="ms-0 me-0 ">
+				<ul class="ms-0 ">
+					<li class="mb-2"><a
+						th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc?filtro=Transistores BJT'}">
+							<button type="button" class="btn">
+
+								<img th:src="@{/images/icons/transBjt.png}" alt="" width="80"
+									height="80">
+							</button>
+					</a></li>
+
+					<li class="mb-2"><a
+						th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc?filtro=Transistores MOSFET'}">
+							<button type="button" class="btn">
+
+								<img th:src="@{/images/icons/transMosfet.png}" alt="" width="80"
+									height="80">
+							</button>
+					</a></li>
+
+				</ul>
+			</div>
+			<!-- FIN ELEMENTOS DE BUSQUEDA -->
+
+	<!-- CONTENEDOR TABLA/PAGINACION-->
+			<div class="d-flex d-column col-12">
+
+				<!-- TABLA COMPONENTES -->
+				<div class="">
+				
+				
+					<!-- TABLA SIN FILTROS -->
+					<table th:if="${filtro == null}"
+						class="table table-secondary table-bordered border-dark table-hover text-center">
+					
+						<!--  THEAD SIN FILTRO -->
+						<thead class="table-dark">
+							<tr>
+
+								<th class="text-center">CÓDIGO 
+								<!-- BTN'S ORDER BY CODIGO ASC DESC CON FILTRO-->
+									<div  class="d-flex justify-content-row text-center  ms-4">
+										<!--order asc-->
+										<a class="text-center" 
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/' + ${ultimoNroElementos} + '/codigo/asc'}">
+											
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary text-center m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a class="text-center"
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/' + ${ultimoNroElementos} + '/codigo/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY CODIGO ASC DESC  CON FILTRO-->
+									
+								</th>
+								<th>IMAGEN <!-- BTN'S ORDER BY IMAGEN ASC DESC -->
+									<div class="d-flex justify-content-row text-center">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/imagen/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/imagen/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY IMAGEN ASC DESC -->
+								</th>
+								<th>NRO.PIEZA <!-- BTN'S ORDER BY NRO.PIEZA ASC DESC -->
+									<div class="d-flex justify-content-row text-center">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/nroPieza/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/nroPieza/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY NRO.PIEZA ASC DESC --></th>
+								<th>CATEGORÍA <!-- BTN'S ORDER BY CATEGORIA ASC DESC -->
+									<div class="d-flex justify-content-row text-center  ms-4">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY CATEGORIA ASC DESC --></th>
+								<th>DESCRIPCIÓN <!-- BTN'S ORDER BY DESCRIPCION ASC DESC -->
+									<div class="d-flex justify-content-row text-center ms-4">
+										<!--order asc-->
+										<a class="text-center"
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/descripcion/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a class="text-center"
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/descripcion/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY DESCRIPCION ASC DESC --></th>
+								<th>FABRICANTE <!-- BTN'S ORDER BY FABRICANTE ASC DESC -->
+									<div class="d-flex justify-content-row text-center  ms-4">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/fabricante/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/fabricante/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY FABRICANTE ASC DESC --></th>
+								<th>STOCK <!-- BTN'S ORDER BY STOCK ASC DESC -->
+									<div class="d-flex justify-content-row ">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/stock/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/numbersUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/stock/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/numbersDown.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY STOCK ASC DESC --></th>
+								<th>PRECIO <!-- BTN'S ORDER BY PRECIO ASC DESC -->
+									<div class="d-flex justify-content-row ">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/precio/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/numbersUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/precio/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/numbersDown.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY PRECIO ASC DESC --></th>
+								<th><div class="d-flex justify-content-center mb-3">ACCION</div></th>
+
+
+							</tr>
+						</thead>
+						<!-- FIN THEAD SIN FILTRO -->
+
+
+						<!-- REGISTROS SIN FILTRO -->
+						<tbody >
+							<tr th:each="comp : ${listaComponentesPaginado}">
+								<td th:text="${comp.getCodigo()}"></td>
+								<!--<td><a th:href="@{|${comp.getImagen()}|}" target="_blank">Link</a></td>  -->
+								<td><img th:src="@{|${comp.getImagen()}|}" alt=""
+									width="100" height="100"></td>
+								<td th:text="${comp.getNroPieza()}"></td>
+								<td th:text="${comp.getCategoria()}"></td>
+								<td th:text="${comp.getDescripcion()}"></td>
+								<td th:text="${comp.getFabricante()}"></td>
+								<td th:text="${comp.getStock()}"></td>
+								<td th:text="${comp.getPrecio()}"></td>
+
+								<td>
+									<div class="d-flex justify-content-center p-1">
+										<a
+											th:href="@{/v1/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}">
+											<button type="button" class="btn bg-none ">
+
+												<img th:src="@{/images/actions/edit.png}" alt="" width="45"
+													height="45">
+
+											</button>
+										</a> <a
+											th:href="@{/v1/componentes/eliminar-comp/id/{id}(id=${comp.getId()})}">
+											<button type="button" class="btn bg-none ">
+
+												<img th:src="@{/images/actions/delete.png}" alt=""
+													width="45" height="45">
+
+											</button>
+										</a>
+
+									</div>
+								</td>
+
+							</tr>
+
+
+
+						</tbody>
+						<!-- FIN REGISTROS SIN FILTRO -->
+						
+					</table>
+					<!-- FIN TABLA SIN FILTROS -->
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				
+				
+				<!-- FIN TABLA CON FILTROS -->
+					<table th:if="${filtro != null}"
+						class="table table-secondary table-bordered border-dark table-hover text-center">
+					<!--THEAD CON FILTRO -->
+						<thead class="table-dark">
+							<tr>
+
+								<th class="text-center">CÓDIGO 
+								<!-- BTN'S ORDER BY CODIGO ASC DESC CON FILTRO-->
+									<div  class="d-flex justify-content-row text-center  ms-4">
+										<!--order asc-->
+										<a class="text-center" 
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/' + ${ultimoNroElementos} + '/codigo/asc?filtro=' + ${filtro} + ''}">
+											
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary text-center m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a class="text-center"
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/' + ${ultimoNroElementos} + '/codigo/desc?filtro=' + ${filtro} + ''}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY CODIGO ASC DESC  CON FILTRO-->
+									
+								</th>
+								<th>IMAGEN <!-- BTN'S ORDER BY IMAGEN ASC DESC -->
+									<div class="d-flex justify-content-row text-center">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/imagen/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/imagen/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY IMAGEN ASC DESC -->
+								</th>
+								<th>NRO.PIEZA <!-- BTN'S ORDER BY NRO.PIEZA ASC DESC -->
+									<div class="d-flex justify-content-row text-center">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/nroPieza/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/nroPieza/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY NRO.PIEZA ASC DESC --></th>
+								<th>CATEGORÍA <!-- BTN'S ORDER BY CATEGORIA ASC DESC -->
+									<div class="d-flex justify-content-row text-center  ms-4">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY CATEGORIA ASC DESC --></th>
+								<th>DESCRIPCIÓN <!-- BTN'S ORDER BY DESCRIPCION ASC DESC -->
+									<div class="d-flex justify-content-row text-center ms-4">
+										<!--order asc-->
+										<a class="text-center"
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/descripcion/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a class="text-center"
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/descripcion/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY DESCRIPCION ASC DESC --></th>
+								<th>FABRICANTE <!-- BTN'S ORDER BY FABRICANTE ASC DESC -->
+									<div class="d-flex justify-content-row text-center  ms-4">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/fabricante/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/fabricante/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+												<!--icono down-->
+												<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
+													width="15" height="20">
+												<!--Fin icono down-->
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY FABRICANTE ASC DESC --></th>
+								<th>STOCK <!-- BTN'S ORDER BY STOCK ASC DESC -->
+									<div class="d-flex justify-content-row ">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/stock/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/numbersUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/stock/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/numbersDown.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY STOCK ASC DESC --></th>
+								<th>PRECIO <!-- BTN'S ORDER BY PRECIO ASC DESC -->
+									<div class="d-flex justify-content-row ">
+										<!--order asc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/precio/asc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/numbersUp.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order asc-->
+										<!--order desc-->
+										<a
+											th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/precio/desc'}">
+											<button type="button"
+												class="btn-sm btn-secondary bg-secondary m-2">
+
+												<img th:src="@{/images/pagination/numbersDown.png}" alt=""
+													width="15" height="20">
+
+											</button>
+										</a>
+										<!--fin order desc-->
+
+									</div> <!-- FIN BTN'S ORDER BY PRECIO ASC DESC --></th>
+								<th><div class="d-flex justify-content-center mb-3">ACCION</div></th>
+
+
+							</tr>
+						</thead>
+						<!-- FIN THEAD CON FILTRO -->
+
+
+
+						<!-- REGISTROS CON FILTRO -->
+
+						<tbody >
+							<tr th:each="comp : ${listaComponentesPaginadoFiltro}">
+								<td th:text="${comp.getCodigo()}"></td>
+								<!--  <td><a th:href="@{|${comp.getImagen()}|}" target="_blank">Link</a></td>-->
+								<td><img th:src="@{|${comp.getImagen()}|}" alt=""
+									width="100" height="100"></td>
+								<td th:text="${comp.getNroPieza()}"></td>
+								<td th:text="${comp.getCategoria()}"></td>
+								<td th:text="${comp.getDescripcion()}"></td>
+								<td th:text="${comp.getFabricante()}"></td>
+								<td th:text="${comp.getStock()}"></td>
+								<td th:text="${comp.getPrecio()}"></td>
+
+								<td>
+									<div class="d-flex justify-content-center p-1">
+										<a
+											th:href="@{/v1/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}">
+											<button type="button" class="btn bg-none ">
+
+												<img th:src="@{/images/actions/edit.png}" alt="" width="45"
+													height="45">
+
+											</button>
+										</a> <a
+											th:href="@{/v1/componentes/eliminar-comp/id/{id}(id=${comp.getId()})}">
+											<button type="button" class="btn bg-none ">
+
+												<img th:src="@{/images/actions/delete.png}" alt=""
+													width="45" height="45">
+
+											</button>
+										</a>
+
+									</div>
+								</td>
+							</tr>
+						</tbody>
+
+						<!-- FIN REGISTROS CON FILTRO -->
+					</table>
+					<!-- FIN TABLA CON FILTROS -->
+
+
+
+
+
+
+
+
+					<!-- PAGINACION -->
+					<div>
+						<div class="d-flex d-row justify-content-center bg-dark p-1 m-1">
+
+							<!-- PRIMERA PÁGINA -->
+							<a th:if="${limiteMenorPaginado}"
+								th:href="@{'/v1/componentes/listar-paginado/0/10/id/asc'}">
 								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/numbersUp.png}" alt=""
-										width="15" height="20">
-
-								</button>
+									class="btn btn-dark border-light alert-link m-2 ">Primera</button>
 							</a>
-							<!--fin order asc-->
-							<!--order desc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/id/desc'}">
+							<!-- FIN PRIMERA PÁGINA -->
+
+							<!-- BTN LAST PAGINA -->
+							<a th:if="${limiteMenorPaginado}"
+								th:href="@{'/v1/componentes/listar-paginado/' + ${anteriorPagina} + '/10/id/asc'}">
 								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/numbersDown.png}" alt=""
-										width="15" height="20">
-
+									class="btn btn-dark border-light alert-link m-2 ">
+									<!--icono Anterior-->
+									<img th:src="@{/images/pagination/anterior.png}" alt=""
+										width="15" height="15"
+										class="d-inline-block align-text-center ">
+									<!--Fin icono Anterior-->
 								</button>
 							</a>
-							<!--fin order desc-->
+							<!-- BTN LAST PAGINA -->
 
-						</div> <!-- FIN BTN'S ORDER BY ID ASC DESC -->
-
-					</th>
-					<th class="text-center">CÓDIGO <!-- BTN'S ORDER BY CODIGO ASC DESC -->
-						<div class="d-flex justify-content-row text-center  ms-4">
-							<!--order asc-->
-							<a class="text-center"
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/codigo/asc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary text-center m-2">
-
-									<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
-										width="15" height="20">
-
+							<!--NUMEROS -->
+							<!-- NUMERO 1 -->
+							<a th:href="@{/v1/componentes/listar-paginado/0/7/id/asc}">
+								<button th:if="${ultimoNroPaginaVistaModelo == 1}"
+									class="btn border-none text-primary p-1" type="button">
+									<h2 class="">1</h2>
 								</button>
-							</a>
-							<!--fin order asc-->
-							<!--order desc-->
-							<a class="text-center"
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/codigo/desc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-									<!--icono down-->
-									<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
-										width="15" height="20">
-									<!--Fin icono down-->
-								</button>
-							</a>
-							<!--fin order desc-->
 
-						</div> <!-- FIN BTN'S ORDER BY CODIGO ASC DESC -->
-					</th>
-					<th>IMAGEN <!-- BTN'S ORDER BY IMAGEN ASC DESC -->
-						<div class="d-flex justify-content-row text-center">
-							<!--order asc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/imagen/asc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
-										width="15" height="20">
-
-								</button>
-							</a>
-							<!--fin order asc-->
-							<!--order desc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/imagen/desc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-									<!--icono down-->
-									<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
-										width="15" height="20">
-									<!--Fin icono down-->
-								</button>
-							</a>
-							<!--fin order desc-->
-
-						</div> <!-- FIN BTN'S ORDER BY IMAGEN ASC DESC -->
-					</th>
-					<th>NRO.PIEZA <!-- BTN'S ORDER BY NRO.PIEZA ASC DESC -->
-						<div class="d-flex justify-content-row text-center">
-							<!--order asc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/nroPieza/asc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
-										width="15" height="20">
-
-								</button>
-							</a>
-							<!--fin order asc-->
-							<!--order desc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/nroPieza/desc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-									<!--icono down-->
-									<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
-										width="15" height="20">
-									<!--Fin icono down-->
-								</button>
-							</a>
-							<!--fin order desc-->
-
-						</div> <!-- FIN BTN'S ORDER BY NRO.PIEZA ASC DESC --></th>
-					<th>CATEGORÍA <!-- BTN'S ORDER BY CATEGORIA ASC DESC -->
-						<div class="d-flex justify-content-row text-center  ms-4">
-							<!--order asc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
-										width="15" height="20">
-
-								</button>
-							</a>
-							<!--fin order asc-->
-							<!--order desc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/desc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-									<!--icono down-->
-									<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
-										width="15" height="20">
-									<!--Fin icono down-->
-								</button>
-							</a>
-							<!--fin order desc-->
-
-						</div> <!-- FIN BTN'S ORDER BY CATEGORIA ASC DESC --></th>
-					<th>DESCRIPCIÓN <!-- BTN'S ORDER BY DESCRIPCION ASC DESC -->
-						<div class="d-flex justify-content-row text-center ms-4">
-							<!--order asc-->
-							<a class="text-center"
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/descripcion/asc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
-										width="15" height="20">
-
-								</button>
-							</a>
-							<!--fin order asc-->
-							<!--order desc-->
-							<a class="text-center"
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/descripcion/desc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-									<!--icono down-->
-									<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
-										width="15" height="20">
-									<!--Fin icono down-->
-								</button>
-							</a>
-							<!--fin order desc-->
-
-						</div> <!-- FIN BTN'S ORDER BY DESCRIPCION ASC DESC --></th>
-					<th>FABRICANTE <!-- BTN'S ORDER BY FABRICANTE ASC DESC -->
-						<div class="d-flex justify-content-row text-center  ms-4">
-							<!--order asc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/fabricante/asc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/alphabetUp.png}" alt=""
-										width="15" height="20">
-
-								</button>
-							</a>
-							<!--fin order asc-->
-							<!--order desc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/fabricante/desc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-									<!--icono down-->
-									<img th:src="@{/images/pagination/alphabetDown.png}" alt=""
-										width="15" height="20">
-									<!--Fin icono down-->
-								</button>
-							</a>
-							<!--fin order desc-->
-
-						</div> <!-- FIN BTN'S ORDER BY FABRICANTE ASC DESC --></th>
-					<th>STOCK <!-- BTN'S ORDER BY STOCK ASC DESC -->
-						<div class="d-flex justify-content-row ">
-							<!--order asc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/stock/asc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/numbersUp.png}" alt=""
-										width="15" height="20">
-
-								</button>
-							</a>
-							<!--fin order asc-->
-							<!--order desc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/stock/desc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/numbersDown.png}" alt=""
-										width="15" height="20">
-
-								</button>
-							</a>
-							<!--fin order desc-->
-
-						</div> <!-- FIN BTN'S ORDER BY STOCK ASC DESC --></th>
-					<th>PRECIO <!-- BTN'S ORDER BY PRECIO ASC DESC -->
-						<div class="d-flex justify-content-row ">
-							<!--order asc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/precio/asc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/numbersUp.png}" alt=""
-										width="15" height="20">
-
-								</button>
-							</a>
-							<!--fin order asc-->
-							<!--order desc-->
-							<a
-								th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/precio/desc'}">
-								<button type="button"
-									class="btn-sm btn-secondary bg-secondary m-2">
-
-									<img th:src="@{/images/pagination/numbersDown.png}" alt=""
-										width="15" height="20">
-
-								</button>
-							</a>
-							<!--fin order desc-->
-
-						</div> <!-- FIN BTN'S ORDER BY PRECIO ASC DESC --></th>
-					<th><div class="d-flex justify-content-center mb-3">ACCION</div></th>
-
-
-				</tr>
-			</thead>
-
-
-			<!-- REGISTROS SIN FILTRO -->
-			<tbody th:if="${filtro == null}">
-				<tr th:each="comp : ${listaComponentesPaginado}">
-					<td th:text="${comp.getId()}"></td>
-					<td th:text="${comp.getCodigo()}"></td>
-					<!--<td><a th:href="@{|${comp.getImagen()}|}" target="_blank">Link</a></td>  -->
-						<td><img th:src="@{|${comp.getImagen()}|}" alt="" width="100"
-										height="100"></td>
-					<td th:text="${comp.getNroPieza()}"></td>
-					<td th:text="${comp.getCategoria()}"></td>
-					<td th:text="${comp.getDescripcion()}"></td>
-					<td th:text="${comp.getFabricante()}"></td>
-					<td th:text="${comp.getStock()}"></td>
-					<td th:text="${comp.getPrecio()}"></td>
-
-					<td>
-						<div class="d-flex justify-content-center p-1">
-							<a
-								th:href="@{/v1/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}">
-								<button type="button" class="btn bg-none ">
-
-									<img th:src="@{/images/actions/edit.png}" alt="" width="45"
-										height="45">
-
-								</button>
-							</a> <a
-								th:href="@{/v1/componentes/eliminar-comp/id/{id}(id=${comp.getId()})}">
-								<button type="button" class="btn bg-none ">
-
-									<img th:src="@{/images/actions/delete.png}" alt="" width="45"
-										height="45">
-
-								</button>
-							</a>
-
-						</div>
-					</td>
-
-				</tr>
-
-
-
-			</tbody>
-			<!-- FIN REGISTROS SIN FILTRO -->
-			<!-- REGISTROS CON FILTRO -->
-
-			<tbody th:if="${filtro != null}">
-				<tr th:each="comp : ${listaComponentesPaginadoFiltro}">
-					<td th:text="${comp.getId()}"></td>
-					<td th:text="${comp.getCodigo()}"></td>
-					<!--  <td><a th:href="@{|${comp.getImagen()}|}" target="_blank">Link</a></td>-->
-					<td><img th:src="@{|${comp.getImagen()}|}" alt="" width="100"
-										height="100"></td>
-					<td th:text="${comp.getNroPieza()}"></td>
-					<td th:text="${comp.getCategoria()}"></td>
-					<td th:text="${comp.getDescripcion()}"></td>
-					<td th:text="${comp.getFabricante()}"></td>
-					<td th:text="${comp.getStock()}"></td>
-					<td th:text="${comp.getPrecio()}"></td>
-
-					<td>
-						<div class="d-flex justify-content-center p-1">
-							<a
-								th:href="@{/v1/componentes/editar-comp-form/id/{id}(id=${comp.getId()})}">
-								<button type="button" class="btn bg-none ">
-
-									<img th:src="@{/images/actions/edit.png}" alt="" width="45"
-										height="45">
-
-								</button>
-							</a> <a
-								th:href="@{/v1/componentes/eliminar-comp/id/{id}(id=${comp.getId()})}">
-								<button type="button" class="btn bg-none ">
-
-									<img th:src="@{/images/actions/delete.png}" alt="" width="45"
-										height="45">
-
-								</button>
-							</a>
-
-						</div>
-					</td>
-
-				</tr>
-
-
-
-			</tbody>
-
-			<!-- FIN REGISTROS CON FILTRO -->
-
-		</table>
-		<!-- FIN TABLA COMPONENTES -->
-
-
-		<!-- PAGINACION -->
-		<div class="d-flex justify-content-center bg-dark p-1">
-
-			<!-- PRIMERA PÁGINA -->
-			<a th:if="${limiteMenorPaginado}"
-				th:href="@{'/v1/componentes/listar-paginado/0/10/id/asc'}">
-				<button type="button"
-					class="btn btn-dark border-light alert-link m-2 ">Primera</button>
-			</a>
-			<!-- FIN PRIMERA PÁGINA -->
-
-			<!-- BTN LAST PAGINA -->
-			<a th:if="${limiteMenorPaginado}"
-				th:href="@{'/v1/componentes/listar-paginado/' + ${anteriorPagina} + '/10/id/asc'}">
-				<button type="button"
-					class="btn btn-dark border-light alert-link m-2 ">
-					<!--icono Anterior-->
-					<img th:src="@{/images/pagination/anterior.png}" alt="" width="15"
-						height="15" class="d-inline-block align-text-center ">
-					<!--Fin icono Anterior-->
-				</button>
-			</a>
-			<!-- BTN LAST PAGINA -->
-
-			<!--NUMEROS -->
-			<!-- NUMERO 1 -->
-			<a th:href="@{/v1/componentes/listar-paginado/0/7/id/asc}">
-				<button th:if="${ultimoNroPaginaVistaModelo == 1}"
-					class="btn border-none text-primary p-1" type="button">
-					<h2 class="">1</h2>
-				</button>
-
-				<button
-					th:if="${ultimoNroPaginaVistaModelo != 1
+								<button
+									th:if="${ultimoNroPaginaVistaModelo != 1
 					&& ultimoNroPaginaVistaModelo <= 3}"
-					class="btn border-none p-1" type="button">
-					<h2 class="text-white ">1</h2>
-				</button>
+									class="btn border-none p-1" type="button">
+									<h2 class="text-white ">1</h2>
+								</button>
 
-			</a>
-			<!-- FIN  NUMERO 1 -->
+							</a>
+							<!-- FIN  NUMERO 1 -->
 
-			<!-- NUMERO 2 -->
-			<a th:href="@{/v1/componentes/listar-paginado/1/10/id/asc}">
-				<button th:if="${ultimoNroPaginaVistaModelo == 2}"
-					class="btn border-none text-primary p-1" type="button">
-					<h2 class="">2</h2>
-				</button>
+							<!-- NUMERO 2 -->
+							<a th:href="@{/v1/componentes/listar-paginado/1/10/id/asc}">
+								<button th:if="${ultimoNroPaginaVistaModelo == 2}"
+									class="btn border-none text-primary p-1" type="button">
+									<h2 class="">2</h2>
+								</button>
 
-				<button
-					th:if="${ultimoNroPaginaVistaModelo != 2 
+								<button
+									th:if="${ultimoNroPaginaVistaModelo != 2 
 					&& ultimoNroPaginaVistaModelo <= 4}"
-					class="btn border-none p-1" type="button">
-					<h2 class="text-white ">2</h2>
-				</button>
-			</a>
-			<!-- FIN  NUMERO 2 -->
+									class="btn border-none p-1" type="button">
+									<h2 class="text-white ">2</h2>
+								</button>
+							</a>
+							<!-- FIN  NUMERO 2 -->
 
-			<!-- NUMERO 3 -->
-			<a th:href="@{/v1/componentes/listar-paginado/2/10/id/asc}">
-				<button th:if="${ultimoNroPaginaVistaModelo == 3}"
-					class="btn border-none text-primary p-1" type="button">
-					<h2 class="">3</h2>
-				</button>
+							<!-- NUMERO 3 -->
+							<a th:href="@{/v1/componentes/listar-paginado/2/10/id/asc}">
+								<button th:if="${ultimoNroPaginaVistaModelo == 3}"
+									class="btn border-none text-primary p-1" type="button">
+									<h2 class="">3</h2>
+								</button>
 
-				<button
-					th:if="${ultimoNroPaginaVistaModelo != 3 
+								<button
+									th:if="${ultimoNroPaginaVistaModelo != 3 
 					&& ultimoNroPaginaVistaModelo <= 4}"
-					class="btn border-none p-1" type="button">
-					<h2 class="text-white ">3</h2>
-				</button>
-			</a>
-			<!-- FIN NUMERO 3 -->
-			<!-- NUMERO 4 -->
-			<a th:href="@{/v1/componentes/listar-paginado/3/10/id/asc}">
-				<button th:if="${ultimoNroPaginaVistaModelo == 4}"
-					class="btn border-none text-primary p-1" type="button">
-					<h2 class="">4</h2>
-				</button>
+									class="btn border-none p-1" type="button">
+									<h2 class="text-white ">3</h2>
+								</button>
+							</a>
+							<!-- FIN NUMERO 3 -->
+							<!-- NUMERO 4 -->
+							<a th:href="@{/v1/componentes/listar-paginado/3/10/id/asc}">
+								<button th:if="${ultimoNroPaginaVistaModelo == 4}"
+									class="btn border-none text-primary p-1" type="button">
+									<h2 class="">4</h2>
+								</button>
 
-				<button
-					th:if="${ultimoNroPaginaVistaModelo != 4 
+								<button
+									th:if="${ultimoNroPaginaVistaModelo != 4 
 					&& ultimoNroPaginaVistaModelo >= 4}"
-					class="btn border-none p-1" type="button">
-					<h2 class="text-white ">4</h2>
-				</button>
-			</a>
-			<!-- FIN NUMERO 4 -->
-			<!-- NUMERO 5 -->
-			<a th:href="@{/v1/componentes/listar-paginado/4/10/id/asc}">
-				<button th:if="${ultimoNroPaginaVistaModelo == 5}"
-					class="btn border-none text-primary p-1" type="button">
-					<h2 class="">5</h2>
-				</button>
+									class="btn border-none p-1" type="button">
+									<h2 class="text-white ">4</h2>
+								</button>
+							</a>
+							<!-- FIN NUMERO 4 -->
+							<!-- NUMERO 5 -->
+							<a th:href="@{/v1/componentes/listar-paginado/4/10/id/asc}">
+								<button th:if="${ultimoNroPaginaVistaModelo == 5}"
+									class="btn border-none text-primary p-1" type="button">
+									<h2 class="">5</h2>
+								</button>
 
-				<button
-					th:if="${ultimoNroPaginaVistaModelo != 5
+								<button
+									th:if="${ultimoNroPaginaVistaModelo != 5
 					 && ultimoNroPaginaVistaModelo > 3
 					 && totalNroPaginasVistaModelo > 4}"
-					class="btn border-none p-1" type="button">
-					<h2 class="text-white ">5</h2>
-				</button>
-			</a>
-			<!-- FIN NUMERO 5 -->
-			<!-- NUMERO 6 -->
-			<a th:href="@{/v1/componentes/listar-paginado/3/10/id/asc}">
-				<button th:if="${ultimoNroPaginaVistaModelo == 6}"
-					class="btn border-none text-primary p-1" type="button">
-					<h2 class="">6</h2>
-				</button>
+									class="btn border-none p-1" type="button">
+									<h2 class="text-white ">5</h2>
+								</button>
+							</a>
+							<!-- FIN NUMERO 5 -->
+							<!-- NUMERO 6 -->
+							<a th:href="@{/v1/componentes/listar-paginado/3/10/id/asc}">
+								<button th:if="${ultimoNroPaginaVistaModelo == 6}"
+									class="btn border-none text-primary p-1" type="button">
+									<h2 class="">6</h2>
+								</button>
 
-				<button
-					th:if="${ultimoNroPaginaVistaModelo != 6 
+								<button
+									th:if="${ultimoNroPaginaVistaModelo != 6 
 					&& ultimoNroPaginaVistaModelo > 4
 					&& totalNroPaginasVistaModelo > 5}"
-					class="btn border-none p-1" type="button">
-					<h2 class="text-white ">6</h2>
-				</button>
-			</a>
-			<!-- FIN NUMERO 6 -->
+									class="btn border-none p-1" type="button">
+									<h2 class="text-white ">6</h2>
+								</button>
+							</a>
+							<!-- FIN NUMERO 6 -->
 
 
-			<!-- FIN NUMEROS -->
+							<!-- FIN NUMEROS -->
 
-			<!-- BTN NEXT PAGINA -->
-			<a th:if="${limiteMayorPaginado }"
-				th:href="@{'/v1/componentes/listar-paginado/' + ${siguientePagina} + '/10/id/asc'}">
-				<button type="button"
-					class="btn btn-dark border-light alert-link m-2 ">
-					<!--icono siguiente-->
-					<img th:src="@{/images/pagination/siguiente.png}" alt="" width="15"
-						height="15" class="d-inline-block align-text-center ">
-					<!--Fin icono siguiente-->
-				</button>
-			</a>
-			<!-- FIN BTN NEXT PAGINA -->
+							<!-- BTN NEXT PAGINA -->
+							<a th:if="${limiteMayorPaginado }"
+								th:href="@{'/v1/componentes/listar-paginado/' + ${siguientePagina} + '/10/id/asc'}">
+								<button type="button"
+									class="btn btn-dark border-light alert-link m-2 ">
+									<!--icono siguiente-->
+									<img th:src="@{/images/pagination/siguiente.png}" alt=""
+										width="15" height="15"
+										class="d-inline-block align-text-center ">
+									<!--Fin icono siguiente-->
+								</button>
+							</a>
+							<!-- FIN BTN NEXT PAGINA -->
 
 
-			<!-- ÚLTIMA PÁGINA -->
-			<a th:if="${limiteMayorPaginado}"
-				th:href="@{'/v1/componentes/listar-paginado/' + ${totalNroPaginasVistaModelo} +'/10/id/asc'}">
-				<button type="button"
-					class="btn btn-dark border-light alert-link m-2 ">Última</button>
-			</a>
-			<!-- FIN ÚLTIMA PÁGINA -->
+							<!-- ÚLTIMA PÁGINA -->
+							<a th:if="${limiteMayorPaginado}"
+								th:href="@{'/v1/componentes/listar-paginado/' + ${totalNroPaginasVistaModelo} +'/10/id/asc'}">
+								<button type="button"
+									class="btn btn-dark border-light alert-link m-2 ">Última</button>
+							</a>
+							<!-- FIN ÚLTIMA PÁGINA -->
 
-			<!-- INFO NRO DE PAGINA Y ELEMENTOS -->
-			<div
-				class="bg-dark text-white d-inline-block align-text-center ms-5 mt-3">
-				<h5 class="ms-5">
-					| Página: <span class="bg-dark "
-						th:text="${ultimoNroPaginaVistaModelo}"></span> de <span
-						class="bg-dark " th:text="${totalNroPaginas}"></span> |
-				</h5>
+							<!-- INFO NRO DE PAGINA Y ELEMENTOS -->
+							<div
+								class="bg-dark text-white d-inline-block align-text-center ms-5 mt-3">
+								<h5 class="ms-5">
+									| Página: <span class="bg-dark "
+										th:text="${ultimoNroPaginaVistaModelo}"></span> de <span
+										class="bg-dark " th:text="${totalNroPaginas}"></span> |
+								</h5>
+
+
+							</div>
+
+							<!-- ELEMENTOS SIN FILTRO -->
+							<div th:if="${filtro == null}"
+								class="bg-dark text-white d-inline-block align-text-center ms-3 mt-3">
+
+								<h5 class="" th:if="${ultimoNroPagina == 0}">
+									| Elementos: <span class="bg-dark "
+										th:text="${ultimoNroElementos}"></span> de <span
+										class="bg-dark " th:text="${totalElementos}"></span> |
+								</h5>
+								<h5 class="" th:if="${ultimoNroPagina == 1}">
+									| Elementos: <span class="bg-dark "
+										th:text="${ultimoNroElementos + 10}"></span> de <span
+										class="bg-dark " th:text="${totalElementos}"></span> |
+								</h5>
+								<h5 class="" th:if="${ultimoNroPagina == 2}">
+									| Elementos: <span class="bg-dark "
+										th:text="${ultimoNroElementos + 20}"></span> de <span
+										class="bg-dark " th:text="${totalElementos}"></span> |
+								</h5>
+
+								<h5 class="" th:if="${ultimoNroPagina == 3}">
+									| Elementos: <span class="bg-dark "
+										th:text="${ultimoNroElementos + 30}"></span> de <span
+										class="bg-dark " th:text="${totalElementos}"></span> |
+								</h5>
+
+
+							</div>
+							<!-- FIN ELEMENTOS SIN FILTRO -->
+							<!-- ELEMENTOS CON FILTRO -->
+							<div th:if="${filtro != null}"
+								class="bg-dark text-white d-inline-block align-text-center ms-3 mt-3">
+
+								<h5 class="" th:if="${ultimoNroPagina == 0}">
+									| Elementos: <span class="bg-dark "
+										th:text="${ultimoNroElementosFiltro}"></span> de <span
+										class="bg-dark " th:text="${totalElementos}"></span> |
+								</h5>
+								<h5 class="" th:if="${ultimoNroPagina == 1}">
+									| Elementos: <span class="bg-dark "
+										th:text="${ultimoNroElementosFiltro }"></span> de <span
+										class="bg-dark " th:text="${totalElementos}"></span> |
+								</h5>
+								<h5 class="" th:if="${ultimoNroPagina == 2}">
+									| Elementos: <span class="bg-dark "
+										th:text="${ultimoNroElementosFiltro}"></span> de <span
+										class="bg-dark " th:text="${totalElementos}"></span> |
+								</h5>
+
+								<h5 class="" th:if="${ultimoNroPagina == 3}">
+									| Elementos: <span class="bg-dark "
+										th:text="${ultimoNroElementosFiltro}"></span> de <span
+										class="bg-dark " th:text="${totalElementos}"></span> |
+								</h5>
+
+
+							</div>
+							<!-- FIN ELEMENTOS CON FILTRO -->
+
+
+						</div>
+						<!-- FIN INFO NRO DE PAGINA Y ELEMENTOS -->
+
+					</div>
+
+					<!-- FIN PAGINACION -->
+
+
+				</div>
+				<!-- FIN TABLA Y PÁGINACION -->
+
 
 
 			</div>
-
-			<!-- ELEMENTOS SIN FILTRO -->
-			<div th:if="${filtro == null}"
-				class="bg-dark text-white d-inline-block align-text-center ms-3 mt-3">
-
-				<h5 class="" th:if="${ultimoNroPagina == 0}">
-					| Elementos: <span class="bg-dark " th:text="${ultimoNroElementos}"></span>
-					de <span class="bg-dark " th:text="${totalElementos}"></span> |
-				</h5>
-				<h5 class="" th:if="${ultimoNroPagina == 1}">
-					| Elementos: <span class="bg-dark "
-						th:text="${ultimoNroElementos + 10}"></span> de <span
-						class="bg-dark " th:text="${totalElementos}"></span> |
-				</h5>
-				<h5 class="" th:if="${ultimoNroPagina == 2}">
-					| Elementos: <span class="bg-dark "
-						th:text="${ultimoNroElementos + 20}"></span> de <span
-						class="bg-dark " th:text="${totalElementos}"></span> |
-				</h5>
-
-				<h5 class="" th:if="${ultimoNroPagina == 3}">
-					| Elementos: <span class="bg-dark "
-						th:text="${ultimoNroElementos + 30}"></span> de <span
-						class="bg-dark " th:text="${totalElementos}"></span> |
-				</h5>
-
-
-			</div>
-			<!-- FIN ELEMENTOS SIN FILTRO -->
-			<!-- ELEMENTOS CON FILTRO -->
-			<div th:if="${filtro != null}"
-				class="bg-dark text-white d-inline-block align-text-center ms-3 mt-3">
-
-				<h5 class="" th:if="${ultimoNroPagina == 0}">
-					| Elementos: <span class="bg-dark "
-						th:text="${ultimoNroElementosFiltro}"></span> de <span
-						class="bg-dark " th:text="${totalElementos}"></span> |
-				</h5>
-				<h5 class="" th:if="${ultimoNroPagina == 1}">
-					| Elementos: <span class="bg-dark "
-						th:text="${ultimoNroElementosFiltro }"></span> de <span
-						class="bg-dark " th:text="${totalElementos}"></span> |
-				</h5>
-				<h5 class="" th:if="${ultimoNroPagina == 2}">
-					| Elementos: <span class="bg-dark "
-						th:text="${ultimoNroElementosFiltro}"></span> de <span
-						class="bg-dark " th:text="${totalElementos}"></span> |
-				</h5>
-
-				<h5 class="" th:if="${ultimoNroPagina == 3}">
-					| Elementos: <span class="bg-dark "
-						th:text="${ultimoNroElementosFiltro}"></span> de <span
-						class="bg-dark " th:text="${totalElementos}"></span> |
-				</h5>
-
-
-			</div>
-			<!-- FIN ELEMENTOS CON FILTRO -->
-
-			<!-- FIN INFO NRO DE PAGINA Y ELEMENTOS -->
-
-
+			<!-- FIN CONTENEDOR TABLA/PAGINACION-->
 
 		</div>
-
-		<!-- FIN PAGINACION -->
-
-
-
+		<!-- FIN ELEMENTOS BUSQUEDA, TABLA, PAGINACION -->
 
 
 
