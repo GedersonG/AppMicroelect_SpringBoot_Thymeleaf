@@ -9,39 +9,37 @@
 * Repositorio de la Base de Datos del Proyecto : https://github.com/andresWeitzel/db_microelectronica_Oracle
 * Repositorio de la Api Rest del Proyecto : https://github.com/andresWeitzel/ApiRest_Microelectronica_SpringBoot_Oracle
 * PlayList Comprobación de Funcionalidades : https://www.youtube.com/playlist?list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3
-* Seguidamente se representa gráficamente de forma sucinta algunos servicios de la Aplicación
-
 
 </br>
 
-
-#### Inicio Componentes
+#### Seguidamente se representa gráficamente de forma sucinta algunos servicios de la Aplicación
+### Inicio Componentes
 
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/inicio/inicioComponentes.png)
 
-#### Gráficos de Área y Barra para Stock de Componentes por Categoría y Fabricante
+### Gráficos de Área y Barra para Stock de Componentes por Categoría y Fabricante
 
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/graficos/graficoStockComponentesPorCategoria.png)
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/graficos/graficoStockComponentesPorFabricante.png)
 
-#### Reportes en Excel y PDF para el Listado de Componentes Paginados según N° de Página
+### Reportes en Excel y PDF para el Listado de Componentes Paginados según N° de Página
 
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/listadoPaginadoExcel.png)
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/listadoPaginadoPDF01.png)
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/listadoPaginadoPDF02.png)
 
-#### Listado de Componentes Paginados
+### Listado de Componentes Paginados
 
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/listado/listadoComp.png)
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/listado/listadoCompPaginado01.png)
 
 
-#### Filtrado de Componentes por Capacitores Electrolíticos
+### Filtrado de Componentes por Capacitores Electrolíticos
 
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/listado/listadoFiltroCapis.png)
 
 
-#### Formulario Agregar Componente
+### Formulario Agregar Componente
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/forms/add.png)
 
 
@@ -49,11 +47,11 @@
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/forms/postUpdate.png)
 
 
-#### Vista Servicio de Ayuda
+### Vista Servicio de Ayuda
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/ayuda.png)
 
 
-
+</hr>
 
 </br>
 
