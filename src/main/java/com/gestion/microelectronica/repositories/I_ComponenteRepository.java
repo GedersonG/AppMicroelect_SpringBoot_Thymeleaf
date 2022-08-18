@@ -36,14 +36,14 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 		public abstract Page<ComponenteEntity> findByFabricante(String fabricante , Pageable pageable);
 		
 		public abstract Page<ComponenteEntity> findByStock(int stock , Pageable pageable);
-
+		
 		public abstract Page<ComponenteEntity> findByPrecio(double precio , Pageable pageable);
 
 		public abstract Page<ComponenteEntity> findAll(Pageable pageable );
 		
 		// ============= MÉTODOS DE BÚSQUEDA CON FILTRO ===================
 		
-		@Query("select c from ComponenteEntity c where concat(lower(c.id), lower(c.imagen), lower(c.codigo), lower(c.nroPieza), lower(c.categoria), lower(c.descripcion), lower(c.fabricante)) like lower( concat ( '%', ?1 , '%'))")
+		@Query("select c from ComponenteEntity c where concat(lower(c.id), lower(c.imagen), lower(c.codigo), lower(c.nroPieza), lower(c.categoria), lower(c.descripcion), lower(c.fabricante), c.stock, c.precio) like lower( concat ( '%', ?1 , '%'))")
 		public abstract Page<ComponenteEntity> findAll(String filtro, Pageable pageable);
 
 		

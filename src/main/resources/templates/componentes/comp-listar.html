@@ -223,6 +223,69 @@
 									height="80">
 							</button>
 					</a></li>
+					
+						<li class="mb-2"><a
+						th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc?filtro=Capacitores Electroliticos'}">
+							<button type="button" class="btn">
+
+								<img th:src="@{/images/icons/capElectr.png}" alt="" width="80"
+									height="80">
+							</button>
+					</a></li>
+					
+					<li class="mb-2"><a
+						th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc?filtro=Resistores de Alta Frecuencia'}">
+							<button type="button" class="btn">
+
+								<img th:src="@{/images/icons/resistor.png}" alt="" width="80"
+									height="80">
+							</button>
+					</a></li>
+					
+						<li class="mb-2"><a
+						th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc?filtro=Microcontroladores PICS'}">
+							<button type="button" class="btn">
+
+								<img th:src="@{/images/icons/microsPics.png}" alt="" width="80"
+									height="80">
+							</button>
+					</a></li>
+					
+								<li class="mb-2"><a
+						th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc?filtro=Microcontroladores AVRS'}">
+							<button type="button" class="btn">
+
+								<img th:src="@{/images/icons/microsAvr.png}" alt="" width="80"
+									height="80">
+							</button>
+					</a></li>
+					
+									
+								<li class="mb-2"><a
+						th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc?filtro=Placas Esp8266'}">
+							<button type="button" class="btn">
+
+								<img th:src="@{/images/icons/esp8266.png}" alt="" width="80"
+									height="80">
+							</button>
+					</a></li>
+					
+										<li class="mb-2"><a
+						th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc?filtro=Placas Esp32'}">
+							<button type="button" class="btn">
+
+								<img th:src="@{/images/icons/esp32.png}" alt="" width="80"
+									height="80">
+							</button>
+					</a></li>
+												<li class="mb-2"><a
+						th:href="@{'/v1/componentes/listar-paginado/' + ${ultimoNroPagina} + '/10/categoria/asc?filtro=Placas Arduino'}">
+							<button type="button" class="btn">
+
+								<img th:src="@{/images/icons/arduino.png}" alt="" width="80"
+									height="80">
+							</button>
+					</a></li>
 
 				</ul>
 			</div>
@@ -491,8 +554,8 @@
 								<td th:text="${comp.getCategoria()}"></td>
 								<td th:text="${comp.getDescripcion()}"></td>
 								<td th:text="${comp.getFabricante()}"></td>
-								<td th:text="${comp.getStock()}"></td>
-								<td th:text="${comp.getPrecio()}"></td>
+								<td th:text="${comp.getStock() + 'u'}"></td>
+								<td th:text="${'US$' + comp.getPrecio()}"></td>
 
 								<td>
 									<div class="d-flex justify-content-center p-1">
@@ -1003,8 +1066,8 @@
 								<td th:text="${comp.getCategoria()}"></td>
 								<td th:text="${comp.getDescripcion()}"></td>
 								<td th:text="${comp.getFabricante()}"></td>
-								<td th:text="${comp.getStock()}"></td>
-								<td th:text="${comp.getPrecio()}"></td>
+									<td th:text="${comp.getStock() + 'u'}"></td>
+								<td th:text="${'US$' + comp.getPrecio()}"></td>
 
 								<td>
 									<div class="d-flex justify-content-center p-1">

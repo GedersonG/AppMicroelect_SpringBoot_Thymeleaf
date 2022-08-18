@@ -185,14 +185,14 @@ public class ListadoComponentesPDFController extends AbstractPdfView {
 		// ----------------------------------------
 		// =========== CONFIG CAMPOS ===========
 
-		PdfPTable campos = new PdfPTable(9);
+		PdfPTable campos = new PdfPTable(8);
 
 		
 		int alignCenter = Element.ALIGN_CENTER;
 		Color colorCampos = new Color(204, 224, 255);
 		
 		
-		String camposValor[] = { "ID", "CÓDIGO","IMAGEN"
+		String camposValor[] = { "CÓDIGO","IMAGEN"
 				,"NRO. PIEZA","CATEGORÍA","DESCRIP."
 				,"FABRICANTE","STOCK","PRECIO" };
 
@@ -216,11 +216,11 @@ public class ListadoComponentesPDFController extends AbstractPdfView {
 
 		// Creamos una Tabla para almacenar los objetos
 		// Le pasamos el nro de columnas que queremos mostrar sin la col de los btns
-		PdfPTable tablaComponentes = new PdfPTable(9);
+		PdfPTable tablaComponentes = new PdfPTable(8);
 
 		tablaComponentes.setHorizontalAlignment(alignCenter);
 
-		PdfPCell celdaId = null;
+		
 		PdfPCell celdaCod = null;
 		PdfPCell celdaImagen = null;
 		PdfPCell celdaNroPieza = null;
@@ -234,12 +234,7 @@ public class ListadoComponentesPDFController extends AbstractPdfView {
 
 		for (ComponenteEntity comp : listadoComponentes) {
 
-			// ---Celda ID---
-			celdaId = new PdfPCell(new Phrase(String.valueOf(comp.getId())));
-			celdaId.setBackgroundColor(colorRegistros);
-			celdaId.setHorizontalAlignment(alignCenter);
-			celdaId.setVerticalAlignment(alignCenter);
-			tablaComponentes.addCell(celdaId);
+	
 			// ---Celda CÓDIGO---
 			celdaCod = new PdfPCell(new Phrase(comp.getCodigo()));
 			celdaCod.setBackgroundColor(colorRegistros);
