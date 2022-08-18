@@ -14,34 +14,42 @@
 
 #### Inicio Componentes
 
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/inicio/inicioComponentes.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/inicio/inicioComponentes.png)
 
 #### Gráficos de Área y Barra para Stock de Componentes por Categoría y Fabricante
 
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/graficos/graficoStockComponentesPorCategoria.png)
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/graficos/graficoStockComponentesPorFabricante.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/graficos/graficoStockComponentesPorCategoria.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/graficos/graficoStockComponentesPorFabricante.png)
 
 #### Reportes en Excel y PDF para el Listado de Componentes Paginados según N° de Página
 
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/utilidades/listadoPaginadoExcel.png)
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/utilidades/listadoPaginadoPDF.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/listadoPaginadoExcel.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/listadoPaginadoPDF01.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/listadoPaginadoPDF02.png)
 
 #### Listado de Componentes Paginados
 
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/paginado/listadoComp.png)
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/paginado/listadoCompPaginado01.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/listado/listadoComp.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/listado/listadoCompPaginado01.png)
 
 
-#### Ordenación de Componentes por Campo Fabricante
+#### Filtrado de Componentes por Capacitores Electrolíticos
 
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/ordenacion/ordenacionPorDescripcion.png)
-
-#### Filtro de Componentes por Buscador
-
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/documentation/busqueda/busquedaPalabra.png)
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/listado/listadoFiltroCapis.png)
 
 
-#### Imagenes de Operaciones CRUD en formularios se omiten para simplificación de código
+#### Formulario Agregar Componente
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/forms/add.png)
+
+
+#### Vista Post Actualización de Componente
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/forms/postUpdate.png)
+
+
+#### Vista Servicio de Ayuda
+![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/ayuda.png)
+
+
 
 
 </br>
