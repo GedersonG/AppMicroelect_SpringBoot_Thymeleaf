@@ -97,9 +97,10 @@
 						<div class="form-group m-3 ">
 							<label for="imagen">
 								<h5>Imagen</h5> <!-- PATTERN COMPLETO URL -->
-							</label> <input class="form-control" type="url" id="imagen"
+							</label> <input class="form-control" id="imagen"
 								placeholder="Link Imagen" required
-								pattern="^(http(s)?:\/\/)+[\w\-\._~:\/?#[\]@!\$&'\(\)\*\+,;=.]+$"
+								pattern="^(http(s)?:\/\/)+[\w\-\._~:\/?#[\]@!\$&%'\(\)\*\+,;=.]+$"
+								minlength="3" maxlength="800"
 								title=" SOLO URL" th:field="*{imagen}">
 
 						</div>

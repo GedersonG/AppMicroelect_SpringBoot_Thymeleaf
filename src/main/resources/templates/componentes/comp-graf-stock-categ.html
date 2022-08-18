@@ -125,7 +125,7 @@
             text: 'Ordenados por Cantidad de Mayor a Menor'
         },
         xAxis: {
-            categories: [[${keySetCateg}]],
+            categories: [[${keySetCategOrderDesc}]],
             crosshair: true
         
         },
@@ -161,10 +161,10 @@
         },
         series: [{
             name: 'Unidades por Categoría',
-            dataSorting:{
+            dataLabels:{
             	enabled:true
             },
-            data: [[${valuesCateg}]],
+            data: [[${valuesCategOrderDesc}]],
             color: '#5F96F3'
            
         }]
@@ -241,7 +241,6 @@
         },
     series: [{
             name: 'Unidades por Categoría ',
-            
             data: [[${valuesCateg}]],
              color: '#0B3E93'
            

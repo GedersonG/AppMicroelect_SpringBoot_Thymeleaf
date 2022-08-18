@@ -1,7 +1,10 @@
 package com.gestion.microelectronica.controllers;
 
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -603,7 +606,7 @@ public class ComponenteController {
 
 		// --------- SET DE STOCK POR CATEGORIA ------------
 
-		Map<String, Integer> data = new LinkedHashMap();
+		Map<String, Integer> data = new LinkedHashMap<String, Integer>();
 
 		data.put(transBjt, stockTransBjt);
 		data.put(transMosfet, stockTransMosfet);
@@ -614,9 +617,24 @@ public class ComponenteController {
 		data.put(placasArd, stockPlacasArd);
 		data.put(placasEsp8266, stockPlacasEsp8266);
 		data.put(placasEsp32, stockPlacasEsp32);
+		
+		
+		
+		Map<String, Integer> dataOrderDesc = 
+				data
+				.entrySet()
+				.stream()
+				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) ->e1, LinkedHashMap::new));
+				
+				
 
 		mav.addObject("keySetCateg", data.keySet());
 		mav.addObject("valuesCateg", data.values());
+		
+		
+		mav.addObject("keySetCategOrderDesc", dataOrderDesc.keySet());
+		mav.addObject("valuesCategOrderDesc", dataOrderDesc.values());
 
 		mav.setViewName("componentes/comp-graf-stock-categ");
 
@@ -675,7 +693,7 @@ public class ComponenteController {
 
 		// --------- SET DE STOCK POR FABRICANTE ------------
 
-		Map<String, Integer> data02 = new LinkedHashMap();
+		Map<String, Integer> data02 = new LinkedHashMap<String, Integer>();
 
 		data02.put(vish, stockVishay);
 		data02.put(eln, stockElna);
@@ -695,9 +713,23 @@ public class ComponenteController {
 		data02.put(renElec, stockRenElec);
 		data02.put(centSem, stockCentSem);
 		data02.put(inchSem, stockInchSem);
+		
+		
+		 
+		Map<String, Integer> data02OrderDesc = 
+		data02
+		.entrySet()
+		.stream()
+		.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) ->e1, LinkedHashMap::new));
+		
+		
 
 		mav.addObject("keySetFabr", data02.keySet());
 		mav.addObject("valuesFabr", data02.values());
+		
+		mav.addObject("keySetFabrOrderDesc", data02OrderDesc.keySet());
+		mav.addObject("valuesFabrOrderDesc", data02OrderDesc.values());
 
 		mav.setViewName("componentes/comp-graf-stock-fabr");
 

@@ -22,18 +22,18 @@
 </head>
 <body>
 
-<!-- NAVBAR FRAGMENT -->
+	<!-- NAVBAR FRAGMENT -->
 	<header th:replace="../static/fragments/navbar/navbar.html::menu"></header>
 	<!-- FIN NAVBAR FRAGMENT -->
-	
-	
+
+
 	<!-- TITULO LISTADO DE COMPONENTES -->
 	<div class="container text-center mt-4 p-1">
 
 		<div class="mt-4 p-3 d-flex justify-content-center ">
 			<h1>
-				<span class="badge bg-dark text-decoration-underline mt-3">Gráficos Stock de Componentes por
-					Fabricantes</span>
+				<span class="badge bg-dark text-decoration-underline mt-3">Gráficos
+					Stock de Componentes por Fabricantes</span>
 			</h1>
 			<!-- BTN-INICIO FRAGMENT -->
 			<div
@@ -56,22 +56,22 @@
 				th:replace="../static/fragments/componentes/btn-grafico-comp/btn-grafico-comp.html::btn">
 			</div>
 			<!-- FIN BTN-GRAFICOS FRAGMENT -->
-			
+
 		</div>
 	</div>
 	<!-- FIN TITULO LISTADO DE COMPONENTES -->
-	
-	
-<!-- FECHA-HORA FRAGMENT -->
+
+
+	<!-- FECHA-HORA FRAGMENT -->
 	<div class="p-1 ms-1 me-5 mt-0">
 
-		
+
 		<div class="d-flex flex-row justify-content-end me-5">
 			<div
 				th:replace="../static/fragments/componentes/fecha-hora/fecha-hora.html::fecha-hora">
 			</div>
 		</div>
-		
+
 	</div>
 	<!-- FIN FECHA-HORA FRAGMENT -->
 
@@ -98,7 +98,7 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
-	
+
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<script th:inline="javascript">
     $(function(){
@@ -125,9 +125,9 @@
             text: 'Ordenados por Cantidad de Mayor a Menor'
         },
         xAxis: {
-            categories: [[${keySetFabr}]],
-            crosshair: true
-        
+            categories: [[${keySetFabrOrderDesc}]],
+            crosshair: true,
+      
         },
         yAxis: {
         	min:0,
@@ -136,6 +136,7 @@
                 text: 'Cantidad',
                 
             }
+        
         },
         tooltip: {
             headerFormat: '<span style="font-size:20px">{point.key}</span><table>',
@@ -161,10 +162,11 @@
         },
         series: [{
             name: 'Unidades por Fabricante',
-            dataSorting:{
+          
+            dataLabels:{
             	enabled:true
             },
-            data: [[${valuesFabr}]],
+            data: [[${valuesFabrOrderDesc}]],
             color: '#F96C6C'
            
         }]
@@ -172,7 +174,7 @@
     });
 </script>
 
-<!-- FIN SCRIPT GRAFICO STOCK CATEG -->
+	<!-- FIN SCRIPT GRAFICO STOCK CATEG -->
 
 
 	<!-- SCRIPT GRAFICO STOCK CATEG -->
@@ -183,7 +185,7 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
-	
+
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<script th:inline="javascript">
     $(function(){
@@ -240,7 +242,6 @@
         },
     series: [{
             name: 'Unidades por Fabricante ',
-            
             data: [[${valuesFabr}]],
             color: '#DC1F1F'
            
@@ -249,7 +250,7 @@
     });
 </script>
 
-<!-- FIN SCRIPT GRAFICO STOCK CATEG -->
+	<!-- FIN SCRIPT GRAFICO STOCK CATEG -->
 
 
 
@@ -258,7 +259,7 @@
 
 
 
-<!-- FOOTER FRAGMENT -->
+	<!-- FOOTER FRAGMENT -->
 	<footer th:replace="../static/fragments/footer/footer.html::pie-pagina"></footer>
 	<!-- FIN FOOTER FRAGMENT -->
 
