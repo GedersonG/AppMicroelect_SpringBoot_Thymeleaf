@@ -23,6 +23,10 @@ public interface I_ComponenteRepository extends JpaRepository<ComponenteEntity, 
 		
 		@Query("select c from ComponenteEntity c where c.codigo like %:codigo%")
 		public abstract Page<ComponenteEntity> findByCodigo(String codigo, Pageable pageable);
+		
+		@Query("select c from ComponenteEntity c where c.codigo like %:codigo%")
+		public abstract ComponenteEntity findByCodigo(String codigo);
+		
 		@Query("select c from ComponenteEntity c where c.imagen like %:imagen%")
 		public abstract Page<ComponenteEntity> findByImagen(String imagen, Pageable pageable);
 		@Query("select c from ComponenteEntity c where c.nroPieza like %:nroPieza%")

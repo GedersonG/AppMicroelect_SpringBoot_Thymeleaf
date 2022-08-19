@@ -170,6 +170,18 @@ public class ComponenteService {
 		}
 		
 	}
+	
+	// ------ CODIGO --------
+	public ComponenteEntity findByCodigo(String codigo) {
+		
+		try {
+			return iComponenteRepository.findByCodigo(codigo);	
+		} catch (Exception e) {
+			logger.error("ERROR findByCodigo : NO SE HA ENCONTRADO EL COMPONENTE CON EL CODIGO SOLICITADO. CAUSADO POR "+e);
+			throw new ComponenteNotFoundException("NO SE PUDO ENCONTRAR EL COMPONENTE CON EL CODIGO SOLICITADO ", e);
+		}
+		
+	}
 
 	// ===============
 	// ===== GET =====

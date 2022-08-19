@@ -315,14 +315,15 @@ public class ComponenteController {
 
 		ModelAndView mav = new ModelAndView();
 
-		// Agregamos el componente a la db
-		componenteService.addComponente(nuevoComponente);
+			// Agregamos el componente a la db
+			componenteService.addComponente(nuevoComponente);
 
-		// Buscamos el componente agregado a traves de su id
-		mav.addObject("componenteAgregado", componenteService.findById(nuevoComponente.getId()));
+			// Buscamos el componente agregado a traves de su id
+			mav.addObject("componenteAgregado", componenteService.findById(nuevoComponente.getId()));
 
-		// Agregamos el componente a la vista
-		mav.setViewName("componentes/comp-agregar-form-validado");
+			// Agregamos el componente a la vista
+			mav.setViewName("componentes/comp-agregar-form-validado");
+
 
 		return mav;
 	}
@@ -355,6 +356,8 @@ public class ComponenteController {
 			@ModelAttribute("editarComponente") ComponenteEntity componenteEditado) {
 
 		ModelAndView mav = new ModelAndView();
+		
+
 
 		// Agregamos el componente a la db
 		componenteService.updateComponente(componenteEditado);
