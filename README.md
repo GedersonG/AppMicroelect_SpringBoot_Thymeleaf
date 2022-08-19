@@ -50,8 +50,54 @@
 ### Vista Servicio de Ayuda
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/ayuda.png)
 
+<hr>
+
+
+
+
+
+</br>
+
+### Prueba de Funcionalidad de la App
+
+#### Vistas y Funcionalidades Generales
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/01.00%20Vistas%20y%20Funcionalidades%20Generales.png)](https://www.youtube.com/watch?v=dzbY89HAXCU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=1) 
+
+
+
+#### Tabla y Filtros de Componentes por Categoría
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/02.00%20Tabla%20y%20Filtros%20de%20Componentes%20por%20Categor%C3%ADa.png)](https://www.youtube.com/watch?v=xSXhPNUD_Nk&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=2) 
+
+
+
+#### Buscador de Componentes con Filtro Genérico
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/03.00%20Buscador%20de%20Componentes%20con%20Filtro%20Gen%C3%A9rico.png)](https://www.youtube.com/watch?v=O4Z0GXbP63Y&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=3) 
+
+
+#### Paginación de Componentes y Ordenamientos
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/04.00%20Paginaci%C3%B3n%20de%20Componentes%20y%20Ordenamientos.png)](https://www.youtube.com/watch?v=HbFeZKLEq1I&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=4) 
+
+
+
+#### Descarga de Componentes Archivos PDF y XLSX
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/05.00%20Descarga%20de%20Componentes%20Archivos%20PDF%20y%20XLSX.png)](https://www.youtube.com/watch?v=pitT4UjD4lk&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=5) 
+
+
+
+#### Gráficos de BarraÁrea Stock de Comp. por Categoría
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/06.00%20Gr%C3%A1ficos%20de%20Barra%C3%81rea%20Stock%20de%20Comp.%20por%20Categor%C3%ADa.png)](https://www.youtube.com/watch?v=d1zDf0tW7qU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=6) 
+
+
+
+
+#### Gráficos de BarraÁrea Stock de Comp. por Fabricante
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/07.00%20Gr%C3%A1ficos%20de%20Barra%C3%81rea%20Stock%20de%20Comp.%20por%20Fabricante.png)](https://www.youtube.com/watch?v=WM6qJ-HWFnQ&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=7) 
+
+
+### ` ESTA DOCUMENTACIÓN ESTÁ PENDIENTE DE REVISIÓN, MODIFICACIÓN Y ACTUALIZACIÓN `
 
 </hr>
+
 
 </br>
 
