@@ -46,7 +46,7 @@
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/delete/deleteComp.png)
 
 
-#### Vista Post Actualización de Componente
+### Vista Post Actualización de Componente
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/forms/postUpdate.png)
 
 
