@@ -7,7 +7,7 @@
 </br>
 
 * Repositorio de la Base de Datos del Proyecto : https://github.com/andresWeitzel/db_microelectronica_Oracle
-* Repositorio de la Api Rest del Proyecto : https://github.com/andresWeitzel/ApiRest_Microelectronica_SpringBoot_Oracle
+* LA API DE ESTE PROYECTO , DESARROLLADA EN SU VERSIÓN V1, ESTÁ INCLUIDA DENTRO DE ESTA APP, EN EL PROYECTO SE APLICA LA LOGICA SIMILAR A LA ORIGINAL CON NUEVAS FUNCIONALIDADES PARA LAS VISTAS, CONTROLLERS, ETC Y LOS RECURSOS NECESARIOS PARA EL USO DE THYMELEAF . Original : https://github.com/andresWeitzel/ApiRest_Microelectronica_SpringBoot_Oracle
 * PlayList Comprobación de Funcionalidades : https://www.youtube.com/playlist?list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3
 
 </br>
@@ -514,7 +514,7 @@
 </br>
 
 ## Sección 3)  Configuración de los Services 
-#### (Toda la Capa de Negocios fue desarrollada en la Api-Rest del proyecto, y esta fue documentada en su respectivo repositorio, pero tener en consideración que se ha desarrollada las funcionalidades genéricas a utilizar, por ende puede ocurrir que el proyecto vaya escalando, entonces se documenta en este repositorio las nuevas funcionalidades del proyecto. LA API DESARROLLADA EN SU VERSIÓN V1 ES COMPLETAMENTE FUNCIONAL, EN EL PROYECTO SE APLICA LA MISMA CON NUEVAS FUNCIONALIDADES PARA LAS VISTAS Y EL MANEJO DE THYMELEAF )
+#### (Toda la Capa de Negocios fue desarrollada en la Api-Rest original del proyecto, y esta fue documentada en su respectivo repositorio, pero tener en consideración que se ha desarrollada nuevas funcionalidades para esta app, por ende puede ocurrir que la api original difiera de la api de este proyecto. LA API DE ESTE PROYECTO , DESARROLLADA EN SU VERSIÓN V1, ESTÁ INCLUIDA DENTRO DE ESTA APP, EN EL PROYECTO SE APLICA LA LOGICA SIMILAR A LA ORIGINAL CON NUEVAS FUNCIONALIDADES PARA LAS VISTAS Y EL MANEJO DE THYMELEAF ).
 
 </br>
 
@@ -579,7 +579,7 @@
 </br>
 
 ##  Sección 4)  Configuración de los Controllers
-#### (Toda la Capa de Negocios fue desarrollada en la Api-Rest del proyecto, y esta fue documentada en su respectivo repositorio, pero tener en consideración que se ha desarrollada las funcionalidades genéricas a utilizar, por ende puede ocurrir que el proyecto vaya escalando, entonces se documenta en este repositorio las nuevas funcionalidades del proyecto. LA API DESARROLLADA EN SU VERSIÓN V1 ES COMPLETAMENTE FUNCIONAL, EN EL PROYECTO SE APLICA LA MISMA CON NUEVAS FUNCIONALIDADES PARA LAS VISTAS Y EL MANEJO DE THYMELEAF )
+#### (Toda la Capa de Negocios fue desarrollada en la Api-Rest original del proyecto, y esta fue documentada en su respectivo repositorio, pero tener en consideración que se ha desarrollada nuevas funcionalidades para esta app, por ende puede ocurrir que la api original difiera de la api de este proyecto. LA API DE ESTE PROYECTO , DESARROLLADA EN SU VERSIÓN V1, ESTÁ INCLUIDA DENTRO DE ESTA APP, EN EL PROYECTO SE APLICA LA LOGICA SIMILAR A LA ORIGINAL CON NUEVAS FUNCIONALIDADES PARA LAS VISTAS Y EL MANEJO DE THYMELEAF ).
 
 </br>
 
@@ -628,7 +628,7 @@
 
  
 
- 
+
 
 </br>
 
