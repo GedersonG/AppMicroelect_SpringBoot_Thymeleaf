@@ -97,7 +97,26 @@
 [![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/07.00%20Gr%C3%A1ficos%20de%20Barra%C3%81rea%20Stock%20de%20Comp.%20por%20Fabricante.png)](https://www.youtube.com/watch?v=WM6qJ-HWFnQ&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=7) 
 
 
-### ` ESTA DOCUMENTACIÓN ESTÁ PENDIENTE DE REVISIÓN, MODIFICACIÓN Y ACTUALIZACIÓN `
+### TablasGuías de Ayuda
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/08.00%20TablasGu%C3%ADas%20de%20Ayuda.png)](https://www.youtube.com/watch?v=fhblPvBTqw4&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=8) 
+
+
+### Formulario Agregar Componentes (Parte01)
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/09.00%20Formulario%20Agregar%20Componentes%20(Parte01).png)](https://www.youtube.com/watch?v=4KvZ9VMrFZI&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=9) 
+
+
+
+### Formulario Agregar Componentes (Parte02)
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/09.01%20Formulario%20Agregar%20Componentes%20(Parte02).png)](https://www.youtube.com/watch?v=Bp4fS3mFjlU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=10) 
+
+### Eliminar Componentes
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/10.00%20Eliminar%20Componentes.png)](https://www.youtube.com/watch?v=noSgm4c8iFk&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=11) 
+
+
+
+###  Formulario Actualizar Componentes
+[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/11.00%20Formulario%20Actualizar%20Componentes.png)](https://www.youtube.com/watch?v=FCKgRe7esj8&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=12) 
+
 
 </hr>
 
@@ -108,20 +127,22 @@
 
 | **Tecnologías** | **Versión** | **Finalidad** |               
 | ------------- | ------------- | ------------- |
-| Java |   12.0.2 | JDK |
-| Bootstrap | 5.1 | Framework Maquetación |
+| Java |   12 | JDK |
 | Spring Tool Suite 4 | 4.9.0  | IDE |
 | Spring Boot |   2.6.4  | Framework |
 | Spring Boot Data JPA  | 2.6.3 | Mapeo de objetos y persistencia en la db |
-| Lombok | 1.18.22 | Automatización de Código | 
+| Spring Validation  | 2.7 | Anotations para Validaciones |
+| Bootstrap | 5.1 | Framework Maquetación |
 | Thymeleaf | 2.6.4 | Plantillas para el Front | 
 | Maven |  4.0.0 | Gestor de Proyectos |
-| JPA-Hibernate | 5.4.27 | Framework para el mapeo de objetos y persistenciua en la db |
-| PostMan | 9.4.1 | Test de Apis |
+| Lombok | 1.18.22 | Automatización de Código | 
+| Swagger UI | 3.0.0 | Visualización y Gestión de la Api | 
+| Postman | 9.1.1 | Visualización y Gestión de la Api | 
+| Maven |  4.0.0 | Gestor de Proyectos |
 | Oracle XE 21c | 21.4.1 | Sistema de Gestión de Bases de Datos |
 | SQL Developer | 21.4.1  | Editor de Base de Datos |
 | CMD | 10 | Símbolo del Sistema para linea de comandos | 
-| GNU bash / Terminal | 4.4.23  | Bash / Terminal para el manejo e implementación de Git integrado al Spring Tool Suite |
+| GNU bash / Terminal | 4.4.23  | Bash / Terminal para el manejo e implementación de Git integrado al Spring Tool Suite | 
 | Git | 2.29.1  | Control de Versiones |
 
 
@@ -129,7 +150,7 @@
 
 ### Descarga y Documentacion de las Tecnologías Implementadas
 
-| **Tecnología**  | **Descarga** | **Documentación** |               
+| **Tecnologías**  | **Descarga** | **Documentación** |               
 | ------------- | ------------- | ------------- |
 | Java-JDK 12 | https://www.oracle.com/java/technologies/javase/jdk12-archive-downloads.html |  https://docs.oracle.com/en/ |
 | Spring Tool Suite 4 |https://spring.io/tools | https://spring.io/guides |
@@ -155,19 +176,23 @@
 
 | **Dependencia Maven**  | **Versión** | **Finalidad** |             
 | ------------- | ------------- | ------------- |
-| spring-boot-starter-data-jpa | 2.6.4 | Api de JpaRepository para el manejo de métodos | 
-| spring-boot-starter-test | 2.6.4 | Para Testing | 
-| spring-boot-starter-web | 2.6.4 | Se agrega toda la configuración web automáticamente de Maven a Spring | 
+| spring-boot-starter-data-jpa | 2.6.7 | Api de JpaRepository para el manejo de métodos | 
+| spring-boot-starter-test | 2.6.7 | Para Testing | 
+| spring-boot-starter-web | 2.6.7 | Se agrega toda la configuración web automáticamente de Maven a Spring | 
+| spring-boot-starter-validation | 2.7.0 | Validación de Annotations |
+| spring-boot-devtools | 2.6.7 | Herramientas para el Manejo de Spring Boot | 
 | spring-boot-starter-thymeleaf | 2.6.4 | Plantillas para el Front |
-| spring-boot-devtools | 2.6.4 | Herramientas para el Manejo de Spring Boot | 
+| jaxb-api | 4.0 | Serialización de Objetos Java a XML |
+| jackson-databind | 4.0 | Serialización de Objetos Java a JSON |
+| javax-annotation-api | 4.0 | Api para la lectura de annotations|
 | ojdbc8 | 21.3.0.0 | Driver para el SGDB Oracle | 
 | lombok | 1.18.22 |  Dependencia para la automatización de Código |
 | openpdf | 1.3.27 |  Generación de Reportes en Formato PDF |
 | poi | 5.2.0 |  Generación de Reportes en Formato EXCEL |
 | poi-ooxml | 5.2.0 |  Manejo de  Recursos Formato EXCEL |
-
-
-
+| springfox-swagger-ui | 3.0.0 | Doc Api |
+| postgresql | 42.3.4 | Driver para el SGDB PostgreSQL | 
+| lombok | 1.18.22 |  Dependencia para la automatización de Código |
 
 <hr>
 
@@ -208,7 +233,7 @@
    - [Paso 7) Configuración del Service ComponenteDetalleService](#paso-7-configuración-del-service-componentedetalleservice) 
 
    - [Paso 8)  Configuración del Service ComponenteCapacitorElectroliticoService](#paso-8-configuración-del-service-componentecapacitorelectroliticoservice) 
-   - 
+    
    - [Paso 9) Configuración del Service ComponenteTransistorBipolarService](#paso-9-configuración-del-service-componentetransistorbipolarservice) 
 
 
@@ -238,8 +263,9 @@
    - [Paso 26) Descarga y Configuración de Git](#paso-26-descarga-y-configuración-de-git)
 
    - [Paso 27) Subir el proyecto al repositorio de github desde la consola de git](#paso-27-subir-el-proyecto-al-repositorio-de-github-desde-la-consola-de-git)
+   
    - [Paso 28) Actualización del repositorio del proyecto desde la consola de GIT](#paso-28-actualización-del-repositorio-del-proyecto-desde-la-consola-de-GIT)
-   - 
+  
 
 
 
@@ -342,13 +368,10 @@
 
 
 ```xml
+
 <dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -362,11 +385,7 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc8</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
+			<!-- LOMBOK -->
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -377,6 +396,87 @@
 			<scope>test</scope>
 		</dependency>
 
+
+		<!-- SPRING VALIDATIONS -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+		<!-- PARA TRABAJAR CON LOS VALIDATORS -->
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+
+		<!-- SPRING SECURITY TEST -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- SPRING SECURITY -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- JSON WEB TOKEN -->
+		<!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		
+			<!-- REFRESH TOKEN -->
+		<!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
+		<dependency>
+			<groupId>com.nimbusds</groupId>
+			<artifactId>nimbus-jose-jwt</artifactId>
+			<version>9.22</version>
+		</dependency>
+		
+		
+			<!-- SWAGGER -->
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		
+		<!-- SWAGGER -->
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		
+		
+		<!-- CONVERTIR OBJETOS JAVA EN OBJETOS XML -->
+		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+		</dependency>
+
+		<!-- CONVERTIR OBJETOS JAVA EN OBJETOS JSON -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<!-- API LECTURA DE ANNOTATION -->
+		<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+		</dependency>
 ```
 
 </br>
