@@ -2,13 +2,14 @@
 
 * Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Log4J, Thymeleaf, Bootstrap, JS Vanilla, Oracle y Otras Tecnologías
 * La aplicación consta de todas las Operaciones CRUD a Nivel DB, Paginación de Componentes, Filtros y Búsqueda, Ordenamientos por campos, Generación de Reportes en PDF con openPDF y Excel con Apache POI, Generación de Gráficos de Barras y Áreas con High Charts según el stock del producto en relación al fabricante o categoría, etc. 
-* Se pone a disposición todos los recursos anteriores para únicamente la Tabla Componentes de la Base de Datos. 
+* Se pone a disposición todos los recursos anteriores para únicamente la Tabla Componentes de la Base de Datos.
+* `Importante` : LA API DE ESTE PROYECTO , DESARROLLADA EN SU VERSIÓN V1, ESTÁ INCLUIDA DENTRO DE ESTA APP, EN EL PROYECTO SE APLICA LA LOGICA SIMILAR A LA ORIGINAL CON NUEVAS FUNCIONALIDADES PARA LAS VISTAS, CONTROLLERS, ETC Y LOS RECURSOS NECESARIOS PARA EL USO DE THYMELEAF . 
 
 </br>
 
-* [Repositorio de la Base de Datos del Proyecto](https://github.com/andresWeitzel/db_microelectronica_Oracle).
-* LA API DE ESTE PROYECTO , DESARROLLADA EN SU VERSIÓN V1, ESTÁ INCLUIDA DENTRO DE ESTA APP, EN EL PROYECTO SE APLICA LA LOGICA SIMILAR A LA ORIGINAL CON NUEVAS FUNCIONALIDADES PARA LAS VISTAS, CONTROLLERS, ETC Y LOS RECURSOS NECESARIOS PARA EL USO DE THYMELEAF . [Api Original](https://github.com/andresWeitzel/ApiRest_Microelectronica_SpringBoot_Oracle)
-* (PlayList para la Comprobación de Funcionalidades](https://www.youtube.com/playlist?list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3)
+* [Base de Datos del Proyecto](https://github.com/andresWeitzel/db_microelectronica_Oracle).
+* [Api Base Original](https://github.com/andresWeitzel/ApiRest_Microelectronica_SpringBoot_Oracle)
+* [PlayList para la Comprobación de Funcionalidades](https://www.youtube.com/playlist?list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3)
 
 </br>
 
