@@ -1,4 +1,4 @@
-# App Gestion de Microelectrónica
+# App Gestión de Microelectrónica
 
 * Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Log4J, Thymeleaf, Bootstrap, JS Vanilla, Oracle y Otras Tecnologías
 * La aplicación consta de todas las Operaciones CRUD a Nivel DB, Paginación de Componentes, Filtros y Búsqueda, Ordenamientos por campos, Generación de Reportes en PDF con openPDF y Excel con Apache POI, Generación de Gráficos de Barras y Áreas con High Charts según el stock del producto en relación al fabricante o categoría, etc. 
