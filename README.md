@@ -1,4 +1,4 @@
-![Index app](./doc/inicio/inicioComponentes.png)
+![Index app](./doc/graficos/graficoStockComponentesPorFabricante.png)
 
 <br>
 
@@ -20,7 +20,7 @@
 ### Seguidamente se representa gráficamente de forma sucinta algunos servicios de la Aplicación
 ### Inicio Componentes
 
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/inicio/inicioComponentes.png)
+![Index app](./doc/inicio/inicioComponentes.png)
 
 ### Gráficos de Área y Barra para Stock de Componentes por Categoría y Fabricante
 
