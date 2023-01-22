@@ -384,7 +384,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 
-### 4.0) Otras Configuraciones del Proyecto [🔝](#índice-)
+### 4.1) Otras Configuraciones del Proyecto [🔝](#índice-)
 
 <details>
  <summary></summary>
@@ -423,12 +423,20 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 
+<br>
+
+## `Siguiente sección en proceso de actualización!`
+ 
+<br>
+ 
+<br>
 
 
 
-
-
-
+<details>
+ <summary> Ver </summary>
+ 
+ <br>
 
 
 ## Indice
@@ -880,6 +888,8 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 * git push -f --set-upstream origin master
 
 
-</br>
+ <br>
+
+</details>
 
 
