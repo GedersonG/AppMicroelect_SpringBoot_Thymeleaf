@@ -25,7 +25,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### Sección 2) Endpoints y Recursos 
  
  - [2.0) EndPoints.](#endpoints-)
- - [2.1) Recursos por Endpoints.](#documentación-gráfica-de-recursos-por-endpoints-swagger-ui-)
+ - [2.1) Recursos y Servicios.](#recursos-y-servicios-)
  
  
 ### Sección 3) Prueba de Funcionalidad y Referencias
@@ -186,7 +186,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 
-### 2.1) Recursos por Endpoints. (Swagger UI) [🔝](#índice-)
+### 2.1) Recursos y Servicios [🔝](#índice-)
 
 <details>
  <summary></summary>
@@ -197,39 +197,39 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 ### Gráficos de Área y Barra para Stock de Componentes por Categoría y Fabricante
 
-![Index app](.doc/graficos/graficoStockComponentesPorCategoria.png)
-![Index app](.doc/graficos/graficoStockComponentesPorFabricante.png)
+![Index app](./doc/graficos/graficoStockComponentesPorCategoria.png)
+![Index app](./doc/graficos/graficoStockComponentesPorFabricante.png)
 
 ### Reportes en Excel y PDF para el Listado de Componentes Paginados según N° de Página
 
-![Index app](.doc/utilidades/listadoPaginadoExcel.png)
-![Index app](.doc/utilidades/listadoPaginadoPDF01.png)
-![Index app](.doc/utilidades/listadoPaginadoPDF02.png)
+![Index app](./doc/utilidades/listadoPaginadoExcel.png)
+![Index app](./doc/utilidades/listadoPaginadoPDF01.png)
+![Index app](./doc/utilidades/listadoPaginadoPDF02.png)
 
 ### Listado de Componentes Paginados
 
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/listado/listadoComp.png)
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/listado/listadoCompPaginado01.png)
+![Index app](./doc/listado/listadoComp.png)
+![Index app](./doc/listado/listadoCompPaginado01.png)
 
 
 ### Filtrado de Componentes por Capacitores Electrolíticos
 
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/listado/listadoFiltroCapis.png)
+![Index app](./doc/listado/listadoFiltroCapis.png)
 
 
 ### Formulario Agregar Componente
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/forms/add.png)
+![Index app](./doc/forms/add.png)
 
 ### Vista Eliminar Componente
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/delete/deleteComp.png)
+![Index app](./doc/delete/deleteComp.png)
 
 
 ### Vista Post Actualización de Componente
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/forms/postUpdate.png)
+![Index app](./doc/forms/postUpdate.png)
 
 
 ### Vista Servicio de Ayuda
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/ayuda.png)
+![Index app](./doc/utilidades/ayuda.png)
 
  <br>
 
@@ -239,17 +239,13 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 <br>
 
 
+## Sección 3) Prueba de Funcionalidad y Referencias
 
 
+### 3.0) Prueba de Funcionalidad [🔝](#índice-)
 
-
-
-
-
-
-</br>
-
-### Prueba de Funcionalidad de la App
+<details>
+ <summary></summary>
 
 ### Vistas y Funcionalidades Generales
 [![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/01.00%20Vistas%20y%20Funcionalidades%20Generales.png)](https://www.youtube.com/watch?v=dzbY89HAXCU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=1) 
@@ -304,6 +300,46 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 ###  Formulario Actualizar Componentes
 [![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/11.00%20Formulario%20Actualizar%20Componentes.png)](https://www.youtube.com/watch?v=FCKgRe7esj8&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=12) 
+
+ <br>
+
+</details>
+
+
+### 3.1) Referencias [🔝](#índice-)
+
+<details>
+ <summary></summary>
+
+### Doc No Oficial Recomendada
+ 
+#### Api Rest con Thymeleaf/ Spring Boot
+* [Api Rest Spring Boot thynmeleaf](https://www.udemy.com/course/spring-boot-thymeleaf-mysql-mongodb-api-rest/)
+* [Casos de Usos](https://www.quora.com/Can-you-make-a-REST-API-in-Spring-Boot-having-Thymeleaf-as-the-view-template-in-that-case-what-is-the-benefit-for-it-to-be-a-rest-API-instead-of-a-traditional-MVC)
+* [Crud Thymeleaf](https://www.baeldung.com/spring-boot-crud-thymeleaf)
+
+### Doc Gráfica No Oficial Recomendada
+* [Crud](https://www.youtube.com/watch?v=oF3XmiHgT-I&list=PL_8FSlpwPBDmFEy9Rcj2M_OZTc2NJvfpz)
+* [Spring MVC](https://www.youtube.com/watch?v=elz3vXttR-Q)
+
+ <br>
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
