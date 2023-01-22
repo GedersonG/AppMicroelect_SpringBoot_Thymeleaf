@@ -3,19 +3,139 @@
 <br>
 
 # App Gestión de Microelectrónica
+Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Log4J, Thymeleaf, Bootstrap, JS Vanilla, Oracle y Otras Tecnologías.
 
-* Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Log4J, Thymeleaf, Bootstrap, JS Vanilla, Oracle y Otras Tecnologías
+<br>
+
+## Índice 📜
+
+<details>
+ <summary> Ver </summary>
+ 
+ <br>
+ 
+### Sección 1) Descripción, Tecnologías y Dependencias 
+ 
+ - [1.0) Descripción del Proyecto.](#10-descripción-)
+ - [1.1) Patrones de Diseño.](#11-patrones-de-diseño-)
+ - [1.2) Tecnologías.](#12-tecnologías-)
+     - [1.2.1) Descargas.](#121-descargas)
+ - [1.3) Dependencias Maven.](#13-dependencias-maven-)
+ 
+### Sección 2) Endpoints y Recursos 
+ 
+ - [2.0) EndPoints.](#endpoints-)
+ - [2.1) Recursos por Endpoints.](#documentación-gráfica-de-recursos-por-endpoints-swagger-ui-)
+ 
+ 
+### Sección 3) Prueba de Funcionalidad y Referencias
+ 
+ - [3.0) Prueba de Funcionalidad.](#30-prueba-de-funcionalidad-)
+ - [3.1) Referencias.](#31-referencias-)
+
+</details>
+
+
+<br>
+
+## Sección 1) Descripción, Tecnologías y Dependencias 
+
+
+### 1.0) Descripción [🔝](#índice-) 
+
+<details>
+ <summary></summary>
+ 
+ <br>
+
 * La aplicación consta de todas las Operaciones CRUD a Nivel DB, Paginación de Componentes, Filtros y Búsqueda, Ordenamientos por campos, Generación de Reportes en PDF con openPDF y Excel con Apache POI, Generación de Gráficos de Barras y Áreas con High Charts según el stock del producto en relación al fabricante o categoría, etc. 
 * Se pone a disposición todos los recursos anteriores para únicamente la Tabla Componentes de la Base de Datos.
 * `Importante` : LA API DE ESTE PROYECTO , DESARROLLADA EN SU VERSIÓN V1, ESTÁ INCLUIDA DENTRO DE ESTA APP, EN EL PROYECTO SE APLICA LA LOGICA SIMILAR A LA ORIGINAL CON NUEVAS FUNCIONALIDADES PARA LAS VISTAS, CONTROLLERS, ETC Y LOS RECURSOS NECESARIOS PARA EL USO DE THYMELEAF . 
 
-</br>
+<br>
 
 * [Base de Datos del Proyecto](https://github.com/andresWeitzel/db_microelectronica_Oracle).
-* [Api Base Original](https://github.com/andresWeitzel/ApiRest_Microelectronica_SpringBoot_Oracle)
+* [Api Base (La actualizada está en este proyecto app)](https://github.com/andresWeitzel/ApiRest_Microelectronica_SpringBoot_Oracle)
 * [PlayList para la Comprobación de Funcionalidades](https://www.youtube.com/playlist?list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3)
 
+<br>
+
+</details>
+
+
+### 1.1) Patrones de Diseño [🔝](#índice-) 
+
+| **Patrón de Diseño** | **Finalidad** |               
+| ------------- | ------------- |
+| [DAO](https://www.oscarblancarteblog.com/2018/12/10/data-access-object-dao-pattern/) | Uso de interfaces entre la aplicación y el almacenamiento de datos. |
+| [MVC](https://keepcoding.io/blog/que-es-el-patron-de-arquitectura-mvvm/) | Separación y Representación de los Datos, Manejo de errores, Escalabilidad, etc  |
+
+<br>
+
+</details>
+
+
+### 1.2) Tecnologías [🔝](#índice-)
+
+<details>
+ <summary></summary>
+ 
+ <br>
+
+| **Tecnologías** | **Versión** | **Finalidad** |               
+| ------------- | ------------- | ------------- |
+| [Java](https://docs.oracle.com/en/) |  12.0.2 | JDK |
+| [Spring Tool Suite 4](https://spring.io/blog/2021/06/21/spring-tools-4-11-0-released) | 4.9.0  | IDE |
+| [Spring Boot](https://spring.io/) |  2.6.4  | Framework |
+| [Spring Boot Data JPA](https://spring.io/projects/spring-data-jpa)  | 2.6.3 | Mapeo de objetos y persistencia en la db |
+| [Spring Validation](https://www.baeldung.com/spring-boot-bean-validation)  | 2.7 | Anotations para Validaciones |
+| [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/) | 5.1 | Framework Maquetación |
+| [Thymeleaf](https://www.thymeleaf.org/) | 2.6.4 | Plantillas para el Front | 
+| [Maven](https://maven.apache.org/) |  4.0.0 | Gestor de Proyectos |
+| [Lombok](https://projectlombok.org/) | 1.18.22 | Automatización de Código | 
+| [UI Swagger](https://swagger.io/tools/swagger-ui/) | 3.0.0 | Visualización y Gestión de la Api | 
+| [Postman](https://www.postman.com/) | 9.1.1 | Visualización y Gestión de la Api | 
+| Maven |  4.0.0 | Gestor de Proyectos |
+| Oracle XE 21c | 21.4.1 | Sistema de Gestión de Bases de Datos |
+| SQL Developer | 21.4.1  | Editor de Base de Datos |
+| CMD | 10 | Símbolo del Sistema para linea de comandos | 
+| GNU bash / Terminal | 4.4.23  | Bash / Terminal para el manejo e implementación de Git integrado al Spring Tool Suite | 
+| Git | 2.29.1  | Control de Versiones |
+
+
 </br>
+
+### Descarga y Documentacion de las Tecnologías Implementadas
+
+| **Tecnologías**  | **Descarga** | **Documentación** |               
+| ------------- | ------------- | ------------- |
+| Java-JDK 12 | https://www.oracle.com/java/technologies/javase/jdk12-archive-downloads.html |  https://docs.oracle.com/en/ |
+| Spring Tool Suite 4 |https://spring.io/tools | https://spring.io/guides |
+| Lombok | https://projectlombok.org/download | https://projectlombok.org/download |
+| Maven Repository | https://mvnrepository.com/ | https://mvnrepository.com/ | 
+| PostMan | https://www.postman.com/downloads/ | https://www.postman.com/product/what-is-postman/ |
+| Oracle | https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html | https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html|
+| SQL Developer | https://www.oracle.com/tools/downloads/sqldev-downloads.html | https://www.oracle.com/tools/downloads/sqldev-downloads.html |
+| Git  | https://git-scm.com/downloads |  https://git-scm.com/docs |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Seguidamente se representa gráficamente de forma sucinta algunos servicios de la Aplicación
 ### Inicio Componentes
@@ -126,56 +246,7 @@
 </hr>
 
 
-</br>
 
-### Tecnologías Implementadas
-
-| **Tecnologías** | **Versión** | **Finalidad** |               
-| ------------- | ------------- | ------------- |
-| Java |   12 | JDK |
-| Spring Tool Suite 4 | 4.9.0  | IDE |
-| Spring Boot |   2.6.4  | Framework |
-| Spring Boot Data JPA  | 2.6.3 | Mapeo de objetos y persistencia en la db |
-| Spring Validation  | 2.7 | Anotations para Validaciones |
-| Bootstrap | 5.1 | Framework Maquetación |
-| Thymeleaf | 2.6.4 | Plantillas para el Front | 
-| Maven |  4.0.0 | Gestor de Proyectos |
-| Lombok | 1.18.22 | Automatización de Código | 
-| Swagger UI | 3.0.0 | Visualización y Gestión de la Api | 
-| Postman | 9.1.1 | Visualización y Gestión de la Api | 
-| Maven |  4.0.0 | Gestor de Proyectos |
-| Oracle XE 21c | 21.4.1 | Sistema de Gestión de Bases de Datos |
-| SQL Developer | 21.4.1  | Editor de Base de Datos |
-| CMD | 10 | Símbolo del Sistema para linea de comandos | 
-| GNU bash / Terminal | 4.4.23  | Bash / Terminal para el manejo e implementación de Git integrado al Spring Tool Suite | 
-| Git | 2.29.1  | Control de Versiones |
-
-
-</br>
-
-### Descarga y Documentacion de las Tecnologías Implementadas
-
-| **Tecnologías**  | **Descarga** | **Documentación** |               
-| ------------- | ------------- | ------------- |
-| Java-JDK 12 | https://www.oracle.com/java/technologies/javase/jdk12-archive-downloads.html |  https://docs.oracle.com/en/ |
-| Spring Tool Suite 4 |https://spring.io/tools | https://spring.io/guides |
-| Lombok | https://projectlombok.org/download | https://projectlombok.org/download |
-| Maven Repository | https://mvnrepository.com/ | https://mvnrepository.com/ | 
-| PostMan | https://www.postman.com/downloads/ | https://www.postman.com/product/what-is-postman/ |
-| Oracle | https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html | https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html|
-| SQL Developer | https://www.oracle.com/tools/downloads/sqldev-downloads.html | https://www.oracle.com/tools/downloads/sqldev-downloads.html |
-| Git  | https://git-scm.com/downloads |  https://git-scm.com/docs |
-
-</br>
-
-### Patrones de Diseño Implementados
-
-| **Patrón de Diseño** | **Finalidad** |               
-| ------------- | ------------- |
-| DAO | Uso de interfaces entre la aplicación y el almacenamiento de datos. |
-| MVC | Separación y Representación de los Datos, Manejo de errores, Escalabilidad, etc  |
-
-</br>
 
 ### Dependencias Implementadas
 
