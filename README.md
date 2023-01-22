@@ -37,10 +37,10 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
  
  - [4.0) Creación con Maven en Spring Tool Suite 4.](#40-creación-con-maven-en-spring-tool-suite-4-)
  - [4.1) Otras Configuraciones del Proyecto.](#41-otras-configuraciones-del-proyecto-)
-	
+
+<br>
 
 </details>
-
 
 <br>
 
