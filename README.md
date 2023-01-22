@@ -168,32 +168,43 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 <br>
 
 
+## Sección 2) EndPoints y Recursos
+
+### 2.0) EndPoints [🔝](#índice-)
+
+<details>
+ <summary></summary>
+ 
+* http://localhost:8098/v1/componentes
+* http://localhost:8098/v1/componentes-detalles
+* http://localhost:8098/v1/componentes-transistores-bipolares
+* http://localhost:8098/v1/componentes-capacitores-electroliticos
+
+<br>
+
+</details>
 
 
 
+### 2.1) Recursos por Endpoints. (Swagger UI) [🔝](#índice-)
 
+<details>
+ <summary></summary>
 
-
-
-
-
-
-
-### Seguidamente se representa gráficamente de forma sucinta algunos servicios de la Aplicación
 ### Inicio Componentes
 
 ![Index app](./doc/inicio/inicioComponentes.png)
 
 ### Gráficos de Área y Barra para Stock de Componentes por Categoría y Fabricante
 
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/graficos/graficoStockComponentesPorCategoria.png)
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/graficos/graficoStockComponentesPorFabricante.png)
+![Index app](.doc/graficos/graficoStockComponentesPorCategoria.png)
+![Index app](.doc/graficos/graficoStockComponentesPorFabricante.png)
 
 ### Reportes en Excel y PDF para el Listado de Componentes Paginados según N° de Página
 
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/listadoPaginadoExcel.png)
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/listadoPaginadoPDF01.png)
-![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/listadoPaginadoPDF02.png)
+![Index app](.doc/utilidades/listadoPaginadoExcel.png)
+![Index app](.doc/utilidades/listadoPaginadoPDF01.png)
+![Index app](.doc/utilidades/listadoPaginadoPDF02.png)
 
 ### Listado de Componentes Paginados
 
@@ -220,7 +231,17 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### Vista Servicio de Ayuda
 ![Index app](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/utilidades/ayuda.png)
 
-<hr>
+ <br>
+
+</details>
+
+
+<br>
+
+
+
+
+
 
 
 
