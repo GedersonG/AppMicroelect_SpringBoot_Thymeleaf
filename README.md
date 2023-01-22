@@ -55,8 +55,8 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 <br>
 
 * [Base de Datos del Proyecto](https://github.com/andresWeitzel/db_microelectronica_Oracle).
-* [Api Base (La actualizada está en este proyecto app)](https://github.com/andresWeitzel/ApiRest_Microelectronica_SpringBoot_Oracle)
 * [PlayList para la Comprobación de Funcionalidades](https://www.youtube.com/playlist?list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3)
+* La Api Rest de este proyecto está incluida
 
 <br>
 
@@ -64,6 +64,11 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 ### 1.1) Patrones de Diseño [🔝](#índice-) 
+
+<details>
+ <summary></summary>
+ 
+ <br>
 
 | **Patrón de Diseño** | **Finalidad** |               
 | ------------- | ------------- |
@@ -95,30 +100,37 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 | [Lombok](https://projectlombok.org/) | 1.18.22 | Automatización de Código | 
 | [UI Swagger](https://swagger.io/tools/swagger-ui/) | 3.0.0 | Visualización y Gestión de la Api | 
 | [Postman](https://www.postman.com/) | 9.1.1 | Visualización y Gestión de la Api | 
-| Maven |  4.0.0 | Gestor de Proyectos |
-| Oracle XE 21c | 21.4.1 | Sistema de Gestión de Bases de Datos |
-| SQL Developer | 21.4.1  | Editor de Base de Datos |
-| CMD | 10 | Símbolo del Sistema para linea de comandos | 
-| GNU bash / Terminal | 4.4.23  | Bash / Terminal para el manejo e implementación de Git integrado al Spring Tool Suite | 
-| Git | 2.29.1  | Control de Versiones |
+| [Oracle XE 21c](https://www.oracle.com/database/technologies/appdev/xe.html#:~:text=Whether%20you%20are%20a%20developer,and%20a%20full%2Dfeatured%20experience.) | 21.4.1 | Sistema de Gestión de Bases de Datos |
+| [SQL Developer](https://www.oracle.com/database/sqldeveloper/) | 21.4.1  | Editor de Base de Datos |
+| [CMD](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cmd) | 10 | Símbolo del Sistema para linea de comandos | 
+| [GNU bash / Terminal](https://www.gnu.org/software/bash/) | 4.4.23  | Bash / Terminal para el manejo e implementación de Git integrado al Spring Tool Suite | 
+| [Git](https://git-scm.com/) | 2.29.1  | Control de Versiones |
+
+<br>
+
+</details>
+
+### 1.2.1) Descargas [🔝](#índice-)
+
+<details>
+ <summary></summary>
+ 
+ <br>
+ 
+ 
+* [Java-JDK 12](https://www.oracle.com/java/technologies/javase/jdk12-archive-downloads.html)
+* [Spring Tool Suite 4](https://spring.io/tools)
+* [Lombok](https://projectlombok.org/download )
+* [Postman](https://www.postman.com/downloads/)
+* [Oracle](https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html)
+* [SQL Developer](https://www.oracle.com/tools/downloads/sqldev-downloads.html)
+* [MongoDB Compass](https://www.mongodb.com/try/download/compass)
+* [Git](https://git-scm.com/downloads)
 
 
-</br>
+<br>
 
-### Descarga y Documentacion de las Tecnologías Implementadas
-
-| **Tecnologías**  | **Descarga** | **Documentación** |               
-| ------------- | ------------- | ------------- |
-| Java-JDK 12 | https://www.oracle.com/java/technologies/javase/jdk12-archive-downloads.html |  https://docs.oracle.com/en/ |
-| Spring Tool Suite 4 |https://spring.io/tools | https://spring.io/guides |
-| Lombok | https://projectlombok.org/download | https://projectlombok.org/download |
-| Maven Repository | https://mvnrepository.com/ | https://mvnrepository.com/ | 
-| PostMan | https://www.postman.com/downloads/ | https://www.postman.com/product/what-is-postman/ |
-| Oracle | https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html | https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html|
-| SQL Developer | https://www.oracle.com/tools/downloads/sqldev-downloads.html | https://www.oracle.com/tools/downloads/sqldev-downloads.html |
-| Git  | https://git-scm.com/downloads |  https://git-scm.com/docs |
-
-
+</details>
 
 
 
