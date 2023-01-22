@@ -36,6 +36,8 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### Sección 4) Creación y Configuración Proyecto Spring Boot desde cero
  
  - [4.0) Creación con Maven en Spring Tool Suite 4.](#40-creación-con-maven-en-spring-tool-suite-4-)
+ - [4.1) Otras Configuraciones del Proyecto.](#41-otras-configuraciones-del-proyecto-)
+	
 
 </details>
 
@@ -382,6 +384,46 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 
+### 4.0) Otras Configuraciones del Proyecto [🔝](#índice-)
+
+<details>
+ <summary></summary>
+	
+#### (Para este paso se anexan configuraciones que para el Proyecto son relevantes, capaz creando el Proyecto desde otro IDE se autoconfiguran dichas configuraciones).
+
+#### 4.0.1) Actualización de Java-1.7 a 1.8 (Si seleccionaste una versión Moderna de Spring no es Necesario esto)
+
+* Vamos al `pom.xml` (el archivo al final de todo)
+
+* Dentro de el tag `properties` donde dice java.versión cambiar la version del compiler a 1.8, ctrl+s para guardar
+
+* Click Derecho sobre el Proyecto
+	* --> Maven
+	* --> Update Proyect
+	* --> Fijate que el Proyecto este seleccionado y Boton ok
+
+* Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
+
+</br>
+
+#### 4.0.2) Paquetes Maven `(Java Resources)`. (Si seleccionaste una versión Moderna de Spring no es Necesario esto)
+
+* Por Defecto Viene deshabilitada la opción de paquetes Maven, en donde vamos a guardar nuestros paquetes y clases
+	* --> Para habilitar las mismas, click Der sobre el Proyecto.
+	* --> Properties.
+	* --> Buscamos la sección `Java Build Path`
+	* --> Seleccionamos la casilla `Maven Dependencies`.
+	* --> Apply and Close.
+	* --> F5 y deberían aparecer `src/main/java` y `src/test/java`
+
+
+ <br>
+
+</details>
+
+
+
+
 
 
 
@@ -390,13 +432,6 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 ## Indice
-
-#### Sección 1) Creación y Configuraciones del Proyecto 
-   
-   - [Paso 1) Creación y Configuraciones de un Proyecto Spring Boot con Maven en Spring Tool Suite 4.](#paso-1-creación-de-un-proyecto-spring-boot-con-maven-en-spring-tool-suite-4-y-configuraciones-iniciales)
-  
-   - [Paso 2) Otras Configuraciones del Proyecto.](#paso-2-otras-configuraciones-del-proyecto)
-
 
 #### Sección 2) Dependencias del Proyecto, Descarga de Lombok y Archivo de Propiedades
    
@@ -450,51 +485,6 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
    
    - [Paso 28) Actualización del repositorio del proyecto desde la consola de GIT](#paso-28-actualización-del-repositorio-del-proyecto-desde-la-consola-de-GIT)
   
-
-
-
-
-</br>
-
-## Sección 1) Creación y Configuraciones del Proyecto 
-
-</br>
-
-
-
-
-
-### Paso 2) Otras Configuraciones del Proyecto.
-#### (Para este paso se anexan configuraciones que para el Proyecto son relevantes, capaz creando el Proyecto desde otro IDE se autoconfiguran dichas configuraciones).
-
-</br>
-
-#### 2.1) Actualización de Java-1.7 a 1.8 (Si seleccionaste una versión Moderna de Spring no es Necesario esto)
-
-* Vamos al `pom.xml` (el archivo al final de todo)
-
-* Dentro de el tag `properties` donde dice java.versión cambiar la version del compiler a 1.8, ctrl+s para guardar
-
-* Click Derecho sobre el Proyecto
-	* --> Maven
-	* --> Update Proyect
-	* --> Fijate que el Proyecto este seleccionado y Boton ok
-
-* Si cambio JavaSE-1.7 a JavaSE-1.8 se efectuo el cambio
-
-</br>
-
-#### 2.2) Paquetes Maven `(Java Resources)`. (Si seleccionaste una versión Moderna de Spring no es Necesario esto)
-
-* Por Defecto Viene deshabilitada la opción de paquetes Maven, en donde vamos a guardar nuestros paquetes y clases
-	* --> Para habilitar las mismas, click Der sobre el Proyecto.
-	* --> Properties.
-	* --> Buscamos la sección `Java Build Path`
-	* --> Seleccionamos la casilla `Maven Dependencies`.
-	* --> Apply and Close.
-	* --> F5 y deberían aparecer `src/main/java` y `src/test/java`
-
-
 
 
 
