@@ -32,6 +32,10 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
  
  - [3.0) Prueba de Funcionalidad.](#30-prueba-de-funcionalidad-)
  - [3.1) Referencias.](#31-referencias-)
+	
+### Sección 4) Creación y Configuración Proyecto Spring Boot desde cero
+ 
+ - [4.0) Creación con Maven en Spring Tool Suite 4.](#40-creación-con-maven-en-spring-tool-suite-4-)
 
 </details>
 
@@ -326,6 +330,54 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 </details>
 
+<br>
+
+
+## Sección 4) Creación y Configuración Proyecto Spring Boot desde cero
+
+
+### 4.0) Creación con Maven en Spring Tool Suite 4 [🔝](#índice-)
+
+<details>
+ <summary></summary>
+
+* Primeramente deberás configurar tu espacio de trabajo, en donde se alojará la aplicación. Cada vez que muevas el Proyecto de Directorio, recomiendo crear o setear nuevamente el Espacio de Trabajo.
+	
+* Una vez abierto Spring Tool Suite 4
+  	* --> Seleccionas la Pestaña `File` 
+   	* --> New 
+   	* --> Spring Starter Proyect (Si no aparece buscar en Other).
+
+* Se abrirá una Interfaz Gráfica, por defecto dejar marcado lo siguiente con los siguientes valores por defecto
+   	 * --> Service Url : https://start.spring.io
+   	 * --> Use default location por defecto (es la ruta absoluta de tu workspace)
+   	 * --> Type : Maven
+	 * --> Java Version : 8
+	 * --> Packaging : Jar
+	 * --> Language : Java
+	 * --> Artifact : Por Defecto como está (cambia automáticamente cuando escribimos el Name del Proyect)
+	  * --> Version  : Por Defecto como está
+	  * --> Working Sets Desmarcado.
+
+* Configuramos lo restante
+   * --> Name : GestionMicroelectronica (Nombre del proyecto, en mi caso este). Debe cambiarse aut. el Artifact
+   * --> Group : com.gestion.microelectronica (Nombre del grupo, en mi caso este).
+   * --> Description: Creación de una Aplicación Web para la Gestión de Productos de Microelectrónica  (en mi caso).
+   * --> Package : com.gestion.microelectronica (Nombre del grupo, este en mi caso).
+   * --> Next
+
+* En la Nueva Interfaz Gráfica elegimos la versión y dependencia
+   * --> Spring Boot Versión : 2.6.4 o una que no sea la última
+   * --> Vamos a seleccionar las dependencias necesarias
+   * --> Dependencias : Spring Web, Spring Data JPA, Spring Boot DevTools, Lombok, Thymeleaf y Oracle Driver
+   * --> Next, Next y Seguidamente Finish.
+
+* Esperar a que finalice Spring la creación del Proyecto
+
+
+ <br>
+
+</details>
 
 
 
@@ -336,22 +388,6 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 
-
-
-
-
-
-
-
-
-## ` Documentación y Guía del Proyecto `
-#### (Esta Documentación que Desarrollé es para la Creación y Configuración del Proyecto, Manejo y Dependencias de Maven, Spring Tool Suite, Spring Booot, Hibernate-JPA, Oracle, Thymeleaf,  Servidor de Despliegue y otros usos. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
-
-</br>
-
-### ` ESTA DOCUMENTACIÓN ESTÁ PENDIENTE DE REVISIÓN, MODIFICACIÓN Y ACTUALIZACIÓN `
-
-</br>
 
 ## Indice
 
@@ -425,43 +461,6 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 </br>
 
 
-### Paso 1) Creación de un Proyecto Spring Boot con Maven en Spring Tool Suite 4 y Configuraciones Iniciales.
-#### (Primeramente deberás configurar tu espacio de trabajo, en donde se alojará la aplicación. Cada vez que muevas el Proyecto de Directorio, recomiendo crear o setear nuevamente el Espacio de Trabajo).
-
-
-* Una vez abierto Spring Tool Suite 4
-  	* --> Seleccionas la Pestaña `File` 
-   	* --> New 
-   	* --> Spring Starter Proyect (Si no aparece buscar en Other).
-
-* Se abrirá una Interfaz Gráfica, por defecto dejar marcado lo siguiente con los siguientes valores por defecto
-   	 * --> Service Url : https://start.spring.io
-   	 * --> Use default location por defecto (es la ruta absoluta de tu workspace)
-   	 * --> Type : Maven
-	 * --> Java Version : 8
-	 * --> Packaging : Jar
-	 * --> Language : Java
-	 * --> Artifact : Por Defecto como está (cambia automáticamente cuando escribimos el Name del Proyect)
-	  * --> Version  : Por Defecto como está
-	  * --> Working Sets Desmarcado.
-
-* Configuramos lo restante
-   * --> Name : GestionMicroelectronica (Nombre del proyecto, en mi caso este). Debe cambiarse aut. el Artifact
-   * --> Group : com.gestion.microelectronica (Nombre del grupo, en mi caso este).
-   * --> Description: Creación de una Aplicación Web para la Gestión de Productos de Microelectrónica  (en mi caso).
-   * --> Package : com.gestion.microelectronica (Nombre del grupo, este en mi caso).
-   * --> Next
-
-* En la Nueva Interfaz Gráfica elegimos la versión y dependencia
-   * --> Spring Boot Versión : 2.6.4 o una que no sea la última
-   * --> Vamos a seleccionar las dependencias necesarias
-   * --> Dependencias : Spring Web, Spring Data JPA, Spring Boot DevTools, Lombok, Thymeleaf y Oracle Driver
-   * --> Next, Next y Seguidamente Finish.
-
-* Esperar a que finalice Spring la creación del Proyecto
-
-
-</br>
 
 
 
