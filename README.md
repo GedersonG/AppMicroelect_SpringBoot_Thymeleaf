@@ -423,18 +423,31 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+ 
+<br>
+
 <br>
 
 ## `Siguiente sección en proceso de actualización!`
  
-<br>
- 
-<br>
-
 
 
 <details>
- <summary> Ver </summary>
+ <summary></summary>
  
  <br>
 
@@ -793,30 +806,6 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
  * Seguidamente creamos un archivo de tipo HTML dentro del directorio templates , click derecho sobre templates (src/main/resources/templates)
  * Buscamos en Other html, selecionamos html file, asignamos el nombre `componentes.html`
  * 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
