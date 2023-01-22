@@ -50,7 +50,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 * La aplicación consta de todas las Operaciones CRUD a Nivel DB, Paginación de Componentes, Filtros y Búsqueda, Ordenamientos por campos, Generación de Reportes en PDF con openPDF y Excel con Apache POI, Generación de Gráficos de Barras y Áreas con High Charts según el stock del producto en relación al fabricante o categoría, etc. 
 * Se pone a disposición todos los recursos anteriores para únicamente la Tabla Componentes de la Base de Datos.
-* `Importante` : LA API DE ESTE PROYECTO , DESARROLLADA EN SU VERSIÓN V1, ESTÁ INCLUIDA DENTRO DE ESTA APP, EN EL PROYECTO SE APLICA LA LOGICA SIMILAR A LA ORIGINAL CON NUEVAS FUNCIONALIDADES PARA LAS VISTAS, CONTROLLERS, ETC Y LOS RECURSOS NECESARIOS PARA EL USO DE THYMELEAF . 
+* `Importante` : La api de este proyecto, desarrolada en su versión V1 está incluida dentro de esta app. En el proyecto se aplica la lógica similar a la original con nuevas funcionalidades para las vistas, controllers, etc. También los recursos necesarios para el uso de Thymeleaf.
 
 <br>
 
@@ -117,7 +117,6 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
  
  <br>
  
- 
 * [Java-JDK 12](https://www.oracle.com/java/technologies/javase/jdk12-archive-downloads.html)
 * [Spring Tool Suite 4](https://spring.io/tools)
 * [Lombok](https://projectlombok.org/download )
@@ -134,8 +133,39 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 
+### 1.3) Dependencias Maven [🔝](#índice-)
+
+<details>
+ <summary></summary>
+ 
+ <br>
+
+| **Dependencia Maven**  | **Versión** | **Finalidad** |             
+| ------------- | ------------- | ------------- |
+| spring-boot-starter-data-jpa | 2.6.7 | Api de JpaRepository para el manejo de métodos | 
+| spring-boot-starter-test | 2.6.7 | Para Testing | 
+| spring-boot-starter-web | 2.6.7 | Se agrega toda la configuración web automáticamente de Maven a Spring | 
+| spring-boot-starter-validation | 2.7.0 | Validación de Annotations |
+| spring-boot-devtools | 2.6.7 | Herramientas para el Manejo de Spring Boot | 
+| spring-boot-starter-thymeleaf | 2.6.4 | Plantillas para el Front |
+| jaxb-api | 4.0 | Serialización de Objetos Java a XML |
+| jackson-databind | 4.0 | Serialización de Objetos Java a JSON |
+| javax-annotation-api | 4.0 | Api para la lectura de annotations|
+| ojdbc8 | 21.3.0.0 | Driver para el SGDB Oracle | 
+| lombok | 1.18.22 |  Dependencia para la automatización de Código |
+| openpdf | 1.3.27 |  Generación de Reportes en Formato PDF |
+| poi | 5.2.0 |  Generación de Reportes en Formato EXCEL |
+| poi-ooxml | 5.2.0 |  Manejo de  Recursos Formato EXCEL |
+| springfox-swagger-ui | 3.0.0 | Doc Api |
+| postgresql | 42.3.4 | Driver para el SGDB PostgreSQL | 
+| lombok | 1.18.22 |  Dependencia para la automatización de Código |
+
+<br>
+
+</details>
 
 
+<br>
 
 
 
@@ -255,34 +285,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 [![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/11.00%20Formulario%20Actualizar%20Componentes.png)](https://www.youtube.com/watch?v=FCKgRe7esj8&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=12) 
 
 
-</hr>
 
-
-
-
-### Dependencias Implementadas
-
-| **Dependencia Maven**  | **Versión** | **Finalidad** |             
-| ------------- | ------------- | ------------- |
-| spring-boot-starter-data-jpa | 2.6.7 | Api de JpaRepository para el manejo de métodos | 
-| spring-boot-starter-test | 2.6.7 | Para Testing | 
-| spring-boot-starter-web | 2.6.7 | Se agrega toda la configuración web automáticamente de Maven a Spring | 
-| spring-boot-starter-validation | 2.7.0 | Validación de Annotations |
-| spring-boot-devtools | 2.6.7 | Herramientas para el Manejo de Spring Boot | 
-| spring-boot-starter-thymeleaf | 2.6.4 | Plantillas para el Front |
-| jaxb-api | 4.0 | Serialización de Objetos Java a XML |
-| jackson-databind | 4.0 | Serialización de Objetos Java a JSON |
-| javax-annotation-api | 4.0 | Api para la lectura de annotations|
-| ojdbc8 | 21.3.0.0 | Driver para el SGDB Oracle | 
-| lombok | 1.18.22 |  Dependencia para la automatización de Código |
-| openpdf | 1.3.27 |  Generación de Reportes en Formato PDF |
-| poi | 5.2.0 |  Generación de Reportes en Formato EXCEL |
-| poi-ooxml | 5.2.0 |  Manejo de  Recursos Formato EXCEL |
-| springfox-swagger-ui | 3.0.0 | Doc Api |
-| postgresql | 42.3.4 | Driver para el SGDB PostgreSQL | 
-| lombok | 1.18.22 |  Dependencia para la automatización de Código |
-
-<hr>
 
 ## ` Documentación y Guía del Proyecto `
 #### (Esta Documentación que Desarrollé es para la Creación y Configuración del Proyecto, Manejo y Dependencias de Maven, Spring Tool Suite, Spring Booot, Hibernate-JPA, Oracle, Thymeleaf,  Servidor de Despliegue y otros usos. Recomiendo Leerla y Realizar todo paso a paso como se indica en la misma).
