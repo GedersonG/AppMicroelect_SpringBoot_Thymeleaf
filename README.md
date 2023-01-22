@@ -1,3 +1,7 @@
+![Index app](./doc/inicio/inicioComponentes.png)
+
+<br>
+
 # App Gestión de Microelectrónica
 
 * Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Log4J, Thymeleaf, Bootstrap, JS Vanilla, Oracle y Otras Tecnologías
