@@ -50,7 +50,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 1.0) Descripción [🔝](#índice-) 
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
  
  <br>
 
@@ -72,7 +72,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 1.1) Patrones de Diseño [🔝](#índice-) 
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
  
  <br>
 
@@ -89,7 +89,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 1.2) Tecnologías [🔝](#índice-)
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
  
  <br>
 
@@ -119,7 +119,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 1.2.1) Descargas [🔝](#índice-)
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
  
  <br>
  
@@ -142,7 +142,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 1.3) Dependencias Maven [🔝](#índice-)
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
  
  <br>
 
@@ -179,7 +179,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 2.0) EndPoints [🔝](#índice-)
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
  
 * http://localhost:8098/v1/componentes
 * http://localhost:8098/v1/componentes-detalles
@@ -195,7 +195,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 2.1) Recursos y Servicios [🔝](#índice-)
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
 
 ### Inicio Componentes
 
@@ -251,7 +251,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 3.0) Prueba de Funcionalidad [🔝](#índice-)
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
 
 ### Vistas y Funcionalidades Generales
 [![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/01.00%20Vistas%20y%20Funcionalidades%20Generales.png)](https://www.youtube.com/watch?v=dzbY89HAXCU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=1) 
@@ -315,7 +315,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 3.1) Referencias [🔝](#índice-)
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
 
 ### Doc No Oficial Recomendada
  
@@ -341,7 +341,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 4.0) Creación con Maven en Spring Tool Suite 4 [🔝](#índice-)
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
 
 * Primeramente deberás configurar tu espacio de trabajo, en donde se alojará la aplicación. Cada vez que muevas el Proyecto de Directorio, recomiendo crear o setear nuevamente el Espacio de Trabajo.
 	
@@ -387,7 +387,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 ### 4.1) Otras Configuraciones del Proyecto [🔝](#índice-)
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
 	
 #### (Para este paso se anexan configuraciones que para el Proyecto son relevantes, capaz creando el Proyecto desde otro IDE se autoconfiguran dichas configuraciones).
 
@@ -447,7 +447,7 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
 
 
 <details>
- <summary></summary>
+ <summary>Ver</summary>
  
  <br>
 
