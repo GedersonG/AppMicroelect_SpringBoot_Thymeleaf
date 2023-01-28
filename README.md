@@ -4,6 +4,7 @@
 
 # App Gestión de Microelectrónica
 Aplicación Web para la Gestión de Productos de Microelectrónica implementando Spring Boot, Spring Data JPA, Maven, Lombok, Log4J, Thymeleaf, Bootstrap, JS Vanilla, Oracle y Otras Tecnologías.
+* [Base de Datos del Proyecto](https://github.com/andresWeitzel/db_microelectronica_Oracle).
 
 <br>
 
