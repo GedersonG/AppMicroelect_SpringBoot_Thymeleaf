@@ -255,58 +255,58 @@ Aplicación Web para la Gestión de Productos de Microelectrónica implementando
  <summary>Ver</summary>
 
 ### Vistas y Funcionalidades Generales
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/01.00%20Vistas%20y%20Funcionalidades%20Generales.png)](https://www.youtube.com/watch?v=dzbY89HAXCU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=1) 
+[![Alt text](./doc/ytPlaylist/01.00%20Vistas%20y%20Funcionalidades%20Generales.png)](https://www.youtube.com/watch?v=dzbY89HAXCU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=1) 
 
 
 
 ### Tabla y Filtros de Componentes por Categoría
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/02.00%20Tabla%20y%20Filtros%20de%20Componentes%20por%20Categor%C3%ADa.png)](https://www.youtube.com/watch?v=xSXhPNUD_Nk&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=2) 
+[![Alt text](./doc/ytPlaylist/02.00%20Tabla%20y%20Filtros%20de%20Componentes%20por%20Categor%C3%ADa.png)](https://www.youtube.com/watch?v=xSXhPNUD_Nk&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=2) 
 
 
 
 ### Buscador de Componentes con Filtro Genérico
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/03.00%20Buscador%20de%20Componentes%20con%20Filtro%20Gen%C3%A9rico.png)](https://www.youtube.com/watch?v=O4Z0GXbP63Y&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=3) 
+[![Alt text](./doc/ytPlaylist/03.00%20Buscador%20de%20Componentes%20con%20Filtro%20Gen%C3%A9rico.png)](https://www.youtube.com/watch?v=O4Z0GXbP63Y&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=3) 
 
 
 ### Paginación de Componentes y Ordenamientos
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/04.00%20Paginaci%C3%B3n%20de%20Componentes%20y%20Ordenamientos.png)](https://www.youtube.com/watch?v=HbFeZKLEq1I&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=4) 
+[![Alt text](./doc/ytPlaylist/04.00%20Paginaci%C3%B3n%20de%20Componentes%20y%20Ordenamientos.png)](https://www.youtube.com/watch?v=HbFeZKLEq1I&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=4) 
 
 
 
 ### Descarga de Componentes Archivos PDF y XLSX
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/05.00%20Descarga%20de%20Componentes%20Archivos%20PDF%20y%20XLSX.png)](https://www.youtube.com/watch?v=pitT4UjD4lk&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=5) 
+[![Alt text](./doc/ytPlaylist/05.00%20Descarga%20de%20Componentes%20Archivos%20PDF%20y%20XLSX.png)](https://www.youtube.com/watch?v=pitT4UjD4lk&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=5) 
 
 
 
 ### Gráficos de BarraÁrea Stock de Comp. por Categoría
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/06.00%20Gr%C3%A1ficos%20de%20Barra%C3%81rea%20Stock%20de%20Comp.%20por%20Categor%C3%ADa.png)](https://www.youtube.com/watch?v=d1zDf0tW7qU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=6) 
+[![Alt text](./doc/ytPlaylist/06.00%20Gr%C3%A1ficos%20de%20Barra%C3%81rea%20Stock%20de%20Comp.%20por%20Categor%C3%ADa.png)](https://www.youtube.com/watch?v=d1zDf0tW7qU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=6) 
 
 
 
 
 ### Gráficos de BarraÁrea Stock de Comp. por Fabricante
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/07.00%20Gr%C3%A1ficos%20de%20Barra%C3%81rea%20Stock%20de%20Comp.%20por%20Fabricante.png)](https://www.youtube.com/watch?v=WM6qJ-HWFnQ&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=7) 
+[![Alt text](./doc/ytPlaylist/07.00%20Gr%C3%A1ficos%20de%20Barra%C3%81rea%20Stock%20de%20Comp.%20por%20Fabricante.png)](https://www.youtube.com/watch?v=WM6qJ-HWFnQ&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=7) 
 
 
 ### TablasGuías de Ayuda
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/08.00%20TablasGu%C3%ADas%20de%20Ayuda.png)](https://www.youtube.com/watch?v=fhblPvBTqw4&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=8) 
+[![Alt text](./doc/ytPlaylist/08.00%20TablasGu%C3%ADas%20de%20Ayuda.png)](https://www.youtube.com/watch?v=fhblPvBTqw4&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=8) 
 
 
 ### Formulario Agregar Componentes (Parte01)
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/09.00%20Formulario%20Agregar%20Componentes%20(Parte01).png)](https://www.youtube.com/watch?v=4KvZ9VMrFZI&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=9) 
+[![Alt text](./doc/ytPlaylist/09.00%20Formulario%20Agregar%20Componentes%20(Parte01).png)](https://www.youtube.com/watch?v=4KvZ9VMrFZI&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=9) 
 
 
 
 ### Formulario Agregar Componentes (Parte02)
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/09.01%20Formulario%20Agregar%20Componentes%20(Parte02).png)](https://www.youtube.com/watch?v=Bp4fS3mFjlU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=10) 
+[![Alt text](./doc/ytPlaylist/09.01%20Formulario%20Agregar%20Componentes%20(Parte02).png)](https://www.youtube.com/watch?v=Bp4fS3mFjlU&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=10) 
 
 ### Eliminar Componentes
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/10.00%20Eliminar%20Componentes.png)](https://www.youtube.com/watch?v=noSgm4c8iFk&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=11) 
+[![Alt text](./doc/ytPlaylist/10.00%20Eliminar%20Componentes.png)](https://www.youtube.com/watch?v=noSgm4c8iFk&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=11) 
 
 
 
 ###  Formulario Actualizar Componentes
-[![Alt text](https://github.com/andresWeitzel/AppGestionMicroelectronica_SpringBoot/blob/master/doc/ytPlaylist/11.00%20Formulario%20Actualizar%20Componentes.png)](https://www.youtube.com/watch?v=FCKgRe7esj8&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=12) 
+[![Alt text](./doc/ytPlaylist/11.00%20Formulario%20Actualizar%20Componentes.png)](https://www.youtube.com/watch?v=FCKgRe7esj8&list=PLCl11UFjHurAhsy9K0G0TIBmiSSqP_lN3&index=12) 
 
  <br>
 
