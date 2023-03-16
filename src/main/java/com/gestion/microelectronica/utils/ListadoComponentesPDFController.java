@@ -192,9 +192,9 @@ public class ListadoComponentesPDFController extends AbstractPdfView {
 		Color colorCampos = new Color(204, 224, 255);
 		
 		
-		String camposValor[] = { "CÓDIGO","IMAGEN"
-				,"NRO. PIEZA","CATEGORÍA","DESCRIP."
-				,"FABRICANTE","STOCK","PRECIO" };
+		String camposValor[] = { "CÓDIGO",
+				"NRO. PIEZA","CATEGORÍA","DESCRIP."
+				,"FABRICANTE","STOCK","PRECIO", "GANANCIAS" };
 
 		//Generamos los encabezados
 		for (int i = 0; i < camposValor.length; i++) {
@@ -222,13 +222,13 @@ public class ListadoComponentesPDFController extends AbstractPdfView {
 
 		
 		PdfPCell celdaCod = null;
-		PdfPCell celdaImagen = null;
 		PdfPCell celdaNroPieza = null;
 		PdfPCell celdaCategoria = null;
 		PdfPCell celdaDescripcion = null;
 		PdfPCell celdaFabricante = null;
 		PdfPCell celdaStock = null;
 		PdfPCell celdaPrecio = null;
+		PdfPCell celdaGanancia = null;
 
 		Color colorRegistros = new Color(232, 240, 253);
 
@@ -241,12 +241,7 @@ public class ListadoComponentesPDFController extends AbstractPdfView {
 			celdaCod.setHorizontalAlignment(alignCenter);
 			celdaCod.setVerticalAlignment(alignCenter);
 			tablaComponentes.addCell(celdaCod);
-			// ---Celda IMAGEN---
-			celdaImagen = new PdfPCell(new Phrase(comp.getImagen()));
-			celdaImagen.setBackgroundColor(colorRegistros);
-			celdaImagen.setHorizontalAlignment(alignCenter);
-			celdaImagen.setVerticalAlignment(alignCenter);
-			tablaComponentes.addCell(celdaImagen);
+
 			// ---Celda NRO_PIEZA---
 			celdaNroPieza = new PdfPCell(new Phrase(comp.getNroPieza()));
 			celdaNroPieza.setBackgroundColor(colorRegistros);
@@ -284,7 +279,12 @@ public class ListadoComponentesPDFController extends AbstractPdfView {
 			celdaPrecio.setHorizontalAlignment(alignCenter);
 			celdaPrecio.setVerticalAlignment(alignCenter);
 			tablaComponentes.addCell(celdaPrecio);
-
+			// --Celda GANANCIA---
+			celdaGanancia = new PdfPCell((new Phrase(String.valueOf(comp.getStock()*comp.getPrecio()))));
+			celdaGanancia.setBackgroundColor(colorRegistros);
+			celdaGanancia.setHorizontalAlignment(alignCenter);
+			celdaGanancia.setVerticalAlignment(alignCenter);
+			tablaComponentes.addCell(celdaGanancia);
 		}
 
 		// Agregamos la tabla creada al documento pdf

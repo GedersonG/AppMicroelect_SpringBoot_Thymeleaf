@@ -51,8 +51,8 @@ public class ListadoComponentesEXCELController extends AbstractXlsxView {
 
 		
 		
-		String camposValor[] = { "ID", "CÓDIGO", "IMAGEN", "NRO PIEZA", "CATEGORÍA", "DESCRIPCIÓN", "FABRICANTE",
-				"STOCK", "PRECIO" };
+		String camposValor[] = { "ID", "CÓDIGO", "NRO PIEZA", "CATEGORÍA", "DESCRIPCIÓN", "FABRICANTE",
+				"STOCK", "PRECIO", "GANANCIAS" };
 
 		int alignCenter = Element.ALIGN_CENTER;
 		Color colorCampos = new Color(204, 224, 255);
@@ -90,13 +90,13 @@ public class ListadoComponentesEXCELController extends AbstractXlsxView {
 			//Creamos las celdas y agregamos los valores 
 			header.createCell(0).setCellValue(comp.getId());
 			header.createCell(1).setCellValue(comp.getCodigo());
-			header.createCell(2).setCellValue(comp.getImagen());
-			header.createCell(3).setCellValue(comp.getNroPieza());
-			header.createCell(4).setCellValue(comp.getCategoria());
-			header.createCell(5).setCellValue(comp.getDescripcion());
-			header.createCell(6).setCellValue(comp.getFabricante());
-			header.createCell(7).setCellValue(comp.getStock());
-			header.createCell(8).setCellValue(comp.getPrecio());
+			header.createCell(2).setCellValue(comp.getNroPieza());
+			header.createCell(3).setCellValue(comp.getCategoria());
+			header.createCell(4).setCellValue(comp.getDescripcion());
+			header.createCell(5).setCellValue(comp.getFabricante());
+			header.createCell(6).setCellValue(comp.getStock());
+			header.createCell(7).setCellValue(comp.getPrecio());
+			header.createCell(8).setCellValue(comp.getPrecio()*comp.getStock());
 			
 			
 			//Aumentamos fila a fila
